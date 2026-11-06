@@ -1,0 +1,131 @@
+# Dialect profile: Call of Duty: Black Ops II (2012).
+# Schema: ../schema/profile.schema.json. Sources: ../sources.toml. Licence rule: ../README.md.
+
+schema_version = 1
+id = "t6"
+name = "Call of Duty: Black Ops II"
+release_year = 2012
+developer = "Treyarch"
+dialect_family = "treyarch-pre-t7"
+grade = "documented"
+aliases = ["bo2", "blackops2"]
+source_availability = ["compiled-only"]
+license = "CC0-1.0"
+notes = "Transitional Treyarch dialect. Feature values describe the RETAIL compiler. foreach (both forms) is retail, measured on the shipped bytecode. The preprocessor is not evidenced in retail and is a community-compiler extension: gsc-tool t6 accepts #define (object and function-like), #if/#ifdef/#ifndef/#elif/#elifdef/#elifndef/#else/#endif, #undef, #inline <file>.gsh, #include, and predefines __FILE__, __LINE__, __DATE__, __TIME__ and T6; it has no #insert. The `community` value on each preprocessor feature records that mode."
+
+[tool_ids]
+gsc_tool = "t6"
+acts = "t6"
+gscode = "bo2"
+
+[keywords]
+words = ["abs", "angleclamp180", "anglestoforward", "anglestoright", "anglestoup", "anim", "autoexec", "break", "case", "codecall", "const", "continue", "default", "do", "else", "endon", "false", "for", "foreach", "game", "getdvar", "getdvarcoloralpha", "getdvarcolorblue", "getdvarcolorgreen", "getdvarcolorred", "getdvarfloat", "getdvarint", "getdvarvector", "getfirstarraykey", "getnextarraykey", "gettime", "if", "in", "isdefined", "level", "notify", "private", "prof_begin", "prof_end", "return", "self", "switch", "thread", "true", "undefined", "vectorscale", "vectortoangles", "wait", "waitrealtime", "waittill", "waittillframeend", "waittillmatch", "while"]
+confidence = "documented"
+source = ["gsc-tool-syntax"]
+license = "GPL-3.0-only"
+note = "keywords of the gsc-tool ARC front end for t6; foreach and in are retail (t6-foreach settled on the bytecode); corpus: size is a local variable 65 times in 36 files of the acts output (size = x.size;); t6 stores identifiers as plain text, so the names are retail and size is not reserved (.size stays a field)"
+
+[features]
+# --- Files
+file_kinds = { value = ["gsc", "csc"], confidence = "verified-on-corpus", source = ["bytecode-t6", "plutonium-t6-scripts"], note = "retail bytecode: 2,534 .gsc and 1,331 .csc assets; .gsh exists only in community mode (gsc-tool #inline)", community = { value = ["gsc", "csc", "gsh"], tools = ["gsc-tool", "plutonium"], confidence = "documented", source = ["gsc-tool-arc-source", "plutonium-docs"], license = "GPL-3.0-only", note = ".gsh headers pulled in by gsc-tool #inline" } }
+# --- Lexing and literals
+case_insensitive_identifiers = { value = true, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+dev_blocks = { value = true, confidence = "verified-on-corpus", source = ["corpus-t6", "gsc-tool-syntax"], note = "decompiled (acts output): 4,706 uses in 639 files; the ARC lexer always produces the tokens" }
+doc_comment_style = { value = "at-block", confidence = "assumed", source = ["eyza-vscode-cod-gsc"], license = "GPL-3.0-only", note = "eyza reports at-block doc comments in BO2 code" }
+istring_literal = { value = true, confidence = "verified-on-corpus", source = ["corpus-t6", "gsc-tool-syntax"], note = "decompiled (acts output): 3,817 uses in 379 files" }
+hash_string_literal = { value = true, confidence = "verified-on-corpus", source = ["corpus-t6", "gsc-tool-syntax", "codresearch-spt"], note = "decompiled (acts output): 2,163 uses in 488 files; BO2 bytecode stores DJB2 hashes" }
+extra_string_prefixes = { value = [], confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t6 (absence of use, not proof of absence)" }
+anim_reference = { value = true, confidence = "verified-on-corpus", source = ["corpus-t6", "gsc-tool-syntax"], note = "decompiled (acts output): 23,649 uses in 413 files" }
+anim_reference_qualified = { value = true, confidence = "verified-on-corpus", source = ["corpus-t6", "gsc-tool-syntax", "eyza-vscode-cod-gsc"], note = "decompiled (acts output): 4,017 uses in 102 files; eyza reports %xxx::yyy in BO2 code" }
+animtree_expression = { value = true, confidence = "verified-on-corpus", source = ["corpus-t6", "gsc-tool-syntax"], note = "decompiled (acts output): 365 uses in 233 files" }
+dollar_identifiers = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t6 (absence of use, not proof of absence)" }
+hashed_identifier_spellings = { value = [], confidence = "documented", source = ["hash-inventory"], note = "identifiers ship as plain text; 0 uses in corpus-t6 (absence of use, not proof of absence)" }
+# --- Bytecode naming
+identifier_encoding = { value = "plain-text", confidence = "documented", source = ["hash-inventory"] }
+# --- Imports and name resolution
+import_directive = { value = "include", confidence = "verified-on-corpus", source = ["corpus-t6", "gsc-tool-syntax"], note = "decompiled (acts output): 13,427 in 2,997 files" }
+name_resolution = { value = "merge", confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+namespace_directive = { value = false, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "0 uses in corpus-t6 (absence of use, not proof of absence)" }
+path_qualified_calls = { value = true, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "77,211 uses in 2,331 decompiled files (corpus-t6), not proof: the decompiler qualifies every call into another file (gsc-tool IW never prints #include; acts prints ns:: by namespace difference)" }
+namespace_qualified_calls = { value = false, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "0 uses in corpus-t6 (absence of use, not proof of absence)" }
+builtin_namespace_qualifier = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t6 (absence of use, not proof of absence)" }
+header_directive = { value = "none", confidence = "assumed", source = ["gscode-dialect-facts", "gsc-tool-arc-source", "plutonium-docs", "eyza-vscode-cod-gsc"], status = "unresolved", license = "GPL-3.0-only", note = "community mode (gsc-tool t6, the compiler Plutonium recommends): yes. Retail: no evidence either way, macros expand before code generation so bytecode cannot show them: #inline, not #insert; see unresolved t6-preprocessor", community = { value = "inline", tools = ["gsc-tool", "plutonium"], confidence = "documented", source = ["gsc-tool-arc-source", "plutonium-docs"], license = "GPL-3.0-only", note = "gsc-tool t6 accepts #inline <file>.gsh; it has no #insert" } }
+precache_directive = { value = false, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "0 uses in corpus-t6: acts never emits it, so the decompiled corpus cannot show it" }
+using_animtree_directive = { value = true, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "543 uses in 492 decompiled files (corpus-t6), not proof: the decompiler inserts #using_animtree from the animtree table at the first use" }
+imports_before_declarations = { value = "unknown", confidence = "assumed", source = ["inference"] }
+# --- Preprocessor
+preprocessor_define = { value = false, confidence = "assumed", source = ["gscode-dialect-facts", "gsc-tool-arc-source", "plutonium-docs", "eyza-vscode-cod-gsc"], status = "unresolved", license = "GPL-3.0-only", note = "community mode (gsc-tool t6, the compiler Plutonium recommends): yes. Retail: no evidence either way, macros expand before code generation so bytecode cannot show them; see unresolved t6-preprocessor", community = { value = true, tools = ["gsc-tool", "plutonium"], confidence = "documented", source = ["gsc-tool-arc-source", "plutonium-docs"], license = "GPL-3.0-only", note = "gsc-tool t6 (the compiler Plutonium recommends) accepts #define" } }
+preprocessor_function_macros = { value = false, confidence = "assumed", source = ["gscode-dialect-facts", "gsc-tool-arc-source", "plutonium-docs", "eyza-vscode-cod-gsc"], status = "unresolved", license = "GPL-3.0-only", note = "community mode (gsc-tool t6, the compiler Plutonium recommends): yes. Retail: no evidence either way, macros expand before code generation so bytecode cannot show them; see unresolved t6-preprocessor", community = { value = true, tools = ["gsc-tool", "plutonium"], confidence = "documented", source = ["gsc-tool-arc-source", "plutonium-docs"], license = "GPL-3.0-only", note = "gsc-tool t6 accepts function-like #define" } }
+preprocessor_conditionals = { value = false, confidence = "assumed", source = ["gscode-dialect-facts", "gsc-tool-arc-source", "plutonium-docs", "eyza-vscode-cod-gsc"], status = "unresolved", license = "GPL-3.0-only", note = "community mode (gsc-tool t6, the compiler Plutonium recommends): yes. Retail: no evidence either way, macros expand before code generation so bytecode cannot show them; see unresolved t6-preprocessor", community = { value = true, tools = ["gsc-tool", "plutonium"], confidence = "documented", source = ["gsc-tool-arc-source", "plutonium-docs"], license = "GPL-3.0-only", note = "gsc-tool t6 accepts #if/#elif/#else/#endif" } }
+preprocessor_ifdef_undef = { value = false, confidence = "assumed", source = ["gscode-dialect-facts", "gsc-tool-arc-source", "plutonium-docs", "eyza-vscode-cod-gsc"], status = "unresolved", license = "GPL-3.0-only", note = "community mode (gsc-tool t6, the compiler Plutonium recommends): yes. Retail: no evidence either way, macros expand before code generation so bytecode cannot show them; see unresolved t6-preprocessor", community = { value = true, tools = ["gsc-tool", "plutonium"], confidence = "documented", source = ["gsc-tool-arc-source", "plutonium-docs"], license = "GPL-3.0-only", note = "gsc-tool t6 accepts #ifdef/#ifndef/#elifdef/#elifndef and #undef" } }
+predefined_macros = { value = [], confidence = "assumed", source = ["gscode-dialect-facts", "gsc-tool-arc-source", "plutonium-docs", "eyza-vscode-cod-gsc"], status = "unresolved", license = "GPL-3.0-only", note = "community mode (gsc-tool t6): __FILE__, __LINE__, __DATE__, __TIME__, T6; retail unknown; see unresolved t6-preprocessor", community = { value = ["__FILE__", "__LINE__", "__DATE__", "__TIME__", "T6"], tools = ["gsc-tool", "plutonium"], confidence = "documented", source = ["gsc-tool-arc-source", "plutonium-docs"], license = "GPL-3.0-only", note = "gsc-tool t6 predefines these" } }
+file_scope_macro_calls = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t6: acts never emits it, so the decompiled corpus cannot show it" }
+# --- Declarations
+function_keyword = { value = false, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "0 uses in corpus-t6 (absence of use, not proof of absence)" }
+autoexec_modifier = { value = true, confidence = "verified-on-corpus", source = ["corpus-t6", "gsc-tool-syntax", "eyza-vscode-cod-gsc"], note = "decompiled (acts output): 33 uses in 30 files" }
+private_modifier = { value = true, confidence = "verified-on-corpus", source = ["corpus-t6", "gsc-tool-syntax", "eyza-vscode-cod-gsc"], note = "decompiled (acts output): 6 uses in 2 files" }
+event_handler_modifier = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t6 (absence of use, not proof of absence)" }
+codecall_modifier = { value = true, confidence = "verified-on-corpus", source = ["corpus-t6", "gsc-tool-syntax"], note = "decompiled (acts output): 1 use in 1 file; absent from the BO3 doc keyword list" }
+classes = { value = false, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "0 uses in corpus-t6 (absence of use, not proof of absence)" }
+file_scope_constants = { value = false, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "0 uses in corpus-t6: acts never emits it, so the decompiled corpus cannot show it" }
+const_locals = { value = true, confidence = "documented", source = ["gsc-tool-syntax", "eyza-vscode-cod-gsc"], license = "GPL-3.0-only", note = "0 uses in corpus-t6: acts never emits it, so the decompiled corpus cannot show it" }
+default_parameters = { value = true, confidence = "documented", source = ["gsc-tool-syntax", "eyza-vscode-cod-gsc"], license = "GPL-3.0-only", note = "0 uses in corpus-t6 (absence of use, not proof of absence)" }
+reference_parameters = { value = false, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "documented for t7 only; 0 uses in corpus-t6 (absence of use, not proof of absence)" }
+pointer_parameters = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t6 (absence of use, not proof of absence)" }
+varargs = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t6 (absence of use, not proof of absence)" }
+# --- Statements
+foreach = { value = true, confidence = "verified-on-corpus", source = ["bytecode-t6", "plutonium-t6-scripts", "gsc-tool-arc-source", "plutonium-docs"], note = "retail bytecode holds 3,425 compiler-generated hidden array locals _a<N> (3,355 with their key local _k<N>) in 505 of 3,865 scripts, one per foreach gsc-tool decompiles (3,412 in 504 files, plus 13 in the one script it fails on); a hand-written for loop would carry its author's names. The T7 linker names the same locals __a<line>/__k<line> (evidence/linker-t7/foreach_hidden_locals.json). Plutonium's old built-in compiler and gsc-tool also accept it" }
+foreach_key_value = { value = true, confidence = "verified-on-corpus", source = ["bytecode-t6"], note = "70 hidden _a<N> locals without a _k<N>: the key is the author's variable; gsc-tool decompiles exactly 70 two-variable foreach" }
+do_while = { value = true, confidence = "verified-on-corpus", source = ["corpus-t6", "gsc-tool-syntax"], note = "decompiled (acts output): 99 uses in 56 files; gsc-tool accepts it on all engines; no retail evidence" }
+childthread = { value = false, confidence = "assumed", source = ["vm-t6-emulation"], note = "gsc-tool refuses childthread (an undefined local), so the T6 VM run is UNSUPPORTED (semantics/t6.toml childthread_dies_with_parent); static: none of the VM's 124 opcodes (dispatch 0x7f120c) is a thread call that ties or copies endons; 0 uses in corpus-t6" }
+call_pointer_sync = { value = false, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "0 uses in corpus-t6 (absence of use, not proof of absence)" }
+builtin_call = { value = false, confidence = "verified-on-corpus", source = ["corpus-t6"], note = "0 in the acts output of the shipped bytecode (acts writes builtin [[ ]] when the bytecode calls through a builtin pointer) (absence of use, not proof of absence)" }
+thisthread = { value = false, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "0 uses in corpus-t6: acts never emits it, so the decompiled corpus cannot show it" }
+threadendon_call = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t6: acts never emits it, so the decompiled corpus cannot show it" }
+waittillframeend = { value = true, confidence = "verified-on-corpus", source = ["corpus-t6", "gsc-tool-syntax"], note = "decompiled (acts output): 279 uses in 135 files" }
+waitframe = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t6 (absence of use, not proof of absence)" }
+waitrealtime = { value = true, confidence = "verified-on-corpus", source = ["corpus-t6", "gsc-tool-syntax"], note = "decompiled (acts output): 53 uses in 20 files" }
+tuple_assignment = { value = false, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "0 uses in corpus-t6 (absence of use, not proof of absence)" }
+profiler_keywords = { value = ["prof_begin", "prof_end"], confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+assert_keywords = { value = [], confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "not ARC keywords in gsc-tool" }
+breakpoint_keyword = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t6 (absence of use, not proof of absence)" }
+goto_labels = { value = false, confidence = "assumed", source = ["inference"], note = "decompiled corpus (t6: 0 goto, 0 jumpif, 0 labels): what appears is control flow acts could not structure, not source; 0 uses in corpus-t6 (absence of use, not proof of absence)" }
+waittill_return_value = { value = false, confidence = "measured-in-engine", source = ["vm-t6-emulation#waittill_more_args_sent", "vm-t6-emulation#waittill_fewer_args_sent"], note = "the T6 VM binds the notify's values to the names after the event (extra values dropped, missing ones undefined); gsc-tool refuses waittill as an expression (waittill_returns_struct, unsupported)" }
+# --- Expressions and builtin call styles
+function_pointer_style = { value = "colon", confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+pointer_call = { value = true, confidence = "verified-on-corpus", source = ["corpus-t6", "gsc-tool-syntax"], note = "decompiled (acts output): 1,707 uses in 320 files" }
+strict_equality = { value = false, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "0 uses in corpus-t6 (absence of use, not proof of absence)" }
+null_coalescing = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t6 (absence of use, not proof of absence)" }
+optional_chaining = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t6: acts never emits it, so the decompiled corpus cannot show it" }
+is_expression = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t6: acts never emits it, so the decompiled corpus cannot show it" }
+casts = { value = "unknown", confidence = "assumed", source = ["inference"], note = "not observable: compiled-only game, the construct does not survive compilation; 0 uses in corpus-t6: acts never emits it, so the decompiled corpus cannot show it" }
+array_literal = { value = false, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "parse error on ARC; 0 uses in corpus-t6 (absence of use, not proof of absence)" }
+struct_literal = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t6 (absence of use, not proof of absence)" }
+isdefined_form = { value = "keyword", confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+istrue_operator = { value = false, confidence = "assumed", source = ["inference"] }
+opcode_builtins = { value = ["abs", "angleclamp180", "anglestoforward", "anglestoright", "anglestoup", "getdvar", "getdvarcoloralpha", "getdvarcolorblue", "getdvarcolorgreen", "getdvarcolorred", "getdvarfloat", "getdvarint", "getdvarvector", "getfirstarraykey", "getnextarraykey", "gettime", "vectorscale", "vectortoangles"], confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+bare_call_resolution = { value = "builtin-strict", confidence = "measured-in-engine", source = ["vm-t6-emulation#bare_call_local_shadows_builtin", "vm-t6-emulation#bare_call_using_file_other_namespace", "vm-t6-emulation#bare_call_using_file_shadows_builtin", "vm-t6-emulation#thread_call_builtin_only"], note = "builtin-strict, the measured order: a bare call is an import with an empty namespace (gsc-tool and the retail bytecode alike); the game's linker (0x7e08b0) tries the builtins first, even before a function of the same file (a local spawnstruct() is not reached by a bare call; path::f reaches it), then the same file, then its #includes; a threaded call never reaches a builtin (the script resolver only); a ::f reference takes the same builtin-first lookup and stores the builtin's native handler, which does not run as script (func_ref_builtin_only, func_ref_shadows_builtin: unsupported, so not cited). Neither builtin-first as gruff reads it (same file first) nor file-first" }
+global_objects = { value = ["self", "level", "game", "anim"], confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+# --- Semantics that change analysis
+array_argument_passing = { value = "copy", confidence = "measured-in-engine", source = ["vm-t6-emulation#array_param_plain", "vm-t6-emulation#array_param_plain_nested", "vm-t6-emulation#array_copy_on_assign"], note = "arrays are values with copy on write: a shared array (reference count not 0) is copied when written (0x7e9640), so parameters and b = a both behave as copies; no &name parameters (gsc-tool refuses them; SafeCreateLocalVariables reads no flag)" }
+waittill_multiple_events = { value = false, confidence = "measured-in-engine", source = ["vm-t6-emulation#waittill_more_args_sent", "vm-t6-emulation#waittill_fewer_args_sent"], note = "after the event, waittill's arguments are names the VM binds the notify's values to; a second event is refused by gsc-tool (waittill_any_of_events, unsupported)" }
+endon_multiple_events = { value = false, confidence = "assumed", source = ["vm-t6-emulation"], note = "gsc-tool refuses a second endon argument (endon_multiple_events, unsupported); static: the EndOn opcode (0x57, 0x7ef62c) reads an object and exactly one string event" }
+notify_wakes_waiters = { value = "deferred", confidence = "measured-in-engine", source = ["vm-t6-emulation#notify_wakes_waiter_before_notifier_continues", "vm-t6-emulation#notify_reentrant", "vm-t6-emulation#notify_wake_order_two_waiters"], note = "woken threads run in the same frame once the notifier yields, last registered first; VM_Execute is entered only from VM_Resume (VM_SetTime) and Scr_Exec*Thread" }
+hash_equality = { value = "script-error", confidence = "measured-in-engine", source = ["vm-t6-emulation#hash_equality"], note = "T6 has hash literals (#\"x\", opcode GetHash); == between two hashes, or a string and a hash, is a non-terminal script error ('unmatching types') whose result is undefined (T7: false); events must be strings (vm-t6-emulation#notify_string_vs_hash_event)" }
+
+[[unresolved]]
+id = "t6-preprocessor"
+features = ["preprocessor_define", "preprocessor_function_macros", "preprocessor_conditionals", "preprocessor_ifdef_undef", "predefined_macros", "header_directive"]
+measure = "retail cannot be read from bytecode (expansion happens before code generation). Look for .gsh rawfiles or #define text among BO2 zone rawfiles, and trace the eyza #insert fixtures to the compiler that built them. Until then: retail mode off, community mode (gsc-tool t6) on"
+[[unresolved.claims]]
+source = "eyza-vscode-cod-gsc"
+claim = "BO2 code it fails on uses #insert, #define, default parameters, autoexec, const, %a::b and at-block doc comments"
+[[unresolved.claims]]
+source = "gscode-dialect-facts"
+claim = "no game before BO3 has a preprocessor"
+[[unresolved.claims]]
+source = "gsc-tool-arc-source"
+claim = "the arc preprocessor gives t6 #define, #if/#ifdef/#ifndef/#elif/#else/#endif, #undef, #pragma, #warning, #error, #line, #include and #inline; #using, #insert, #precache and #namespace are reserved to the 64-bit (t7) context"
+[[unresolved.claims]]
+source = "plutonium-docs"
+claim = "Plutonium T6 loads source or compiled scripts; its docs describe #include but not #define or #insert, call the built-in BO2 compiler old and flawed (nested foreach and continue in foreach loop forever) and recommend gsc-tool instead"

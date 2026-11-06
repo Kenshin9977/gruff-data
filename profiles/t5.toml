@@ -1,0 +1,112 @@
+# Dialect profile: Call of Duty: Black Ops (2010).
+# Schema: ../schema/profile.schema.json. Sources: ../sources.toml. Licence rule: ../README.md.
+
+schema_version = 1
+id = "t5"
+name = "Call of Duty: Black Ops"
+release_year = 2010
+developer = "Treyarch"
+dialect_family = "treyarch-pre-t7"
+grade = "verified-on-corpus"
+aliases = ["bo1", "blackops"]
+source_availability = ["mod-tools-raw", "rawfile-in-fastfile"]
+license = "CC0-1.0"
+notes = "gscode verified profile (bo1): CoD4 base plus .csc and hash strings."
+
+[tool_ids]
+gscode = "bo1"
+
+[keywords]
+words = ["assert", "assertmsg", "break", "case", "continue", "default", "else", "endon", "false", "for", "if", "isdefined", "notify", "prof_begin", "prof_end", "return", "switch", "thread", "true", "undefined", "wait", "waittill", "waittillframeend", "waittillmatch", "while"]
+confidence = "documented"
+source = ["gscode-game-profiles", "gscode-supported-profiles"]
+note = "corpus: maps/_specialops.gsc declares and calls a script function named foreach (3 uses), so foreach is not a keyword in t5"
+license = "GPL-3.0-only"
+
+[features]
+# --- Files
+file_kinds = { value = ["gsc", "csc"], confidence = "verified-on-corpus", source = ["corpus-t5", "gscode-game-profiles"], note = "3,334 .gsc, 489 .csc" }
+# --- Lexing and literals
+case_insensitive_identifiers = { value = true, confidence = "documented", source = ["gscode-dialect-facts"], license = "GPL-3.0-only" }
+dev_blocks = { value = true, confidence = "verified-on-corpus", source = ["corpus-t5", "gscode-game-profiles"], note = "1,953 uses in 361 files (shipped scripts); IW dev blocks hold keyword-less functions" }
+doc_comment_style = { value = "triple-slash", confidence = "verified-on-corpus", source = ["corpus-t5", "gscode-game-profiles"], note = "///ScriptDocBegin in 21 files" }
+istring_literal = { value = true, confidence = "verified-on-corpus", source = ["corpus-t5"], note = "5,982 uses in 400 files (shipped scripts)" }
+hash_string_literal = { value = true, confidence = "verified-on-corpus", source = ["corpus-t5", "gscode-game-profiles"], note = "3,058 uses in 557 files (shipped scripts)" }
+extra_string_prefixes = { value = [], confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+anim_reference = { value = true, confidence = "verified-on-corpus", source = ["corpus-t5", "gscode-game-profiles"], note = "13,416 uses in 453 files (shipped scripts)" }
+anim_reference_qualified = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+animtree_expression = { value = true, confidence = "verified-on-corpus", source = ["corpus-t5", "gscode-dialect-facts"], note = "963 uses in 193 files (shipped scripts)" }
+dollar_identifiers = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+hashed_identifier_spellings = { value = [], confidence = "documented", source = ["hash-inventory"], note = "identifiers ship as plain text" }
+# --- Bytecode naming
+identifier_encoding = { value = "plain-text", confidence = "documented", source = ["hash-inventory"] }
+# --- Imports and name resolution
+import_directive = { value = "include", confidence = "verified-on-corpus", source = ["corpus-t5", "gscode-game-profiles"], note = "5,037 in 1,741 files" }
+name_resolution = { value = "merge", confidence = "documented", source = ["gscode-game-profiles"], license = "GPL-3.0-only" }
+namespace_directive = { value = false, confidence = "documented", source = ["gscode-game-profiles"], license = "GPL-3.0-only", note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+path_qualified_calls = { value = true, confidence = "verified-on-corpus", source = ["corpus-t5", "gscode-game-profiles"], note = "66,800 uses in 2,062 files (shipped scripts)" }
+namespace_qualified_calls = { value = false, confidence = "documented", source = ["gscode-game-profiles"], license = "GPL-3.0-only", note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+builtin_namespace_qualifier = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+header_directive = { value = "none", confidence = "documented", source = ["gscode-game-profiles"], license = "GPL-3.0-only" }
+precache_directive = { value = false, confidence = "documented", source = ["gscode-game-profiles"], license = "GPL-3.0-only", note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+using_animtree_directive = { value = true, confidence = "verified-on-corpus", source = ["corpus-t5", "gscode-dialect-facts"], note = "1,106 uses in 626 files (shipped scripts)" }
+imports_before_declarations = { value = "unknown", confidence = "assumed", source = ["inference"] }
+# --- Preprocessor
+preprocessor_define = { value = false, confidence = "documented", source = ["gscode-dialect-facts"], license = "GPL-3.0-only", note = "one #define per game, inside a block comment; 0 uses in corpus-t5 (absence of use, not proof of absence)" }
+preprocessor_function_macros = { value = false, confidence = "documented", source = ["gscode-dialect-facts"], license = "GPL-3.0-only", note = "one #define per game, inside a block comment; 0 uses in corpus-t5 (absence of use, not proof of absence)" }
+preprocessor_conditionals = { value = false, confidence = "documented", source = ["gscode-dialect-facts"], license = "GPL-3.0-only", note = "one #define per game, inside a block comment; 0 uses in corpus-t5 (absence of use, not proof of absence)" }
+preprocessor_ifdef_undef = { value = false, confidence = "documented", source = ["gscode-dialect-facts"], license = "GPL-3.0-only", note = "one #define per game, inside a block comment; 0 uses in corpus-t5 (absence of use, not proof of absence)" }
+predefined_macros = { value = [], confidence = "assumed", source = ["inference"] }
+file_scope_macro_calls = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+# --- Declarations
+function_keyword = { value = false, confidence = "documented", source = ["gscode-game-profiles"], license = "GPL-3.0-only", note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+autoexec_modifier = { value = false, confidence = "documented", source = ["gscode-game-profiles"], license = "GPL-3.0-only", note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+private_modifier = { value = false, confidence = "documented", source = ["gscode-game-profiles"], license = "GPL-3.0-only", note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+event_handler_modifier = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+codecall_modifier = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+classes = { value = false, confidence = "documented", source = ["gscode-game-profiles"], license = "GPL-3.0-only", note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+file_scope_constants = { value = false, confidence = "documented", source = ["gscode-game-profiles"], license = "GPL-3.0-only", note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+const_locals = { value = false, confidence = "documented", source = ["gscode-game-profiles"], license = "GPL-3.0-only", note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+default_parameters = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+reference_parameters = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+pointer_parameters = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+varargs = { value = false, confidence = "documented", source = ["gscode-game-profiles"], license = "GPL-3.0-only", note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+# --- Statements
+foreach = { value = false, confidence = "documented", source = ["gscode-game-profiles"], license = "GPL-3.0-only", note = "0 uses in CoD4, WaW and BO1" }
+foreach_key_value = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+do_while = { value = false, confidence = "documented", source = ["gscode-game-profiles"], license = "GPL-3.0-only", note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+childthread = { value = false, confidence = "measured-in-engine", source = ["vm-t5-emulation"], note = "the game's own compiler refuses childthread (uninitialised variable 'childthread'): semantics/t5.toml childthread_dies_with_parent, unsupported; 0 uses in corpus-t5" }
+call_pointer_sync = { value = false, confidence = "documented", source = ["gscode-game-profiles"], license = "GPL-3.0-only", note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+builtin_call = { value = false, confidence = "verified-on-corpus", source = ["corpus-t5"], note = "0 uses of builtin in the shipped scripts (absence of use, not proof of absence)" }
+thisthread = { value = false, confidence = "documented", source = ["gscode-game-profiles"], license = "GPL-3.0-only", note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+threadendon_call = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+waittillframeend = { value = true, confidence = "verified-on-corpus", source = ["corpus-t5", "gscode-game-profiles"], note = "356 uses in 185 files (shipped scripts)" }
+waitframe = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+waitrealtime = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+tuple_assignment = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+profiler_keywords = { value = ["prof_begin", "prof_end"], confidence = "verified-on-corpus", source = ["corpus-t5", "gscode-game-profiles"], note = "used: prof_begin 60, prof_end 70" }
+assert_keywords = { value = ["assert", "assertmsg"], confidence = "documented", source = ["gscode-game-profiles"], license = "GPL-3.0-only" }
+breakpoint_keyword = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+goto_labels = { value = false, confidence = "verified-on-corpus", source = ["corpus-t5"], note = "0 goto and 0 labels in the shipped scripts (absence of use, not proof of absence)" }
+waittill_return_value = { value = false, confidence = "measured-in-engine", source = ["vm-t5-emulation#waittill_more_args_sent", "vm-t5-emulation#waittill_fewer_args_sent"], note = "the T5 VM binds the notify's values to the names after the event; the game's compiler refuses waittill as an expression (waittill_returns_struct, unsupported: bad syntax)" }
+# --- Expressions and builtin call styles
+function_pointer_style = { value = "colon", confidence = "verified-on-corpus", source = ["corpus-t5", "gscode-game-profiles"], note = "6,233 in 896 files" }
+pointer_call = { value = true, confidence = "verified-on-corpus", source = ["corpus-t5", "gscode-dialect-facts"], note = "1,772 uses in 396 files (shipped scripts)" }
+strict_equality = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+null_coalescing = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+optional_chaining = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+is_expression = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+casts = { value = false, confidence = "verified-on-corpus", source = ["corpus-t5"], note = "0 casts in the shipped scripts (absence of use, not proof of absence)" }
+array_literal = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+struct_literal = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+isdefined_form = { value = "keyword", confidence = "documented", source = ["gscode-dialect-facts"], license = "GPL-3.0-only" }
+istrue_operator = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t5 (absence of use, not proof of absence)" }
+opcode_builtins = { value = [], confidence = "assumed", source = ["inference"] }
+bare_call_resolution = { value = "file-first", confidence = "measured-in-engine", source = ["vm-t5-emulation#bare_call_local_shadows_builtin", "vm-t5-emulation#bare_call_using_file_other_namespace", "vm-t5-emulation#bare_call_using_file_shadows_builtin", "vm-t5-emulation#thread_call_builtin_only", "vm-t5-emulation#func_ref_builtin_only", "vm-t5-emulation#func_ref_shadows_builtin"], note = "measured with the game's own compiler (load time): a bare call reaches a function of the same file, then the builtin, then the #include'd files (an #include'd function named like a builtin does not shadow it); thread f() and ::f with no script function are refused (unknown function)" }
+global_objects = { value = ["self", "level", "game", "anim"], confidence = "documented", source = ["gscode-game-profiles"], license = "GPL-3.0-only" }
+# --- Semantics that change analysis
+array_argument_passing = { value = "copy", confidence = "measured-in-engine", source = ["vm-t5-emulation#array_param_plain", "vm-t5-emulation#array_param_plain_nested", "vm-t5-emulation#array_copy_on_assign"], note = "arrays behave as values (copy on write, as T6): parameters and b = a both act as copies; no &name parameters (the compiler refuses them: bad syntax)" }
+waittill_multiple_events = { value = false, confidence = "measured-in-engine", source = ["vm-t5-emulation#waittill_more_args_sent", "vm-t5-emulation#waittill_fewer_args_sent"], note = "after the event, waittill's arguments are names bound to the notify's values; a second event is refused by the compiler (waittill_any_of_events, unsupported: bad syntax)" }
+endon_multiple_events = { value = false, confidence = "measured-in-engine", source = ["vm-t5-emulation"], note = "the game's compiler refuses a second endon argument (endon_multiple_events, unsupported: bad syntax)" }
+notify_wakes_waiters = { value = "deferred", confidence = "measured-in-engine", source = ["vm-t5-emulation#notify_wakes_waiter_before_notifier_continues", "vm-t5-emulation#notify_reentrant", "vm-t5-emulation#notify_wake_order_two_waiters"], note = "woken threads run in the same frame once the notifier yields, last registered first (as T6, T7)" }
+hash_equality = { value = "by-value", confidence = "measured-in-engine", source = ["vm-t5-emulation#hash_equality"], note = "a hash literal is an int computed by the compiler (case-insensitive): hash == hash compares the ints (#\"GoAway\" == #\"goaway\" is true); a string == a hash is a non-terminal script error (string vs int), result undefined" }

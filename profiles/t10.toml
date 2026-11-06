@@ -1,0 +1,113 @@
+# Dialect profile: Call of Duty: Black Ops 6 (2024).
+# Schema: ../schema/profile.schema.json. Sources: ../sources.toml. Licence rule: ../README.md.
+
+schema_version = 1
+id = "t10"
+name = "Call of Duty: Black Ops 6"
+release_year = 2024
+developer = "Treyarch / Raven Software"
+dialect_family = "treyarch-t7plus"
+grade = "documented"
+aliases = ["bo6", "cer", "blackops6"]
+source_availability = ["compiled-encrypted"]
+license = "CC0-1.0"
+notes = "Compiled and encrypted. Evidence from the acts T10 VM; the ?? operator appears here first."
+
+[tool_ids]
+acts = "t10"
+gscode = "bo6"
+
+[keywords]
+words = ["autoexec", "break", "builtin", "case", "childthread", "class", "continue", "default", "do", "else", "event_handler", "false", "for", "foreach", "function", "goto", "if", "in", "is", "new", "not", "private", "return", "switch", "thread", "threadendon", "true", "undefined", "var", "wait", "while"]
+confidence = "assumed"
+source = ["acts-grammar"]
+license = "GPL-3.0-only OR MIT"
+note = "literal words of the acts superset grammar; the retail keyword set is not observable: compiled-only game, the construct does not survive compilation"
+
+[features]
+# --- Files
+file_kinds = { value = ["gsc"], confidence = "assumed", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "acts sets no client-VM flag for this VM; whether .csc exists is open" }
+# --- Lexing and literals
+case_insensitive_identifiers = { value = true, confidence = "documented", source = ["hash-inventory"], note = "hash families lowercase their input" }
+dev_blocks = { value = true, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "dev-block opcode" }
+doc_comment_style = { value = "at-block", confidence = "assumed", source = ["inference"], note = "not observable: compiled-only game, the construct does not survive compilation" }
+istring_literal = { value = true, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "ISTRING flag (hashed on t10 and t11)" }
+hash_string_literal = { value = true, confidence = "documented", source = ["hash-inventory", "acts-grammar"], license = "GPL-3.0-only OR MIT", note = "64-bit hashes" }
+extra_string_prefixes = { value = ["@"], confidence = "assumed", source = ["hash-inventory"], note = "BO6 shares the BO7 script hash family; o# and s# forms also reported" }
+anim_reference = { value = true, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "animtree handler flag" }
+anim_reference_qualified = { value = true, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "double-animtree handler flag" }
+animtree_expression = { value = true, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT" }
+dollar_identifiers = { value = false, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "acts accepts $name as an animtree identifier" }
+hashed_identifier_spellings = { value = ["hex-prefixed", "script-path-hash"], confidence = "documented", source = ["hash-inventory", "gsclsp-readme"], license = "MIT-0" }
+# --- Bytecode naming
+identifier_encoding = { value = "fnv64-secure", confidence = "documented", source = ["hash-inventory"] }
+# --- Imports and name resolution
+import_directive = { value = "using", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "not observable: compiled-only game, the construct does not survive compilation; acts writes #using" }
+name_resolution = { value = "namespace", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT" }
+namespace_directive = { value = true, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT" }
+path_qualified_calls = { value = false, confidence = "assumed", source = ["gsclsp-readme", "acts-grammar"], license = "GPL-3.0-only OR MIT" }
+namespace_qualified_calls = { value = true, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT" }
+builtin_namespace_qualifier = { value = "unknown", confidence = "assumed", source = ["inference"] }
+header_directive = { value = "insert", confidence = "assumed", source = ["inference"], note = "not observable: compiled-only game, the construct does not survive compilation" }
+precache_directive = { value = "unknown", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "not observable: compiled-only game, the construct does not survive compilation" }
+using_animtree_directive = { value = true, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT" }
+imports_before_declarations = { value = "unknown", confidence = "assumed", source = ["inference"] }
+# --- Preprocessor
+preprocessor_define = { value = "unknown", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "not observable: compiled-only game, the construct does not survive compilation" }
+preprocessor_function_macros = { value = "unknown", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "not observable: compiled-only game, the construct does not survive compilation" }
+preprocessor_conditionals = { value = "unknown", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "not observable: compiled-only game, the construct does not survive compilation" }
+preprocessor_ifdef_undef = { value = "unknown", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "not observable: compiled-only game, the construct does not survive compilation" }
+predefined_macros = { value = [], confidence = "assumed", source = ["inference"] }
+file_scope_macro_calls = { value = "unknown", confidence = "assumed", source = ["inference"], note = "not observable: compiled-only game, the construct does not survive compilation" }
+# --- Declarations
+function_keyword = { value = true, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "acts writes it; its grammar makes it optional" }
+autoexec_modifier = { value = true, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "export flags decoded by acts" }
+private_modifier = { value = true, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "export flags decoded by acts" }
+event_handler_modifier = { value = true, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "event-handler export support in the acts VM handler" }
+codecall_modifier = { value = false, confidence = "assumed", source = ["inference"] }
+classes = { value = false, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "no class opcodes in the acts tables" }
+file_scope_constants = { value = false, confidence = "assumed", source = ["inference"] }
+const_locals = { value = true, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT" }
+default_parameters = { value = true, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT" }
+reference_parameters = { value = false, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "no variable-reference handler flag" }
+pointer_parameters = { value = false, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT" }
+varargs = { value = true, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "vararg handler flag" }
+# --- Statements
+foreach = { value = true, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "foreach handler type" }
+foreach_key_value = { value = true, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "IW foreach-keys flag" }
+do_while = { value = true, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT" }
+childthread = { value = false, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "acts maps childthread to threadendon for compatibility" }
+call_pointer_sync = { value = false, confidence = "assumed", source = ["inference"] }
+builtin_call = { value = "unknown", confidence = "assumed", source = ["inference"] }
+thisthread = { value = true, confidence = "assumed", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "IW get-thread opcode present" }
+threadendon_call = { value = true, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "thread-call-endon opcodes; source spelling unknown" }
+waittillframeend = { value = true, confidence = "assumed", source = ["inference"] }
+waitframe = { value = true, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "wait-frame opcode" }
+waitrealtime = { value = "unknown", confidence = "assumed", source = ["inference"] }
+tuple_assignment = { value = "unknown", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "acts accepts the IW form" }
+profiler_keywords = { value = ["profilestart", "profilestop"], confidence = "assumed", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "profile-start opcode" }
+assert_keywords = { value = [], confidence = "assumed", source = ["inference"] }
+breakpoint_keyword = { value = false, confidence = "assumed", source = ["inference"] }
+goto_labels = { value = false, confidence = "assumed", source = ["inference"] }
+waittill_return_value = { value = true, confidence = "assumed", source = ["vm-t9-emulation#waittill_returns_struct"], note = "assumed from T9 (measured in the T8 and T9 VMs, semantics/t9.toml); this game's VM has not been run; T11's VM sets the waittill-return flag (acts)" }
+# --- Expressions and builtin call styles
+function_pointer_style = { value = "ampersand", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT" }
+pointer_call = { value = true, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT" }
+strict_equality = { value = true, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT" }
+null_coalescing = { value = true, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "jump-on-defined-expression opcode" }
+optional_chaining = { value = false, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "acts compiler extension; its decompiler never writes it" }
+is_expression = { value = false, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "acts compiler extension; its decompiler never writes it" }
+casts = { value = "unknown", confidence = "assumed", source = ["inference"] }
+array_literal = { value = "unknown", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "acts accepts [a, k:v]" }
+struct_literal = { value = "unknown", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "acts accepts {k:v}" }
+isdefined_form = { value = "keyword", confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "is-defined opcode" }
+istrue_operator = { value = true, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "IW is-true opcode" }
+opcode_builtins = { value = [], confidence = "assumed", source = ["inference"] }
+bare_call_resolution = { value = "namespace-first", confidence = "assumed", source = ["vm-t9-emulation#bare_call_using_file_other_namespace", "vm-t9-emulation#thread_call_builtin_only", "acts-t8-link", "acts-compiler"], note = "assumed from T9 (measured in the T8 and T9 VMs, semantics/t9.toml); acts' compiler emits bare calls as for T8 and acts' BO4 linker resolves them so; the T10 import table has no get-call flag but marks file-namespace imports (acts gsc_vm_t10.hpp); no linker of this game has been read or measured" }
+global_objects = { value = ["self", "level", "game", "anim", "world"], confidence = "assumed", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "world-object opcode in some t10 revisions" }
+# --- Semantics that change analysis
+array_argument_passing = { value = "unknown", confidence = "assumed", source = ["inference"] }
+waittill_multiple_events = { value = true, confidence = "assumed", source = ["vm-t9-emulation#waittill_any_of_events"], note = "assumed from T9 (measured in the T8 and T9 VMs, semantics/t9.toml); this game's VM has not been run" }
+endon_multiple_events = { value = true, confidence = "assumed", source = ["vm-t9-emulation#endon_multiple_events"], note = "assumed from T9 (measured in the T8 and T9 VMs, semantics/t9.toml); this game's VM has not been run" }
+notify_wakes_waiters = { value = "inline", confidence = "assumed", source = ["vm-t9-emulation#notify_wakes_waiter_before_notifier_continues"], note = "assumed from T9 (measured in the T8 and T9 VMs, semantics/t9.toml); this game's VM has not been run (T8 defers)" }
+hash_equality = { value = "by-value", confidence = "assumed", source = ["vm-t9-emulation#hash_equality"], note = "assumed from T9 (measured in the T8 and T9 VMs, semantics/t9.toml); this game's VM has not been run" }

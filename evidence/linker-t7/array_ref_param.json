@@ -1,0 +1,123 @@
+{
+ "status": "accept",
+ "accepted": true,
+ "exit_code": 0,
+ "elapsed_s": 3.96,
+ "inputs": [
+  {
+   "path": "scripts/zz_harness/array_ref_param.gsc"
+  }
+ ],
+ "errors": [],
+ "other_lines": [],
+ "scripts": [
+  {
+   "gscc": "bo3/spt/vm_1c000a0d43534780/scripts/zz_harness/array_ref_param.gscc",
+   "size": 536,
+   "tables": {
+    "name": "scripts/zz_harness/array_ref_param.gsc",
+    "source_crc": "0xb4bf7f71",
+    "exports": [
+     {
+      "name": "by_plain",
+      "namespace": "zz_probe",
+      "params": 1,
+      "flags": [],
+      "address": 120
+     },
+     {
+      "name": "by_amp",
+      "namespace": "zz_probe",
+      "params": 1,
+      "flags": [],
+      "address": 168
+     },
+     {
+      "name": "main",
+      "namespace": "zz_probe",
+      "params": 0,
+      "flags": [
+       "autoexec"
+      ],
+      "address": 216
+     }
+    ],
+    "imports": [
+     {
+      "name": "by_plain",
+      "namespace": "zz_probe",
+      "params": 1,
+      "kind": "function",
+      "dev_call": false,
+      "get_call": true,
+      "flags": "0x22",
+      "refs": [
+       "0xf0"
+      ]
+     },
+     {
+      "name": "by_amp",
+      "namespace": "zz_probe",
+      "params": 1,
+      "kind": "function",
+      "dev_call": false,
+      "get_call": true,
+      "flags": "0x22",
+      "refs": [
+       "0x108"
+      ]
+     },
+     {
+      "name": "by_amp",
+      "namespace": "zz_probe",
+      "params": 1,
+      "kind": "function_thread",
+      "dev_call": false,
+      "get_call": true,
+      "flags": "0x23",
+      "refs": [
+       "0x120"
+      ]
+     },
+     {
+      "name": "by_amp",
+      "namespace": "zz_probe",
+      "params": 1,
+      "kind": "method",
+      "dev_call": false,
+      "get_call": true,
+      "flags": "0x24",
+      "refs": [
+       "0x13a"
+      ]
+     },
+     {
+      "name": "by_plain",
+      "namespace": "zz_probe",
+      "params": 1,
+      "kind": "function",
+      "dev_call": false,
+      "get_call": true,
+      "flags": "0x22",
+      "refs": [
+       "0x154"
+      ]
+     },
+     {
+      "name": "by_amp",
+      "namespace": "zz_probe",
+      "params": 1,
+      "kind": "function",
+      "dev_call": false,
+      "get_call": true,
+      "flags": "0x22",
+      "refs": [
+       "0x16c"
+      ]
+     }
+    ]
+   },
+   "asm": "#namespace namespace_c4c1746e;\n\n// Namespace namespace_c4c1746e\n// Params 1\n// Checksum 0x1f9cb36b, Offset: 0x78\n// Size: 0x2\nfunction function_1a0d795b()\ngscasm {\n.00000000: 3227 SafeCreateLocalVariables  count: 0x1\n.00000003:                                arr (-2)\n.0000000a: 3e22 GetByte                   1 (0x1)\n.0000000e: 39df GetZero                   \n.00000010: 3154 EvalLocalVariableRefCached arr\n.00000014: 3f54 EvalArrayRef              \n.00000016: 39af SetVariableField          \n.00000018: 3d84 GetUndefined              \n.0000001a: 210a EvalLocalVariableRefCached arr\n.0000001e: 2f59 SetVariableField          \n.00000020: 2010 End                       \n// final size: 0x22\n}\n\n// Namespace namespace_c4c1746e\n// Params 1\n// Checksum 0xa6f3ed7b, Offset: 0xa8\n// Size: 0x2\nfunction function_71fa6dbd()\ngscasm {\n.00000000: 3308 SafeCreateLocalVariables  count: 0x1\n.00000003:                                arr&, pflags: 0x1 (-2)\n.0000000a: 3e5d GetByte                   1 (0x1)\n.0000000e: 26be GetZero                   \n.00000010: 2a69 EvalLocalVariableRefCached arr\n.00000014: 338e EvalArrayRef              \n.00000016: 3cae SetVariableField          \n.00000018: 37d5 GetUndefined              \n.0000001a: 3ce2 EvalLocalVariableRefCached arr\n.0000001e: 2d5e SetVariableField          \n.00000020: 2010 End                       \n// final size: 0x22\n}\n\n// Namespace namespace_c4c1746e\n// Params 0, eflags: 0x2\n// Checksum 0x78f198ae, Offset: 0xd8\n// Size: 0x2\nfunction autoexec main()\ngscasm {\n.00000000: 2de0 SafeCreateLocalVariables  count: 0x1\n.00000003:                                a (-2)\n.0000000a: 2afa EmptyArray                \n.0000000c: 303c EvalLocalVariableRefCached a\n.00000010: 2605 SetVariableField          \n.00000012: 200e PreScriptCall             \n.00000014: 2cd3 EvalLocalVariableCached   (-0) a\n.00000018: 260e ScriptFunctionCall        params: 1 function_1a0d795b\n.00000028: 3e28 DecTop                    \n.0000002a: 200e PreScriptCall             \n.0000002c: 242c EvalLocalVariableCached   (-0) a\n.00000030: 3449 ScriptFunctionCall        params: 1 function_71fa6dbd\n.00000040: 310b DecTop                    \n.00000042: 200e PreScriptCall             \n.00000044: 2580 EvalLocalVariableCached   (-0) a\n.00000048: 27df ScriptThreadCall          params: 1 function_71fa6dbd\n.00000058: 259e DecTop                    \n.0000005a: 200e PreScriptCall             \n.0000005c: 2503 EvalLocalVariableCached   (-0) a\n.00000060: 31c5 GetSelf                   \n.00000062: 205c ScriptMethodCall          params: 1 function_71fa6dbd\n.00000070: 3049 DecTop                    \n.00000072: 200e PreScriptCall             \n.00000074: 354f IW_EvalLevelFieldVariable level.var_13f3dd19\n.0000007c: 392c ScriptFunctionCall        params: 1 function_1a0d795b\n.00000088: 224d DecTop                    \n.0000008a: 200e PreScriptCall             \n.0000008c: 288e IW_EvalLevelFieldVariable level.var_13f3dd19\n.00000094: 2206 ScriptFunctionCall        params: 1 function_71fa6dbd\n.000000a0: 3d83 DecTop                    \n.000000a2: 2010 End                       \n// final size: 0xa4\n}\n\n"
+  }
+ ]
+}

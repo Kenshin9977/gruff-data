@@ -1,0 +1,85 @@
+# Commented example of a dialect profile. Real profiles live in ../profiles/<engine-id>.toml and
+# are checked by `python tools/validate.py` against profile.schema.json.
+#
+# The model is Clang's LangOptions: one parser for the superset of every dialect, and a flat set
+# of feature flags per game that decides what the lexer treats as a keyword and what the checker
+# reports as "not available in this game". gscode's GameProfile is the closest GSC precedent;
+# the schema gives the gscode property name next to each feature that has one.
+
+schema_version = 1            # bump only on incompatible schema changes
+id = "t7"                     # engine id; the file must be named <id>.toml
+name = "Call of Duty: Black Ops III"
+release_year = 2015
+developer = "Treyarch"
+dialect_family = "treyarch-t7plus"   # iw | treyarch-pre-t7 | treyarch-t7plus (syntax lineage, not studio)
+
+# Profile grade, distinct from per-feature confidence:
+#   verified-on-corpus  main syntax axes measured by this project on shipped scripts
+#   documented          values come from cited tools and documents
+#   core                no game-specific evidence; values carried from a sibling
+grade = "verified-on-corpus"
+
+aliases = ["bo3", "blackops3"]        # other names users and tools type
+source_availability = ["mod-tools-raw", "compiled-only"]
+
+# File licence. Entries inherit it unless they carry their own `license` (see README.md).
+license = "CC0-1.0"
+notes = "Free text for maintainers."
+
+# Ids other tools use for the same game, so a config written for one tool maps onto this one.
+[tool_ids]
+gsc_tool = "t7"
+acts = "t7"
+gscode = "t7"
+
+# Words the lexer turns into keyword tokens for this game. Anything else lexes as an identifier,
+# so a word that is a keyword in one game stays a legal name in another.
+[keywords]
+words = ["class", "function", "foreach", "in"]   # shortened here
+directives = ["#using", "#namespace", "#insert", "#define"]
+confidence = "documented"
+source = ["bo3-gsc-language-doc", "bo3-sublime-syntax"]   # ids from ../sources.toml
+
+# One entry per feature. Every feature in the schema is required in every profile, so a missing
+# fact is written down as "unknown" instead of being silently defaulted.
+#
+#   value       the fact: bool, enum string, or list, as the schema declares for that feature;
+#               the string "unknown" is always allowed; an enum feature also takes "n/a"
+#               (does not apply: hash_equality without hash literals), which tools read as off
+#   confidence  verified-on-corpus | documented | assumed
+#   source      one or more ids from ../sources.toml, optionally with "#fragment"
+#   status      "unresolved" when sources disagree; pair it with an [[unresolved]] block
+#   license     only when the entry's licence differs from the file licence
+#   note        counts, caveats, the reason for an assumption
+#   community   optional: the value in community mode, when scripts are built by a community
+#               compiler or loaded by a community client instead of the retail toolchain.
+#               { value, tools, confidence, source, license?, note? }; `value` stays retail.
+[features]
+foreach = { value = true, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "1,448 in 274 files" }
+function_pointer_style = { value = "ampersand", confidence = "verified-on-corpus", source = ["corpus-t7", "gscode-game-profiles"], note = "4,111 &f pointers, 0 ::f" }
+file_kinds = { value = ["gsc", "csc", "gsh"], confidence = "verified-on-corpus", source = ["corpus-t7"] }
+
+# A value taken only from a GPL source is labelled with that licence until it is re-derived.
+case_insensitive_identifiers = { value = true, confidence = "documented", source = ["gsc-tool-syntax", "gscode-dialect-facts"], license = "GPL-3.0-only" }
+
+# A contradiction is recorded, not settled by picking a side.
+array_argument_passing = { value = "copy-unless-ref-param", confidence = "documented", source = ["bo3-gsc-language-doc"], status = "unresolved", note = "see unresolved t7-array-passing" }
+
+# Retail and community modes differ (from t6.toml): BO2's retail compiler shows no preprocessor,
+# gsc-tool's t6 front end, which Plutonium recommends, accepts #define.
+# preprocessor_define = { value = false, confidence = "assumed", source = ["gsc-tool-arc-source"], status = "unresolved", license = "GPL-3.0-only", community = { value = true, tools = ["gsc-tool", "plutonium"], confidence = "documented", source = ["gsc-tool-arc-source", "plutonium-docs"], license = "GPL-3.0-only" } }
+
+# ... every other feature of the schema follows.
+
+# Each open question names the features it blocks, the claims in conflict and the measurement
+# that will settle it.
+[[unresolved]]
+id = "t7-array-passing"
+features = ["array_argument_passing"]
+measure = "VM conformance script: mutate an array parameter with and without & and read it back"
+[[unresolved.claims]]
+source = "bo3-gsc-language-doc"
+claim = "arrays are passed by copy unless the parameter is declared &name"
+[[unresolved.claims]]
+source = "gscode-game-profiles"
+claim = "BO3 passes arrays by reference"

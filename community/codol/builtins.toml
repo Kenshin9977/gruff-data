@@ -1,0 +1,932 @@
+# DRAFT engine builtins of codol, from community corpus reports (gruff report), merged by
+# gruff/tools/re/merge_reports.py. confidence = "corpus": names and argument counts seen
+# at call sites of the reported scripts, never measured in the executable. Regenerated from
+# the reports on every run. Facts only, no script text. See gruff/docs/community-reports.md.
+
+schema_version = 1
+game = "codol"
+license = "CC0-1.0"
+source = "community corpus reports"
+draft = true
+
+[coverage]
+complete = false
+note = "draft from 1 report(s), 1 independent: a builtin no reported script calls is missing, and a name may be a script function of a file no report holds"
+
+[merge]
+min_sites = 3
+min_files = 2
+measured_catalogue = "none"
+
+[[report]]
+id = "c5306a578a176fdc"
+fingerprint = "e34f329973647adb"
+toolchain = "0.1.0"
+profile_xxh3 = "97c532f2439b53f9"
+mode = "retail"
+files = 211
+decompiled = 0
+
+[[builtin]]
+name = "anglestoforward"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [1]
+corpus_arg_types = [{ unknown = 9 }]
+sites = 9
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 9 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "array_call"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [2]
+corpus_arg_types = [{ unknown = 6 }, { function = 6 }]
+sites = 6
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 6 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "array_thread"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = 2
+max_args = 3
+max_checked = false
+observed_args = [2, 3]
+corpus_arg_types = [{ unknown = 6 }, { function = 6 }, { vector = 1 }]
+sites = 6
+files = 2
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 6 sites in 2 files, defined by no reported script; arity = the observed range"
+
+[[builtin]]
+name = "createexploder"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = 1
+max_args = 1
+max_checked = false
+observed_args = [1]
+corpus_arg_types = [{ string = 925 }]
+sites = 925
+files = 21
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 925 sites in 21 files, defined by no reported script; arity = the observed range"
+
+[[builtin]]
+name = "createintervalsound"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = 0
+max_args = 0
+max_checked = false
+observed_args = [0]
+sites = 791
+files = 57
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 791 sites in 57 files, defined by no reported script; arity = the observed range"
+
+[[builtin]]
+name = "createloopeffect"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = 1
+max_args = 1
+max_checked = false
+observed_args = [1]
+corpus_arg_types = [{ string = 319 }]
+sites = 319
+files = 13
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 319 sites in 13 files, defined by no reported script; arity = the observed range"
+
+[[builtin]]
+name = "createloopsound"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = 0
+max_args = 0
+max_checked = false
+observed_args = [0]
+sites = 6158
+files = 91
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 6158 sites in 91 files, defined by no reported script; arity = the observed range"
+
+[[builtin]]
+name = "createoneshoteffect"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = 1
+max_args = 1
+max_checked = false
+observed_args = [1]
+corpus_arg_types = [{ string = 8951 }]
+sites = 8951
+files = 95
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 8951 sites in 95 files, defined by no reported script; arity = the observed range"
+
+[[builtin]]
+name = "delete"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "method"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [0]
+sites = 2
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 2 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "exploder"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = 1
+max_args = 1
+max_checked = false
+observed_args = [1]
+corpus_arg_types = [{ string = 11, int = 1 }]
+sites = 12
+files = 2
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 12 sites in 2 files, defined by no reported script; arity = the observed range"
+
+[[builtin]]
+name = "flag"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = 1
+max_args = 1
+max_checked = false
+observed_args = [1]
+corpus_arg_types = [{ string = 6 }]
+sites = 6
+files = 2
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 6 sites in 2 files, defined by no reported script; arity = the observed range"
+
+[[builtin]]
+name = "flag_clear"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [1]
+corpus_arg_types = [{ string = 3 }]
+sites = 3
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 3 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "flag_init"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [1]
+corpus_arg_types = [{ string = 1 }]
+sites = 1
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 1 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "flag_set"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [1]
+corpus_arg_types = [{ string = 2 }]
+sites = 2
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 2 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "flag_wait"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [1]
+corpus_arg_types = [{ string = 2 }]
+sites = 2
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 2 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "get_array_of_closest"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [5]
+corpus_arg_types = [{ unknown = 1 }, { unknown = 1 }, { undefined = 1 }, { undefined = 1 }, { unknown = 1 }]
+sites = 1
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 1 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "getcentroid"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "method"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [0]
+sites = 1
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 1 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "getdvar"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = 1
+max_args = 2
+max_checked = false
+observed_args = [1, 2]
+corpus_arg_types = [{ string = 4 }, { string = 3 }]
+sites = 4
+files = 4
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 4 sites in 4 files, defined by no reported script; arity = the observed range"
+
+[[builtin]]
+name = "getdvarint"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = 1
+max_args = 1
+max_checked = false
+observed_args = [1]
+corpus_arg_types = [{ string = 10 }]
+sites = 10
+files = 10
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 10 sites in 10 files, defined by no reported script; arity = the observed range"
+
+[[builtin]]
+name = "getent"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [2]
+corpus_arg_types = [{ string = 1, unknown = 1 }, { string = 2 }]
+sites = 2
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 2 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "getentarray"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = 2
+max_args = 2
+max_checked = false
+observed_args = [2]
+corpus_arg_types = [{ string = 15 }, { string = 15 }]
+sites = 15
+files = 2
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 15 sites in 2 files, defined by no reported script; arity = the observed range"
+
+[[builtin]]
+name = "getfx"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [1]
+corpus_arg_types = [{ string = 1 }]
+sites = 1
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 1 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "getfxarraybyid"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [1]
+corpus_arg_types = [{ string = 2 }]
+sites = 2
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 2 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "getglassarray"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [1]
+corpus_arg_types = [{ string = 1 }]
+sites = 1
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 1 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "getglassorigin"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [1]
+corpus_arg_types = [{ unknown = 1 }]
+sites = 1
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 1 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "getmapsunlight"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [0]
+sites = 1
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 1 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "hide"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "method"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [0]
+sites = 2
+files = 2
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 2 sites in 2 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "hide_exploder_models"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [1]
+corpus_arg_types = [{ string = 11 }]
+sites = 11
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 11 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "isdefined"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = 1
+max_args = 1
+max_checked = false
+observed_args = [1]
+corpus_arg_types = [{ unknown = 12 }]
+sites = 12
+files = 3
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 12 sites in 3 files, defined by no reported script; arity = the observed range"
+
+[[builtin]]
+name = "line"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [2]
+corpus_arg_types = [{ unknown = 1 }, { unknown = 1 }]
+sites = 1
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 1 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "loadfx"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = 1
+max_args = 1
+max_checked = false
+observed_args = [1]
+corpus_arg_types = [{ string = 1797 }]
+sites = 1797
+files = 103
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 1797 sites in 103 files, defined by no reported script; arity = the observed range"
+
+[[builtin]]
+name = "localtoworldcoords"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "method"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [1]
+corpus_arg_types = [{ unknown = 1 }]
+sites = 1
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 1 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "moveto"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "method"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [2]
+corpus_arg_types = [{ unknown = 1 }, { unknown = 1 }]
+sites = 1
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 1 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "play_sound_in_space"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [2]
+corpus_arg_types = [{ string = 1 }, { vector = 1 }]
+sites = 1
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 1 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "playfx"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [3]
+corpus_arg_types = [{ unknown = 2 }, { unknown = 2 }, { unknown = 2 }]
+sites = 2
+files = 2
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 2 sites in 2 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "print3d"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [2]
+corpus_arg_types = [{ unknown = 1 }, { unknown = 1 }]
+sites = 1
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 1 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "println"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [1]
+corpus_arg_types = [{ unknown = 2, string = 1 }]
+sites = 3
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 3 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "raininit"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [1]
+corpus_arg_types = [{ string = 1 }]
+sites = 1
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 1 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "randomfloatrange"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = 2
+max_args = 2
+max_checked = false
+observed_args = [2]
+corpus_arg_types = [{ float = 5, int = 2, unknown = 1 }, { int = 5, float = 2, unknown = 1 }]
+sites = 8
+files = 2
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 8 sites in 2 files, defined by no reported script; arity = the observed range"
+
+[[builtin]]
+name = "randomintrange"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [2]
+corpus_arg_types = [{ unknown = 2 }, { unknown = 2 }]
+sites = 2
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 2 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "resetsunlight"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [0]
+sites = 1
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 1 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "setdvar"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = 2
+max_args = 2
+max_checked = false
+observed_args = [2]
+corpus_arg_types = [{ string = 15 }, { int = 10, string = 3, float = 2 }]
+sites = 15
+files = 3
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 15 sites in 3 files, defined by no reported script; arity = the observed range"
+
+[[builtin]]
+name = "setexpfog"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [14]
+corpus_arg_types = [{ unknown = 2 }, { unknown = 2 }, { unknown = 2 }, { unknown = 2 }, { unknown = 2 }, { int = 2 }, { float = 2 }, { unknown = 2 }, { unknown = 2 }, { unknown = 2 }, { unknown = 2 }, { unknown = 2 }, { unknown = 2 }, { unknown = 2 }]
+sites = 2
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 2 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "setfootstepeffect"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [2]
+corpus_arg_types = [{ string = 1 }, { unknown = 1 }]
+sites = 1
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 1 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "setfootstepeffectsmall"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [2]
+corpus_arg_types = [{ string = 1 }, { unknown = 1 }]
+sites = 1
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 1 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "setlightcolor"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "method"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [1]
+corpus_arg_types = [{ vector = 1 }]
+sites = 1
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 1 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "setlightintensity"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "method"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [1]
+corpus_arg_types = [{ int = 2 }]
+sites = 2
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 2 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "setsundirection"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [1]
+corpus_arg_types = [{ unknown = 9 }]
+sites = 9
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 9 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "setsunlight"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [3]
+corpus_arg_types = [{ float = 6, int = 3, unknown = 2 }, { float = 9, unknown = 2 }, { float = 9, unknown = 2 }]
+sites = 11
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 11 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "show"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "method"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [0]
+sites = 2
+files = 2
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 2 sites in 2 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[builtin]]
+name = "show_exploder_models"
+name_source = "corpus-scripts"
+vm = "gsc"
+kind = "function"
+confidence = "corpus"
+min_args = -1
+max_args = -1
+max_checked = false
+arity_unknown = true
+observed_args = [1]
+corpus_arg_types = [{ string = 11 }]
+sites = 11
+files = 1
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "called at 11 sites in 1 files, defined by no reported script; arity unknown (under 3 sites or 2 files)"
+
+[[intrinsic]]
+name = "assert"
+vm = "gsc"
+confidence = "corpus"
+corpus_args = [1]
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+evidence = "a keyword of the profile, called at 2 sites in 1 files"

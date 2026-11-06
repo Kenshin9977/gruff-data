@@ -1,0 +1,26 @@
+{
+ "status": "reject",
+ "accepted": false,
+ "exit_code": 1,
+ "elapsed_s": 1.33,
+ "inputs": [
+  {
+   "path": "scripts/zz_harness/p_label.gsc"
+  }
+ ],
+ "errors": [
+  {
+   "severity": "error",
+   "code": 0,
+   "file": "scripts/zz_harness/p_label.gsc",
+   "line": 3,
+   "col": 40,
+   "function": "main()",
+   "message": "syntax error, unexpected TOKEN_COLON : function autoexec main() { x = 1; LOC_1:"
+  }
+ ],
+ "other_lines": [
+  "UNRECOVERABLE ERROR:",
+  "SCRIPT ERROR: No generated data for 'scripts/zz_harness/p_label.gsc'"
+ ]
+}

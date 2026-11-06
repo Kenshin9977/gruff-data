@@ -1,0 +1,113 @@
+# Dialect profile: Call of Duty: Vanguard (2021).
+# Schema: ../schema/profile.schema.json. Sources: ../sources.toml. Licence rule: ../README.md.
+
+schema_version = 1
+id = "s4"
+name = "Call of Duty: Vanguard"
+release_year = 2021
+developer = "Sledgehammer Games"
+dialect_family = "iw"
+grade = "documented"
+aliases = ["vg", "vanguard"]
+source_availability = ["compiled-only"]
+license = "CC0-1.0"
+notes = "Compiled-only. gsc-tool IW front end."
+
+[tool_ids]
+gsc_tool = "s4"
+gscode = "vg"
+
+[keywords]
+words = ["anim", "assert", "assertex", "assertmsg", "break", "breakpoint", "call", "case", "childthread", "continue", "default", "do", "else", "endon", "false", "for", "foreach", "game", "if", "in", "isdefined", "istrue", "level", "notify", "prof_begin", "prof_end", "return", "self", "size", "switch", "thisthread", "thread", "true", "undefined", "wait", "waitframe", "waittill", "waittillframeend", "waittillmatch", "while"]
+confidence = "documented"
+source = ["gsc-tool-syntax"]
+license = "GPL-3.0-only"
+note = "keywords of the gsc-tool IW front end; includes the global objects and size"
+
+[features]
+# --- Files
+file_kinds = { value = ["gsc"], confidence = "assumed", source = ["inference"], note = "gsc-tool mentions .csc for the IW family without naming engines" }
+# --- Lexing and literals
+case_insensitive_identifiers = { value = true, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+dev_blocks = { value = true, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "the gsc-tool IW lexer skips them unless --dev" }
+doc_comment_style = { value = "triple-slash", confidence = "assumed", source = ["inference"] }
+istring_literal = { value = true, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+hash_string_literal = { value = false, confidence = "assumed", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "the gsc-tool IW front end has no hash-literal rule" }
+extra_string_prefixes = { value = [], confidence = "assumed", source = ["inference"] }
+anim_reference = { value = true, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+anim_reference_qualified = { value = false, confidence = "assumed", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "gsc-tool documents it for ARC only" }
+animtree_expression = { value = true, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+dollar_identifiers = { value = false, confidence = "assumed", source = ["inference"] }
+hashed_identifier_spellings = { value = ["id-token"], confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "_id_, _func_ and _meth_ names are left untouched by the lexer" }
+# --- Bytecode naming
+identifier_encoding = { value = "unknown", confidence = "assumed", source = ["hash-inventory"], note = "undocumented" }
+# --- Imports and name resolution
+import_directive = { value = "include", confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+name_resolution = { value = "merge", confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+namespace_directive = { value = false, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+path_qualified_calls = { value = true, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+namespace_qualified_calls = { value = false, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+builtin_namespace_qualifier = { value = false, confidence = "assumed", source = ["inference"] }
+header_directive = { value = "none", confidence = "assumed", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "gsc-tool accepts #inline as a tool extension; no retail evidence" }
+precache_directive = { value = false, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+using_animtree_directive = { value = true, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+imports_before_declarations = { value = "unknown", confidence = "assumed", source = ["inference"] }
+# --- Preprocessor
+preprocessor_define = { value = false, confidence = "assumed", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "gsc-tool accepts it on every engine as a tool extension; no retail evidence" }
+preprocessor_function_macros = { value = false, confidence = "assumed", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "gsc-tool accepts it on every engine as a tool extension; no retail evidence" }
+preprocessor_conditionals = { value = false, confidence = "assumed", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "gsc-tool accepts it on every engine as a tool extension; no retail evidence" }
+preprocessor_ifdef_undef = { value = false, confidence = "assumed", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "gsc-tool accepts it on every engine as a tool extension; no retail evidence" }
+predefined_macros = { value = [], confidence = "assumed", source = ["inference"] }
+file_scope_macro_calls = { value = false, confidence = "assumed", source = ["inference"] }
+# --- Declarations
+function_keyword = { value = false, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+autoexec_modifier = { value = false, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "every IW function is public" }
+private_modifier = { value = false, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "every IW function is public" }
+event_handler_modifier = { value = false, confidence = "assumed", source = ["inference"] }
+codecall_modifier = { value = false, confidence = "assumed", source = ["inference"] }
+classes = { value = false, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+file_scope_constants = { value = true, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "accepted with a deprecation notice" }
+const_locals = { value = false, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+default_parameters = { value = false, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "documented for ARC only" }
+reference_parameters = { value = false, confidence = "assumed", source = ["inference"] }
+pointer_parameters = { value = false, confidence = "assumed", source = ["inference"] }
+varargs = { value = false, confidence = "assumed", source = ["inference"] }
+# --- Statements
+foreach = { value = true, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "IW line has it from MW2; gsc-tool lowers it on every engine" }
+foreach_key_value = { value = true, confidence = "assumed", source = ["gsc-tool-syntax", "acts-grammar"], license = "GPL-3.0-only", note = "tools accept the two-variable form" }
+do_while = { value = true, confidence = "assumed", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "gsc-tool accepts it on all engines; no retail evidence" }
+childthread = { value = true, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+call_pointer_sync = { value = true, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+builtin_call = { value = "unknown", confidence = "assumed", source = ["inference"] }
+thisthread = { value = true, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+threadendon_call = { value = false, confidence = "assumed", source = ["inference"] }
+waittillframeend = { value = true, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+waitframe = { value = true, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+waitrealtime = { value = false, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+tuple_assignment = { value = true, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "IW only" }
+profiler_keywords = { value = ["prof_begin", "prof_end"], confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+assert_keywords = { value = ["assert", "assertex", "assertmsg"], confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+breakpoint_keyword = { value = true, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+goto_labels = { value = false, confidence = "assumed", source = ["inference"] }
+waittill_return_value = { value = false, confidence = "assumed", source = ["inference"] }
+# --- Expressions and builtin call styles
+function_pointer_style = { value = "colon", confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+pointer_call = { value = true, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+strict_equality = { value = false, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+null_coalescing = { value = false, confidence = "assumed", source = ["inference"] }
+optional_chaining = { value = false, confidence = "assumed", source = ["inference"] }
+is_expression = { value = false, confidence = "assumed", source = ["inference"] }
+casts = { value = "unknown", confidence = "assumed", source = ["inference"] }
+array_literal = { value = true, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "IW only" }
+struct_literal = { value = false, confidence = "assumed", source = ["inference"] }
+isdefined_form = { value = "keyword", confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+istrue_operator = { value = true, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+opcode_builtins = { value = [], confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "IW spells these as ordinary builtin calls" }
+bare_call_resolution = { value = "builtin-first", confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+global_objects = { value = ["self", "level", "game", "anim"], confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only" }
+# --- Semantics that change analysis
+array_argument_passing = { value = "copy", confidence = "assumed", source = ["inference"] }
+waittill_multiple_events = { value = "unknown", confidence = "assumed", source = ["inference"], note = "not measured: this game's VM has not been run (semantics/)" }
+endon_multiple_events = { value = "unknown", confidence = "assumed", source = ["inference"], note = "not measured: this game's VM has not been run (semantics/)" }
+notify_wakes_waiters = { value = "unknown", confidence = "assumed", source = ["inference"], note = "not measured: this game's VM has not been run (semantics/)" }
+hash_equality = { value = "unknown", confidence = "assumed", source = ["inference"], note = "not measured: this game's VM has not been run (semantics/)" }

@@ -1,0 +1,653 @@
+# DRAFT profile feature proposals for s2, from community corpus reports (gruff report),
+# merged by gruff/tools/re/merge_reports.py. A proposal is what the construct counts
+# support (a use proves the feature; 0 uses proves nothing); `current` is the profile's
+# value. The profile is never written: a reviewer copies what holds.
+
+schema_version = 1
+game = "s2"
+license = "CC0-1.0"
+draft = true
+
+[[report]]
+id = "07155baf05ecad51"
+fingerprint = "00cf44893216e721"
+toolchain = "0.1.0"
+profile_xxh3 = "d61cf7247f6ee00d"
+mode = "retail"
+files = 2108
+decompiled = 2108
+
+[feature.anim_reference]
+proposed = true
+current = true
+current_confidence = "verified-on-corpus"
+agrees = true
+uses = 6990
+files = 177
+constructs = { "a `%` animation reference" = 6990 }
+reports = ["07155baf05ecad51"]
+independent_reports = 1
+
+[feature.anim_reference_qualified]
+proposed = "unknown"
+current = false
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.animtree_expression]
+proposed = true
+current = true
+current_confidence = "verified-on-corpus"
+agrees = true
+uses = 951
+files = 68
+constructs = { "`#animtree`" = 951 }
+reports = ["07155baf05ecad51"]
+independent_reports = 1
+
+[feature.array_argument_passing]
+proposed = "unknown"
+current = "copy"
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.array_literal]
+proposed = true
+current = true
+current_confidence = "verified-on-corpus"
+agrees = true
+uses = 5459
+files = 512
+constructs = { "a non-empty array literal" = 5459 }
+reports = ["07155baf05ecad51"]
+independent_reports = 1
+
+[feature.assert_keywords]
+proposed = "unknown"
+current = ["assert", "assertex", "assertmsg"]
+current_confidence = "documented"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.autoexec_modifier]
+proposed = "unknown"
+current = false
+current_confidence = "documented"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.bare_call_resolution]
+proposed = "unknown"
+current = "builtin-first"
+current_confidence = "documented"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.breakpoint_keyword]
+proposed = "unknown"
+current = true
+current_confidence = "documented"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.builtin_call]
+proposed = "unknown"
+current = "unknown"
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.builtin_namespace_qualifier]
+proposed = "unknown"
+current = false
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.call_pointer_sync]
+proposed = true
+current = true
+current_confidence = "documented"
+agrees = true
+uses = 134
+files = 11
+constructs = { "`call`" = 134 }
+reports = ["07155baf05ecad51"]
+independent_reports = 1
+
+[feature.case_insensitive_identifiers]
+proposed = "unknown"
+current = true
+current_confidence = "documented"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.casts]
+proposed = "unknown"
+current = "unknown"
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.childthread]
+proposed = true
+current = true
+current_confidence = "verified-on-corpus"
+agrees = true
+uses = 730
+files = 202
+constructs = { "`childthread`" = 730 }
+reports = ["07155baf05ecad51"]
+independent_reports = 1
+
+[feature.classes]
+proposed = "unknown"
+current = false
+current_confidence = "documented"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.codecall_modifier]
+proposed = "unknown"
+current = false
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.const_locals]
+proposed = "unknown"
+current = false
+current_confidence = "documented"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.default_parameters]
+proposed = "unknown"
+current = false
+current_confidence = "documented"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.dev_blocks]
+proposed = "unknown"
+current = true
+current_confidence = "documented"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.do_while]
+proposed = "unknown"
+current = true
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.doc_comment_style]
+proposed = "unknown"
+current = "triple-slash"
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.dollar_identifiers]
+proposed = "unknown"
+current = false
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.event_handler_modifier]
+proposed = "unknown"
+current = false
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.extra_string_prefixes]
+proposed = "unknown"
+current = []
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.file_kinds]
+proposed = "unknown"
+current = ["gsc"]
+current_confidence = "verified-on-corpus"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.file_scope_constants]
+proposed = "unknown"
+current = true
+current_confidence = "documented"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.file_scope_macro_calls]
+proposed = "unknown"
+current = false
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.foreach]
+proposed = true
+current = true
+current_confidence = "documented"
+agrees = true
+uses = 8751
+files = 707
+constructs = { "`foreach`" = 8751 }
+reports = ["07155baf05ecad51"]
+independent_reports = 1
+
+[feature.foreach_key_value]
+proposed = true
+current = true
+current_confidence = "assumed"
+agrees = true
+uses = 544
+files = 175
+constructs = { "a `foreach` key binding" = 544 }
+reports = ["07155baf05ecad51"]
+independent_reports = 1
+
+[feature.function_keyword]
+proposed = "unknown"
+current = false
+current_confidence = "documented"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.function_pointer_style]
+proposed = "colon"
+current = "colon"
+current_confidence = "documented"
+agrees = true
+uses = 9254
+files = 657
+constructs = { "a `::` function pointer" = 9254 }
+reports = ["07155baf05ecad51"]
+independent_reports = 1
+
+[feature.global_objects]
+proposed = "unknown"
+current = ["self", "level", "game", "anim"]
+current_confidence = "documented"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.goto_labels]
+proposed = "unknown"
+current = false
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "decompiler output, not evidence of the compiler"
+
+[feature.hash_string_literal]
+proposed = "unknown"
+current = false
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.hashed_identifier_spellings]
+proposed = "unknown"
+current = ["id-token"]
+current_confidence = "verified-on-corpus"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.header_directive]
+proposed = "unknown"
+current = "none"
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.identifier_encoding]
+proposed = "unknown"
+current = "token-table"
+current_confidence = "documented"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.import_directive]
+proposed = "unknown"
+current = "include"
+current_confidence = "documented"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.imports_before_declarations]
+proposed = "unknown"
+current = "unknown"
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.is_expression]
+proposed = "unknown"
+current = false
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.isdefined_form]
+proposed = "unknown"
+current = "builtin"
+current_confidence = "documented"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.istring_literal]
+proposed = true
+current = true
+current_confidence = "verified-on-corpus"
+agrees = true
+uses = 5344
+files = 279
+constructs = { "a `&\"...\"` localized string" = 5344 }
+reports = ["07155baf05ecad51"]
+independent_reports = 1
+
+[feature.istrue_operator]
+proposed = "unknown"
+current = false
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.name_resolution]
+proposed = "unknown"
+current = "merge"
+current_confidence = "documented"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.namespace_directive]
+proposed = "unknown"
+current = false
+current_confidence = "documented"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.namespace_qualified_calls]
+proposed = "unknown"
+current = false
+current_confidence = "documented"
+uses = 58963
+files = 1330
+constructs = { "a namespace-qualified name" = 58963 }
+note = "58963 one-word qualifiers: in an #include game the probe cannot tell a namespace from a one-component path"
+reports = ["07155baf05ecad51"]
+independent_reports = 1
+
+[feature.null_coalescing]
+proposed = "unknown"
+current = false
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.opcode_builtins]
+proposed = "unknown"
+current = []
+current_confidence = "documented"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.optional_chaining]
+proposed = "unknown"
+current = false
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.path_qualified_calls]
+proposed = true
+current = true
+current_confidence = "documented"
+agrees = true
+uses = 133355
+files = 1205
+constructs = { "a path-qualified name" = 133355 }
+reports = ["07155baf05ecad51"]
+independent_reports = 1
+
+[feature.pointer_call]
+proposed = true
+current = true
+current_confidence = "verified-on-corpus"
+agrees = true
+uses = 1681
+files = 318
+constructs = { "a `[[ ]]` pointer call" = 1681 }
+reports = ["07155baf05ecad51"]
+independent_reports = 1
+
+[feature.pointer_parameters]
+proposed = "unknown"
+current = false
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.precache_directive]
+proposed = "unknown"
+current = false
+current_confidence = "documented"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.predefined_macros]
+proposed = "unknown"
+current = []
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.preprocessor_conditionals]
+proposed = "unknown"
+current = false
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.preprocessor_define]
+proposed = "unknown"
+current = false
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.preprocessor_function_macros]
+proposed = "unknown"
+current = false
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.preprocessor_ifdef_undef]
+proposed = "unknown"
+current = false
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.private_modifier]
+proposed = "unknown"
+current = false
+current_confidence = "documented"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.profiler_keywords]
+proposed = "unknown"
+current = ["prof_begin", "prof_end"]
+current_confidence = "documented"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.reference_parameters]
+proposed = "unknown"
+current = false
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.strict_equality]
+proposed = "unknown"
+current = false
+current_confidence = "documented"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.struct_literal]
+proposed = "unknown"
+current = false
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.thisthread]
+proposed = true
+current = true
+current_confidence = "documented"
+agrees = true
+uses = 14
+files = 6
+constructs = { "`thisthread`" = 14 }
+reports = ["07155baf05ecad51"]
+independent_reports = 1
+
+[feature.threadendon_call]
+proposed = "unknown"
+current = false
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.tuple_assignment]
+proposed = true
+current = true
+current_confidence = "documented"
+agrees = true
+uses = 269
+files = 98
+constructs = { "a tuple assignment" = 269 }
+reports = ["07155baf05ecad51"]
+independent_reports = 1
+
+[feature.using_animtree_directive]
+proposed = true
+current = true
+current_confidence = "documented"
+agrees = true
+uses = 358
+files = 200
+constructs = { "`#using_animtree`" = 358 }
+reports = ["07155baf05ecad51"]
+independent_reports = 1
+
+[feature.varargs]
+proposed = "unknown"
+current = false
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.waitframe]
+proposed = true
+current = true
+current_confidence = "verified-on-corpus"
+agrees = true
+uses = 4824
+files = 659
+constructs = { "the `waitframe` statement" = 4824 }
+reports = ["07155baf05ecad51"]
+independent_reports = 1
+
+[feature.waitrealtime]
+proposed = "unknown"
+current = false
+current_confidence = "documented"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.waittill_return_value]
+proposed = "unknown"
+current = false
+current_confidence = "assumed"
+uses = 0
+files = 0
+note = "0 uses (absence of use, not proof of absence)"
+
+[feature.waittillframeend]
+proposed = true
+current = true
+current_confidence = "verified-on-corpus"
+agrees = true
+uses = 492
+files = 195
+constructs = { "`waittillframeend`" = 492 }
+reports = ["07155baf05ecad51"]
+independent_reports = 1

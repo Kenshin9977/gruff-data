@@ -1,0 +1,9 @@
+measure	count
+bytecode_scripts	3865
+scripts_with_hidden_array_local	505
+hidden_array_locals_aN	3425
+hidden_key_locals_kN	3355
+aN_without_kN_key_value_form	70
+decompiled_foreach	3412
+decompiled_files_with_foreach	504
+decompiled_foreach_key_value	70

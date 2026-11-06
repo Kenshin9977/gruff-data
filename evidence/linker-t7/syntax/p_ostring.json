@@ -1,0 +1,26 @@
+{
+ "status": "reject",
+ "accepted": false,
+ "exit_code": 1,
+ "elapsed_s": 1.29,
+ "inputs": [
+  {
+   "path": "scripts/zz_harness/p_ostring.gsc"
+  }
+ ],
+ "errors": [
+  {
+   "severity": "error",
+   "code": 0,
+   "file": "scripts/zz_harness/p_ostring.gsc",
+   "line": 3,
+   "col": 37,
+   "function": "main()",
+   "message": "syntax error, unexpected TOKEN_STRING, expecting TOKEN_SEMICOLON : function autoexec main() { x = o\"abc\""
+  }
+ ],
+ "other_lines": [
+  "UNRECOVERABLE ERROR:",
+  "SCRIPT ERROR: No generated data for 'scripts/zz_harness/p_ostring.gsc'"
+ ]
+}

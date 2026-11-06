@@ -1,0 +1,214 @@
+# corpus=jup-sp files=1788 kinds={'.gsc': 1788}
+# probe	files_with_match	occurrences (regex probes; comments and string bodies stripped first)
+dir_include	0	0
+dir_using	1590	12487
+dir_using_animtree	116	180
+dir_namespace	1762	1763
+dir_insert	0	0
+dir_define	0	0
+dir_if_family	0	0
+dir_precache	0	0
+dir_ifdef_undef	0	0
+define_function_like	0	0
+col0_macro_call	0	0
+waitframe_definition	0	0
+expr_animtree	71	339
+hash_string	994	13203
+istring	176	989
+at_string	623	8002
+anim_ref	104	3681
+anim_ref_after_op	103	3621
+ptr_colon	0	0
+ptr_path	0	0
+ptr_amp	981	7403
+path_call	985	11018
+ptr_call	558	13082
+kw_function	1762	43889
+kw_class	0	0
+kw_foreach	690	7112
+kw_do	0	0
+kw_childthread	201	1188
+kw_call_ptr	0	0
+kw_thisthread	0	0
+kw_autoexec	359	359
+kw_private	561	2838
+kw_const	0	0
+kw_vararg	0	0
+param_ellipsis	0	0
+kw_new	0	0
+op_arrow	0	0
+op_strict_eq	0	0
+op_coalesce	0	0
+op_safe_nav	0	0
+kw_event_handler	0	0
+kw_waitframe	572	3583
+kw_waitrealtime	0	0
+kw_waittillmatch	34	77
+kw_waittillframeend	123	234
+kw_prof_begin	0	0
+kw_profilestart	0	0
+kw_breakpoint	0	0
+kw_istrue	627	7655
+kw_is_expr	0	0
+world_obj	0	0
+classes_obj	0	0
+dev_block	552	3992
+tuple_assign	35	92
+array_literal	368	5897
+world_kw	3	10
+classes_kw	4	34
+sys_qualifier	0	0
+ns_call	954	21270
+scr_hash_ident	1773	14833
+dollar_token	0	0
+str_prefix_pct	592	1084
+str_prefix_t	3	13
+str_prefix_o	0	0
+str_prefix_s	0	0
+str_prefix_r	0	0
+cast	0	0
+kw_builtin_call	17	189
+kw_builtin	17	189
+goto_stmt	3	4
+jumpif_stmt	2	2
+label_stmt	4	11
+kw_constructor	0	0
+kw_destructor	0	0
+kw_codecall	0	0
+class_as_name	25	122
+class_path_component	2	5
+file_scope_const	0	0
+default_param	0	0
+ref_param	0	0
+func_header	1749	42364
+dir_inline	0	0
+kw_assert	0	0
+kw_assertmsg	0	0
+kw_assertex	0	0
+kw_prof_end	0	0
+kw_profilestop	0	0
+kw_threadendon	0	0
+kw_isdefined	1475	46940
+star_param	0	0
+op_ternary	283	543
+struct_literal	0	0
+hash_hexprefixed	1696	887039
+hash_idtoken	0	0
+hash_scriptpath	972	3795
+doc_at	0	0
+doc_tripleslash	0	0
+# corpus=jup-sp parser=gsc-before.exe profile=jup.toml probe_syntax_errors=0 plain_files=26 decompiled_files=1762
+# probe	files_with_match	occurrences	plain_files	plain_occurrences (gsc parse with every feature off: each dialect report is one use; plain = files without a decompiler header, the parser's own test)
+parser:anim_reference:a `%` animation reference	104	3685	0	0
+parser:animtree_expression:`#animtree`	71	339	0	0
+parser:array_literal:a non-empty array literal	542	8590	0	0
+parser:autoexec_modifier:`autoexec`	359	359	0	0
+parser:childthread:`childthread`	201	1188	0	0
+parser:dev_blocks:a `/# #/` dev block	552	3992	0	0
+parser:extra_string_prefixes:a `%"..."` string	592	1084	0	0
+parser:extra_string_prefixes:a `@"..."` string	623	8002	0	0
+parser:extra_string_prefixes:a `t"..."` string	3	13	0	0
+parser:foreach:`foreach`	690	7112	0	0
+parser:foreach_key_value:a `foreach` key binding	146	331	0	0
+parser:function_keyword:the `function` keyword	1762	43889	0	0
+parser:function_pointer_style:a `&` function pointer	998	8878	0	0
+parser:goto_labels:goto or label	5	17	0	0
+parser:hash_string_literal:a `#"..."` hashed string	994	13203	0	0
+parser:import_directive:`#using`	1590	12487	11	75
+parser:istring_literal:a `&"..."` localized string	176	989	0	0
+parser:namespace_directive:`#namespace`	1762	1763	0	0
+parser:namespace_qualified_calls:a namespace-qualified name	973	21705	0	0
+parser:path_qualified_calls:a path-qualified name	989	11444	0	0
+parser:pointer_call:a `[[ ]]` pointer call	558	13082	0	0
+parser:private_modifier:`private`	560	2837	0	0
+parser:struct_literal:a struct literal	40	111	0	0
+parser:tuple_assignment:a tuple assignment	50	114	0	0
+parser:using_animtree_directive:`#using_animtree`	116	180	0	0
+# keyword test: 0 syntax errors with the profile's keywords; kwname rows: keyword, errors with it, errors without it (fewer = used as a plain name)
+kwname:autoexec	0	0
+kwname:break	0	0
+kwname:case	0	47410
+kwname:childthread	0	0
+kwname:continue	0	0
+kwname:default	0	81
+kwname:do	0	0
+kwname:else	0	11989
+kwname:event_handler	0	0
+kwname:false	0	0
+kwname:for	0	5552
+kwname:foreach	0	14260
+kwname:function	0	2864
+kwname:if	0	98381
+kwname:in	0	0
+kwname:is	0	0
+kwname:new	0	0
+kwname:not	0	0
+kwname:private	0	332
+kwname:return	0	20415
+kwname:switch	0	24852
+kwname:thread	0	9016
+kwname:threadendon	0	0
+kwname:true	0	0
+kwname:undefined	0	0
+kwname:var	0	0
+kwname:wait	0	8517
+kwname:while	0	6196
+# kwvar/kwfunc rows: keyword, files, occurrences (regex on stripped text)
+kwvar:autoexec	0	0
+kwfunc:autoexec	0	0
+kwvar:break	0	0
+kwfunc:break	0	0
+kwvar:case	0	0
+kwfunc:case	0	0
+kwvar:childthread	0	0
+kwfunc:childthread	0	0
+kwvar:continue	0	0
+kwfunc:continue	0	0
+kwvar:default	0	0
+kwfunc:default	0	0
+kwvar:do	0	0
+kwfunc:do	0	0
+kwvar:else	0	0
+kwfunc:else	0	0
+kwvar:event_handler	0	0
+kwfunc:event_handler	0	0
+kwvar:false	0	0
+kwfunc:false	0	0
+kwvar:for	0	0
+kwfunc:for	0	0
+kwvar:foreach	0	0
+kwfunc:foreach	0	0
+kwvar:function	0	0
+kwfunc:function	9	29
+kwvar:goto	0	0
+kwfunc:goto	0	0
+kwvar:if	0	0
+kwfunc:if	0	0
+kwvar:in	0	0
+kwfunc:in	0	0
+kwvar:is	0	0
+kwfunc:is	0	0
+kwvar:new	0	0
+kwfunc:new	0	0
+kwvar:not	0	0
+kwfunc:not	0	0
+kwvar:private	0	0
+kwfunc:private	0	0
+kwvar:return	0	0
+kwfunc:return	0	0
+kwvar:switch	0	0
+kwfunc:switch	0	0
+kwvar:thread	0	0
+kwfunc:thread	0	0
+kwvar:threadendon	0	0
+kwfunc:threadendon	0	0
+kwvar:true	0	0
+kwfunc:true	0	0
+kwvar:undefined	0	0
+kwfunc:undefined	0	0
+kwvar:var	0	0
+kwfunc:var	0	0
+kwvar:wait	0	0
+kwfunc:wait	0	0
+kwvar:while	0	0
+kwfunc:while	0	0

@@ -1,0 +1,747 @@
+# World at War engine-emitted events: every call site of the VM's notify found in the
+# executable, its event, receiver and pushed arguments, measured under Unicorn by
+# gruff/tools/re/treyarch/events.py. Facts only. Schema: ../schema/events.schema.json.
+
+[meta]
+game = "t4"
+extractor = "tools/re/treyarch/events.py"
+dump = "codwaw_flat.exe sha256:1e073a10ac66e47bd0d36d7848607333af4ab66b8af0e9c32d2662ffa79fc452"
+date = "2026-11-06"
+licence = "CC0-1.0"
+
+[coverage]
+engine_sites = 140
+named = 66
+corpus_waittill_events = 1068
+explained_by_engine = 32
+explained_by_scripts = 606
+unexplained = 430
+complete = false
+sites_resolved = 122
+sites_unresolved = 18
+
+[[event]]
+name = "bad_path"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "vector" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "begin"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "begin_custom_anim"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "broken"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "string" }, { type = "entity" }]
+args_variable = true
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 1 x1, 2 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "bulletwhizby"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "corner_approach"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "vector" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "curve_end"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "int" }]
+args_variable = true
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x1, 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "curve_nodehit"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "int" }, { type = "int" }]
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 2 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "curve_start"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "int" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "damage"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "int" }, { type = "entity" }, { type = "vector" }, { type = "vector" }, { type = "string" }, { type = "string" }, { type = "string" }, { type = "string" }]
+args_variable = true
+sites = 5
+vm = ["gsc"]
+confidence = "measured"
+evidence = "5 site(s); argument counts 5 x3, 8 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 5"
+
+[[event]]
+name = "damage_notdone"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "int" }, { type = "entity" }, { type = "vector" }, { type = "vector" }, { type = "string" }, { type = "string" }, { type = "string" }, { type = "string" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 8 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "death"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "entity" }, { type = "string" }, { type = "string" }]
+args_variable = true
+sites = 11
+vm = ["gsc"]
+confidence = "measured"
+evidence = "11 site(s); argument counts 0 x9, 1 x1, 3 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 10, pushes seen 1"
+
+[[event]]
+name = "detonate"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; pushes seen 1"
+
+[[event]]
+name = "end_firing"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "enemy"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 5
+vm = ["gsc"]
+confidence = "measured"
+evidence = "5 site(s); argument counts 0 x5; types from 5 site(s) where count = pushes; count argument = pushes seen 4, pushes seen 1"
+
+[[event]]
+name = "enemy_visible"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "enter_vehicle"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "entity" }, { type = "int" }]
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 2 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "exit_vehicle"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "unknown" }, { type = "unknown" }]
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 2 x2; types from 0 site(s) where count = pushes; count argument 2, 0 pushes seen 2"
+
+[[event]]
+name = "explode"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "vector" }, { type = "entity" }]
+args_variable = true
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 1 x1, 2 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "flashbang"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "float" }, { type = "float" }, { type = "entity" }, { type = "string" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 4 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "goal"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 3
+vm = ["gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 0 x3; types from 3 site(s) where count = pushes; count argument = pushes seen 3"
+
+[[event]]
+name = "goal_changed"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 4
+vm = ["gsc"]
+confidence = "measured"
+evidence = "4 site(s); argument counts 0 x4; types from 4 site(s) where count = pushes; count argument = pushes seen 4"
+
+[[event]]
+name = "goal_yaw"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "grenade danger"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "unknown" }, { type = "unknown" }, { type = "unknown" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 3 x1; types from 0 site(s) where count = pushes; count argument 3, 2 pushes seen 1"
+
+[[event]]
+name = "grenade_fire"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "entity" }, { type = "string" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 2 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "grenade_launcher_fire"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "entity" }, { type = "string" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 2 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "grenade_pullback"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "string" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "groundEntChanged"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "killanimscript"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "menuresponse"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "string" }, { type = "string" }]
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 2 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "movedone"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "movemode"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "near_goal"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "night_vision_off"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "night_vision_on"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "node_not_safe"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "node_relinquished"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "orientdone"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "pain"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "pickup"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "entity" }, { type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 2 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "projectile_impact"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "string" }, { type = "vector" }, { type = "int" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 3 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "reached_end_node"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "reached_wait_node"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "reached_wait_speed"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "reload"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; pushes seen 1"
+
+[[event]]
+name = "reload_start"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; pushes seen 1"
+
+[[event]]
+name = "rotatedone"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "run"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "runto_arrived"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "script_vehicle_collision"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "vector" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "spawned"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "unknown", vm_type = "object" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "suppression"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "suppression_end"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "touch"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "unknown" }]
+args_variable = false
+sites = 7
+vm = ["gsc"]
+confidence = "measured"
+evidence = "7 site(s); argument counts 1 x7; types from 7 site(s) where count = pushes; count argument = pushes seen 7"
+
+[[event]]
+name = "trigger"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "entity" }, { type = "unknown" }]
+args_variable = true
+sites = 6
+vm = ["gsc"]
+confidence = "measured"
+evidence = "6 site(s); argument counts 1 x4, 2 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 6"
+
+[[event]]
+name = "turret_deactivate"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 3
+vm = ["gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 0 x3; types from 3 site(s) where count = pushes; count argument = pushes seen 3"
+
+[[event]]
+name = "turret_no_vis"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "turret_not_on_target"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "turretownerchange"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 4
+vm = ["gsc"]
+confidence = "measured"
+evidence = "4 site(s); argument counts 0 x4; types from 4 site(s) where count = pushes; count argument = pushes seen 3, pushes seen 1"
+
+[[event]]
+name = "turretstatechange"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 8
+vm = ["gsc"]
+confidence = "measured"
+evidence = "8 site(s); argument counts 0 x8; types from 8 site(s) where count = pushes; count argument = pushes seen 8"
+
+[[event]]
+name = "veh_collision"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "vector" }, { type = "vector" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 2 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "veh_predictedcollision"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "vector" }, { type = "vector" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 2 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "vehicle_death"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "int" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "weapon_change"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "string" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "weapon_change_complete"
+name_source = "scr_const"
+receiver = "entity"
+args = [{ type = "string" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "weapon_fired"
+name_source = "scr_const"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"

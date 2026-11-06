@@ -1,0 +1,104 @@
+{
+ "status": "accept",
+ "accepted": true,
+ "exit_code": 0,
+ "elapsed_s": 3.99,
+ "inputs": [
+  {
+   "path": "scripts/zz_harness/bare_call_shadow.gsc"
+  }
+ ],
+ "errors": [],
+ "other_lines": [],
+ "scripts": [
+  {
+   "gscc": "bo3/spt/vm_1c000a0d43534780/scripts/zz_harness/bare_call_shadow.gscc",
+   "size": 400,
+   "tables": {
+    "name": "scripts/zz_harness/bare_call_shadow.gsc",
+    "source_crc": "0x8aa28efc",
+    "exports": [
+     {
+      "name": "spawnstruct",
+      "namespace": "zz_probe",
+      "params": 0,
+      "flags": [],
+      "address": 120
+     },
+     {
+      "name": "main",
+      "namespace": "zz_probe",
+      "params": 0,
+      "flags": [
+       "autoexec"
+      ],
+      "address": 136
+     }
+    ],
+    "imports": [
+     {
+      "name": "spawnstruct",
+      "namespace": "zz_probe",
+      "params": 0,
+      "kind": "function",
+      "dev_call": false,
+      "get_call": true,
+      "flags": "0x22",
+      "refs": [
+       "0xac"
+      ]
+     },
+     {
+      "name": "spawnstruct",
+      "namespace": "zz_probe",
+      "params": 0,
+      "kind": "function",
+      "dev_call": false,
+      "get_call": false,
+      "flags": "0x02",
+      "refs": [
+       "0xc0"
+      ]
+     },
+     {
+      "name": "spawnstruct",
+      "namespace": "sys",
+      "params": 0,
+      "kind": "function",
+      "dev_call": false,
+      "get_call": false,
+      "flags": "0x02",
+      "refs": [
+       "0xd8"
+      ]
+     },
+     {
+      "name": "spawnstruct",
+      "namespace": "zz_probe",
+      "params": 0,
+      "kind": "function_thread",
+      "dev_call": false,
+      "get_call": true,
+      "flags": "0x23",
+      "refs": [
+       "0xf0"
+      ]
+     },
+     {
+      "name": "spawnstruct",
+      "namespace": "zz_probe",
+      "params": 0,
+      "kind": "func_ref",
+      "dev_call": false,
+      "get_call": true,
+      "flags": "0x21",
+      "refs": [
+       "0x102"
+      ]
+     }
+    ]
+   },
+   "asm": "#namespace namespace_c4c1746e;\n\n// Namespace namespace_c4c1746e\n// Params 0\n// Checksum 0x172d0fe4, Offset: 0x78\n// Size: 0x2\nfunction spawnstruct()\ngscasm {\n.00000000: 200d CheckClearParams          \n.00000002: 2178 GetByte                   42 (0x2a)\n.00000006: 3713 Return                    \n// final size: 0x8\n}\n\n// Namespace namespace_c4c1746e\n// Params 0, eflags: 0x2\n// Checksum 0xa6456fcd, Offset: 0x88\n// Size: 0x2\nfunction autoexec main()\ngscasm {\n.00000000: 339a SafeCreateLocalVariables  count: 0x4\n.00000003:                                a (-2)\n.00000009:                                b (-3)\n.00000011:                                c (-4)\n.00000019:                                f (-5)\n.00000022: 200e PreScriptCall             \n.00000024: 298a ScriptFunctionCall        params: 0 spawnstruct\n.00000030: 2ab3 EvalLocalVariableRefCached a\n.00000034: 39af SetVariableField          \n.00000036: 200e PreScriptCall             \n.00000038: 25a4 ScriptFunctionCall        params: 0 spawnstruct\n.00000048: 210a EvalLocalVariableRefCached b\n.0000004c: 2f59 SetVariableField          \n.0000004e: 200e PreScriptCall             \n.00000050: 29e5 ScriptFunctionCall        params: 0 sys::spawnstruct\n.00000060: 2413 EvalLocalVariableRefCached c\n.00000064: 316f SetVariableField          \n.00000066: 200e PreScriptCall             \n.00000068: 3b47 ScriptThreadCall          params: 0 spawnstruct\n.00000078: 3c27 DecTop                    \n.0000007a: 2b88 GetResolveFunction        &spawnstruct\n.00000088: 3dc1 EvalLocalVariableRefCached f\n.0000008c: 316f SetVariableField          \n.0000008e: 2010 End                       \n// final size: 0x90\n}\n\n"
+  }
+ ]
+}

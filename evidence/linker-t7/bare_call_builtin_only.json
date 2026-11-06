@@ -1,0 +1,73 @@
+{
+ "status": "accept",
+ "accepted": true,
+ "exit_code": 0,
+ "elapsed_s": 3.95,
+ "inputs": [
+  {
+   "path": "scripts/zz_harness/bare_call_builtin_only.gsc"
+  }
+ ],
+ "errors": [],
+ "other_lines": [],
+ "scripts": [
+  {
+   "gscc": "bo3/spt/vm_1c000a0d43534780/scripts/zz_harness/bare_call_builtin_only.gscc",
+   "size": 280,
+   "tables": {
+    "name": "scripts/zz_harness/bare_call_builtin_only.gsc",
+    "source_crc": "0x75ece4a5",
+    "exports": [
+     {
+      "name": "main",
+      "namespace": "zz_probe",
+      "params": 0,
+      "flags": [
+       "autoexec"
+      ],
+      "address": 128
+     }
+    ],
+    "imports": [
+     {
+      "name": "spawnstruct",
+      "namespace": "zz_probe",
+      "params": 0,
+      "kind": "function",
+      "dev_call": false,
+      "get_call": true,
+      "flags": "0x22",
+      "refs": [
+       "0x94"
+      ]
+     },
+     {
+      "name": "getentitynumber",
+      "namespace": "zz_probe",
+      "params": 0,
+      "kind": "method",
+      "dev_call": false,
+      "get_call": true,
+      "flags": "0x24",
+      "refs": [
+       "0xaa"
+      ]
+     },
+     {
+      "name": "zz_no_such_function_anywhere",
+      "namespace": "zz_probe",
+      "params": 0,
+      "kind": "function",
+      "dev_call": false,
+      "get_call": true,
+      "flags": "0x22",
+      "refs": [
+       "0xc0"
+      ]
+     }
+    ]
+   },
+   "asm": "#namespace namespace_c4c1746e;\n\n// Namespace namespace_c4c1746e\n// Params 0, eflags: 0x2\n// Checksum 0x7ad56ec0, Offset: 0x80\n// Size: 0x2\nfunction autoexec main()\ngscasm {\n.00000000: 3227 SafeCreateLocalVariables  count: 0x2\n.00000003:                                a (-2)\n.00000009:                                b (-3)\n.00000012: 200e PreScriptCall             \n.00000014: 298a ScriptFunctionCall        params: 0 spawnstruct\n.00000020: 3eb5 EvalLocalVariableRefCached a\n.00000024: 3d24 SetVariableField          \n.00000026: 200e PreScriptCall             \n.00000028: 26dd GetSelf                   \n.0000002a: 36ba ScriptMethodCall          params: 0 getentitynumber\n.00000038: 3edf EvalLocalVariableRefCached b\n.0000003c: 2191 SetVariableField          \n.0000003e: 200e PreScriptCall             \n.00000040: 298a ScriptFunctionCall        params: 0 function_20e0ad88\n.00000050: 25f5 DecTop                    \n.00000052: 2010 End                       \n// final size: 0x54\n}\n\n"
+  }
+ ]
+}

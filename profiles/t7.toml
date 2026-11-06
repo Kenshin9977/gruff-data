@@ -1,0 +1,114 @@
+# Dialect profile: Call of Duty: Black Ops III (2015).
+# Schema: ../schema/profile.schema.json. Sources: ../sources.toml. Licence rule: ../README.md.
+
+schema_version = 1
+id = "t7"
+name = "Call of Duty: Black Ops III"
+release_year = 2015
+developer = "Treyarch"
+dialect_family = "treyarch-t7plus"
+grade = "verified-on-corpus"
+aliases = ["bo3", "blackops3"]
+source_availability = ["mod-tools-raw", "compiled-only"]
+license = "CC0-1.0"
+notes = "Measured on the mod-tools raw scripts and checked against the official BO3 doc (facts only). Probes compiled with the official linker (evidence/linker-t7) settle what the compiler emits for the two doc-vs-gscode conflicts; what the VM does at load and run time stays open (phase 5, VM emulation)."
+
+[tool_ids]
+gsc_tool = "t7"
+acts = "t7"
+gscode = "t7"
+
+[keywords]
+words = ["anim", "assert", "assertmsg", "autoexec", "break", "case", "class", "classes", "const", "constructor", "continue", "default", "destructor", "do", "else", "endon", "false", "for", "foreach", "function", "game", "gettime", "if", "in", "isdefined", "level", "new", "notify", "private", "profilestart", "profilestop", "return", "self", "switch", "thread", "true", "undefined", "var", "vectorscale", "wait", "waitrealtime", "waittill", "waittillframeend", "waittillmatch", "while", "world"]
+directives = ["#using_animtree", "#animtree", "#using", "#namespace", "#precache", "#insert", "#define", "#if", "#elif", "#else", "#endif"]
+confidence = "documented"
+source = ["bo3-gsc-language-doc", "bo3-sublime-syntax"]
+note = "BO3 doc keyword list (46 words, plus the directives and .size). gscode also lexes vararg, which the doc names only as the implicit array of an ellipsis parameter, and omits gettime; gsc-tool also lexes codecall and the opcode builtins. The Sublime syntax highlights the same words except new; it styles vararg as a constant"
+
+[features]
+# --- Files
+file_kinds = { value = ["gsc", "csc", "gsh"], confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "546 .gsc, 316 .csc, 116 .gsh" }
+# --- Lexing and literals
+case_insensitive_identifiers = { value = true, confidence = "documented", source = ["gsc-tool-syntax", "gscode-dialect-facts"], license = "GPL-3.0-only" }
+dev_blocks = { value = true, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "944 in 178 files" }
+doc_comment_style = { value = "at-block", confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "at-block docs in 59 files; 2 files still carry ///ScriptDocBegin" }
+istring_literal = { value = true, confidence = "verified-on-corpus", source = ["corpus-t7"], note = "866 uses" }
+hash_string_literal = { value = true, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "167 uses in 29 files" }
+extra_string_prefixes = { value = [], confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-sublime-syntax"], note = "the Sublime syntax highlights an @-prefixed string but the corpus has 0 uses" }
+anim_reference = { value = true, confidence = "verified-on-corpus", source = ["corpus-t7"], note = "113 uses" }
+anim_reference_qualified = { value = true, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "0 uses in corpus-t7 (absence of use, not proof of absence)" }
+animtree_expression = { value = true, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "68 uses" }
+dollar_identifiers = { value = true, confidence = "documented", source = ["bo3-gsc-language-doc"], note = "listed as a special token; 0 uses in the corpus" }
+hashed_identifier_spellings = { value = ["hex-prefixed"], confidence = "documented", source = ["hash-inventory"], note = "only in decompiled dumps; mod-tools source is plain text" }
+# --- Bytecode naming
+identifier_encoding = { value = "fnv1a32-t7", confidence = "documented", source = ["hash-inventory"] }
+# --- Imports and name resolution
+import_directive = { value = "using", confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "7,738 in 809 files" }
+name_resolution = { value = "namespace", confidence = "documented", source = ["gscode-game-profiles", "bo3-gsc-language-doc"] }
+namespace_directive = { value = true, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "707 in 697 files" }
+path_qualified_calls = { value = false, confidence = "verified-on-corpus", source = ["corpus-t7", "gscode-game-profiles"], note = "0 uses in the shipped scripts (absence of use, not proof of absence)" }
+namespace_qualified_calls = { value = true, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "15,592 namespace-qualified calls" }
+builtin_namespace_qualifier = { value = true, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc", "linker-t7-probes"], note = "5 uses of sys::; the linker compiles sys::f() to an import in namespace sys without the get-call flag (probe bare_call_shadow)" }
+header_directive = { value = "insert", confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "2,137 in 814 files; the stock spelling keeps the .gsh extension" }
+precache_directive = { value = true, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "1,759 in 264 files" }
+using_animtree_directive = { value = true, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "75 in 66 files" }
+imports_before_declarations = { value = true, confidence = "documented", source = ["bo3-gsc-language-doc"] }
+# --- Preprocessor
+preprocessor_define = { value = true, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "5,410 in 367 files" }
+preprocessor_function_macros = { value = true, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "152 function-like defines" }
+preprocessor_conditionals = { value = true, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "35 in 4 files" }
+preprocessor_ifdef_undef = { value = false, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "the doc lists only #if, #elif, #else, #endif; 0 #ifdef, #ifndef or #undef in the corpus" }
+predefined_macros = { value = ["__FILE__", "__LINE__", "FASTFILE"], confidence = "documented", source = ["bo3-gsc-language-doc"] }
+file_scope_macro_calls = { value = true, confidence = "verified-on-corpus", source = ["corpus-t7", "gscode-dialect-facts"], note = "475 column-0 macro invocations (gscode counts 477 REGISTER_SYSTEM-style uses)" }
+# --- Declarations
+function_keyword = { value = true, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc", "gscode-game-profiles"], note = "15,141 declarations" }
+autoexec_modifier = { value = true, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "80 in 72 files" }
+private_modifier = { value = true, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "931 in 97 files" }
+event_handler_modifier = { value = false, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "0 uses in the shipped scripts (absence of use, not proof of absence)" }
+codecall_modifier = { value = false, confidence = "verified-on-corpus", source = ["corpus-t7", "linker-t7-syntax-probes", "gsc-tool-syntax"], note = "0 uses in the mod-tools scripts; the official linker rejects function codecall f() (probe p_codecall: it reads codecall as the function name). gsc-tool's t7 front end accepts it" }
+classes = { value = true, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "38 class declarations, 41 new, 171 arrow calls" }
+file_scope_constants = { value = false, confidence = "verified-on-corpus", source = ["corpus-t7", "gsc-tool-syntax"], note = "0 uses in the shipped scripts (absence of use, not proof of absence)" }
+const_locals = { value = true, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "115 in 44 files" }
+default_parameters = { value = true, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "293 headers in 104 files" }
+reference_parameters = { value = true, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc", "linker-t7-probes"], note = "77 headers in 8 files; the linker marks an &name parameter with local-variable flag 0x1 (acts: ARRAY_REF) and accepts any argument expression for it, a non-variable included (probes array_ref_param, array_ref_bad_arg)" }
+pointer_parameters = { value = false, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "0 uses in corpus-t7 (absence of use, not proof of absence)" }
+varargs = { value = true, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "12 ellipsis parameters, 28 vararg reads" }
+# --- Statements
+foreach = { value = true, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc", "linker-t7-probes"], note = "1,448 in 274 files; the linker lowers it to FirstArrayKey/NextArrayKey over hidden locals __a<line> and __k<line> (hash-checked, probe foreach_hidden_locals), plus a third hidden local for the next key" }
+foreach_key_value = { value = true, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "106 uses in 44 files (shipped scripts)" }
+do_while = { value = true, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "41 in 19 files" }
+childthread = { value = false, confidence = "measured-in-engine", source = ["vm-t7-emulation", "corpus-t7", "linker-t7-syntax-probes"], note = "the official linker reads childthread as an uninitialised local variable, not a keyword, and refuses the script (semantics/t7.toml childthread_dies_with_parent, unsupported); 0 uses in the mod-tools scripts; the linker rejects self childthread f(); (probe p_childthread: syntax error)" }
+call_pointer_sync = { value = false, confidence = "verified-on-corpus", source = ["corpus-t7", "gscode-game-profiles"], note = "0 uses in the shipped scripts (absence of use, not proof of absence)" }
+builtin_call = { value = false, confidence = "verified-on-corpus", source = ["corpus-t7", "linker-t7-syntax-probes"], note = "0 uses; the official linker reads builtin as a local variable (probe p_builtin: Uninitialized local variable 'builtin')" }
+thisthread = { value = false, confidence = "verified-on-corpus", source = ["corpus-t7", "gscode-game-profiles"], note = "0 uses in the shipped scripts (absence of use, not proof of absence)" }
+threadendon_call = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t7 (absence of use, not proof of absence)" }
+waittillframeend = { value = true, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "135 in 77 files" }
+waitframe = { value = false, confidence = "verified-on-corpus", source = ["corpus-t7"], note = "0 uses in the shipped scripts (absence of use, not proof of absence)" }
+waitrealtime = { value = true, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "25 in 11 files" }
+tuple_assignment = { value = false, confidence = "documented", source = ["gsc-tool-syntax"], license = "GPL-3.0-only", note = "0 uses in corpus-t7 (absence of use, not proof of absence)" }
+profiler_keywords = { value = ["profilestart", "profilestop"], confidence = "documented", source = ["bo3-gsc-language-doc", "gscode-game-profiles"], note = "0 uses; gsc-tool also lexes prof_begin and prof_end on t7" }
+assert_keywords = { value = ["assert", "assertmsg"], confidence = "documented", source = ["bo3-gsc-language-doc"], note = "the BO3 doc lists both as keywords; gsc-tool lexes them as identifiers on ARC" }
+breakpoint_keyword = { value = false, confidence = "documented", source = ["bo3-gsc-language-doc", "gsc-tool-syntax"], note = "0 uses in corpus-t7 (absence of use, not proof of absence)" }
+goto_labels = { value = false, confidence = "verified-on-corpus", source = ["corpus-t7", "linker-t7-syntax-probes"], note = "0 in the mod-tools scripts (2 probe hits are Example: lines inside /@ @/ doc comments); the official linker rejects goto LOC_1; and a bare LOC_1: label (probes p_goto, p_label); the 27 goto and 28 labels of the acts output in corpus/t7/decompiled are decompiler control flow" }
+waittill_return_value = { value = false, confidence = "assumed", source = ["vm-t7-emulation#waittill_more_args_sent", "vm-t7-emulation#waittill_fewer_args_sent"], note = "the T7 VM binds the notify's values to the names after the event (measured: extra values dropped, missing ones undefined); a waittill used as a value was not run" }
+# --- Expressions and builtin call styles
+function_pointer_style = { value = "ampersand", confidence = "verified-on-corpus", source = ["corpus-t7", "gscode-game-profiles"], note = "4,111 &f pointers, 0 ::f" }
+pointer_call = { value = true, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "2,017 pointer calls" }
+strict_equality = { value = true, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "666 in 145 files" }
+null_coalescing = { value = false, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "0 uses in the shipped scripts (absence of use, not proof of absence)" }
+optional_chaining = { value = false, confidence = "verified-on-corpus", source = ["corpus-t7", "bo3-gsc-language-doc"], note = "0 uses in the shipped scripts (absence of use, not proof of absence)" }
+is_expression = { value = false, confidence = "verified-on-corpus", source = ["corpus-t7"], note = "0 uses in the shipped scripts (absence of use, not proof of absence)" }
+casts = { value = false, confidence = "verified-on-corpus", source = ["corpus-t7", "linker-t7-syntax-probes"], note = "0 in the mod-tools scripts; the official linker rejects y = (float)x; (probe p_cast: syntax error)" }
+array_literal = { value = false, confidence = "verified-on-corpus", source = ["corpus-t7", "gsc-tool-syntax"], note = "0 uses in the shipped scripts (absence of use, not proof of absence)" }
+struct_literal = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t7 (absence of use, not proof of absence)" }
+isdefined_form = { value = "keyword", confidence = "documented", source = ["bo3-gsc-language-doc", "gsc-tool-syntax"] }
+istrue_operator = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t7 (absence of use, not proof of absence)" }
+opcode_builtins = { value = ["abs", "angleclamp180", "anglestoforward", "anglestoright", "anglestoup", "getdvar", "getdvarcoloralpha", "getdvarcolorblue", "getdvarcolorgreen", "getdvarcolorred", "getdvarfloat", "getdvarint", "getdvarvector", "getfirstarraykey", "getnextarraykey", "gettime", "vectorscale", "vectortoangles"], confidence = "documented", source = ["gsc-tool-syntax", "bo3-gsc-language-doc"], note = "the BO3 doc keyword list names gettime and vectorscale among these" }
+bare_call_resolution = { value = "namespace-first", confidence = "measured-in-engine", source = ["vm-t7-emulation", "bo3-gsc-language-doc", "linker-t7-probes"], note = "measured in the emulated VM (semantics/t7.toml): the compiler emits <current namespace>::f for every bare call; at load the game's linker takes the current namespace's script function first, else the builtin (calls and &f), never a function of another namespace even when #using'd (unresolved external); thread f() never falls back to a builtin. gscode's builtin-first claim does not hold on T7" }
+global_objects = { value = ["self", "level", "game", "anim", "world", "classes"], confidence = "documented", source = ["bo3-gsc-language-doc", "gscode-game-profiles", "gsc-tool-syntax"], note = "world: 2 uses in the corpus" }
+# --- Semantics that change analysis
+array_argument_passing = { value = "copy-unless-ref-param", confidence = "measured-in-engine", source = ["vm-t7-emulation", "bo3-gsc-language-doc", "linker-t7-probes"], note = "measured in the emulated VM (semantics/t7.toml): a plain parameter gets a deep copy (SafeCreateLocalVariables + CopyArray), a &name parameter shares the caller's array (a non-array there is a script error); plain assignment b = a shares the array (no copy, no copy on write). gscode's by-reference claim holds only for &name" }
+waittill_multiple_events = { value = false, confidence = "measured-in-engine", source = ["vm-t7-emulation#waittill_more_args_sent", "vm-t7-emulation#waittill_fewer_args_sent"], note = "the arguments after the event are names the VM binds the notify's values to" }
+endon_multiple_events = { value = false, confidence = "verified-on-corpus", source = ["corpus-t7"], note = "0 endon with more than one argument in the mod-tools scripts (absence of use, not proof of absence); not run in the T7 VM" }
+notify_wakes_waiters = { value = "deferred", confidence = "measured-in-engine", source = ["vm-t7-emulation#notify_wakes_waiter_before_notifier_continues", "vm-t7-emulation#notify_reentrant", "vm-t7-emulation#notify_wake_order_two_waiters"], note = "VM_Notify only queues the woken threads; they run in the same frame once the notifier yields, last registered first" }
+hash_equality = { value = "script-error", confidence = "measured-in-engine", source = ["vm-t7-emulation#hash_equality"], note = "== between two hashes, or a string and a hash, is a non-terminal script error ('unmatching types') and yields false" }

@@ -1,0 +1,26 @@
+{
+ "status": "reject",
+ "accepted": false,
+ "exit_code": 1,
+ "elapsed_s": 1.29,
+ "inputs": [
+  {
+   "path": "scripts/zz_harness/p_childthread.gsc"
+  }
+ ],
+ "errors": [
+  {
+   "severity": "error",
+   "code": 0,
+   "file": "scripts/zz_harness/p_childthread.gsc",
+   "line": 4,
+   "col": 45,
+   "function": "main()",
+   "message": "syntax error, unexpected TOKEN_IDENTIFIER, expecting TOKEN_LEFT_PAREN : function autoexec main() { self childthread f"
+  }
+ ],
+ "other_lines": [
+  "UNRECOVERABLE ERROR:",
+  "SCRIPT ERROR: No generated data for 'scripts/zz_harness/p_childthread.gsc'"
+ ]
+}

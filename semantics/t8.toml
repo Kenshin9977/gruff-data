@@ -1,0 +1,566 @@
+# Black Ops 4 script VM semantics, measured by running this project's own conformance scripts
+# (gruff/conformance/t8, compiled by acts: the game has no official mod tools linker) in
+# the game's own VM, emulated offline from the executable by gruff/tools/re/vm (Unicorn
+# over the dump; nothing launched, the game cannot be run). Facts only.
+# Schema: ../schema/semantics.schema.json. Report: gruff/tools/re/reports/vm_t8.md.
+
+[meta]
+game = "t8"
+extractor = "tools/re/vm/t89_suite.py --game t8"
+dump = "BlackOps4_dump.exe sha256:7f2f2e63e0088a126ea7eac61c6419d87910168064a334a6902cb0d3760b85b2"
+date = "2026-11-06"
+licence = "CC0-1.0"
+suite = "conformance/t8"
+time_unit = "scrVmPub.frame, one server frame (levelTime += 50 ms per frame)"
+modes = ["script errors stop (Com_Error 0x20 aborts: the dump's session state)", "script errors continue (Com_Error returns: the VM's own recovery runs)"]
+
+[[behaviour]]
+id = "array_assign_shared_reverse"
+question = "after b = a, is a write through a seen through b (the other direction)?"
+answer = "assignment shares the array both ways"
+result = "pass"
+trace = ["f0 T0 b.size=1 b[0]=7"]
+modes_agree = true
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "array_copy_on_assign"
+question = "b = a for an array, then b is changed: does a change too (reference) or not (copy)?"
+answer = "b = a shares the array: a write through b is seen through a (no copy on assignment, no copy on write)"
+result = "pass"
+trace = ["f0 T0 a[0]=2 b[0]=2 a.size=2 b.size=2"]
+modes_agree = true
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "array_in_struct_field"
+question = "an array stored in a struct field, then read into a local and changed: does the field change?"
+answer = "a local read from a struct field shares the field's array"
+result = "pass"
+trace = ["f0 T0 field[0]=2"]
+modes_agree = true
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "array_param_plain"
+question = "an array passed to a plain parameter and changed in the callee: does the caller see the change?"
+answer = "an array passed to a plain parameter is copied on entry (SafeCreateLocalVariables)"
+result = "pass"
+trace = ["f0 T0 a[0]=1 a.size=1"]
+modes_agree = true
+evidence = ["static: SafeCreateLocalVariables (0x274a3d0): for a parameter without flag 0x1 whose argument is a pointer to an array (type 0x18), AllocArray (0x2758530) + CopyArray (0x2759520), as T7's 0x12ce890"]
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "array_param_plain_nested"
+question = "the copy made for a plain array parameter: shallow (inner arrays shared) or deep?"
+answer = "the copy made for a plain array parameter is deep: an inner array written through the copy is not seen by the caller"
+result = "pass"
+trace = ["f0 T0 inner=1 outer.size=1"]
+modes_agree = true
+evidence = ["static: SafeCreateLocalVariables (0x274a3d0): for a parameter without flag 0x1 whose argument is a pointer to an array (type 0x18), AllocArray (0x2758530) + CopyArray (0x2759520), as T7's 0x12ce890"]
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "array_param_ref"
+question = "an array passed to a parameter declared &arr and changed in the callee: does the caller see the change?"
+answer = "an array passed to a &name parameter is shared with the caller"
+result = "pass"
+trace = ["f0 T0 a[0]=99 a.size=2"]
+modes_agree = true
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "array_param_ref_field"
+question = "an array held in a level field, passed to a &arr parameter and to a plain one: what does level.arr hold afterwards?"
+answer = "level.arr passed to a plain parameter is copied, to a &name parameter shared"
+result = "pass"
+trace = ["f0 T0 after plain: 1", "f0 T0 after ref: 99"]
+modes_agree = true
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "array_ref_param_non_array"
+question = "a non-array value passed to a &name parameter"
+answer = "a non-array given to a &name parameter is a script error (code #f5ef3c53, T7's 'Var ByRef only supported for array types'); with script errors continuing, the VM's recovery repeats it, as in T7"
+result = "unsupported"
+reason = "no golden: stop mode ends at the first error (Com_Error 0x20); continue mode repeats the error 61 times, then #fd7ba5b1 and the terminal #38685e3b (VM_Execute's invalid-opcode code in its recovery loop), the T7 pattern; the outcome depends on the bytes after the operand"
+trace = ["f0 T0 script error: #f5ef3c53"]
+error = "Com_Error 0x20: script error"
+alt_trace = ["f0 T0 script error: #f5ef3c53", "f0 T0 script error: #f5ef3c53", "f0 T0 script error: #f5ef3c53", "f0 T0 script error: #f5ef3c53", "f0 T0 script error: #f5ef3c53", "f0 T0 script error: #f5ef3c53", "f0 T0 script error: #f5ef3c53", "f0 T0 script error: #f5ef3c53"]
+alt_error = "error flood: 64 script errors"
+modes_agree = false
+dialect = { vs = "t7", same = false, note = "same error position; T7's recovery resumes inside SafeCreateLocalVariables' operands (semantics/t7.toml)" }
+
+[[behaviour]]
+id = "bare_call_local_shadows_builtin"
+question = "a bare call to a name that is both a builtin (spawnstruct) and a function of the current namespace: which one runs?"
+answer = "a bare call reaches the current namespace's function before a builtin of the same name; `sys::` reaches the builtin"
+result = "pass"
+trace = ["f0 T0 script spawnstruct called", "f0 T0 bare=42", "f0 T0 script spawnstruct called", "f0 T0 qualified=42", "f0 T0 sys is struct=1"]
+modes_agree = true
+evidence = ["load side: the game's import linker (0x2744d30) is given acts' encoding of a bare call, an import of <current namespace>::f with the get-call flag 0x20"]
+dialect = { vs = "t7", same = true }
+claims = [
+  { source = "acts-t8-link", agrees = true, claim = "an import ns::f is looked up in the script's exports first; a get-call falls back to the builtin" },
+]
+
+[[behaviour]]
+id = "bare_call_using_file_other_namespace"
+question = "a bare call to a function that only a #using'd file of another namespace defines: does the game's linker find it?"
+answer = "a bare call never reaches another namespace, even a #using'd one: the game's linker reports an unresolved external and the load is a fatal Sys_Error"
+result = "pass"
+trace = []
+error = "Sys_Error 0x6394f836 ,0000000000000001,"
+modes_agree = true
+dialect = { vs = "t7", same = false, note = "T7 reports the same unresolved external through Com_Error; T8 ends in Sys_Error 0x6394f836" }
+
+[[behaviour]]
+id = "bare_call_using_file_shadows_builtin"
+question = "a bare call to a name that is a builtin and also a function of a #using'd file in another namespace: which one runs?"
+answer = "a same-named function in a #using'd file of another namespace does not shadow the builtin"
+result = "pass"
+trace = ["f0 T0 is struct=1"]
+modes_agree = true
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "childthread_dies_with_parent"
+question = "does a childthread stop when the thread that started it ends?"
+answer = "childthread is a T8 keyword (ScriptThreadCallEndOn), but the child does not stop when the thread that started it ends: it only inherits the starter's endons"
+result = "pass"
+trace = ["f0 T1 parent start", "f0 T2 child tick 0", "f1 T2 child tick 1", "f2 T1 parent end", "f2 T2 child tick 2", "f3 T2 child tick 3", "f4 T2 child tick 4", "f5 T2 child tick 5", "f6 T2 child tick 6", "f7 T2 child tick 7", "f8 T2 child tick 8", "f9 T2 child tick 9"]
+modes_agree = true
+evidence = ["static: ScriptThreadCallEndOn (0x274ac00) is ScriptThreadCall (0x274c910) plus 0x2749ac0, which walks the calling frame's thread and its parents and copies each of their endon entries (endon table 0x83114d0) onto the new thread (0x2774940); nothing ties the child to the parent's end"]
+dialect = { vs = "t7", same = false, note = "T7: childthread is not a keyword (the official compiler reads it as an undefined local)" }
+
+[[behaviour]]
+id = "childthread_inherits_endons"
+question = "a childthread started after `level endon(#\"stop\")`: is it killed by that event, while a plain thread started the same way is not?"
+answer = "a childthread inherits the endons active in the thread that starts it: the starter's endon event kills the child too, while a plain thread started at the same point keeps running"
+result = "pass"
+trace = ["f0 T2 child tick 0", "f0 T3 plain tick 0", "f1 T2 child tick 1", "f1 T3 plain tick 1", "f1 T0 sent stop", "f2 T3 plain tick 2"]
+modes_agree = true
+evidence = ["static: 0x2749ac0, called only by the *EndOn thread-call handlers, copies the caller's endons onto the new thread"]
+dialect = { vs = "t7", same = false, note = "T7 has no childthread" }
+
+[[behaviour]]
+id = "dev_builtin_outside_devblock"
+question = "a dev-only builtin (println) called outside /# #/: what does the game's linker do at load?"
+answer = "a dev-only builtin (println) called outside /# #/ makes the load fail: the game's linker reports 'Dev only calls must be wrapped in a devblock' and ends in a fatal Sys_Error; acts by default wraps such a call in a devblock itself, so the test compiles with --no-devcall-inline"
+result = "pass"
+trace = []
+error = "Sys_Error 0x6394f836 ,0000000000000001,**** Dev only calls must be wrapped in a devblock /#...#/ : "
+modes_agree = true
+dialect = { vs = "t7", same = false, note = "T7: same message, through Com_Error" }
+
+[[behaviour]]
+id = "endon_during_wait"
+question = "an endon notify while the thread is in a timed wait: killed before the wait ends?"
+answer = "an endon kills a thread in a timed wait"
+result = "pass"
+trace = ["f0 T1 waiting", "f1 T0 sent stop"]
+modes_agree = true
+evidence = ["static: the Notify handler (0x2752160) calls VM_Notify (0x2774090), which kills the endon'd threads and runs endon callbacks at once (AllocThread 0x2758ab0 + VM_ExecuteInternal 0x276efc0), then for each waiter of the event writes its result struct (0x27747c0) and queues it in the frame queue for the current frame (0x2774ca0); a waiter never runs inside the notify"]
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "endon_during_waittill"
+question = "an endon fired while the thread waits on another event: is the thread killed?"
+answer = "an endon kills a thread blocked in waittill on another event"
+result = "pass"
+trace = ["f0 T1 waiting", "f1 T0 sent stop", "f1 T0 sent go"]
+modes_agree = true
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "endon_multiple_events"
+question = "endon with two events: does the second one kill the thread?"
+answer = "endon with two events: either one kills the thread"
+result = "pass"
+trace = ["f0 T1 waiting", "f1 T0 sent second"]
+modes_agree = true
+dialect = { vs = "t7", same = false, note = "T7 endon takes one event" }
+
+[[behaviour]]
+id = "endon_other_object"
+question = "an endon on a struct is not fired by the same event on level (and the reverse)"
+answer = "an endon is bound to its object"
+result = "pass"
+trace = ["f0 T1 waiting", "f1 T0 level sent", "f2 T0 struct sent"]
+modes_agree = true
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "endon_vs_waittill_same_event"
+question = "a thread that both endon()s and waittill()s the same event: woken or killed?"
+answer = "endon and waittill on the same event: killed, not woken (VM_Notify handles endons before waiters)"
+result = "pass"
+trace = ["f0 T1 waiting", "f1 T0 sent"]
+modes_agree = true
+evidence = ["static: the Notify handler (0x2752160) calls VM_Notify (0x2774090), which kills the endon'd threads and runs endon callbacks at once (AllocThread 0x2758ab0 + VM_ExecuteInternal 0x276efc0), then for each waiter of the event writes its result struct (0x27747c0) and queues it in the frame queue for the current frame (0x2774ca0); a waiter never runs inside the notify"]
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "endon_vs_waittill_same_event_reversed"
+question = "same as endon_vs_waittill_same_event, with the endon registered in another thread order: the waiter waits first, a second thread of the same self registers no endon"
+answer = "control: without the endon the waiter wakes"
+result = "pass"
+trace = ["f0 T1 waiting", "f1 T0 sent", "f1 T1 woke"]
+modes_agree = true
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "func_ref_builtin_only"
+question = "`&spawnstruct` when no script function spawnstruct exists: a pointer to the builtin, or a load error?"
+answer = "&spawnstruct with no script function falls back to the builtin, and calling it works"
+result = "pass"
+trace = ["f0 T0 before", "f0 T0 called, struct=1"]
+modes_agree = true
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "func_ref_shadows_builtin"
+question = "`&spawnstruct` when the current namespace defines spawnstruct: the script function or the builtin?"
+answer = "&f reaches the current namespace's function first"
+result = "pass"
+trace = ["f0 T0 script spawnstruct called", "f0 T0 result=42"]
+modes_agree = true
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "hash_equality"
+question = "do two hashes of names differing only in case compare equal (the hash lowercases), and does a string equal the hash of itself?"
+answer = "hashes are compared as values: #\"GoAway\" == #\"goaway\" (the hash lowercases), and a string == its own hash is true, with no error"
+result = "pass"
+trace = ["f0 T0 hash case=1", "f0 T0 string vs hash=1"]
+modes_agree = true
+evidence = ["static: the equality evaluator (0x275bbe0) first coerces the pair (0x2760230: int/float, strings, hashes) and compares only then"]
+dialect = { vs = "t7", same = false, note = "T7: == between two hashes, or a string and a hash, is a script error ('unmatching types') and yields false" }
+
+[[behaviour]]
+id = "infinite_loop"
+question = "does the VM stop a loop that never waits, and how?"
+answer = "VM_Execute has no loop guard: a loop with no wait runs until the harness budget (20M instructions)"
+result = "pass"
+trace = ["f0 T0 before"]
+error = "instruction limit (20000000) reached at rva 0x274e590"
+modes_agree = true
+evidence = ["static: VM_Execute (0x276ece0) is a bare fetch/dispatch loop; nothing in it counts instructions"]
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "level_vs_struct_notify_isolation"
+question = "a waittill on a struct is not woken by the same event on level, and the reverse"
+answer = "a waittill is not woken by the same event on another object"
+result = "pass"
+trace = ["f0 T1 struct waiter", "f0 T2 level waiter", "f1 T0 level sent", "f1 T2 level woke", "f2 T0 struct sent", "f2 T1 struct woke"]
+modes_agree = true
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "multiple_endons"
+question = "two endons on one thread: does either event kill it?"
+answer = "each of several endons kills the thread"
+result = "pass"
+trace = ["f0 T1 a waiting", "f0 T2 b waiting", "f1 T0 sent second"]
+modes_agree = true
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "notify_before_waittill_same_frame"
+question = "a notify sent before the waittill is registered, in the same frame: is it lost?"
+answer = "a notify sent before the waittill is registered is lost, even in the same frame"
+result = "pass"
+trace = ["f0 T0 notified", "f0 T1 waiting", "f2 T0 notified again", "f2 T1 woke"]
+modes_agree = true
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "notify_no_waiter"
+question = "a notify nobody waits for: no error, the caller goes on?"
+answer = "a notify nobody waits for is silent"
+result = "pass"
+trace = ["f0 T0 before", "f0 T0 after"]
+modes_agree = true
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "notify_payload_object_is_result"
+question = "a notify whose payload is an existing struct: is the waiter's result that same struct, with _notify written into it?"
+answer = "a notify whose payload is an object hands that same object to the waiter as the waittill result, and writes _notify into it"
+result = "pass"
+trace = ["f1 T0 sent, obj._notify is e=1", "f1 T1 same=1 v=5"]
+modes_agree = true
+evidence = ["static: the Notify handler (0x2752160) keeps a pointer payload as is (type 1 at 0x2752252) and VM_Notify's result writer (0x27747c0) sets _notify on it"]
+dialect = { vs = "t7", same = false, note = "T7 waittill binds values to names; it returns nothing" }
+
+[[behaviour]]
+id = "notify_reentrant"
+question = "a woken waiter that notifies a second event: does the second waiter run before the first notifier resumes?"
+answer = "a notify sent by a woken waiter is deferred the same way"
+result = "pass"
+trace = ["f0 T0 notify a", "f0 T0 after notify a", "f0 T1 got a", "f0 T1 after notify b", "f0 T2 got b"]
+modes_agree = true
+evidence = ["static: the Notify handler (0x2752160) calls VM_Notify (0x2774090), which kills the endon'd threads and runs endon callbacks at once (AllocThread 0x2758ab0 + VM_ExecuteInternal 0x276efc0), then for each waiter of the event writes its result struct (0x27747c0) and queues it in the frame queue for the current frame (0x2774ca0); a waiter never runs inside the notify"]
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "notify_string_vs_hash_event"
+question = "is an event sent as a string the same event as its hash: does notify(\"go\") wake waittill(#\"go\"), and notify(#\"go\") wake waittill(\"go\")?"
+answer = "an event sent as a string is the same event as its hash: notify(\"go\") wakes waittill(#\"go\") and notify(#\"go\") wakes waittill(\"go\")"
+result = "pass"
+trace = ["f1 T0 sent string", "f1 T1 hash waiter woke", "f2 T0 sent hash", "f2 T2 string waiter woke"]
+modes_agree = true
+evidence = ["static: the Notify handler (0x2752160) turns a string event into its hash (0x2757b60) and uses a hash event as is (type 4); waits store hashes"]
+dialect = { vs = "t7", same = false, note = "T7 events are strings only" }
+
+[[behaviour]]
+id = "notify_wake_order_three_waiters"
+question = "three waiters registered in order a, b, c on one event: wake order?"
+answer = "waiters wake in reverse order of registration (c, b, a)"
+result = "pass"
+trace = ["f1 T0 notifying", "f1 T3 c", "f1 T2 b", "f1 T1 a"]
+modes_agree = true
+evidence = ["static: the Notify handler (0x2752160) calls VM_Notify (0x2774090), which kills the endon'd threads and runs endon callbacks at once (AllocThread 0x2758ab0 + VM_ExecuteInternal 0x276efc0), then for each waiter of the event writes its result struct (0x27747c0) and queues it in the frame queue for the current frame (0x2774ca0); a waiter never runs inside the notify"]
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "notify_wake_order_two_waiters"
+question = "in which order do two waiters on the same event wake?"
+answer = "the last registered waiter wakes first, both after the notifier yields"
+result = "pass"
+trace = ["f1 T0 notifying", "f1 T0 after notify", "f1 T2 second", "f1 T1 first"]
+modes_agree = true
+evidence = ["static: the Notify handler (0x2752160) calls VM_Notify (0x2774090), which kills the endon'd threads and runs endon callbacks at once (AllocThread 0x2758ab0 + VM_ExecuteInternal 0x276efc0), then for each waiter of the event writes its result struct (0x27747c0) and queues it in the frame queue for the current frame (0x2774ca0); a waiter never runs inside the notify"]
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "notify_wakes_waiter_before_notifier_continues"
+question = "does a woken waiter run inside the notify, before the notifier's next statement?"
+answer = "notify does not run the waiter inside the call: the notifier runs on to its next wait or its end, then the woken threads run in the same frame"
+result = "pass"
+trace = ["f0 T0 notifying", "f0 T0 after notify", "f0 T1 woke", "f0 T1 woke still running"]
+modes_agree = true
+evidence = ["static: the Notify handler (0x2752160) calls VM_Notify (0x2774090), which kills the endon'd threads and runs endon callbacks at once (AllocThread 0x2758ab0 + VM_ExecuteInternal 0x276efc0), then for each waiter of the event writes its result struct (0x27747c0) and queues it in the frame queue for the current frame (0x2774ca0); a waiter never runs inside the notify"]
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "string_equality_case"
+question = "is == on strings case-sensitive?"
+answer = "== on strings is case-sensitive"
+result = "pass"
+trace = ["f0 T0 same=1 case=0"]
+modes_agree = true
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "struct_reference_on_assign"
+question = "t = s for a struct, then t.x is set: does s.x change (structs are references)?"
+answer = "structs are references"
+result = "pass"
+trace = ["f0 T0 s.x=1 same=1"]
+modes_agree = true
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "thread_call_assign_result"
+question = "x = thread f(): accepted, and what does x hold when f returns before or after its first wait?"
+answer = "x = thread f() compiles (acts); x is f's return value when f ends without waiting, undefined when f waits first"
+result = "pass"
+trace = ["f0 T0 x defined=0", "f0 T0 y=6"]
+modes_agree = true
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "thread_call_builtin_only"
+question = "`thread spawnstruct()` when no script function spawnstruct exists: does a threaded call fall back to the builtin?"
+answer = "thread spawnstruct() with no script function: the script does not load (a threaded call never falls back to a builtin; fatal Sys_Error)"
+result = "pass"
+trace = []
+error = "Sys_Error 0x6394f836 ,0000000000000001,"
+modes_agree = true
+dialect = { vs = "t7", same = true }
+claims = [
+  { source = "acts-t8-link", agrees = true, claim = "a thread import never falls back to a builtin" },
+]
+
+[[behaviour]]
+id = "thread_call_return_value"
+question = "the return value of a function called normally, and what a threaded call leaves to its caller"
+answer = "a direct call returns its value; a threaded call as a statement drops it"
+result = "pass"
+trace = ["f0 T0 direct=5", "f0 T0 threaded call done"]
+modes_agree = true
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "thread_call_shadowing_builtin"
+question = "`thread spawnstruct()` when the current namespace defines spawnstruct: the script function runs as a thread"
+answer = "thread f() reaches the current namespace's function when a builtin has the same name"
+result = "pass"
+trace = ["f0 T1 script spawnstruct called", "f0 T0 after"]
+modes_agree = true
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "thread_on_released_struct"
+question = "a thread whose self is a struct nobody references any more: does it keep running?"
+answer = "a thread whose self struct nobody references keeps running; self stays defined"
+result = "pass"
+trace = ["f0 T1 start", "f1 T1 still running", "f1 T1 self defined=1"]
+modes_agree = true
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "thread_outlives_parent"
+question = "a plain thread keeps running after the thread that started it ends (control for childthread)"
+answer = "a plain thread outlives the thread that started it; in the frame where both resume, the child, which started waiting first, runs first"
+result = "pass"
+trace = ["f0 T1 parent start", "f0 T2 tick 0", "f1 T2 tick 1", "f1 T1 parent end", "f2 T2 tick 2", "f3 T2 tick 3"]
+modes_agree = true
+evidence = ["static: the scheduler is a set of sorted execution queues (scrVmPub+0x18 time, +0x2020 frame, +0x4028 timeouts), not T7's per-time variable lists; VM_SetTime (0x2773570) and Scr_RunCurrentThreads (0x2775700) take the due entries from the head"]
+dialect = { vs = "t7", same = false, note = "T7 resumes the parent first (its same-time waits are last-in-first-out)" }
+
+[[behaviour]]
+id = "thread_runs_until_first_wait"
+question = "does `thread f()` run f at once, up to its first wait, before the caller goes on?"
+answer = "thread f() runs f at once up to its first wait, then the caller continues"
+result = "pass"
+trace = ["f0 T0 before", "f0 T1 child start", "f0 T0 after call", "f1 T1 child after wait"]
+modes_agree = true
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "thread_without_wait_runs_to_end"
+question = "does a thread with no wait run to its end before the caller resumes?"
+answer = "a thread with no wait runs to its end before the caller continues"
+result = "pass"
+trace = ["f0 T0 before", "f0 T1 child 1", "f0 T1 child 2", "f0 T0 after call"]
+modes_agree = true
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "undefined_arithmetic"
+question = "what does undefined + 1 do at run time: an error that ends the thread, or a value?"
+answer = "undefined + 1 is a script error (code #12e690eb); the error reporter ends in Com_Error(0x20), which in the dump's session state aborts the run; when Com_Error returns, the thread goes on and the result is undefined"
+result = "pass"
+trace = ["f0 T0 before", "f0 T0 script error: #12e690eb"]
+error = "Com_Error 0x20: script error"
+alt_trace = ["f0 T0 before", "f0 T0 script error: #12e690eb", "f0 T0 after 0"]
+modes_agree = false
+evidence = ["static: ScrVm_Error (0x276e530) calls the reporter (0x27758b0), which always calls Com_Error (0x2889710) with code 0x20; Com_Error returns for 0x20 only when the byte 0x8a57023 is set (not identified), else it aborts to the main loop; after a return ScrVm_Error longjmps into VM_Execute's recovery"]
+dialect = { vs = "t7", same = false, note = "T7 (retail): a non-terminal script error and the thread goes on" }
+
+[[behaviour]]
+id = "undefined_field_read"
+question = "reading a field nobody set: undefined, no error?"
+answer = "reading an unset field gives undefined, no error"
+result = "pass"
+trace = ["f0 T0 defined=0"]
+modes_agree = true
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "wait_0"
+question = "does wait 0 yield and resume in the same frame, the next one, or is it refused?"
+answer = "wait 0 resumes in the same frame, before threads in waittillframeend"
+result = "pass"
+trace = ["f0 T0 before", "f0 T0 after wait 0", "f0 T1 other"]
+modes_agree = true
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "wait_005_is_one_frame"
+question = "how many server frames do wait 0.05, wait 0.1 and wait 0.15 take?"
+answer = "with 50 ms server frames, wait 0.05 / 0.1 / 0.15 take 1 / 2 / 3 frames (waits are in milliseconds against level time)"
+result = "pass"
+trace = ["f0 T0 start", "f1 T0 after 0.05", "f3 T0 after 0.1", "f6 T0 after 0.15"]
+modes_agree = true
+evidence = ["static: VM_SetTime (0x2773570) resumes time-queue entries whose time is <= the VM time, then sets the VM time to the new level time (G_RunFrame 0x2d072c0 passes level.time)"]
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "wait_same_duration_order"
+question = "two threads that wait the same time: do they resume in the order they started waiting?"
+answer = "waits ending in the same frame resume in the order of the wait calls (first in, first out)"
+result = "pass"
+trace = ["f1 T1 a", "f1 T2 b", "f1 T3 c"]
+modes_agree = true
+evidence = ["static: the scheduler is a set of sorted execution queues (scrVmPub+0x18 time, +0x2020 frame, +0x4028 timeouts), not T7's per-time variable lists; VM_SetTime (0x2773570) and Scr_RunCurrentThreads (0x2775700) take the due entries from the head"]
+dialect = { vs = "t7", same = false, note = "T7: reverse order of the wait calls" }
+
+[[behaviour]]
+id = "waitframe_one"
+question = "how many server frames do waitframe(1) and waitframe(2) take, against wait 0.05?"
+answer = "waitframe(n) resumes n frames later, by the VM's frame counter; waitframe(1) and wait 0.05 both take one 50 ms frame"
+result = "pass"
+trace = ["f0 T0 start", "f1 T0 after waitframe 1", "f3 T0 after waitframe 2", "f4 T0 after wait 0.05"]
+modes_agree = true
+dialect = { vs = "t7", same = false, note = "T7 has no waitframe" }
+
+[[behaviour]]
+id = "waittill_any_of_events"
+question = "waittill with two events wakes on either, and _notify tells which"
+answer = "waittill with several events wakes on the first of them, and the result's _notify is the event that came"
+result = "pass"
+trace = ["f1 T0 sent b", "f1 T1 woke on b=1", "f2 T0 sent a"]
+modes_agree = true
+dialect = { vs = "t7", same = false, note = "T7 waittill takes one event" }
+
+[[behaviour]]
+id = "waittill_fewer_args_sent"
+question = "T8 waittill binds no names: the notify sends a struct with one field, the waiter reads two: the missing one is undefined?"
+answer = "a field the notify's payload struct does not have reads undefined"
+result = "pass"
+trace = ["f1 T0 sent", "f1 T1 a=1 b defined=0"]
+modes_agree = true
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "waittill_more_args_sent"
+question = "the notify sends three plain values after the event: what does the waiter's result struct hold?"
+answer = "plain values after the event are dropped: the waiter still wakes, with a struct that only has _notify"
+result = "pass"
+trace = ["f1 T0 sent", "f1 T1 struct=1 notify is e=1"]
+modes_agree = true
+evidence = ["static: the Notify handler (0x2752160): when the value after the event is not an object, a new empty struct (AllocObject 0x2758a40) replaces it as the payload; the remaining values are popped and released"]
+dialect = { vs = "t7", same = false, note = "T7 binds the values to the waittill's names (extra values dropped)" }
+
+[[behaviour]]
+id = "waittill_returns_struct"
+question = "what does waittill return: a struct holding the event in _notify and the payload's fields?"
+answer = "waittill returns a struct: the payload's fields, and _notify holding the event (a hash)"
+result = "pass"
+trace = ["f1 T0 sent", "f1 T1 notify is e=1 a=1 b=two"]
+modes_agree = true
+dialect = { vs = "t7", same = false, note = "T7 waittill returns nothing and binds names" }
+
+[[behaviour]]
+id = "waittillframeend_order"
+question = "does waittillframeend resume at the end of the current frame, after threads that do not wait?"
+answer = "waittillframeend resumes in the same frame after threads that do not wait"
+result = "pass"
+trace = ["f0 T0 main 1", "f0 T0 main 2", "f0 T1 frameend"]
+modes_agree = true
+dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "waittillmatch"
+question = "waittillmatch({#name:\"x\"}, e) ignores a notify of e whose payload field differs and wakes on the matching one"
+answer = "waittillmatch({#name:\"x\"}, e) skips a notify whose payload field differs and wakes on the matching one, with that payload"
+result = "pass"
+trace = ["f1 T0 sent y", "f1 T0 sent x", "f1 T1 matched x"]
+modes_agree = true
+evidence = ["static: VM_Notify (0x2774090) compares a waittillmatch entry's fields with the payload (0x275e430) before waking it"]
+dialect = { vs = "t7", same = false, note = "T7 waittillmatch compares the first notify value with a string" }
+
+[[behaviour]]
+id = "waittilltimeout"
+question = "waittilltimeout(0.1, e) with no notify: when does it return and what is _notify?"
+answer = "waittilltimeout(0.1, e) with no notify returns after 3 frames (150 ms, not 100), with _notify \"timeout\""
+result = "pass"
+trace = ["f0 T0 start", "f3 T0 returned, timeout=1"]
+modes_agree = true
+evidence = ["static: VM_SetTime (0x2773570) fires a timeout only when the VM time is past its deadline (jbe skips equal, 0x2773760), so a 100 ms timeout fires at the 150 ms frame"]
+dialect = { vs = "t7", same = false, note = "T7 has no waittilltimeout" }

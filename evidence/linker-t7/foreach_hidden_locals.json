@@ -1,0 +1,36 @@
+{
+ "status": "accept",
+ "accepted": true,
+ "exit_code": 0,
+ "elapsed_s": 4.03,
+ "inputs": [
+  {
+   "path": "scripts/zz_harness/foreach_hidden_locals.gsc"
+  }
+ ],
+ "errors": [],
+ "other_lines": [],
+ "scripts": [
+  {
+   "gscc": "bo3/spt/vm_1c000a0d43534780/scripts/zz_harness/foreach_hidden_locals.gscc",
+   "size": 424,
+   "tables": {
+    "name": "scripts/zz_harness/foreach_hidden_locals.gsc",
+    "source_crc": "0x3b787dec",
+    "exports": [
+     {
+      "name": "main",
+      "namespace": "zz_probe",
+      "params": 0,
+      "flags": [
+       "autoexec"
+      ],
+      "address": 128
+     }
+    ],
+    "imports": []
+   },
+   "asm": "#namespace namespace_c4c1746e;\n\n// Namespace namespace_c4c1746e\n// Params 0, eflags: 0x2\n// Checksum 0x49a31039, Offset: 0x80\n// Size: 0x2\nfunction autoexec main()\ngscasm {\n.00000000: 3227 SafeCreateLocalVariables  count: 0xb\n.00000003:                                arr (-2)\n.00000009:                                v (-3)\n.00000011:                                var_e6b303fd (-4)\n.00000019:                                var_872366bb (-5)\n.00000021:                                var_d347d19e (-6)\n.00000029:                                x (-7)\n.00000031:                                k (-8)\n.00000039:                                v2 (-9)\n.00000041:                                var_5f9c5631 (-10)\n.00000049:                                var_2fad4b1e (-11)\n.00000051:                                y (-12)\n.0000005a: 3fc7 EmptyArray                \n.0000005c: 3eb5 EvalLocalVariableRefCached arr\n.00000060: 3d24 SetVariableField          \n.00000062: 3ecf EvalLocalVariableCached   (-10) arr\n.00000066: 37cc EvalLocalVariableRefCached var_872366bb\n.0000006a: 295a SetVariableField          \n.0000006c: 23a5 EvalLocalVariableCached   (-7) var_872366bb\n.00000070: 3fcb FirstArrayKey             \n.00000072: 2190 EvalLocalVariableRefCached var_e6b303fd\n.00000076: 3cae SetVariableField          \n.00000078: 3b09 EvalLocalVariableCached   (-8) var_e6b303fd\n.0000007c: 2352 IsDefined                 \n.0000007e: 2592 JumpOnFalse               Jump .000000ba (delta:0x38)\n.00000082: 21f3 EvalLocalVariableCached   (-8) var_e6b303fd\n.00000086: 242c EvalLocalVariableCached   (-7) var_872366bb\n.0000008a: 33de EvalArray                 \n.0000008c: 303c EvalLocalVariableRefCached v\n.00000090: 24d0 SetVariableField          \n.00000092: 2d37 EvalLocalVariableCached   (-8) var_e6b303fd\n.00000096: 298b EvalLocalVariableCached   (-7) var_872366bb\n.0000009a: 35f3 NextArrayKey              \n.0000009c: 29d9 EvalLocalVariableRefCached var_d347d19e\n.000000a0: 28bb SetVariableField          \n.000000a2: 3085 EvalLocalVariableCached   (-9) v\n.000000a6: 3dc1 EvalLocalVariableRefCached x\n.000000aa: 2441 SetVariableField          \n.000000ac: 22ca EvalLocalVariableCached   (-6) var_d347d19e\n.000000b0: 3ce2 EvalLocalVariableRefCached var_e6b303fd\n.000000b4: 3025 SetVariableField          \n.000000b6: 3b79 Jump                      Jump .00000078 (delta:-0x42)\n.000000ba: 2503 EvalLocalVariableCached   (-10) arr\n.000000be: 3301 EvalLocalVariableRefCached var_2fad4b1e\n.000000c2: 2191 SetVariableField          \n.000000c4: 2f2c EvalLocalVariableCached   (-1) var_2fad4b1e\n.000000c8: 268d FirstArrayKey             \n.000000ca: 3dfc EvalLocalVariableRefCached k\n.000000ce: 316d SetVariableField          \n.000000d0: 2dbe EvalLocalVariableCached   (-4) k\n.000000d4: 39c3 IsDefined                 \n.000000d6: 2f98 JumpOnFalse               Jump .00000112 (delta:0x38)\n.000000da: 3bff EvalLocalVariableCached   (-4) k\n.000000de: 2a75 EvalLocalVariableCached   (-1) var_2fad4b1e\n.000000e2: 2869 EvalArray                 \n.000000e4: 3eb5 EvalLocalVariableRefCached v2\n.000000e8: 248f SetVariableField          \n.000000ea: 37be EvalLocalVariableCached   (-4) k\n.000000ee: 3c76 EvalLocalVariableCached   (-1) var_2fad4b1e\n.000000f2: 281d NextArrayKey              \n.000000f4: 2ad8 EvalLocalVariableRefCached var_5f9c5631\n.000000f8: 206d SetVariableField          \n.000000fa: 37be EvalLocalVariableCached   (-4) k\n.000000fe: 3154 EvalLocalVariableRefCached y\n.00000102: 2f2e SetVariableField          \n.00000104: 2de5 EvalLocalVariableCached   (-2) var_5f9c5631\n.00000108: 2a35 EvalLocalVariableRefCached k\n.0000010c: 308b SetVariableField          \n.0000010e: 2be6 Jump                      Jump .000000d0 (delta:-0x42)\n.00000112: 2010 End                       \n// final size: 0x114\n}\n\n"
+  }
+ ]
+}

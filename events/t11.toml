@@ -1,0 +1,3998 @@
+# Black Ops 7 engine-emitted events: every call site of the VM's notify found in the
+# executable, its event, receiver and pushed arguments, measured under Unicorn by
+# gruff/tools/re/treyarch/events.py. Facts only. Schema: ../schema/events.schema.json.
+
+[meta]
+game = "t11"
+extractor = "tools/re/treyarch/events.py"
+dump = "bo7_flat.exe sha256:0758a1724b2e3936d07bc38078ad4230ce7bf1470b4cff17992ba4fb2707211d"
+date = "2026-11-06"
+licence = "CC0-1.0"
+hash_family = "iw9.xhash"
+
+[coverage]
+engine_sites = 599
+named = 312
+corpus_waittill_events = 2347
+explained_by_engine = 118
+explained_by_scripts = 1564
+unexplained = 665
+complete = false
+sites_resolved = 515
+sites_unresolved = 86
+
+[[event]]
+name = "activate_track_loop"
+name_source = "hash-list"
+hash = "0x53f946c14d3cdd9f"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "active_roll_end"
+name_source = "scr_const"
+hash = "0xad99e3d3c9ff54f1"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "aerial_knockback_failsafe"
+name_source = "hash-list"
+hash = "0xa825e4ab363e721d"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "ai_events"
+name_source = "hash-list"
+hash = "0xedb2b95877884141"
+receiver = "entity"
+args = [{ type = "unknown" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 0 site(s) where count = pushes; count argument 1, 0 pushes seen 1"
+
+[[event]]
+name = "airburst_exploded"
+name_source = "hash-list"
+hash = "0xcf7a62ec3c419dd7"
+receiver = "entity"
+args = [{ type = "int" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "airdash_end"
+name_source = "scr_const"
+hash = "0x6910cd4d5e3fad01"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "an_enemy_shot"
+name_source = "corpus"
+hash = "0x58d740afedebc182"
+receiver = "any"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "animscripted_collision_deviation"
+name_source = "hash-list"
+hash = "0x498c7f4907df52fd"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "animscripted_predicted_entry"
+name_source = "hash-list"
+hash = "0x7b84e227aadb4322"
+receiver = "entity"
+args = [{ type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 7 x1; types from 0 site(s) where count = pushes; count argument 7, 0 pushes seen 1"
+
+[[event]]
+name = "areaswap_changed"
+name_source = "hash-list"
+hash = "0x4349cea485438144"
+receiver = "any"
+args = [{ type = "unknown", vm_type = "tag10" }, { type = "unknown", vm_type = "tag10" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 2 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "asm_terminated"
+name_source = "graywolf-name-index"
+hash = "0x165aa9f15f19c118"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "attackerbulletwhizby"
+name_source = "graywolf-name-index"
+hash = "0x0b6b33f3996579f3"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 3
+vm = ["gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 0 x3; types from 3 site(s) where count = pushes; count argument = pushes seen 3"
+
+[[event]]
+name = "bad_path"
+name_source = "image string"
+hash = "0x25be4ce51f3157d6"
+receiver = "entity"
+args = [{ type = "vector" }]
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 1 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "ball_pass"
+name_source = "graywolf-name-index"
+hash = "0x68e3f7fc14059af4"
+receiver = "entity"
+args = [{ type = "unknown" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 0 site(s) where count = pushes; count argument 1, 0 pushes seen 1"
+
+[[event]]
+name = "bc_notify"
+name_source = "hash-list"
+hash = "0xb64925f9179480d2"
+receiver = "any"
+args = [{ type = "unknown" }]
+args_variable = false
+sites = 1
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 0 site(s) where count = pushes; count argument 1, 0 pushes seen 1"
+
+[[event]]
+name = "become_corpse"
+name_source = "graywolf-name-index"
+hash = "0xcf4f7470f931941d"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "begin"
+name_source = "image string"
+hash = "0x9a848d5e6672b3de"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "begin_custom_anim"
+name_source = "hash-list"
+hash = "0x1cdd3da810e0afe8"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "begin_firing"
+name_source = "scr_const"
+hash = "0x7a0ccc75fa9fbd88"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "begin_firing_left"
+name_source = "scr_const"
+hash = "0x980ce4bfa43a9300"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "bmeleestarted"
+name_source = "corpus"
+hash = "0x9f6d1fd5ff565730"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 4
+vm = ["gsc"]
+confidence = "measured"
+evidence = "4 site(s); argument counts 0 x4; types from 4 site(s) where count = pushes; count argument = pushes seen 4"
+
+[[event]]
+name = "boarding_vehicle"
+name_source = "hash-list"
+hash = "0x354bdaf2db2d127a"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "bot_update_difficulty"
+name_source = "hash-list"
+hash = "0x3f02b54a95773416"
+receiver = "entity"
+args = [{ type = "string" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "brexfileventhandleradded0x4d3c487937a26a24ull"
+name_source = "hash-list"
+hash = "0x8516be780a227dba"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "bseq_user_deleted"
+name_source = "corpus"
+hash = "0xd760f6015b36d464"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "bullet_first_impact"
+name_source = "hash-list"
+hash = "0x85947d81ecd07b77"
+receiver = "entity"
+args = [{ type = "unknown", vm_type = "pointer" }]
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 1 x2; types from 1 site(s) where count = pushes; count argument = pushes seen 1, count argument 1, 0 pushes seen 1"
+
+[[event]]
+name = "bullet_hitshield"
+name_source = "hash-list"
+hash = "0x7beb2df8eac0eb2a"
+receiver = "entity"
+args = [{ type = "int" }, { type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 2 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "bullet_terminated"
+name_source = "hash-list"
+hash = "0xe33d1afff668bd33"
+receiver = "entity"
+args = [{ type = "unknown" }, { type = "unknown" }, { type = "unknown" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 3 x1; types from 0 site(s) where count = pushes; count argument 3, 0 pushes seen 1"
+
+[[event]]
+name = "bullethit"
+name_source = "hash-list"
+hash = "0xe69a520e533043be"
+receiver = "entity"
+args = [{ type = "entity" }, { type = "string" }, { type = "vector" }, { type = "vector" }, { type = "vector" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 5 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "bulletwhizby"
+name_source = "image string"
+hash = "0xbbc500497cf4ac34"
+receiver = "entity"
+args = [{ type = "entity" }, { type = "float" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 2 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "cancel_location"
+name_source = "corpus"
+hash = "0x7b5b7aa280cc064b"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "cannonball_end"
+name_source = "corpus"
+hash = "0x1f942381b9798cc7"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "cannonball_failsafe"
+name_source = "corpus"
+hash = "0x1709a17dd795c697"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "cannonball_hit_wall"
+name_source = "corpus"
+hash = "0x7a2adceee98800f8"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "cannonball_start"
+name_source = "hash-list"
+hash = "0x996b4e70b9ebe3a2"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "code_damageradius"
+name_source = "graywolf-name-index"
+hash = "0x4a15e9b03b47ae42"
+receiver = "any"
+args = [{ type = "entity" }, { type = "float" }, { type = "vector" }, { type = "undefined" }, { type = "undefined" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 5 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "collision"
+name_source = "corpus"
+hash = "0xab0ea251058856af"
+receiver = "entity"
+args = [{ type = "int" }, { type = "int" }, { type = "int" }, { type = "int" }, { type = "vector" }, { type = "vector" }, { type = "float" }, { type = "undefined" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 8 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "confirm_location_alt"
+name_source = "scr_const"
+hash = "0x8a89de25a2b4b0b3"
+receiver = "entity"
+args = [{ type = "unknown" }, { type = "unknown" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 2 x1; types from 0 site(s) where count = pushes; count argument 2, 0 pushes seen 1"
+
+[[event]]
+name = "consume_loot_end"
+name_source = "corpus"
+hash = "0x0a2b7bc4490a44d6"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "consume_loot_start"
+name_source = "corpus"
+hash = "0x131f8403086687c3"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "conversation_stopped"
+name_source = "hash-list"
+hash = "0xfed977928d15d350"
+receiver = "any"
+args = [{ type = "int" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "corpse_deleted"
+name_source = "corpus"
+hash = "0x11f59b57b3cf7b4f"
+receiver = "entity"
+args = [{ type = "vector" }]
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 1 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "corpse_seen_claim"
+name_source = "hash-list"
+hash = "0x0ae1b97f508220da"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "coverwall_expand_finish"
+name_source = "scr_const"
+hash = "0x1e2bfd3a0db9e589"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "coverwall_expand_hit_actor"
+name_source = "scr_const"
+hash = "0x26679cfd1f921a91"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; pushes seen 1"
+
+[[event]]
+name = "coverwall_expand_start"
+name_source = "scr_const"
+hash = "0x1369dd949cfb99ee"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "damage"
+name_source = "scr_const"
+hash = "0x7f6308be8ab37fc0"
+receiver = "entity"
+args = [{ type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }]
+args_variable = false
+sites = 8
+confidence = "measured"
+evidence = "8 site(s); argument counts 15 x8; types from 0 site(s) where count = pushes; count argument 15, 0 pushes seen 8"
+
+[[event]]
+name = "damage_notdone"
+name_source = "scr_const"
+hash = "0xa5e416d65deca92a"
+receiver = "entity"
+args = [{ type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }]
+args_variable = false
+sites = 1
+confidence = "measured"
+evidence = "1 site(s); argument counts 15 x1; types from 0 site(s) where count = pushes; count argument 15, 0 pushes seen 1"
+
+[[event]]
+name = "death"
+name_source = "image string"
+hash = "0xf405a475b731576d"
+receiver = "entity"
+args = [{ type = "entity" }, { type = "string" }, { type = "undefined" }, { type = "entity" }, { type = "entity" }]
+args_variable = true
+sites = 15
+vm = ["csc", "gsc"]
+confidence = "measured"
+evidence = "15 site(s); argument counts 0 x8, 1 x2, 2 x2, 3 x1, 4 x1, 5 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 13, static count = pushes seen 1, count argument 3, 1 pushes seen 1"
+
+[[event]]
+name = "death_or_disconnect"
+name_source = "image string"
+hash = "0x20666ddcfb99d876"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 16
+vm = ["csc", "gsc"]
+confidence = "measured"
+evidence = "16 site(s); argument counts 0 x16; types from 16 site(s) where count = pushes; count argument = pushes seen 15, static count = pushes seen 1"
+
+[[event]]
+name = "deathshield"
+name_source = "scr_const"
+hash = "0x960ecc0379b98448"
+receiver = "entity"
+args = [{ type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }]
+args_variable = false
+sites = 1
+confidence = "measured"
+evidence = "1 site(s); argument counts 15 x1; types from 0 site(s) where count = pushes; count argument 15, 0 pushes seen 1"
+
+[[event]]
+name = "deploy_equip_valid_changed"
+name_source = "hash-list"
+hash = "0xd800703acd152163"
+receiver = "entity"
+args = [{ type = "int" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "detonate"
+name_source = "corpus"
+hash = "0x1f1e94e8339e1fd1"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "doubleJumpBoostEnd"
+name_source = "scr_const"
+hash = "0xa2af34bed616af9c"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 3
+vm = ["gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 0 x3; types from 3 site(s) where count = pushes; count argument = pushes seen 3"
+
+[[event]]
+name = "doubleJumpEnd"
+name_source = "scr_const"
+hash = "0xbff0148ec1b43289"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 3
+vm = ["gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 0 x3; types from 3 site(s) where count = pushes; count argument = pushes seen 3"
+
+[[event]]
+name = "dry_fired"
+name_source = "hash-list"
+hash = "0x4c542ead0fa79361"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "dtp_end"
+name_source = "scr_const"
+hash = "0xbc539f8f7efb33f5"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "empty_offhand"
+name_source = "graywolf-name-index"
+hash = "0x77bb734374dfead1"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "end_firing"
+name_source = "scr_const"
+hash = "0x53e81ab25bfaee5c"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "end_firing_left"
+name_source = "scr_const"
+hash = "0xa11be732a7deded4"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "enemy"
+name_source = "image string"
+hash = "0x3c4d1ebf0282db4b"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "enemy_on_compass"
+name_source = "graywolf-name-index"
+hash = "0xff569078340e8cc2"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "enemy_on_compass_lost"
+name_source = "hash-list"
+hash = "0x6e61d40adf16ca2d"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "enemy_sighted"
+name_source = "image string"
+hash = "0xa2b59b06af19dc54"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "enemy_sighted_lost"
+name_source = "hash-list"
+hash = "0xbc5e8ec15fdbb27f"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "enemy_visible"
+name_source = "graywolf-name-index"
+hash = "0x5311d2619c3fb13e"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "entervehicle"
+name_source = "image string"
+hash = "0xe86bc6dce8d00217"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "entity_breath_inhale"
+name_source = "scr_const"
+hash = "0x0eb5d6f766eaf025"
+receiver = "entity"
+args = [{ type = "string" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "entitydeleted"
+name_source = "corpus"
+hash = "0xa9b88049dcac8bb3"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 3
+vm = ["gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 0 x3; types from 3 site(s) where count = pushes; count argument = pushes seen 3"
+
+[[event]]
+name = "equip_deploy_failed"
+name_source = "scr_const"
+hash = "0x33277014b4627dfd"
+receiver = "entity"
+args = [{ type = "vector" }, { type = "entity" }, { type = "vector" }, { type = "vector" }, { type = "entity" }, { type = "undefined" }, { type = "undefined" }, { type = "undefined" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 8 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "execution_begin"
+name_source = "corpus"
+hash = "0x8e65cacc4344df23"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 1 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "explode"
+name_source = "corpus"
+hash = "0xb53b6b08607cc8e6"
+receiver = "entity"
+args = [{ type = "vector" }, { type = "vector" }, { type = "vector" }, { type = "entity" }]
+args_variable = true
+sites = 3
+vm = ["gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 2 x2, 4 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 3"
+
+[[event]]
+name = "failedentervehicle"
+name_source = "hash-list"
+hash = "0xdbd54a2ffb38bace"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "finished_turret_fire"
+name_source = "hash-list"
+hash = "0x32f5e25036dccf5f"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "first_person"
+name_source = "image string"
+hash = "0x061f3fbbc925c827"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "flashbang"
+name_source = "scr_const"
+hash = "0x8f7793e7e88220a7"
+receiver = "entity"
+args = [{ type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 5 x1; types from 0 site(s) where count = pushes; count argument 5, 0 pushes seen 1"
+
+[[event]]
+name = "found"
+name_source = "corpus"
+hash = "0x217ae8afd4252eff"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "free_ai_assigned"
+name_source = "hash-list"
+hash = "0x45c5d1080f30b4b7"
+receiver = "any"
+args = [{ type = "unknown" }, { type = "unknown" }]
+args_variable = false
+sites = 1
+confidence = "measured"
+evidence = "1 site(s); argument counts 2 x1; types from 0 site(s) where count = pushes; count argument 2, 0 pushes seen 1"
+
+[[event]]
+name = "frontkicked"
+name_source = "corpus"
+hash = "0x6cef57576e841277"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "frozen"
+name_source = "image string"
+hash = "0xe6a89add94696e23"
+receiver = "entity"
+args = [{ type = "vector" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "gesture_stopped"
+name_source = "corpus"
+hash = "0xbc91a10266178212"
+receiver = "entity"
+args = [{ type = "string" }, { type = "float" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 2 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "glass_destroyed"
+name_source = "image string"
+hash = "0xb4d73a5e47873cbf"
+receiver = "any"
+args = [{ type = "int" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "goal"
+name_source = "image string"
+hash = "0x9cf9f2720eaf1cb6"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 3
+vm = ["gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 0 x3; types from 3 site(s) where count = pushes; count argument = pushes seen 3"
+
+[[event]]
+name = "goal_changed"
+name_source = "corpus"
+hash = "0x36e825e6327d4ab1"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 4
+vm = ["gsc"]
+confidence = "measured"
+evidence = "4 site(s); argument counts 0 x4; types from 4 site(s) where count = pushes; count argument = pushes seen 4"
+
+[[event]]
+name = "goal_reached"
+name_source = "corpus"
+hash = "0x11ee9e13c54f555b"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "goal_yaw"
+name_source = "graywolf-name-index"
+hash = "0x07f756a079181b26"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "grapple_detach"
+name_source = "corpus"
+hash = "0x984063865887add6"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "grapple_end"
+name_source = "image string"
+hash = "0x50a83782713d7906"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "grapple_fire"
+name_source = "hash-list"
+hash = "0x939330be870513a5"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "grapple_fire_fail"
+name_source = "corpus"
+hash = "0x12cd37adee223cce"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "grapple_fire_success"
+name_source = "corpus"
+hash = "0x98418cd3c45bac49"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "grapple_retrieve"
+name_source = "hash-list"
+hash = "0x039e6bbb389b05ed"
+receiver = "entity"
+args = [{ type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 4 x1; types from 0 site(s) where count = pushes; count argument 4, 0 pushes seen 1"
+
+[[event]]
+name = "grapple_takeoff"
+name_source = "corpus"
+hash = "0x9a6b218cfbf4a63f"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "grenade danger"
+name_source = "image string"
+hash = "0xf0bb20cec150f744"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "grenade_held_on_death"
+name_source = "hash-list"
+hash = "0x068353a28b33072a"
+receiver = "entity"
+args = [{ type = "unknown" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 0 site(s) where count = pushes; count argument 1, 0 pushes seen 1"
+
+[[event]]
+name = "grenade_pullback"
+name_source = "corpus"
+hash = "0x11b5199b39d81472"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 1 x2; types from 1 site(s) where count = pushes; count argument = pushes seen 1, count argument 1, 0 pushes seen 1"
+
+[[event]]
+name = "gutgo"
+name_source = "image string"
+hash = "0x5f0a6a22b693d89d"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "gutgrab"
+name_source = "image string"
+hash = "0xd59f3b9c1711f975"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "heavy_melee_in"
+name_source = "corpus"
+hash = "0x8119b2d67391dd7b"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "heavy_melee_start"
+name_source = "corpus"
+hash = "0x63af20f0c62fb208"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "hit_leap"
+name_source = "hash-list"
+hash = "0x64eeab5b18185b0d"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "hit_melee"
+name_source = "corpus"
+hash = "0x222ae77f36356521"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "important_user_command_state_flags_change"
+name_source = "hash-list"
+hash = "0x0a40628a5e05f1aa"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "input_type_changed"
+name_source = "scr_const"
+hash = "0xaac1836312c3cb9f"
+receiver = "entity"
+args = [{ type = "unknown", vm_type = "pointer" }]
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 1 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "interaction_ended"
+name_source = "hash-list"
+hash = "0x1b58ec57c4a565a8"
+receiver = "entity"
+args = [{ type = "int" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "interaction_started"
+name_source = "hash-list"
+hash = "0xf2b5e6cfe4058471"
+receiver = "entity"
+args = [{ type = "int" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "invalid_parent"
+name_source = "hash-list"
+hash = "0x2b466808d08545c5"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "investigate_end"
+name_source = "hash-list"
+hash = "0x10f55bc20e3ff036"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "investigate_start"
+name_source = "hash-list"
+hash = "0x504ff3f18c6e5123"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "is_underwater_changed"
+name_source = "hash-list"
+hash = "0xdf8719ff4ed91a8c"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "jump_end"
+name_source = "scr_const"
+hash = "0xe1ea3755aaf05333"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "killanimscript"
+name_source = "hash-list"
+hash = "0xa2892f14b4b085df"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "killcam_end"
+name_source = "image string"
+hash = "0x5290bc1184ffddc2"
+receiver = "any"
+args = [{ type = "int" }]
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "killcam_reaction_requested"
+name_source = "hash-list"
+hash = "0x01876fb9368cf7c9"
+receiver = "entity"
+args = [{ type = "int" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "killcam_start"
+name_source = "image string"
+hash = "0x10b015cdd4359747"
+receiver = "any"
+args = [{ type = "int" }, { type = "int" }]
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 2 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "knockdown_end"
+name_source = "corpus"
+hash = "0xc078b83c781a9cd1"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "knockdown_start"
+name_source = "hash-list"
+hash = "0x715d7f4547c900f0"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "known_event"
+name_source = "graywolf-name-index"
+hash = "0x4d239d986e531e43"
+receiver = "entity"
+args = [{ type = "entity" }, { type = "int" }, { type = "int" }, { type = "vector" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 4 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "landing"
+name_source = "image string"
+hash = "0x52d26b207c2dd6dc"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "leap_attack_end"
+name_source = "corpus"
+hash = "0x6646263156589082"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "leap_attack_start"
+name_source = "corpus"
+hash = "0xae62ee347dfb1207"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "leap_failsafe"
+name_source = "hash-list"
+hash = "0x242827e6835fdae5"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "leap_stuck"
+name_source = "hash-list"
+hash = "0x0c5f64b60f48fd98"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "lightattacked"
+name_source = "corpus"
+hash = "0x70dd38a0212ad506"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "live_ragdoll_vehicle_occupant_unlink"
+name_source = "hash-list"
+hash = "0x6e38e817e336e50c"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "local_gravity_changed"
+name_source = "hash-list"
+hash = "0x65b20bec77a97f2a"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "luinotifyserver"
+name_source = "corpus"
+hash = "0x88aae4ebdfd0f97b"
+receiver = "entity"
+args = [{ type = "string" }, { type = "int" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 2 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "mantle_end"
+name_source = "scr_const"
+hash = "0xe0bd0d6a1939bcb8"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 3
+vm = ["gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 0 x3; types from 3 site(s) where count = pushes; count argument = pushes seen 3"
+
+[[event]]
+name = "marks_changed"
+name_source = "hash-list"
+hash = "0x7be8e01f9aeb09b6"
+receiver = "entity"
+args = [{ type = "undefined" }, { type = "undefined" }, { type = "undefined" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 3 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "marks_target_changed"
+name_source = "graywolf-name-index"
+hash = "0xe3787f8b2e1750c0"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "meatshield_attacker_start"
+name_source = "corpus"
+hash = "0xb18464aa904f44c0"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "meatshield_attacker_stop"
+name_source = "hash-list"
+hash = "0x4697db5cc98768c4"
+receiver = "entity"
+args = [{ type = "int" }]
+args_variable = false
+sites = 3
+vm = ["gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 1 x3; types from 3 site(s) where count = pushes; count argument = pushes seen 3"
+
+[[event]]
+name = "meatshield_state_change"
+name_source = "hash-list"
+hash = "0xff19e97726b7041a"
+receiver = "entity"
+args = [{ type = "int" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "meatshield_victim_start"
+name_source = "corpus"
+hash = "0x399f64172b697b17"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "meatshield_victim_stop"
+name_source = "corpus"
+hash = "0xd27d84b8415c0a9d"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 3
+vm = ["gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 0 x3; types from 2 site(s) where count = pushes; count argument = pushes seen 2, count argument 0, 3 pushes seen 1"
+
+[[event]]
+name = "meatshield_victim_stop_bleeding"
+name_source = "hash-list"
+hash = "0x61b26892048f0552"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 0 site(s) where count = pushes; count argument 0, 1 pushes seen 1"
+
+[[event]]
+name = "melee_charge_start"
+name_source = "hash-list"
+hash = "0x06c3acaae5b7556f"
+receiver = "entity"
+args = [{ type = "int" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "melee_fired"
+name_source = "corpus"
+hash = "0x9952cd475626e8cc"
+receiver = "entity"
+args = [{ type = "undefined" }, { type = "int" }, { type = "entity" }, { type = "undefined" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 4 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "melee_swipe_start"
+name_source = "corpus"
+hash = "0x58c82a72fb859c41"
+receiver = "entity"
+args = [{ type = "int" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "melee_vox"
+name_source = "image string"
+hash = "0xad419cc17df39a71"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "menuresponse"
+name_source = "graywolf-name-index"
+hash = "0xd33d392c33ece1cd"
+receiver = "entity"
+args = [{ type = "string" }, { type = "string" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 2 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "missile_bounced"
+name_source = "corpus"
+hash = "0xa4e103bd98bca998"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "missile_change_to_dud"
+name_source = "corpus"
+hash = "0x33853082ad99d7da"
+receiver = "entity"
+args = [{ type = "vector" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "missile_door_stuck"
+name_source = "hash-list"
+hash = "0xc167e145cfc24a47"
+receiver = "entity"
+args = [{ type = "entity" }, { type = "unknown", vm_type = "tag10" }, { type = "string" }, { type = "vector" }, { type = "vector" }, { type = "vector" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 6 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "missile_fire"
+name_source = "corpus"
+hash = "0xcc4996a3ef21e518"
+receiver = "entity"
+args = [{ type = "entity" }, { type = "entity" }, { type = "undefined" }, { type = "undefined" }, { type = "string" }]
+args_variable = true
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 3 x1, 5 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "missile_impact"
+name_source = "corpus"
+hash = "0x4f62f6e86defd666"
+receiver = "entity"
+args = [{ type = "entity" }, { type = "vector" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 2 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "missile_stuck"
+name_source = "corpus"
+hash = "0x75398be94fec65e8"
+receiver = "entity"
+args = [{ type = "entity" }, { type = "unknown", vm_type = "tag10" }, { type = "string" }, { type = "vector" }, { type = "vector" }, { type = "vector" }, { type = "undefined" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 7 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "missile_water_impact"
+name_source = "corpus"
+hash = "0x938be8d59ebf9506"
+receiver = "entity"
+args = [{ type = "vector" }, { type = "vector" }, { type = "vector" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 3 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "movedone"
+name_source = "corpus"
+hash = "0xe42e09427b476cf4"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "moving_up"
+name_source = "image string"
+hash = "0xe08b12a472a0cc75"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "movingtovehicle"
+name_source = "hash-list"
+hash = "0x5f4f4719c8b9a60e"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "near_goal"
+name_source = "image string"
+hash = "0xcf39dbd1e9b0b4c3"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "newlookat"
+name_source = "graywolf-name-index"
+hash = "0xbd1f05a37c186f0f"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "night_vision_off"
+name_source = "image string"
+hash = "0x55e52709de3b466c"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 3
+vm = ["gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 0 x3; types from 3 site(s) where count = pushes; count argument = pushes seen 3"
+
+[[event]]
+name = "node_bad"
+name_source = "graywolf-name-index"
+hash = "0xa2e9fd8901df5fb9"
+receiver = "entity"
+args = [{ type = "string" }, { type = "entity" }, { type = "int" }]
+args_variable = true
+sites = 3
+vm = ["gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 1 x1, 2 x1, 3 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 3"
+
+[[event]]
+name = "node_relinquished"
+name_source = "hash-list"
+hash = "0x2feb31be03947629"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "nondelete"
+name_source = "hash-list"
+hash = "0xf884feb21ff33557"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 3
+vm = ["gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 0 x3; types from 3 site(s) where count = pushes; count argument = pushes seen 3"
+
+[[event]]
+name = "object_impact"
+name_source = "image string"
+hash = "0xd5ea975cd3f64d25"
+receiver = "entity"
+args = [{ type = "vector" }, { type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 2 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "object_whizby"
+name_source = "image string"
+hash = "0xa9f238602761a72e"
+receiver = "entity"
+args = [{ type = "vector" }, { type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 2 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "offhand_ads_off"
+name_source = "corpus"
+hash = "0xfc7ffec4bb1404d4"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "offhand_ads_on"
+name_source = "corpus"
+hash = "0x5f3e39fe1925a822"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "offhand_end"
+name_source = "corpus"
+hash = "0x884198633bb9f2b5"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 3
+vm = ["gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 0 x3; types from 3 site(s) where count = pushes; count argument = pushes seen 3"
+
+[[event]]
+name = "offhand_fired"
+name_source = "corpus"
+hash = "0x93e17f60e20edad0"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 5
+vm = ["gsc"]
+confidence = "measured"
+evidence = "5 site(s); argument counts 1 x5; types from 5 site(s) where count = pushes; count argument = pushes seen 5"
+
+[[event]]
+name = "offhand_pullback"
+name_source = "corpus"
+hash = "0x072e473781831388"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "ok"
+name_source = "image string"
+hash = "0x08b05d07b5566bef"
+receiver = "entity"
+args = [{ type = "int" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "on_dog_new_handler"
+name_source = "hash-list"
+hash = "0x1432c75a80e7fb47"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "on_player_update"
+name_source = "graywolf-name-index"
+hash = "0xf807f1ca36af2a34"
+receiver = "entity"
+args = [{ type = "float" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "orientto_complete"
+name_source = "hash-list"
+hash = "0xb389dc58009c1d5d"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "overcooked"
+name_source = "bo4-glossary"
+hash = "0x1c027edc79ff6762"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "pain"
+name_source = "image string"
+hash = "0x0369310deb88ae95"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "path_blocked"
+name_source = "image string"
+hash = "0x08366bc1b12d67d5"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "path_set"
+name_source = "graywolf-name-index"
+hash = "0xc9e873f367b910d9"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 3
+vm = ["gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 0 x3; types from 3 site(s) where count = pushes; count argument = pushes seen 3"
+
+[[event]]
+name = "patrol_curious"
+name_source = "hash-list"
+hash = "0x04d9675e083c0f36"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "pickup"
+name_source = "corpus"
+hash = "0x9fa3a41c86ecb765"
+receiver = "entity"
+args = [{ type = "entity" }, { type = "entity" }, { type = "int" }]
+args_variable = true
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 1 x1, 3 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "plan_complete"
+name_source = "corpus"
+hash = "0xbac116bba42857d4"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; static count = pushes seen 1"
+
+[[event]]
+name = "player_ads_end"
+name_source = "scr_const"
+hash = "0x97230fbe3f56370f"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "player_in_air_end"
+name_source = "scr_const"
+hash = "0xda84f662d754013b"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "player_in_execution_begin"
+name_source = "scr_const"
+hash = "0x1bf3199fda4b9841"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "player_on_ladder_end"
+name_source = "scr_const"
+hash = "0x75eeb7e76060544f"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "player_pushed"
+name_source = "image string"
+hash = "0x42de9b41a6bc9c9c"
+receiver = "entity"
+args = [{ type = "entity" }, { type = "vector" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 2 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "player_smoke_interaction"
+name_source = "hash-list"
+hash = "0x5195f3c6b660de19"
+receiver = "entity"
+args = [{ type = "string" }, { type = "string" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 2 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "poiseknockdown"
+name_source = "corpus"
+hash = "0xe149a8da18c9dbd1"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "poisestagger"
+name_source = "corpus"
+hash = "0xd491510193d61012"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "portable_radar_ping"
+name_source = "hash-list"
+hash = "0xbee82b6419665d82"
+receiver = "any"
+args = [{ type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }]
+args_variable = false
+sites = 1
+confidence = "measured"
+evidence = "1 site(s); argument counts 5 x1; types from 0 site(s) where count = pushes; count argument 5, 1 pushes seen 1"
+
+[[event]]
+name = "potg_archive_result"
+name_source = "hash-list"
+hash = "0x0f5f843fcb7f5dbc"
+receiver = "any"
+args = [{ type = "int" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "predicted_projectile_impact"
+name_source = "hash-list"
+hash = "0x14f1bf440ea3141e"
+receiver = "entity"
+args = [{ type = "entity" }, { type = "vector" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 2 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "projectile_impact"
+name_source = "image string"
+hash = "0x062a202163700b85"
+receiver = "entity"
+args = [{ type = "entity" }, { type = "vector" }, { type = "int" }, { type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 4 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "projectile_impact_vehicle"
+name_source = "hash-list"
+hash = "0xcd4e9a17c5edda52"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "projectile_ping"
+name_source = "image string"
+hash = "0x821d064550c6e243"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "publisher_download_completed"
+name_source = "hash-list"
+hash = "0xf380f91feee0abea"
+receiver = "any"
+args = [{ type = "int" }, { type = "string" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 2 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "ranged_attack_enemy_start"
+name_source = "corpus"
+hash = "0xb283f7085796836b"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "ranged_attack_point_start"
+name_source = "corpus"
+hash = "0xf9cf2b76c2064839"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "reached_end_node"
+name_source = "image string"
+hash = "0xe7ecf5e0ca2ff2cc"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 3
+vm = ["gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 0 x3; types from 3 site(s) where count = pushes; count argument = pushes seen 3"
+
+[[event]]
+name = "reached_interactions_time_limit"
+name_source = "hash-list"
+hash = "0xa0ee6ebe9099621d"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "reached_wait_node"
+name_source = "graywolf-name-index"
+hash = "0x12b158392903ee94"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "reached_wait_speed"
+name_source = "hash-list"
+hash = "0x55e3c4f31f7b1b03"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "reload"
+name_source = "image string"
+hash = "0xe7f9484da4b873ac"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 3
+vm = ["gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 0 x3; types from 3 site(s) where count = pushes; count argument = pushes seen 3"
+
+[[event]]
+name = "reload_ammo_added"
+name_source = "hash-list"
+hash = "0xef47b53296157ce6"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "reload_start"
+name_source = "corpus"
+hash = "0xc17a1773c7e7754b"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 3
+vm = ["gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 0 x3; types from 3 site(s) where count = pushes; count argument = pushes seen 3"
+
+[[event]]
+name = "reposition_end"
+name_source = "hash-list"
+hash = "0x1f9dfa4fe85ace39"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "reposition_start"
+name_source = "hash-list"
+hash = "0xccc5484a293f1e28"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "restartmission"
+name_source = "hash-list"
+hash = "0xe8e27bf0c0ce598a"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "retreat_end"
+name_source = "hash-list"
+hash = "0x8c8cedf29bffcf62"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "reveal_icons_in_radius"
+name_source = "hash-list"
+hash = "0x307650149880f2ac"
+receiver = "any"
+args = [{ type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }]
+args_variable = false
+sites = 1
+confidence = "measured"
+evidence = "1 site(s); argument counts 4 x1; types from 0 site(s) where count = pushes; count argument 4, 1 pushes seen 1"
+
+[[event]]
+name = "rotatedone"
+name_source = "corpus"
+hash = "0xd99fab645789a8b2"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 3
+vm = ["gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 0 x3; types from 3 site(s) where count = pushes; count argument = pushes seen 3"
+
+[[event]]
+name = "scavenger"
+name_source = "image string"
+hash = "0x10f09f467f0915fb"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "scriptablenotification"
+name_source = "hash-list"
+hash = "0xee2a9b703f64faa5"
+receiver = "entity"
+args = [{ type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 4 x1; types from 0 site(s) where count = pushes; count argument 4, 1 pushes seen 1"
+
+[[event]]
+name = "shockwave_fov"
+name_source = "scr_const"
+hash = "0xfa7e9efd390ed35c"
+receiver = "entity"
+args = [{ type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 9 x1; types from 0 site(s) where count = pushes; count argument 9, 1 pushes seen 1"
+
+[[event]]
+name = "shockwave_impact"
+name_source = "scr_const"
+hash = "0x2e34de49d7656ef7"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 1 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "shoot_finished"
+name_source = "graywolf-name-index"
+hash = "0xfa92c31ea85a269b"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "shoot_torpedo_projectile"
+name_source = "hash-list"
+hash = "0x2d0be06705f91632"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "shooting"
+name_source = "bo4-glossary"
+hash = "0x5ef9698ce8e8a158"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "shoulder_charge_start"
+name_source = "hash-list"
+hash = "0xc3673567bf19b789"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "ski_notify"
+name_source = "hash-list"
+hash = "0x7f0b742dbf9b10d6"
+receiver = "entity"
+args = [{ type = "int" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "skit_new_user_joined"
+name_source = "hash-list"
+hash = "0x2c3976b23c85f2a1"
+receiver = "any"
+args = [{ type = "int" }, { type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 2 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "skydive_beginfreefall"
+name_source = "corpus"
+hash = "0x080f035ef535f5e1"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "skydive_deployparachute"
+name_source = "corpus"
+hash = "0xf112ac0140b1ac11"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "skydive_touch"
+name_source = "corpus"
+hash = "0xdd462019157fdedc"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "smart_gun_target_acquired"
+name_source = "hash-list"
+hash = "0x6e05a37916e8f2de"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; pushes seen 1"
+
+[[event]]
+name = "smoke"
+name_source = "image string"
+hash = "0x26d84472af914ea6"
+receiver = "any"
+args = [{ type = "entity" }, { type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 2 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "sniper_weapon_fired"
+name_source = "hash-list"
+hash = "0xcfef3bbfd712e9ec"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "spawned"
+name_source = "corpus"
+hash = "0x04da6f354a99cc99"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 3
+vm = ["gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 1 x3; types from 3 site(s) where count = pushes; count argument = pushes seen 3"
+
+[[event]]
+name = "spectating_cycle"
+name_source = "corpus"
+hash = "0x676f46c0548e1868"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "spectating_cycle_start"
+name_source = "hash-list"
+hash = "0x03f38b5f05a8868f"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "spectating_mlg_camera"
+name_source = "hash-list"
+hash = "0xcf0040efa10da626"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "sprint_end"
+name_source = "scr_const"
+hash = "0xda78b485020d247b"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 3
+vm = ["gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 0 x3; types from 3 site(s) where count = pushes; count argument = pushes seen 3"
+
+[[event]]
+name = "sprint_slide_end"
+name_source = "scr_const"
+hash = "0x3166fc7459fb1089"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 3
+vm = ["gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 0 x3; types from 3 site(s) where count = pushes; count argument = pushes seen 3"
+
+[[event]]
+name = "stance_changed"
+name_source = "corpus"
+hash = "0xaf324a55b2a9c07a"
+receiver = "entity"
+args = [{ type = "unknown" }]
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 1 x2; types from 0 site(s) where count = pushes; count argument 1, 3 pushes seen 2"
+
+[[event]]
+name = "stance_changed_post"
+name_source = "hash-list"
+hash = "0x115130d3bf4d7431"
+receiver = "entity"
+args = [{ type = "unknown" }]
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 1 x2; types from 0 site(s) where count = pushes; count argument 1, 3 pushes seen 2"
+
+[[event]]
+name = "start_move"
+name_source = "graywolf-name-index"
+hash = "0x89cbce5a29f05a0d"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "stealth_combat"
+name_source = "image string"
+hash = "0x56f0c0a340f0b0ad"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "stealth_combat_exited"
+name_source = "corpus"
+hash = "0xefdade246ab6389f"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "stealth_hunt"
+name_source = "image string"
+hash = "0x2b54d5e1df815470"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "stealth_hunt_investigate"
+name_source = "hash-list"
+hash = "0x08028e798731878c"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "stealth_hunt_update_investigate"
+name_source = "hash-list"
+hash = "0xeb2e7341219f55b8"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "stealth_idle"
+name_source = "image string"
+hash = "0xb2b0a9d6ca03306f"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "stealth_investigate"
+name_source = "image string"
+hash = "0xed1907ea25e20b08"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "stealth_update_investigate"
+name_source = "hash-list"
+hash = "0xda91d0991f729cd4"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "stop_going_to_node"
+name_source = "corpus"
+hash = "0x127b4ef55d0ff8ed"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "subgoal"
+name_source = "graywolf-name-index"
+hash = "0xe7d596e783d3ea46"
+receiver = "entity"
+args = [{ type = "int" }]
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 1 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "suppression"
+name_source = "corpus"
+hash = "0xcc66c3ae9192b1b8"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "suppression_end"
+name_source = "hash-list"
+hash = "0xcb82a8245c8c69ea"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "swim_breathing_disabled_begin"
+name_source = "scr_const"
+hash = "0x46b476c4551de1bb"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "swim_end"
+name_source = "scr_const"
+hash = "0x6e819c2237697793"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "swim_sprint_end"
+name_source = "scr_const"
+hash = "0xaac4c1e91ab9d588"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "third_person"
+name_source = "image string"
+hash = "0x6758f1bb7f81058e"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "threatsightstate"
+name_source = "hash-list"
+hash = "0xe65d744126e08be7"
+receiver = "entity"
+args = [{ type = "float" }, { type = "int" }, { type = "int" }, { type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 4 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "thrusters_notify"
+name_source = "scr_const"
+hash = "0x75f9de9388ae935f"
+receiver = "entity"
+args = [{ type = "string" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "touch"
+name_source = "image string"
+hash = "0x381dfd7d5a88bc78"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 4
+vm = ["gsc"]
+confidence = "measured"
+evidence = "4 site(s); argument counts 1 x4; types from 4 site(s) where count = pushes; count argument = pushes seen 4"
+
+[[event]]
+name = "touch_noentvolume"
+name_source = "hash-list"
+hash = "0xab2ead4fcf4ac2a1"
+receiver = "entity"
+args = [{ type = "unknown" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 0 site(s) where count = pushes; count argument 1, 0 pushes seen 1"
+
+[[event]]
+name = "traverse_begin"
+name_source = "hash-list"
+hash = "0xee495cc654af0271"
+receiver = "entity"
+args = [{ type = "string" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "trigger"
+name_source = "image string"
+hash = "0xf034ee5c58a805c3"
+receiver = "entity"
+args = [{ type = "entity" }, { type = "entity" }]
+args_variable = true
+sites = 9
+vm = ["csc", "gsc"]
+confidence = "measured"
+evidence = "9 site(s); argument counts 1 x8, 2 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 8, count argument 1, 0 pushes seen 1"
+
+[[event]]
+name = "trigger_grenade"
+name_source = "image string"
+hash = "0x0023ee1aeeb2f502"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 1 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "trigger_progress"
+name_source = "image string"
+hash = "0x33d8cc4648c3aa7f"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "turret_deactivate"
+name_source = "hash-list"
+hash = "0xea7e4437ec451f3e"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 3
+vm = ["gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 0 x3; types from 3 site(s) where count = pushes; count argument = pushes seen 3"
+
+[[event]]
+name = "turret_fire"
+name_source = "graywolf-name-index"
+hash = "0x57d4f8ba936321ec"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = true
+sites = 3
+vm = ["gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 0 x2, 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 3"
+
+[[event]]
+name = "turret_no_vis"
+name_source = "graywolf-name-index"
+hash = "0xb20aa274e660081e"
+receiver = "entity"
+args = [{ type = "unknown" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 0 site(s) where count = pushes; count argument 1, 0 pushes seen 1"
+
+[[event]]
+name = "turret_not_on_target"
+name_source = "hash-list"
+hash = "0x88c9f725ccd37e25"
+receiver = "entity"
+args = [{ type = "unknown" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 0 site(s) where count = pushes; count argument 1, 0 pushes seen 1"
+
+[[event]]
+name = "turret_on_target"
+name_source = "corpus"
+hash = "0xc1430988a10eeefb"
+receiver = "entity"
+args = [{ type = "unknown" }]
+args_variable = true
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x1, 1 x1; types from 0 site(s) where count = pushes; count argument = pushes seen 1, count argument 1, 0 pushes seen 1"
+
+[[event]]
+name = "turret_on_vistarget"
+name_source = "hash-list"
+hash = "0x1166febd784fe975"
+receiver = "entity"
+args = [{ type = "unknown" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 0 site(s) where count = pushes; count argument 1, 0 pushes seen 1"
+
+[[event]]
+name = "turret_pitch_clamped"
+name_source = "hash-list"
+hash = "0xa6cb44bdd7013bf3"
+receiver = "entity"
+args = [{ type = "int" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "turret_rotate_stopped"
+name_source = "hash-list"
+hash = "0xc99517f29b2a7601"
+receiver = "entity"
+args = [{ type = "unknown" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 0 site(s) where count = pushes; count argument 1, 0 pushes seen 1"
+
+[[event]]
+name = "turret_yaw_clamped"
+name_source = "graywolf-name-index"
+hash = "0x4e206cb3d973e6ba"
+receiver = "entity"
+args = [{ type = "unknown" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 0 site(s) where count = pushes; count argument 1, 0 pushes seen 1"
+
+[[event]]
+name = "turretownerchange"
+name_source = "hash-list"
+hash = "0x824c648470c67326"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 5
+vm = ["gsc"]
+confidence = "measured"
+evidence = "5 site(s); argument counts 0 x5; types from 5 site(s) where count = pushes; count argument = pushes seen 5"
+
+[[event]]
+name = "turretstatechange"
+name_source = "corpus"
+hash = "0x02e0837d39d92b30"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 4
+vm = ["gsc"]
+confidence = "measured"
+evidence = "4 site(s); argument counts 0 x4; types from 4 site(s) where count = pushes; count argument = pushes seen 4"
+
+[[event]]
+name = "unresolved_collision"
+name_source = "graywolf-name-index"
+hash = "0x86a488940a671681"
+receiver = "entity"
+args = [{ type = "entity" }, { type = "vector" }, { type = "undefined" }]
+args_variable = true
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 1 x1, 3 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "unspotted_by_enemy_radar"
+name_source = "scr_const"
+hash = "0x7d215a1762b766f5"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "update_vehicle_usability"
+name_source = "hash-list"
+hash = "0x2b503caccece1636"
+receiver = "entity"
+args = [{ type = "unknown" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 0 site(s) where count = pushes; count argument 1, 0 pushes seen 1"
+
+[[event]]
+name = "veh_boatbounce"
+name_source = "graywolf-name-index"
+hash = "0x339dc0a0594618ef"
+receiver = "entity"
+args = [{ type = "float" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "veh_collision"
+name_source = "graywolf-name-index"
+hash = "0xa3ed7c7219ad912b"
+receiver = "entity"
+args = [{ type = "unknown" }, { type = "unknown" }, { type = "unknown" }]
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 3 x2; types from 0 site(s) where count = pushes; count argument 3, 1 pushes seen 2"
+
+[[event]]
+name = "veh_jolt"
+name_source = "graywolf-name-index"
+hash = "0xe41e9ecd90b1e662"
+receiver = "entity"
+args = [{ type = "vector" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "veh_predictedcollision"
+name_source = "graywolf-name-index"
+hash = "0xa56f798792a5a339"
+receiver = "entity"
+args = [{ type = "vector" }, { type = "vector" }]
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 2 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "vehicle_attack_collided_with_vehicle"
+name_source = "corpus"
+hash = "0x84bddb2575ec967f"
+receiver = "entity"
+args = [{ type = "int" }, { type = "vector" }]
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 2 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "vehicle_attack_end"
+name_source = "corpus"
+hash = "0x39e8c12115e44f6e"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "vehicle_attack_failsafe"
+name_source = "hash-list"
+hash = "0xecf73bad20a544b4"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "vehicle_attack_latch_linkto_start"
+name_source = "corpus"
+hash = "0xf7716f5646bd5e6c"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 3
+vm = ["gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 0 x3; types from 3 site(s) where count = pushes; count argument = pushes seen 3"
+
+[[event]]
+name = "vehicle_attack_start"
+name_source = "hash-list"
+hash = "0xb16053d870533d8b"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "vehicle_attack_teleport_to_ground"
+name_source = "corpus"
+hash = "0xe2282f801f9600a8"
+receiver = "entity"
+args = [{ type = "vector" }, { type = "vector" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 2 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "vehicle_attack_vehicle_boosted_while_latched"
+name_source = "corpus"
+hash = "0x0c4f785de59c3210"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "vehicle_attack_vehicle_hard_landing_while_latched"
+name_source = "corpus"
+hash = "0xb6b52a932f1cda77"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "vehicle_dismount"
+name_source = "graywolf-name-index"
+hash = "0x178f9663fe37acd1"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "vehicle_hijack"
+name_source = "image string"
+hash = "0x89011771180716f4"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "vehicle_horn"
+name_source = "image string"
+hash = "0x8168802aef11c0c1"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "vehicle_horn_failed"
+name_source = "hash-list"
+hash = "0x2f06fea9352388ab"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "vehicle_mount"
+name_source = "graywolf-name-index"
+hash = "0x4f391ed79116827d"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "vehicle_turret_fire"
+name_source = "hash-list"
+hash = "0x54f2a4479668af7b"
+receiver = "entity"
+args = [{ type = "int" }, { type = "int" }, { type = "entity" }]
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 3 x2; types from 1 site(s) where count = pushes; count argument = pushes seen 1, count argument 3, 1 pushes seen 1"
+
+[[event]]
+name = "vehicle_turret_reload_end"
+name_source = "hash-list"
+hash = "0xf943eeebaa18fa28"
+receiver = "entity"
+args = [{ type = "int" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "vehicle_unlink_complete"
+name_source = "hash-list"
+hash = "0xda7ccb138ed8170f"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "vm_sv_note"
+name_source = "hash-list"
+hash = "0x0246c63e4a9efdad"
+receiver = "any"
+args = [{ type = "unknown" }]
+args_variable = false
+sites = 1
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 0 site(s) where count = pushes; count argument 1, 0 pushes seen 1"
+
+[[event]]
+name = "volume_ai_cleared"
+name_source = "hash-list"
+hash = "0x118660ee3178eb6d"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "volume_ai_killed"
+name_source = "hash-list"
+hash = "0xa570e18c6d69efb2"
+receiver = "entity"
+args = [{ type = "unknown" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 0 site(s) where count = pushes; count argument 1, 0 pushes seen 1"
+
+[[event]]
+name = "volume_ai_minimized"
+name_source = "hash-list"
+hash = "0x2b90a06b4972cb25"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "volume_assigned_ai"
+name_source = "hash-list"
+hash = "0x815298b338a3a53f"
+receiver = "entity"
+args = [{ type = "unknown" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 0 site(s) where count = pushes; count argument 1, 0 pushes seen 1"
+
+[[event]]
+name = "volume_hit_reinforce_limit"
+name_source = "hash-list"
+hash = "0xc9c65747b8524fe7"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "vortex_reroll_anim"
+name_source = "hash-list"
+hash = "0xe691753f5e81b8e8"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "wall_jump_end"
+name_source = "scr_const"
+hash = "0xea2512ff9da98548"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "wander_end"
+name_source = "hash-list"
+hash = "0xe83dcc5cb18f9176"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "wander_start"
+name_source = "hash-list"
+hash = "0x8444622491387663"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "weapon_change"
+name_source = "corpus"
+hash = "0xfdd13f39b4448eee"
+receiver = "entity"
+args = [{ type = "entity" }, { type = "int" }]
+args_variable = true
+sites = 3
+vm = ["gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 1 x1, 2 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 3"
+
+[[event]]
+name = "weapon_deploy_requested"
+name_source = "corpus"
+hash = "0xd44dfab23ad023be"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "weapon_dropped"
+name_source = "hash-list"
+hash = "0xbc581de252037444"
+receiver = "entity"
+args = [{ type = "entity" }, { type = "undefined" }]
+args_variable = true
+sites = 3
+vm = ["gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 1 x2, 2 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 3"
+
+[[event]]
+name = "weapon_enter_or_clear_charge"
+name_source = "hash-list"
+hash = "0x69562b0de38a064f"
+receiver = "entity"
+args = [{ type = "int" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "weapon_fired"
+name_source = "image string"
+hash = "0x0147d1144102f0ae"
+receiver = "entity"
+args = [{ type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }]
+args_variable = true
+sites = 3
+vm = ["gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 1 x1, 3 x1, 5 x1; types from 0 site(s) where count = pushes; count argument = pushes seen 2, count argument 5, 0 pushes seen 1"
+
+[[event]]
+name = "weapon_inspect"
+name_source = "image string"
+hash = "0x2fda3f64c5caa89e"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+name = "weapon_raise_code"
+name_source = "corpus"
+hash = "0x83ec44ec3968153a"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "weapon_switch_canceled"
+name_source = "corpus"
+hash = "0xd68e3950f5f164b8"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 1 x2; types from 1 site(s) where count = pushes; count argument = pushes seen 1, count argument 1, 0 pushes seen 1"
+
+[[event]]
+name = "weapon_switch_invalid"
+name_source = "hash-list"
+hash = "0x1222d445ef9013ee"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "weapon_switch_started"
+name_source = "corpus"
+hash = "0x38248cc2f9aec3b4"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 1 x2; types from 1 site(s) where count = pushes; count argument = pushes seen 1, count argument 1, 0 pushes seen 1"
+
+[[event]]
+name = "weapon_taken"
+name_source = "hash-list"
+hash = "0xfa1d7fa87f848f8d"
+receiver = "entity"
+args = [{ type = "unknown" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 0 site(s) where count = pushes; count argument 1, 0 pushes seen 1"
+
+[[event]]
+name = "weapon_thrown"
+name_source = "hash-list"
+hash = "0xfb09de26f24aecfc"
+receiver = "entity"
+args = [{ type = "entity" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "xcamdone"
+name_source = "hash-list"
+hash = "0x251714c772cd2616"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+name = "zombie_emergence_spawning_through_death"
+name_source = "hash-list"
+hash = "0xfd0e58b5ad0abc98"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+hash = "0x0000000000000000"
+hash_family = "iw9.xhash"
+receiver = "entity"
+args = [{ type = "unknown" }]
+args_variable = true
+sites = 7
+vm = ["gsc"]
+confidence = "measured"
+evidence = "7 site(s); argument counts 0 x4, 1 x3; types from 0 site(s) where count = pushes; static count 1, 0 pushes seen 3, count argument = pushes seen 3, static count = pushes seen 1"
+
+[[event]]
+hash = "0x0000000000000001"
+hash_family = "iw9.xhash"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+hash = "0x0000000080000000"
+hash_family = "iw9.xhash"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+hash = "0x0092909f92e5a246"
+hash_family = "iw9.xhash"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; pushes seen 1"
+
+[[event]]
+hash = "0x055dd16032bd56b2"
+hash_family = "iw9.xhash"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; pushes seen 1"
+
+[[event]]
+hash = "0x10cb09392cc58136"
+hash_family = "iw9.xhash"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+hash = "0x1342c4a169637db5"
+hash_family = "iw9.xhash"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+hash = "0x32b6cdba4df2f5c8"
+hash_family = "iw9.xhash"
+receiver = "any"
+args = [{ type = "unknown" }]
+args_variable = false
+sites = 1
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 0 site(s) where count = pushes; count argument 1, 0 pushes seen 1"
+
+[[event]]
+hash = "0x4ac40c1d54400000"
+hash_family = "iw9.xhash"
+receiver = "entity"
+args = [{ type = "unknown" }]
+args_variable = false
+sites = 1
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 0 site(s) where count = pushes; count argument 1, 0 pushes seen 1"
+
+[[event]]
+hash = "0x602e9d468d45f50b"
+hash_family = "iw9.xhash"
+receiver = "entity"
+args = [{ type = "string" }, { type = "float" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 2 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+hash = "0x7912df862cbe18bb"
+hash_family = "iw9.xhash"
+receiver = "any"
+args = [{ type = "int" }, { type = "entity" }, { type = "entity" }, { type = "int" }, { type = "undefined" }, { type = "vector" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 6 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+hash = "0x7ceb250625402d74"
+hash_family = "iw9.xhash"
+receiver = "entity"
+args = [{ type = "vector" }, { type = "vector" }]
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 2 x2; types from 2 site(s) where count = pushes; count argument = pushes seen 2"
+
+[[event]]
+hash = "0x81b357d197c48279"
+hash_family = "iw9.xhash"
+receiver = "any"
+args = [{ type = "unknown" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 0 site(s) where count = pushes; count argument 1, 0 pushes seen 1"
+
+[[event]]
+hash = "0x82f79e3927d30110"
+hash_family = "iw9.xhash"
+receiver = "any"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+hash = "0x90075ccbe6206a41"
+hash_family = "iw9.xhash"
+receiver = "entity"
+args = [{ type = "int" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+hash = "0xa7df7114bf68e9b5"
+hash_family = "iw9.xhash"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+hash = "0xab16e42c37ad472a"
+hash_family = "iw9.xhash"
+receiver = "entity"
+args = [{ type = "vector" }, { type = "vector" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 2 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+hash = "0xbea99a805e4fe154"
+hash_family = "iw9.xhash"
+receiver = "any"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+hash = "0xc985c642647230e0"
+hash_family = "iw9.xhash"
+receiver = "entity"
+args = [{ type = "int" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 1 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+hash = "0xe2976f7e0c5f1131"
+hash_family = "iw9.xhash"
+receiver = "entity"
+args = [{ type = "unknown" }, { type = "unknown" }, { type = "unknown" }, { type = "unknown" }]
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 4 x1; types from 0 site(s) where count = pushes; count argument 4, 1 pushes seen 1"
+
+[[event]]
+hash = "0xf10a8200a7876612"
+hash_family = "iw9.xhash"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"
+
+[[event]]
+hash = "0xf9fa1c98ad0d466e"
+hash_family = "iw9.xhash"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; count argument = pushes seen 1"

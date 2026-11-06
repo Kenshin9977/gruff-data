@@ -1,0 +1,451 @@
+# Black Ops III script VM semantics, measured by running this project's own conformance
+# scripts (gruff/conformance/t7) in the game's own VM, emulated offline from the executable
+# by gruff/tools/re/vm (Unicorn over the dump; nothing launched). Facts only.
+# Schema: ../schema/semantics.schema.json. Report: gruff/tools/re/reports/vm_t7.md.
+
+[meta]
+game = "t7"
+extractor = "tools/re/vm/t7_suite.py"
+dump = "bo3_flat.exe sha256:54f74a97d57ec0afec86553cd2c86fbcce4d3851544b47bfe1a172aeabe9bfab"
+date = "2026-11-06"
+licence = "CC0-1.0"
+suite = "conformance/t7"
+time_unit = "gScrVarPub.time, one 50 ms server frame"
+modes = ["retail (developer 0)", "developer 1"]
+
+[[behaviour]]
+id = "array_assign_shared_reverse"
+question = "after b = a, is a write through a seen through b (the other direction)?"
+answer = "assignment shares the array both ways"
+result = "pass"
+trace = ["f0 T0 b.size=1 b[0]=7"]
+modes_agree = true
+
+[[behaviour]]
+id = "array_copy_on_assign"
+question = "b = a for an array, then b is changed: does a change too (reference) or not (copy)?"
+answer = "b = a shares the array: a write through b is seen through a (no copy on assignment, no copy on write)"
+result = "pass"
+trace = ["f0 T0 a[0]=2 b[0]=2 a.size=2 b.size=2"]
+modes_agree = true
+evidence = ["static: ScrVar_GetArrayRef (0x12de5b0) allocates an array only when the variable is undefined and otherwise returns the shared pointer; no reference-count check, no copy"]
+
+[[behaviour]]
+id = "array_in_struct_field"
+question = "an array stored in a struct field, then read into a local and changed: does the field change?"
+answer = "a local read from a struct field shares the field's array"
+result = "pass"
+trace = ["f0 T0 field[0]=2"]
+modes_agree = true
+
+[[behaviour]]
+id = "array_param_plain"
+question = "an array passed to a plain parameter and changed in the callee: does the caller see the change?"
+answer = "an array passed to a plain parameter is copied on entry (SafeCreateLocalVariables)"
+result = "pass"
+trace = ["f0 T0 a[0]=1 a.size=1"]
+modes_agree = true
+evidence = ["static: SafeCreateLocalVariables (0x12ce890): for a parameter without flag 0x1 whose argument is a pointer to an array (type 0x19), AllocArray + CopyArray (0x12da210)"]
+claims = [
+  { source = "bo3-gsc-language-doc", agrees = true, claim = "arrays are passed by copy unless the parameter is declared &name" },
+  { source = "gscode-game-profiles", agrees = false, claim = "BO3 passes arrays by reference" },
+]
+
+[[behaviour]]
+id = "array_param_plain_nested"
+question = "the copy made for a plain array parameter: shallow (inner arrays shared) or deep?"
+answer = "the parameter copy is deep: a write into an inner array through the copy is not seen by the caller"
+result = "pass"
+trace = ["f0 T0 inner=1 outer.size=1"]
+modes_agree = true
+evidence = ["static: CopyArray (0x12da210) allocates a new array and calls itself for every child of type array (0x19): a deep copy"]
+
+[[behaviour]]
+id = "array_param_ref"
+question = "an array passed to a parameter declared &arr and changed in the callee: does the caller see the change?"
+answer = "an array passed to a &name parameter is shared with the caller"
+result = "pass"
+trace = ["f0 T0 a[0]=99 a.size=2"]
+modes_agree = true
+evidence = ["static: SafeCreateLocalVariables (0x12ce890): with flag 0x1 the pointer is kept; a non-array argument is Scr_Error 'Var ByRef only supported for array types'"]
+claims = [
+  { source = "bo3-gsc-language-doc", agrees = true, claim = "a &name parameter takes the array by reference" },
+  { source = "gscode-game-profiles", agrees = true, claim = "BO3 passes arrays by reference" },
+]
+
+[[behaviour]]
+id = "array_param_ref_field"
+question = "an array held in a level field, passed to a &arr parameter and to a plain one: what does level.arr hold afterwards?"
+answer = "level.arr passed to a plain parameter is copied, to a &name parameter shared"
+result = "pass"
+trace = ["f0 T0 after plain: 1", "f0 T0 after ref: 99"]
+modes_agree = true
+
+[[behaviour]]
+id = "array_ref_param_non_array"
+question = "a non-array value passed to a &name parameter"
+answer = "a &name parameter given a non-array is a script error 'Var ByRef only supported for array types', raised by the callee's SafeCreateLocalVariables; the VM's error recovery then resumes inside that opcode's operands, so the next 'opcode' is its count byte and a padding byte (here 0x6a01, an invalid opcode): developer 1 ends in Com_Error 'server script error', retail re-throws the same invalid opcode forever (the harness stops it after 64 errors). The caller's next statement never runs."
+result = "unsupported"
+reason = "no golden trace: the game's own error recovery never ends in retail (a harness limit stops it) and ends in Com_Error in developer mode; the outcome also depends on the compiler's padding byte (a valid opcode value would run instead)"
+trace = ["f0 T0 script error: Var ByRef only supported for array types", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode", "f0 T0 script error (terminal): Invalid opcode"]
+error = "error flood: 64 script errors (last: Invalid opcode)"
+developer_trace = ["f0 T0 script error: Var ByRef only supported for array types", "f0 T0 script error (terminal): Invalid opcode"]
+developer_error = "Com_Error: \u0015server script error | Invalid opcode | Terminal script error | scripts/zz_harness/array_ref_param_non_array.gsc:0"
+modes_agree = false
+evidence = ["trace (t7_run.py --trace --ops): SafeCreateLocalVariables at change+0 throws the ByRef error; the recovery re-dispatch runs that opcode's error variant; the next dispatch reads offset +2 (count 0x01, padding 0x6a) as opcode 0x6a01 and throws 'Invalid opcode' from the same position each time", "static: VM_Execute (0x12edb30) saves pos before each opcode and, after the longjmp, restores it and calls the recovery 0x12ee0f0, which re-dispatches the opcode through the error tables (0x3277350/0x3297350); the error variant of SafeCreateLocalVariables (0x12ce880) is a bare ret, so its operands (count, padding, u32 name hashes, flags) are not skipped, unlike e.g. ScriptFunctionCall's (0x12cee40). An invalid opcode in the recovery throws again (0x12ee1a2); retail Scr_Throw (0x12ea4e0) longjmps without a terminal check and the recovery clears the terminal flag before RuntimeErrorInternal (0x12d4e40), so nothing ends the loop"]
+
+[[behaviour]]
+id = "bare_call_local_shadows_builtin"
+question = "a bare call to a name that is both a builtin (spawnstruct) and a function of the current namespace: which one runs?"
+answer = "a bare call resolves to a function of the current namespace before a builtin of the same name; sys:: reaches the builtin"
+result = "pass"
+trace = ["f0 T0 script spawnstruct called", "f0 T0 bare=42", "f0 T0 script spawnstruct called", "f0 T0 qualified=42", "f0 T0 sys is struct=1"]
+modes_agree = true
+claims = [
+  { source = "bo3-gsc-language-doc", agrees = true, claim = "an unqualified call resolves in the current namespace first, then falls back to sys" },
+  { source = "gscode-dialect-facts", agrees = false, claim = "a bare call resolves to the builtin first; threaded calls and & references mean the script function" },
+]
+
+[[behaviour]]
+id = "bare_call_using_file_other_namespace"
+question = "a bare call to a function that only a #using'd file of another namespace defines: does the game's linker find it?"
+answer = "a bare call never reaches another namespace, even of a #using'd file: the game's linker reports an unresolved external at load"
+result = "pass"
+trace = []
+error = "Com_Error: **** 1 script error(s): | \"4308497F\" with 0 parameters in \"scripts/zz_harness/bare_call_using_file_other_namespace.gsc\" at line 0 **** | **** Unresolved external \"4308497F\" with 0 parameters in \"scripts/zz_harness/bare_call_using_file_other_namespace.gsc\" ****"
+modes_agree = true
+evidence = ["compile side: the official linker emits an import of zz_test::lib_only (evidence/linker-t7/bare_call_other_file.json); load side: the game's linker reports it unresolved"]
+claims = [
+  { source = "bo3-gsc-language-doc", agrees = true, claim = "an unqualified call resolves in the current namespace first, then falls back to sys" },
+]
+
+[[behaviour]]
+id = "bare_call_using_file_shadows_builtin"
+question = "a bare call to a name that is a builtin and also a function of a #using'd file in another namespace: which one runs?"
+answer = "a function of the same name in a #using'd file of another namespace does not shadow the builtin for a bare call"
+result = "pass"
+trace = ["f0 T0 is struct=1"]
+modes_agree = true
+
+[[behaviour]]
+id = "childthread_dies_with_parent"
+question = "does a childthread stop when the thread that started it ends?"
+result = "unsupported"
+reason = "T7 has no childthread: the official linker reads `childthread` as an uninitialised local variable and refuses the script"
+compile_error = "Uninitialized local variable 'childthread'"
+modes_agree = true
+
+[[behaviour]]
+id = "dev_builtin_outside_devblock"
+question = "a dev-only builtin (println) called outside /# #/: what does the game's linker do at load?"
+answer = "the compiler accepts it, but the game's linker refuses to load the script: 'Dev only calls must be wrapped in a devblock /#...#/' (retail and developer mode alike)"
+result = "pass"
+trace = []
+error = "Com_Error: **** 1 script error(s): | **** Dev only calls must be wrapped in a devblock /#...#/ :  \"895B00\" with 1 parameters in \"scripts/zz_harness/dev_builtin_outside_devblock.gsc\" at line 0 ****"
+modes_agree = true
+evidence = ["the linker finds println's entry in the builtin tables (type 1, dev) and reports it; without the builtin tables the same import is an 'Unresolved external' (a harness check, not a game mode)"]
+
+[[behaviour]]
+id = "endon_during_wait"
+question = "an endon notify while the thread is in a timed wait: killed before the wait ends?"
+answer = "an endon kills a thread in a timed wait too"
+result = "pass"
+trace = ["f0 T1 waiting", "f1 T0 sent stop"]
+modes_agree = true
+
+[[behaviour]]
+id = "endon_during_waittill"
+question = "an endon fired while the thread waits on another event: is the thread killed?"
+answer = "an endon notify kills a thread blocked in waittill on another event"
+result = "pass"
+trace = ["f0 T1 waiting", "f1 T0 sent stop", "f1 T0 sent go"]
+modes_agree = true
+
+[[behaviour]]
+id = "endon_other_object"
+question = "an endon on a struct is not fired by the same event on level (and the reverse)"
+answer = "an endon is bound to its object: the same event on another object does not kill"
+result = "pass"
+trace = ["f0 T1 waiting", "f1 T0 level sent", "f2 T0 struct sent"]
+modes_agree = true
+
+[[behaviour]]
+id = "endon_vs_waittill_same_event"
+question = "a thread that both endon()s and waittill()s the same event: woken or killed?"
+answer = "a thread that endon()s and waittill()s the same event is killed by it, not woken"
+result = "pass"
+trace = ["f0 T1 waiting", "f1 T0 sent"]
+modes_agree = true
+
+[[behaviour]]
+id = "endon_vs_waittill_same_event_reversed"
+question = "same as endon_vs_waittill_same_event, with the endon registered in another thread order: the waiter waits first, a second thread of the same self registers no endon"
+answer = "control: without the endon the waiter wakes"
+result = "pass"
+trace = ["f0 T1 waiting", "f1 T0 sent", "f1 T1 woke"]
+modes_agree = true
+
+[[behaviour]]
+id = "func_ref_builtin_only"
+question = "`&spawnstruct` when no script function spawnstruct exists: a pointer to the builtin, or a load error?"
+answer = "a function reference falls back to the builtin when the namespace has no such function, and calling it runs the builtin"
+result = "pass"
+trace = ["f0 T0 before", "f0 T0 called, struct=1"]
+modes_agree = true
+claims = [
+  { source = "gscode-dialect-facts", agrees = false, claim = "& references mean the script function" },
+]
+
+[[behaviour]]
+id = "func_ref_shadows_builtin"
+question = "`&spawnstruct` when the current namespace defines spawnstruct: the script function or the builtin?"
+answer = "a function reference resolves to the current namespace's script function first"
+result = "pass"
+trace = ["f0 T0 script spawnstruct called", "f0 T0 result=42"]
+modes_agree = true
+claims = [
+  { source = "gscode-dialect-facts", agrees = true, claim = "& references mean the script function" },
+]
+
+[[behaviour]]
+id = "hash_equality"
+question = "do two hashes of names differing only in case compare equal (the hash lowercases), and does a string equal the hash of itself?"
+answer = "== between two hash values, or a string and a hash, is a non-terminal script error and yields false"
+result = "pass"
+trace = ["f0 T0 script error: pair 'hash' and 'hash' has unmatching types 'hash' and 'hash'", "f0 T0 hash case=0", "f0 T0 script error: pair 'goaway' and 'hash' has unmatching types 'string' and 'hash'", "f0 T0 string vs hash=0"]
+modes_agree = true
+
+[[behaviour]]
+id = "infinite_loop"
+question = "does the VM stop a loop that never waits, and how?"
+answer = "VM_Execute has no loop guard: a loop with no wait runs until the instruction budget (20M) of the harness"
+result = "pass"
+trace = ["f0 T0 before"]
+error = "instruction limit (20000000) reached at rva 0x12cd7c7"
+modes_agree = true
+evidence = ["static: the Jump handler (0x12cd9b0) only moves pos; VM_Execute's loop (0x12edb30) counts opcodes into a profiling counter (0x5124820, read by the frame stats at 0x19e1c30) and checks only its exit flag; the build has no 'infinite loop' string"]
+
+[[behaviour]]
+id = "level_vs_struct_notify_isolation"
+question = "a waittill on a struct is not woken by the same event on level, and the reverse"
+answer = "waittill on an object is not woken by the same event on another object"
+result = "pass"
+trace = ["f0 T1 struct waiter", "f0 T2 level waiter", "f1 T0 level sent", "f1 T2 level woke", "f2 T0 struct sent", "f2 T1 struct woke"]
+modes_agree = true
+
+[[behaviour]]
+id = "multiple_endons"
+question = "two endons on one thread: does either event kill it?"
+answer = "each of several endons kills the thread"
+result = "pass"
+trace = ["f0 T1 a waiting", "f0 T2 b waiting", "f1 T0 sent second"]
+modes_agree = true
+
+[[behaviour]]
+id = "notify_before_waittill_same_frame"
+question = "a notify sent before the waittill is registered, in the same frame: is it lost?"
+answer = "a notify sent before the waittill is registered is lost, even in the same frame"
+result = "pass"
+trace = ["f0 T0 notified", "f0 T1 waiting", "f2 T0 notified again", "f2 T1 woke"]
+modes_agree = true
+
+[[behaviour]]
+id = "notify_no_waiter"
+question = "a notify nobody waits for: no error, the caller goes on?"
+answer = "a notify with no waiter is silent"
+result = "pass"
+trace = ["f0 T0 before", "f0 T0 after"]
+modes_agree = true
+
+[[behaviour]]
+id = "notify_reentrant"
+question = "a woken waiter that notifies a second event: does the second waiter run before the first notifier resumes?"
+answer = "a notify sent by a woken waiter is deferred the same way: each woken thread runs after the current one yields"
+result = "pass"
+trace = ["f0 T0 notify a", "f0 T0 after notify a", "f0 T1 got a", "f0 T1 after notify b", "f0 T2 got b"]
+modes_agree = true
+
+[[behaviour]]
+id = "notify_wake_order_three_waiters"
+question = "three waiters registered in order a, b, c on one event: wake order?"
+answer = "waiters on one event wake in reverse order of registration (last registered first)"
+result = "pass"
+trace = ["f1 T0 notifying", "f1 T3 c", "f1 T2 b", "f1 T1 a"]
+modes_agree = true
+
+[[behaviour]]
+id = "notify_wake_order_two_waiters"
+question = "in which order do two waiters on the same event wake?"
+answer = "two waiters: the last registered wakes first, both after the notifier yields"
+result = "pass"
+trace = ["f1 T0 notifying", "f1 T0 after notify", "f1 T2 second", "f1 T1 first"]
+modes_agree = true
+evidence = ["static: as notify_wakes_waiter_before_notifier_continues; the order comes from the time list"]
+
+[[behaviour]]
+id = "notify_wakes_waiter_before_notifier_continues"
+question = "does a woken waiter run inside the notify, before the notifier's next statement?"
+answer = "notify does not run the waiter inside the call: VM_Notify only queues it (ScrVar_SetWaitTime to the current time); it runs in the same frame once the notifier yields"
+result = "pass"
+trace = ["f0 T0 notifying", "f0 T0 after notify", "f0 T1 woke", "f0 T1 woke still running"]
+modes_agree = true
+evidence = ["static: the Notify handler (0x12d3f70) calls VM_Notify (0x12d36c0), whose body calls ScrVar_SetWaitTime (0x12e0c20) and never VM_Resume (0x12ee230, called only by the run-for-time function 0x12ee430) or VM_Execute"]
+
+[[behaviour]]
+id = "string_equality_case"
+question = "is == on strings case-sensitive?"
+answer = "== on strings is case-sensitive"
+result = "pass"
+trace = ["f0 T0 same=1 case=0"]
+modes_agree = true
+
+[[behaviour]]
+id = "struct_reference_on_assign"
+question = "t = s for a struct, then t.x is set: does s.x change (structs are references)?"
+answer = "structs are references: assignment and parameters share the object"
+result = "pass"
+trace = ["f0 T0 s.x=1 same=1"]
+modes_agree = true
+
+[[behaviour]]
+id = "thread_call_assign_result"
+question = "x = thread f(): accepted, and what does x hold when f returns before or after its first wait?"
+answer = "the compiler accepts x = thread f(); x is f's return value when f ends without waiting, undefined when f waits first"
+result = "pass"
+trace = ["f0 T0 x defined=0", "f0 T0 y=6"]
+modes_agree = true
+
+[[behaviour]]
+id = "thread_call_builtin_only"
+question = "`thread spawnstruct()` when no script function spawnstruct exists: does a threaded call fall back to the builtin?"
+answer = "no: a threaded call never resolves to a builtin; the script fails to load with an unresolved external"
+result = "pass"
+trace = []
+error = "Com_Error: **** 1 script error(s): | \"A8FB77BD\" with 0 parameters in \"scripts/zz_harness/thread_call_builtin_only.gsc\" at line 0 **** | **** Unresolved external \"A8FB77BD\" with 0 parameters in \"scripts/zz_harness/thread_call_builtin_only.gsc\" ****"
+modes_agree = true
+claims = [
+  { source = "acts-t8-link", agrees = true, claim = "thread imports never fall back to builtins (acts' BO4 linker)" },
+]
+
+[[behaviour]]
+id = "thread_call_return_value"
+question = "the return value of a function called normally, and what a threaded call leaves to its caller"
+answer = "a direct call returns its value; a threaded call used as a statement drops whatever it leaves"
+result = "pass"
+trace = ["f0 T0 direct=5", "f0 T0 threaded call done"]
+modes_agree = true
+
+[[behaviour]]
+id = "thread_call_shadowing_builtin"
+question = "`thread spawnstruct()` when the current namespace defines spawnstruct: the script function runs as a thread"
+answer = "thread f() reaches the current namespace's script function when a builtin has the same name"
+result = "pass"
+trace = ["f0 T1 script spawnstruct called", "f0 T0 after"]
+modes_agree = true
+claims = [
+  { source = "gscode-dialect-facts", agrees = true, claim = "threaded calls mean the script function" },
+]
+
+[[behaviour]]
+id = "thread_on_released_struct"
+question = "a thread whose self is a struct nobody references any more: does it keep running?"
+answer = "a thread whose self struct is no longer referenced keeps running and self stays defined (the thread holds it)"
+result = "pass"
+trace = ["f0 T1 start", "f1 T1 still running", "f1 T1 self defined=1"]
+modes_agree = true
+
+[[behaviour]]
+id = "thread_outlives_parent"
+question = "a plain thread keeps running after the thread that started it ends (control for childthread)"
+answer = "a plain thread outlives the thread that started it; same-time waits resume last-registered first"
+result = "pass"
+trace = ["f0 T1 parent start", "f0 T2 tick 0", "f1 T1 parent end", "f1 T2 tick 1", "f2 T2 tick 2", "f3 T2 tick 3"]
+modes_agree = true
+
+[[behaviour]]
+id = "thread_runs_until_first_wait"
+question = "does `thread f()` run f at once, up to its first wait, before the caller goes on?"
+answer = "thread f() runs f at once until its first wait, then the caller continues"
+result = "pass"
+trace = ["f0 T0 before", "f0 T1 child start", "f0 T0 after call", "f1 T1 child after wait"]
+modes_agree = true
+
+[[behaviour]]
+id = "thread_without_wait_runs_to_end"
+question = "does a thread with no wait run to its end before the caller resumes?"
+answer = "a thread with no wait runs to its end before the caller continues"
+result = "pass"
+trace = ["f0 T0 before", "f0 T1 child 1", "f0 T1 child 2", "f0 T0 after call"]
+modes_agree = true
+
+[[behaviour]]
+id = "undefined_arithmetic"
+question = "what does undefined + 1 do at run time: an error that ends the thread, or a value?"
+answer = "undefined + 1 is a non-terminal script error: the thread goes on and the result is undefined"
+result = "pass"
+trace = ["f0 T0 before", "f0 T0 script error: pair 'undefined' and '1' has unmatching types 'undefined' and 'int'", "f0 T0 after 0"]
+modes_agree = true
+
+[[behaviour]]
+id = "undefined_field_read"
+question = "reading a field nobody set: undefined, no error?"
+answer = "reading a field never set gives undefined, no error"
+result = "pass"
+trace = ["f0 T0 defined=0"]
+modes_agree = true
+
+[[behaviour]]
+id = "wait_0"
+question = "does wait 0 yield and resume in the same frame, the next one, or is it refused?"
+answer = "wait 0 resumes in the same frame, before threads in waittillframeend"
+result = "pass"
+trace = ["f0 T0 before", "f0 T0 after wait 0", "f0 T1 other"]
+modes_agree = true
+
+[[behaviour]]
+id = "wait_005_is_one_frame"
+question = "how many server frames do wait 0.05, wait 0.1 and wait 0.15 take?"
+answer = "the VM time unit is one 50 ms frame: wait 0.05/0.1/0.15 take 1/2/3 frames"
+result = "pass"
+trace = ["f0 T0 start", "f1 T0 after 0.05", "f3 T0 after 0.1", "f6 T0 after 0.15"]
+modes_agree = true
+
+[[behaviour]]
+id = "wait_same_duration_order"
+question = "two threads that wait the same time: do they resume in the order they started waiting?"
+answer = "threads whose waits end in the same frame resume in reverse order of their wait calls"
+result = "pass"
+trace = ["f1 T3 c", "f1 T2 b", "f1 T1 a"]
+modes_agree = true
+
+[[behaviour]]
+id = "waittill_fewer_args_sent"
+question = "waittill binds two names, the notify sends one value: the second stays undefined?"
+answer = "waittill names with no value sent stay undefined"
+result = "pass"
+trace = ["f1 T0 sent", "f1 T1 a=1 b defined=0"]
+modes_agree = true
+
+[[behaviour]]
+id = "waittill_more_args_sent"
+question = "the notify sends three values, waittill binds one: the extra values are dropped without error?"
+answer = "values sent beyond the waittill's names are dropped without error"
+result = "pass"
+trace = ["f1 T0 sent", "f1 T1 a=1"]
+modes_agree = true
+
+[[behaviour]]
+id = "waittillframeend_order"
+question = "does waittillframeend resume at the end of the current frame, after threads that do not wait?"
+answer = "waittillframeend resumes in the same frame after the threads that do not wait"
+result = "pass"
+trace = ["f0 T0 main 1", "f0 T0 main 2", "f0 T1 frameend"]
+modes_agree = true
+
+[[behaviour]]
+id = "waittillmatch"
+question = "waittillmatch(e, \"x\") ignores a notify of e with another first argument and wakes on \"x\""
+answer = "waittillmatch skips notifies whose first argument differs and wakes on the matching one"
+result = "pass"
+trace = ["f1 T0 sent y", "f1 T0 sent x", "f1 T1 matched"]
+modes_agree = true

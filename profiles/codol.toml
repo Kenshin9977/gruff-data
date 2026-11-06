@@ -1,0 +1,108 @@
+# Dialect profile: Call of Duty Online (2015).
+# Schema: ../schema/profile.schema.json. Sources: ../sources.toml. Licence rule: ../README.md.
+
+schema_version = 1
+id = "codol"
+name = "Call of Duty Online"
+release_year = 2015
+developer = "Raven Software / Activision Shanghai"
+dialect_family = "iw"
+grade = "verified-on-corpus"
+aliases = ["cod-online", "codo"]
+source_availability = ["rawfile-in-fastfile"]
+license = "CC0-1.0"
+notes = "China-only free-to-play game on the Modern Warfare 3 (iw5) engine. Its fastfiles carry plain-source rawfiles: 211 .gsc (createfx, createart and map scripts), measured in evidence/corpus/codol.tsv. Features the corpus cannot show are carried from iw5 as assumed; the corpus is small and has no gameplay scripts, so a zero count says little."
+
+[keywords]
+words = ["anim", "assert", "assertex", "assertmsg", "break", "breakpoint", "call", "case", "childthread", "continue", "default", "do", "else", "endon", "false", "for", "foreach", "game", "if", "in", "level", "notify", "prof_begin", "prof_end", "return", "self", "size", "switch", "thisthread", "thread", "true", "undefined", "wait", "waittill", "waittillframeend", "waittillmatch", "while"]
+confidence = "assumed"
+source = ["inference"]
+note = "carried from iw5 (gsc-tool IW front end); the codol corpus parses with this list without a syntax error, and no keyword of it is used as a variable or parameter name"
+
+[features]
+# --- Files
+file_kinds = { value = ["gsc"], confidence = "verified-on-corpus", source = ["corpus-codol"], note = "211 .gsc" }
+# --- Lexing and literals
+case_insensitive_identifiers = { value = true, confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented)" }
+dev_blocks = { value = true, confidence = "verified-on-corpus", source = ["corpus-codol"], note = "92 uses in 92 files (shipped scripts)" }
+doc_comment_style = { value = "triple-slash", confidence = "assumed", source = ["inference"], note = "carried from iw5 (assumed); no ScriptDoc block of either style in corpus-codol" }
+istring_literal = { value = true, confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+hash_string_literal = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (assumed); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+extra_string_prefixes = { value = [], confidence = "assumed", source = ["inference"], note = "carried from iw5 (assumed); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+anim_reference = { value = true, confidence = "verified-on-corpus", source = ["corpus-codol"], note = "1 use in 1 file (shipped scripts)" }
+anim_reference_qualified = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (assumed); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+animtree_expression = { value = true, confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+dollar_identifiers = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (assumed); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+hashed_identifier_spellings = { value = [], confidence = "verified-on-corpus", source = ["corpus-codol"], note = "plain-source rawfiles: names are text, 0 _id_ tokens or hex-prefixed names" }
+# --- Bytecode naming
+identifier_encoding = { value = "token-table", confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented)" }
+# --- Imports and name resolution
+import_directive = { value = "include", confidence = "verified-on-corpus", source = ["corpus-codol"], note = "229 in 119 files" }
+name_resolution = { value = "merge", confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented)" }
+namespace_directive = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+path_qualified_calls = { value = true, confidence = "verified-on-corpus", source = ["corpus-codol"], note = "408 uses in 103 files (shipped scripts)" }
+namespace_qualified_calls = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+builtin_namespace_qualifier = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (assumed); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+header_directive = { value = "none", confidence = "assumed", source = ["inference"], note = "carried from iw5 (assumed)" }
+precache_directive = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+using_animtree_directive = { value = true, confidence = "verified-on-corpus", source = ["corpus-codol"], note = "1 use in 1 file (shipped scripts)" }
+imports_before_declarations = { value = "unknown", confidence = "assumed", source = ["inference"], note = "carried from iw5 (unknown)" }
+# --- Preprocessor
+preprocessor_define = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (assumed); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+preprocessor_function_macros = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (assumed); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+preprocessor_conditionals = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (assumed); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+preprocessor_ifdef_undef = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (assumed); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+predefined_macros = { value = [], confidence = "assumed", source = ["inference"], note = "carried from iw5 (assumed)" }
+file_scope_macro_calls = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (assumed); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+# --- Declarations
+function_keyword = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+autoexec_modifier = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+private_modifier = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+event_handler_modifier = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (assumed); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+codecall_modifier = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (assumed); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+classes = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+file_scope_constants = { value = true, confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+const_locals = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+default_parameters = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+reference_parameters = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (assumed); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+pointer_parameters = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (assumed); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+varargs = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (assumed); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+# --- Statements
+foreach = { value = true, confidence = "verified-on-corpus", source = ["corpus-codol"], note = "3 uses in 1 file (shipped scripts)" }
+foreach_key_value = { value = true, confidence = "assumed", source = ["inference"], note = "carried from iw5 (assumed); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+do_while = { value = true, confidence = "assumed", source = ["inference"], note = "carried from iw5 (assumed); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+childthread = { value = true, confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+call_pointer_sync = { value = true, confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+builtin_call = { value = "unknown", confidence = "assumed", source = ["inference"], note = "carried from iw5 (unknown); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+thisthread = { value = true, confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+threadendon_call = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (assumed); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+waittillframeend = { value = true, confidence = "verified-on-corpus", source = ["corpus-codol"], note = "4 uses in 2 files (shipped scripts)" }
+waitframe = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+waitrealtime = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+tuple_assignment = { value = true, confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+profiler_keywords = { value = ["prof_begin", "prof_end"], confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented); corpus-codol: none used; 0 uses of prof_begin, prof_end" }
+assert_keywords = { value = ["assert", "assertex", "assertmsg"], confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented)" }
+breakpoint_keyword = { value = true, confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+goto_labels = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (assumed); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+waittill_return_value = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (assumed)" }
+# --- Expressions and builtin call styles
+function_pointer_style = { value = "colon", confidence = "verified-on-corpus", source = ["corpus-codol"], note = "12 in 2 files" }
+pointer_call = { value = true, confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+strict_equality = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+null_coalescing = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (assumed); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+optional_chaining = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (assumed); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+is_expression = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (assumed); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+casts = { value = "unknown", confidence = "assumed", source = ["inference"], note = "carried from iw5 (unknown); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+array_literal = { value = true, confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+struct_literal = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (assumed); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+isdefined_form = { value = "builtin", confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented)" }
+istrue_operator = { value = false, confidence = "assumed", source = ["inference"], note = "carried from iw5 (assumed); 0 uses in corpus-codol (absence of use, not proof of absence)" }
+opcode_builtins = { value = [], confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented)" }
+bare_call_resolution = { value = "builtin-first", confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented)" }
+global_objects = { value = ["self", "level", "game", "anim"], confidence = "assumed", source = ["inference"], note = "carried from iw5 (documented)" }
+# --- Semantics that change analysis
+array_argument_passing = { value = "copy", confidence = "assumed", source = ["inference"], note = "carried from iw5 (assumed)" }
+waittill_multiple_events = { value = "unknown", confidence = "assumed", source = ["inference"], note = "not measured: this game's VM has not been run (semantics/)" }
+endon_multiple_events = { value = "unknown", confidence = "assumed", source = ["inference"], note = "not measured: this game's VM has not been run (semantics/)" }
+notify_wakes_waiters = { value = "unknown", confidence = "assumed", source = ["inference"], note = "not measured: this game's VM has not been run (semantics/)" }
+hash_equality = { value = "unknown", confidence = "assumed", source = ["inference"], note = "not measured: this game's VM has not been run (semantics/)" }

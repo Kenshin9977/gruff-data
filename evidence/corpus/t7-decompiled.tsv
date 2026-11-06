@@ -1,0 +1,266 @@
+# corpus=t7-decompiled files=2459 kinds={'.gsc': 1572, '.csc': 887}
+# probe	files_with_match	occurrences (regex probes; comments and string bodies stripped first)
+dir_include	0	0
+dir_using	2401	28182
+dir_using_animtree	110	113
+dir_namespace	2428	2491
+dir_insert	0	0
+dir_define	0	0
+dir_if_family	0	0
+dir_precache	0	0
+dir_ifdef_undef	0	0
+define_function_like	0	0
+col0_macro_call	0	0
+waitframe_definition	0	0
+expr_animtree	94	167
+hash_string	1396	29109
+istring	408	2608
+at_string	0	0
+anim_ref	48	268
+anim_ref_after_op	48	268
+ptr_colon	0	0
+ptr_path	0	0
+ptr_amp	1795	15226
+path_call	0	0
+ptr_call	648	3252
+kw_function	2428	46022
+kw_class	37	55
+kw_foreach	928	6743
+kw_do	100	178
+kw_childthread	0	0
+kw_call_ptr	0	0
+kw_thisthread	0	0
+kw_autoexec	1176	1200
+kw_private	287	2081
+kw_const	0	0
+kw_vararg	8	28
+param_ellipsis	8	12
+kw_new	52	91
+op_arrow	69	453
+op_strict_eq	529	2632
+op_coalesce	0	0
+op_safe_nav	0	0
+kw_event_handler	0	0
+kw_waitframe	0	0
+kw_waitrealtime	0	0
+kw_waittillmatch	49	143
+kw_waittillframeend	137	238
+kw_prof_begin	0	0
+kw_profilestart	0	0
+kw_breakpoint	0	0
+kw_istrue	0	0
+kw_is_expr	0	0
+world_obj	9	80
+classes_obj	0	0
+dev_block	682	3389
+tuple_assign	0	0
+array_literal	0	0
+world_kw	10	81
+classes_kw	0	0
+sys_qualifier	3	5
+ns_call	2070	89953
+scr_hash_ident	2436	30844
+dollar_token	0	0
+str_prefix_pct	0	0
+str_prefix_t	0	0
+str_prefix_o	0	0
+str_prefix_s	0	0
+str_prefix_r	0	0
+cast	0	0
+kw_builtin_call	0	0
+kw_builtin	0	0
+goto_stmt	8	27
+jumpif_stmt	0	0
+label_stmt	11	26
+kw_constructor	20	26
+kw_destructor	2	2
+kw_codecall	0	0
+class_as_name	0	0
+class_path_component	0	0
+file_scope_const	0	0
+default_param	0	0
+ref_param	27	99
+func_header	2389	43256
+dir_inline	0	0
+kw_assert	525	2269
+kw_assertmsg	99	173
+kw_assertex	0	0
+kw_prof_end	0	0
+kw_profilestop	0	0
+kw_threadendon	0	0
+kw_isdefined	1715	43938
+star_param	0	0
+op_ternary	189	701
+struct_literal	0	0
+hash_hexprefixed	0	0
+hash_idtoken	0	0
+hash_scriptpath	0	0
+doc_at	0	0
+doc_tripleslash	0	0
+# corpus=t7-decompiled parser=gsc-before.exe profile=t7.toml probe_syntax_errors=138 plain_files=31 decompiled_files=2428
+# probe	files_with_match	occurrences	plain_files	plain_occurrences (gsc parse with every feature off: each dialect report is one use; plain = files without a decompiler header, the parser's own test)
+parser:anim_reference:a `%` animation reference	48	268	0	0
+parser:animtree_expression:`#animtree`	94	167	0	0
+parser:autoexec_modifier:`autoexec`	1176	1200	0	0
+parser:builtin_namespace_qualifier:the `sys::` qualifier	3	5	0	0
+parser:classes:`->`	69	453	0	0
+parser:classes:`class`	37	55	0	0
+parser:classes:`new`	52	91	0	0
+parser:dev_blocks:a `/# #/` dev block	682	3389	0	0
+parser:do_while:`do ... while`	100	178	0	0
+parser:foreach:`foreach`	928	6741	0	0
+parser:foreach_key_value:a `foreach` key binding	111	207	0	0
+parser:function_keyword:the `function` keyword	2428	46022	0	0
+parser:function_pointer_style:a `&` function pointer	1790	15744	0	0
+parser:goto_labels:goto or label	14	61	0	0
+parser:hash_string_literal:a `#"..."` hashed string	1396	29109	0	0
+parser:import_directive:`#using`	2401	28182	8	57
+parser:istring_literal:a `&"..."` localized string	408	2608	0	0
+parser:namespace_directive:`#namespace`	2428	2491	0	0
+parser:namespace_qualified_calls:a namespace-qualified name	2071	92284	0	0
+parser:pointer_call:a `[[ ]]` pointer call	623	2799	0	0
+parser:private_modifier:`private`	287	2081	0	0
+parser:reference_parameters:a `&` reference parameter	29	112	0	0
+parser:strict_equality:`!==`	201	430	0	0
+parser:strict_equality:`===`	476	2200	0	0
+parser:using_animtree_directive:`#using_animtree`	110	113	0	0
+parser:varargs:`...`	8	12	0	0
+parser:waittillframeend:`waittillframeend`	137	238	0	0
+# keyword test: 138 syntax errors with the profile's keywords; kwname rows: keyword, errors with it, errors without it (fewer = used as a plain name)
+kwname:anim	138	138
+kwname:assert	138	138
+kwname:assertmsg	138	138
+kwname:autoexec	138	138
+kwname:break	138	138
+kwname:case	138	34797
+kwname:class	138	138
+kwname:classes	138	138
+kwname:const	138	138
+kwname:constructor	138	138
+kwname:continue	138	138
+kwname:default	138	623
+kwname:destructor	138	138
+kwname:do	138	316
+kwname:else	138	10832
+kwname:endon	138	138
+kwname:false	138	138
+kwname:for	138	12148
+kwname:foreach	138	13620
+kwname:function	138	3477
+kwname:game	138	138
+kwname:if	138	90514
+kwname:in	138	138
+kwname:isdefined	138	138
+kwname:level	138	138
+kwname:new	138	138
+kwname:notify	138	138
+kwname:private	138	138
+kwname:profilestart	138	138
+kwname:profilestop	138	138
+kwname:return	138	14638
+kwname:self	138	138
+kwname:switch	138	18291
+kwname:thread	138	24614
+kwname:true	138	138
+kwname:undefined	138	138
+kwname:var	138	138
+kwname:wait	138	12771
+kwname:waitrealtime	138	138
+kwname:waittill	138	138
+kwname:waittillframeend	138	138
+kwname:waittillmatch	138	138
+kwname:while	138	7329
+kwname:world	138	138
+# kwvar/kwfunc rows: keyword, files, occurrences (regex on stripped text)
+kwvar:anim	0	0
+kwfunc:anim	0	0
+kwvar:assert	0	0
+kwfunc:assert	0	0
+kwvar:assertmsg	0	0
+kwfunc:assertmsg	0	0
+kwvar:autoexec	0	0
+kwfunc:autoexec	0	0
+kwvar:break	0	0
+kwfunc:break	0	0
+kwvar:case	0	0
+kwfunc:case	0	0
+kwvar:class	0	0
+kwfunc:class	0	0
+kwvar:classes	0	0
+kwfunc:classes	0	0
+kwvar:const	0	0
+kwfunc:const	0	0
+kwvar:constructor	0	0
+kwfunc:constructor	0	0
+kwvar:continue	0	0
+kwfunc:continue	0	0
+kwvar:default	0	0
+kwfunc:default	0	0
+kwvar:destructor	0	0
+kwfunc:destructor	0	0
+kwvar:do	0	0
+kwfunc:do	0	0
+kwvar:else	0	0
+kwfunc:else	0	0
+kwvar:endon	0	0
+kwfunc:endon	0	0
+kwvar:false	0	0
+kwfunc:false	0	0
+kwvar:for	0	0
+kwfunc:for	0	0
+kwvar:foreach	0	0
+kwfunc:foreach	0	0
+kwvar:function	0	0
+kwfunc:function	0	0
+kwvar:game	0	0
+kwfunc:game	0	0
+kwvar:gettime	0	0
+kwfunc:gettime	0	0
+kwvar:if	0	0
+kwfunc:if	0	0
+kwvar:in	0	0
+kwfunc:in	0	0
+kwvar:isdefined	0	0
+kwfunc:isdefined	0	0
+kwvar:level	0	0
+kwfunc:level	0	0
+kwvar:new	0	0
+kwfunc:new	0	0
+kwvar:notify	0	0
+kwfunc:notify	0	0
+kwvar:private	0	0
+kwfunc:private	0	0
+kwvar:profilestart	0	0
+kwfunc:profilestart	0	0
+kwvar:profilestop	0	0
+kwfunc:profilestop	0	0
+kwvar:return	0	0
+kwfunc:return	0	0
+kwvar:self	0	0
+kwfunc:self	0	0
+kwvar:switch	0	0
+kwfunc:switch	0	0
+kwvar:thread	0	0
+kwfunc:thread	0	0
+kwvar:true	0	0
+kwfunc:true	0	0
+kwvar:undefined	0	0
+kwfunc:undefined	0	0
+kwvar:var	0	0
+kwfunc:var	0	0
+kwvar:vectorscale	0	0
+kwfunc:vectorscale	0	0
+kwvar:wait	0	0
+kwfunc:wait	0	0
+kwvar:waitrealtime	0	0
+kwfunc:waitrealtime	0	0
+kwvar:waittill	0	0
+kwfunc:waittill	0	0
+kwvar:waittillframeend	0	0
+kwfunc:waittillframeend	0	0
+kwvar:waittillmatch	0	0
+kwfunc:waittillmatch	0	0
+kwvar:while	0	0
+kwfunc:while	0	0
+kwvar:world	0	0
+kwfunc:world	0	0

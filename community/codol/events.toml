@@ -1,0 +1,139 @@
+# DRAFT event names of codol, from community corpus reports (gruff report), merged by
+# gruff/tools/re/merge_reports.py. Literal names of notify / waittill / endon sites of the
+# reported scripts; script_notified = false: waited or endon'd but notified by no reported
+# script (an engine event candidate). Facts only. See gruff/docs/community-reports.md.
+
+schema_version = 1
+game = "codol"
+license = "CC0-1.0"
+source = "community corpus reports"
+draft = true
+
+[[report]]
+id = "c5306a578a176fdc"
+fingerprint = "e34f329973647adb"
+toolchain = "0.1.0"
+profile_xxh3 = "97c532f2439b53f9"
+mode = "retail"
+files = 211
+decompiled = 0
+
+[[event]]
+name = "cs_lighting_flash"
+pattern = false
+notify = 1
+waittill = 0
+endon = 1
+files = 1
+script_notified = true
+ops = { endon = 1, notify = 1 }
+receivers = { level = 2 }
+notify_payload = { 0 = 1 }
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+
+[[event]]
+name = "damage"
+pattern = false
+notify = 1
+waittill = 0
+endon = 0
+files = 1
+script_notified = true
+ops = { notify = 1 }
+receivers = { other = 1 }
+notify_payload = { 5 = 1 }
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+
+[[event]]
+name = "death"
+pattern = false
+notify = 0
+waittill = 0
+endon = 1
+files = 1
+script_notified = false
+ops = { endon = 1 }
+receivers = { self = 1 }
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+
+[[event]]
+name = "disconnect"
+pattern = false
+notify = 0
+waittill = 0
+endon = 1
+files = 1
+script_notified = false
+ops = { endon = 1 }
+receivers = { player = 1 }
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+
+[[event]]
+name = "exploding_*"
+pattern = true
+notify = 0
+waittill = 1
+endon = 0
+files = 1
+script_notified = false
+ops = { waittill = 1 }
+receivers = { level = 1 }
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+
+[[event]]
+name = "glass_destroyed"
+pattern = false
+notify = 0
+waittill = 1
+endon = 0
+files = 1
+script_notified = false
+ops = { waittillmatch = 1 }
+receivers = { level = 1 }
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+
+[[event]]
+name = "show_start_exploders_thread"
+pattern = false
+notify = 1
+waittill = 0
+endon = 1
+files = 1
+script_notified = true
+ops = { endon = 1, notify = 1 }
+receivers = { level = 2 }
+notify_payload = { 0 = 1 }
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+
+[[event]]
+name = "special_op_terminated"
+pattern = false
+notify = 0
+waittill = 0
+endon = 1
+files = 1
+script_notified = false
+ops = { endon = 1 }
+receivers = { level = 1 }
+reports = ["c5306a578a176fdc"]
+independent_reports = 1
+
+[[event]]
+name = "stop_snow"
+pattern = false
+notify = 0
+waittill = 0
+endon = 1
+files = 1
+script_notified = false
+ops = { endon = 1 }
+receivers = { level = 1 }
+reports = ["c5306a578a176fdc"]
+independent_reports = 1

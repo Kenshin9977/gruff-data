@@ -1,0 +1,111 @@
+# Dialect profile: Call of Duty: Black Ops 7 (2025).
+# Schema: ../schema/profile.schema.json. Sources: ../sources.toml. Licence rule: ../README.md.
+
+schema_version = 1
+id = "t11"
+name = "Call of Duty: Black Ops 7"
+release_year = 2025
+developer = "Treyarch / Raven Software"
+dialect_family = "treyarch-t7plus"
+grade = "documented"
+aliases = ["bo7", "sat", "blackops7"]
+source_availability = ["compiled-encrypted"]
+license = "CC0-1.0"
+notes = "Compiled and encrypted. Evidence from the acts SAT VM (codeName t11)."
+
+[tool_ids]
+acts = "t11"
+
+[keywords]
+words = ["autoexec", "break", "builtin", "case", "childthread", "continue", "default", "do", "else", "event_handler", "false", "for", "foreach", "function", "goto", "if", "in", "is", "new", "not", "private", "return", "switch", "thread", "threadendon", "true", "undefined", "var", "wait", "while"]
+confidence = "assumed"
+source = ["acts-grammar", "corpus-t11"]
+note = "literal words of the acts superset grammar, minus class: classes is off and the scripts use class as a name 192 times; the retail keyword set is not observable"
+
+[features]
+# --- Files
+file_kinds = { value = ["gsc"], confidence = "verified-on-corpus", source = ["corpus-t11", "acts-vm-tables"], note = "decompiled (acts output): 4,463 .gsc; acts sets no client-VM flag for this VM; whether .csc exists is open" }
+# --- Lexing and literals
+case_insensitive_identifiers = { value = true, confidence = "documented", source = ["hash-inventory"], note = "hash families lowercase their input" }
+dev_blocks = { value = true, confidence = "verified-on-corpus", source = ["corpus-t11", "acts-vm-tables"], note = "decompiled (acts output): 10,124 uses in 1,933 files; dev-block opcode" }
+doc_comment_style = { value = "at-block", confidence = "assumed", source = ["inference"], note = "not observable: compiled-only game, the construct does not survive compilation" }
+istring_literal = { value = true, confidence = "verified-on-corpus", source = ["corpus-t11", "acts-vm-tables"], note = "decompiled (acts output): 4,652 uses in 559 files; ISTRING flag (hashed on t10 and t11)" }
+hash_string_literal = { value = true, confidence = "verified-on-corpus", source = ["corpus-t11", "hash-inventory", "acts-grammar"], note = "decompiled (acts output): 147,192 uses in 3,847 files; 64-bit hashes" }
+extra_string_prefixes = { value = ["@", "%", "o"], confidence = "verified-on-corpus", source = ["corpus-t11", "hash-inventory"], note = "@ 23,740, % 5,453, o 445 (o\"hash_...\" arguments) in the acts output; 0 t, s or r. @ is the salted dvar hash, % the asset hash of type:name" }
+anim_reference = { value = true, confidence = "verified-on-corpus", source = ["corpus-t11", "acts-vm-tables"], note = "decompiled (acts output): 695 uses in 91 files; animtree handler flag" }
+anim_reference_qualified = { value = true, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "double-animtree handler flag; 0 uses in corpus-t11 (absence of use, not proof of absence)" }
+animtree_expression = { value = true, confidence = "verified-on-corpus", source = ["corpus-t11", "acts-vm-tables"], note = "decompiled (acts output): 174 uses in 67 files" }
+dollar_identifiers = { value = false, confidence = "assumed", source = ["acts-grammar", "corpus-t11"], note = "the 19 parser hits (4 for the probe) are $ bytes inside undecoded binary %\\x.. animation names in the acts output, not $ names; 0 real uses; 0 uses in corpus-t11 (absence of use, not proof of absence)" }
+hashed_identifier_spellings = { value = ["hex-prefixed", "script-path-hash"], confidence = "verified-on-corpus", source = ["corpus-t11", "hash-inventory", "gsclsp-readme"], note = "decompiled (acts output): used: hex-prefixed 3,184,787, script-path-hash 29,262" }
+# --- Bytecode naming
+identifier_encoding = { value = "fnv64-secure", confidence = "documented", source = ["hash-inventory"] }
+# --- Imports and name resolution
+import_directive = { value = "using", confidence = "verified-on-corpus", source = ["corpus-t11", "acts-grammar"], note = "decompiled (acts output): 40,409 in 4,072 files; not observable: compiled-only game, the construct does not survive compilation; acts writes #using" }
+name_resolution = { value = "namespace", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT" }
+namespace_directive = { value = true, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "4,468 uses in 4,462 decompiled files (corpus-t11), not proof: acts prints #namespace wherever the export namespace changes" }
+path_qualified_calls = { value = false, confidence = "assumed", source = ["gsclsp-readme", "acts-grammar"], license = "GPL-3.0-only OR MIT", note = "0 uses in corpus-t11 (absence of use, not proof of absence)" }
+namespace_qualified_calls = { value = true, confidence = "verified-on-corpus", source = ["corpus-t11", "acts-grammar"], note = "decompiled (acts output): 221,079 uses in 4,071 files" }
+builtin_namespace_qualifier = { value = "unknown", confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t11 (absence of use, not proof of absence)" }
+header_directive = { value = "insert", confidence = "assumed", source = ["inference"], note = "not observable: compiled-only game, the construct does not survive compilation" }
+precache_directive = { value = "unknown", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "not observable: compiled-only game, the construct does not survive compilation; 0 uses in corpus-t11: acts never emits it, so the decompiled corpus cannot show it" }
+using_animtree_directive = { value = true, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "120 uses in 106 decompiled files (corpus-t11), not proof: the decompiler inserts #using_animtree from the animtree table at the first use" }
+imports_before_declarations = { value = "unknown", confidence = "assumed", source = ["inference"] }
+# --- Preprocessor
+preprocessor_define = { value = "unknown", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "not observable: compiled-only game, the construct does not survive compilation; 0 uses in corpus-t11: acts never emits it, so the decompiled corpus cannot show it" }
+preprocessor_function_macros = { value = "unknown", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "not observable: compiled-only game, the construct does not survive compilation; 0 uses in corpus-t11: acts never emits it, so the decompiled corpus cannot show it" }
+preprocessor_conditionals = { value = "unknown", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "not observable: compiled-only game, the construct does not survive compilation; 0 uses in corpus-t11: acts never emits it, so the decompiled corpus cannot show it" }
+preprocessor_ifdef_undef = { value = "unknown", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "not observable: compiled-only game, the construct does not survive compilation; 0 uses in corpus-t11: acts never emits it, so the decompiled corpus cannot show it" }
+predefined_macros = { value = [], confidence = "assumed", source = ["inference"] }
+file_scope_macro_calls = { value = "unknown", confidence = "assumed", source = ["inference"], note = "not observable: compiled-only game, the construct does not survive compilation; 0 uses in corpus-t11: acts never emits it, so the decompiled corpus cannot show it" }
+# --- Declarations
+function_keyword = { value = true, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "acts writes it; its grammar makes it optional; 107,671 uses in 4,462 decompiled files (corpus-t11), not proof: the decompiler prints `function` on every declaration (printer convention)" }
+autoexec_modifier = { value = true, confidence = "verified-on-corpus", source = ["corpus-t11", "acts-vm-tables"], note = "decompiled (acts output): 2,132 uses in 2,112 files; export flags decoded by acts" }
+private_modifier = { value = true, confidence = "verified-on-corpus", source = ["corpus-t11", "acts-vm-tables"], note = "decompiled (acts output): 38,301 uses in 3,126 files; export flags decoded by acts" }
+event_handler_modifier = { value = true, confidence = "verified-on-corpus", source = ["corpus-t11", "acts-vm-tables"], note = "decompiled (acts output): 105 uses in 95 files; event-handler export support in the acts VM handler" }
+codecall_modifier = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t11: acts never emits it, so the decompiled corpus cannot show it" }
+classes = { value = false, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "no class opcodes in the acts tables; 0 uses in corpus-t11 (absence of use, not proof of absence)" }
+file_scope_constants = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t11: acts never emits it, so the decompiled corpus cannot show it" }
+const_locals = { value = true, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "0 uses in corpus-t11: acts never emits it, so the decompiled corpus cannot show it" }
+default_parameters = { value = true, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "4,688 uses in 1,073 decompiled files (corpus-t11), not proof: acts folds an if(!isdefined(p)) p = v; prologue into a default value (asm.cpp)" }
+reference_parameters = { value = false, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "no variable-reference handler flag; 0 uses in corpus-t11 (absence of use, not proof of absence)" }
+pointer_parameters = { value = false, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "0 uses in corpus-t11 (absence of use, not proof of absence)" }
+varargs = { value = true, confidence = "verified-on-corpus", source = ["corpus-t11", "acts-vm-tables"], note = "decompiled (acts output): 75 uses in 43 files; vararg handler flag" }
+# --- Statements
+foreach = { value = true, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "foreach handler type; 28,665 uses in 2,529 decompiled files (corpus-t11), not proof: both decompilers print any getfirstarraykey/getnextarraykey loop as foreach (acts asm.cpp, gsc-tool decompiler.cpp decompile_foreach)" }
+foreach_key_value = { value = true, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "IW foreach-keys flag; 2,045 uses in 665 decompiled files (corpus-t11), not proof: the key binding is printed when the body reads the key (acts) or by the loop's trailing clears (gsc-tool), not from the source" }
+do_while = { value = true, confidence = "verified-on-corpus", source = ["corpus-t11", "acts-grammar"], note = "decompiled (acts output): 111 uses in 61 files" }
+childthread = { value = true, confidence = "verified-on-corpus", source = ["corpus-t11"], note = "1,580 childthread calls in the acts output of the shipped bytecode (a child-thread call opcode; the parser counts the same number); what the child does is assumed from T9 (it inherits the starter's endons and does not end with it)" }
+call_pointer_sync = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t11 (absence of use, not proof of absence)" }
+builtin_call = { value = true, confidence = "verified-on-corpus", source = ["corpus-t11"], note = "18 builtin [[ p ]]( ... ) calls in the acts output; the source spelling is acts'" }
+thisthread = { value = true, confidence = "assumed", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "IW get-thread opcode present; 0 uses in corpus-t11: acts never emits it, so the decompiled corpus cannot show it" }
+threadendon_call = { value = true, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "thread-call-endon opcodes; source spelling unknown; 0 uses in corpus-t11: acts never emits it, so the decompiled corpus cannot show it" }
+waittillframeend = { value = true, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t11 (absence of use, not proof of absence)" }
+waitframe = { value = true, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "wait-frame opcode; 0 uses in corpus-t11 (absence of use, not proof of absence)" }
+waitrealtime = { value = "unknown", confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t11: acts never emits it, so the decompiled corpus cannot show it" }
+tuple_assignment = { value = "unknown", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "acts accepts the IW form; 599 uses in 224 decompiled files (corpus-t11), not proof: a temporary followed by x = t[n] reads is printed as a tuple (acts asm.cpp, gsc-tool decompiler.cpp)" }
+profiler_keywords = { value = ["profilestart", "profilestop"], confidence = "assumed", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "profile-start opcode" }
+assert_keywords = { value = [], confidence = "assumed", source = ["inference"] }
+breakpoint_keyword = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t11 (absence of use, not proof of absence)" }
+goto_labels = { value = false, confidence = "assumed", source = ["inference"], note = "decompiled corpus (t11: 6 goto, 3 jumpif, 11 labels): what appears is control flow acts could not structure, not source; the 20 goto/labels in 5 files of the acts output (corpus-t11) are decompiler control flow (parser D004), not source" }
+waittill_return_value = { value = true, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "flag set on BO7 VM revision 1a" }
+# --- Expressions and builtin call styles
+function_pointer_style = { value = "ampersand", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT" }
+pointer_call = { value = true, confidence = "verified-on-corpus", source = ["corpus-t11", "acts-grammar"], note = "decompiled (acts output): 47,975 uses in 1,860 files" }
+strict_equality = { value = true, confidence = "verified-on-corpus", source = ["corpus-t11", "acts-grammar"], note = "decompiled (acts output): 671 uses in 257 files" }
+null_coalescing = { value = true, confidence = "verified-on-corpus", source = ["corpus-t11", "acts-vm-tables"], note = "decompiled (acts output): 15,510 uses in 1,622 files; jump-on-defined-expression opcode" }
+optional_chaining = { value = false, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "acts compiler extension; its decompiler never writes it; 0 uses in corpus-t11: acts never emits it, so the decompiled corpus cannot show it" }
+is_expression = { value = false, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "acts compiler extension; its decompiler never writes it; 0 uses in corpus-t11: acts never emits it, so the decompiled corpus cannot show it" }
+casts = { value = "unknown", confidence = "assumed", source = ["inference"], note = "not observable: compiled-only game, the construct does not survive compilation; 0 uses in corpus-t11: acts never emits it, so the decompiled corpus cannot show it" }
+array_literal = { value = true, confidence = "verified-on-corpus", source = ["corpus-t11", "acts-grammar"], note = "decompiled (acts output): 13,223 uses in 1,796 files; acts accepts [a, k:v]" }
+struct_literal = { value = true, confidence = "verified-on-corpus", source = ["corpus-t11", "acts-grammar"], note = "decompiled (acts output): 48,223 uses in 1,761 files; acts accepts {k:v}" }
+isdefined_form = { value = "keyword", confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "is-defined opcode" }
+istrue_operator = { value = true, confidence = "verified-on-corpus", source = ["corpus-t11", "acts-vm-tables"], note = "decompiled (acts output): 2,153 uses in 554 files, regex probe; IW is-true opcode" }
+opcode_builtins = { value = [], confidence = "assumed", source = ["inference"] }
+bare_call_resolution = { value = "namespace-first", confidence = "assumed", source = ["vm-t9-emulation#bare_call_using_file_other_namespace", "vm-t9-emulation#thread_call_builtin_only", "acts-t8-link", "acts-compiler"], note = "assumed from T9 (measured in the T8 and T9 VMs, semantics/t9.toml); acts' compiler emits bare calls as for T8 and acts' BO4 linker resolves them so; the SAT (T11) import table has no get-call flag but marks file-namespace imports (acts gsc_vm_t10.hpp); no linker of this game has been read or measured" }
+global_objects = { value = ["self", "level", "game", "anim"], confidence = "assumed", source = ["inference"] }
+# --- Semantics that change analysis
+array_argument_passing = { value = "unknown", confidence = "assumed", source = ["inference"] }
+waittill_multiple_events = { value = true, confidence = "assumed", source = ["vm-t9-emulation#waittill_any_of_events"], note = "assumed from T9 (measured in the T8 and T9 VMs, semantics/t9.toml); this game's VM has not been run" }
+endon_multiple_events = { value = true, confidence = "assumed", source = ["vm-t9-emulation#endon_multiple_events"], note = "assumed from T9 (measured in the T8 and T9 VMs, semantics/t9.toml); this game's VM has not been run" }
+notify_wakes_waiters = { value = "inline", confidence = "assumed", source = ["vm-t9-emulation#notify_wakes_waiter_before_notifier_continues"], note = "assumed from T9 (measured in the T8 and T9 VMs, semantics/t9.toml); this game's VM has not been run (T8 defers)" }
+hash_equality = { value = "by-value", confidence = "assumed", source = ["vm-t9-emulation#hash_equality"], note = "assumed from T9 (measured in the T8 and T9 VMs, semantics/t9.toml); this game's VM has not been run" }

@@ -1,0 +1,83 @@
+{
+ "status": "accept",
+ "accepted": true,
+ "exit_code": 0,
+ "elapsed_s": 4.02,
+ "inputs": [
+  {
+   "path": "scripts/zz_harness/bare_call_other_file.gsc"
+  },
+  {
+   "path": "scripts/zz_harness/zz_probe_lib.gsc"
+  }
+ ],
+ "errors": [],
+ "other_lines": [],
+ "scripts": [
+  {
+   "gscc": "bo3/spt/vm_1c000a0d43534780/scripts/zz_harness/bare_call_other_file.gscc",
+   "size": 276,
+   "tables": {
+    "name": "scripts/zz_harness/bare_call_other_file.gsc",
+    "source_crc": "0x4cd13f22",
+    "exports": [
+     {
+      "name": "main",
+      "namespace": "zz_probe",
+      "params": 0,
+      "flags": [
+       "autoexec"
+      ],
+      "address": 160
+     }
+    ],
+    "imports": [
+     {
+      "name": "zz_lib_only",
+      "namespace": "zz_probe",
+      "params": 0,
+      "kind": "function",
+      "dev_call": false,
+      "get_call": true,
+      "flags": "0x22",
+      "refs": [
+       "0xb4"
+      ]
+     },
+     {
+      "name": "zz_lib_only",
+      "namespace": "zz_probe_lib",
+      "params": 0,
+      "kind": "function",
+      "dev_call": false,
+      "get_call": false,
+      "flags": "0x02",
+      "refs": [
+       "0xc8"
+      ]
+     }
+    ]
+   },
+   "asm": "#using scripts/zz_harness/zz_probe_lib;\n\n#namespace namespace_c4c1746e;\n\n// Namespace namespace_c4c1746e\n// Params 0, eflags: 0x2\n// Checksum 0x999b3cc6, Offset: 0xa0\n// Size: 0x2\nfunction autoexec main()\ngscasm {\n.00000000: 3227 SafeCreateLocalVariables  count: 0x2\n.00000003:                                a (-2)\n.00000009:                                b (-3)\n.00000012: 200e PreScriptCall             \n.00000014: 298a ScriptFunctionCall        params: 0 function_25f85cd6\n.00000020: 3eb5 EvalLocalVariableRefCached a\n.00000024: 3d24 SetVariableField          \n.00000026: 200e PreScriptCall             \n.00000028: 3cfe ScriptFunctionCall        params: 0 zz_probe_lib::function_25f85cd6\n.00000038: 37cc EvalLocalVariableRefCached b\n.0000003c: 295a SetVariableField          \n.0000003e: 2010 End                       \n// final size: 0x40\n}\n\n"
+  },
+  {
+   "gscc": "bo3/spt/vm_1c000a0d43534780/scripts/zz_harness/zz_probe_lib.gscc",
+   "size": 148,
+   "tables": {
+    "name": "scripts/zz_harness/zz_probe_lib.gsc",
+    "source_crc": "0x23ef7073",
+    "exports": [
+     {
+      "name": "zz_lib_only",
+      "namespace": "zz_probe_lib",
+      "params": 0,
+      "flags": [],
+      "address": 120
+     }
+    ],
+    "imports": []
+   },
+   "asm": "#namespace zz_probe_lib;\n\n// Namespace zz_probe_lib\n// Params 0\n// Checksum 0x59c22d8c, Offset: 0x78\n// Size: 0x2\nfunction function_25f85cd6()\ngscasm {\n.00000000: 200d CheckClearParams          \n.00000002: 3e22 GetByte                   1 (0x1)\n.00000006: 3cc6 Return                    \n// final size: 0x8\n}\n\n"
+  }
+ ]
+}

@@ -1,0 +1,263 @@
+# corpus=t6 files=3864 kinds={'.gsc': 2533, '.csc': 1331}
+# probe	files_with_match	occurrences (regex probes; comments and string bodies stripped first)
+dir_include	2997	13427
+dir_using	0	0
+dir_using_animtree	492	543
+dir_namespace	0	0
+dir_insert	0	0
+dir_define	0	0
+dir_if_family	0	0
+dir_precache	0	0
+dir_ifdef_undef	0	0
+define_function_like	0	0
+col0_macro_call	0	0
+waitframe_definition	0	0
+expr_animtree	233	365
+hash_string	488	2163
+istring	379	3817
+at_string	0	0
+anim_ref	413	23638
+anim_ref_after_op	413	23609
+ptr_colon	875	6825
+ptr_path	222	2081
+ptr_amp	0	0
+path_call	2313	75100
+ptr_call	320	1707
+kw_function	2	3
+kw_class	0	0
+kw_foreach	504	3412
+kw_do	49	88
+kw_childthread	0	0
+kw_call_ptr	0	0
+kw_thisthread	0	0
+kw_autoexec	30	33
+kw_private	2	6
+kw_const	0	0
+kw_vararg	0	0
+param_ellipsis	0	0
+kw_new	0	0
+op_arrow	0	0
+op_strict_eq	0	0
+op_coalesce	0	0
+op_safe_nav	0	0
+kw_event_handler	0	0
+kw_waitframe	0	0
+kw_waitrealtime	20	53
+kw_waittillmatch	66	196
+kw_waittillframeend	135	279
+kw_prof_begin	0	0
+kw_profilestart	0	0
+kw_breakpoint	0	0
+kw_istrue	0	0
+kw_is_expr	0	0
+world_obj	0	0
+classes_obj	0	0
+dev_block	639	4706
+tuple_assign	0	0
+array_literal	0	0
+world_kw	2	5
+classes_kw	1	2
+sys_qualifier	0	0
+ns_call	0	0
+scr_hash_ident	3000	13792
+dollar_token	0	0
+str_prefix_pct	0	0
+str_prefix_t	0	0
+str_prefix_o	0	0
+str_prefix_s	0	0
+str_prefix_r	0	0
+cast	0	0
+kw_builtin_call	0	0
+kw_builtin	0	0
+goto_stmt	0	0
+jumpif_stmt	0	0
+label_stmt	0	0
+kw_constructor	0	0
+kw_destructor	0	0
+kw_codecall	1	1
+class_as_name	27	171
+class_path_component	0	0
+file_scope_const	0	0
+default_param	0	0
+ref_param	0	0
+func_header	3850	40400
+dir_inline	0	0
+kw_assert	446	2832
+kw_assertmsg	117	263
+kw_assertex	0	0
+kw_prof_end	0	0
+kw_profilestop	0	0
+kw_threadendon	0	0
+kw_isdefined	1251	32562
+star_param	0	0
+op_ternary	59	185
+struct_literal	0	0
+hash_hexprefixed	0	0
+hash_idtoken	0	0
+hash_scriptpath	0	0
+doc_at	0	0
+doc_tripleslash	0	0
+# corpus=t6 parser=gsc-before.exe profile=t6.toml probe_syntax_errors=0 plain_files=0 decompiled_files=3864
+# probe	files_with_match	occurrences	plain_files	plain_occurrences (gsc parse with every feature off: each dialect report is one use; plain = files without a decompiler header, the parser's own test)
+parser:anim_reference:a `%` animation reference	413	23649	0	0
+parser:anim_reference_qualified:a tree-qualified animation	102	4017	0	0
+parser:animtree_expression:`#animtree`	233	365	0	0
+parser:autoexec_modifier:`autoexec`	30	33	0	0
+parser:codecall_modifier:`codecall`	1	1	0	0
+parser:dev_blocks:a `/# #/` dev block	639	4706	0	0
+parser:do_while:`do ... while`	56	99	0	0
+parser:foreach:`foreach`	504	3412	0	0
+parser:foreach_key_value:a `foreach` key binding	42	70	0	0
+parser:function_pointer_style:a `::` function pointer	876	6839	0	0
+parser:hash_string_literal:a `#"..."` hashed string	488	2163	0	0
+parser:import_directive:`#include`	2997	13427	0	0
+parser:istring_literal:a `&"..."` localized string	379	3817	0	0
+parser:path_qualified_calls:a path-qualified name	2331	77211	0	0
+parser:pointer_call:a `[[ ]]` pointer call	320	1707	0	0
+parser:private_modifier:`private`	2	6	0	0
+parser:using_animtree_directive:`#using_animtree`	492	543	0	0
+parser:waitrealtime:`waitrealtime`	20	53	0	0
+parser:waittillframeend:`waittillframeend`	135	279	0	0
+# keyword test: 0 syntax errors with the profile's keywords; kwname rows: keyword, errors with it, errors without it (fewer = used as a plain name)
+kwname:anim	0	0
+kwname:autoexec	0	0
+kwname:break	0	0
+kwname:case	0	31074
+kwname:codecall	0	0
+kwname:const	0	0
+kwname:continue	0	0
+kwname:default	0	9
+kwname:do	0	98
+kwname:else	0	11043
+kwname:endon	0	0
+kwname:false	0	0
+kwname:for	0	12348
+kwname:foreach	0	6824
+kwname:game	0	0
+kwname:if	0	68916
+kwname:in	0	0
+kwname:isdefined	0	0
+kwname:level	0	0
+kwname:notify	0	0
+kwname:private	0	0
+kwname:prof_begin	0	0
+kwname:prof_end	0	0
+kwname:return	0	11236
+kwname:self	0	0
+kwname:switch	0	14909
+kwname:thread	0	20267
+kwname:true	0	0
+kwname:undefined	0	0
+kwname:wait	0	10263
+kwname:waitrealtime	0	0
+kwname:waittill	0	0
+kwname:waittillframeend	0	0
+kwname:waittillmatch	0	0
+kwname:while	0	5541
+# kwvar/kwfunc rows: keyword, files, occurrences (regex on stripped text)
+kwvar:abs	0	0
+kwfunc:abs	0	0
+kwvar:angleclamp180	0	0
+kwfunc:angleclamp180	0	0
+kwvar:anglestoforward	0	0
+kwfunc:anglestoforward	0	0
+kwvar:anglestoright	0	0
+kwfunc:anglestoright	0	0
+kwvar:anglestoup	0	0
+kwfunc:anglestoup	0	0
+kwvar:anim	0	0
+kwfunc:anim	0	0
+kwvar:autoexec	0	0
+kwfunc:autoexec	0	0
+kwvar:break	0	0
+kwfunc:break	0	0
+kwvar:case	0	0
+kwfunc:case	0	0
+kwvar:codecall	0	0
+kwfunc:codecall	0	0
+kwvar:const	0	0
+kwfunc:const	0	0
+kwvar:continue	0	0
+kwfunc:continue	0	0
+kwvar:default	0	0
+kwfunc:default	0	0
+kwvar:do	0	0
+kwfunc:do	0	0
+kwvar:else	0	0
+kwfunc:else	0	0
+kwvar:endon	0	0
+kwfunc:endon	0	0
+kwvar:false	0	0
+kwfunc:false	0	0
+kwvar:for	0	0
+kwfunc:for	0	0
+kwvar:foreach	0	0
+kwfunc:foreach	0	0
+kwvar:game	0	0
+kwfunc:game	0	0
+kwvar:getdvar	0	0
+kwfunc:getdvar	0	0
+kwvar:getdvarcoloralpha	0	0
+kwfunc:getdvarcoloralpha	0	0
+kwvar:getdvarcolorblue	0	0
+kwfunc:getdvarcolorblue	0	0
+kwvar:getdvarcolorgreen	0	0
+kwfunc:getdvarcolorgreen	0	0
+kwvar:getdvarcolorred	0	0
+kwfunc:getdvarcolorred	0	0
+kwvar:getdvarfloat	0	0
+kwfunc:getdvarfloat	0	0
+kwvar:getdvarint	0	0
+kwfunc:getdvarint	0	0
+kwvar:getdvarvector	0	0
+kwfunc:getdvarvector	0	0
+kwvar:getfirstarraykey	0	0
+kwfunc:getfirstarraykey	0	0
+kwvar:getnextarraykey	0	0
+kwfunc:getnextarraykey	0	0
+kwvar:gettime	0	0
+kwfunc:gettime	0	0
+kwvar:if	0	0
+kwfunc:if	0	0
+kwvar:in	0	0
+kwfunc:in	0	0
+kwvar:isdefined	0	0
+kwfunc:isdefined	0	0
+kwvar:level	0	0
+kwfunc:level	0	0
+kwvar:notify	0	0
+kwfunc:notify	0	0
+kwvar:private	0	0
+kwfunc:private	0	0
+kwvar:prof_begin	0	0
+kwfunc:prof_begin	0	0
+kwvar:prof_end	0	0
+kwfunc:prof_end	0	0
+kwvar:return	0	0
+kwfunc:return	0	0
+kwvar:self	0	0
+kwfunc:self	0	0
+kwvar:switch	0	0
+kwfunc:switch	0	0
+kwvar:thread	0	0
+kwfunc:thread	0	0
+kwvar:true	0	0
+kwfunc:true	0	0
+kwvar:undefined	0	0
+kwfunc:undefined	0	0
+kwvar:vectorscale	0	0
+kwfunc:vectorscale	0	0
+kwvar:vectortoangles	0	0
+kwfunc:vectortoangles	0	0
+kwvar:wait	0	0
+kwfunc:wait	0	0
+kwvar:waitrealtime	0	0
+kwfunc:waitrealtime	0	0
+kwvar:waittill	0	0
+kwfunc:waittill	0	0
+kwvar:waittillframeend	0	0
+kwfunc:waittillframeend	0	0
+kwvar:waittillmatch	0	0
+kwfunc:waittillmatch	0	0
+kwvar:while	0	0
+kwfunc:while	0	0

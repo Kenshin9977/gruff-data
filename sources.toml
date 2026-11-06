@@ -1,0 +1,404 @@
+# Source registry for gruff-data.
+#
+# Every `source = [...]` entry in a profile names one of the ids below, optionally followed by
+# "#fragment" to point at a section (e.g. "gscode-game-profiles#imports").
+#
+# `license` is the licence of the SOURCE, not of this file. It drives the per-entry licence rule
+# in README.md: an entry whose only evidence is a GPL source is labelled with that licence.
+# `usage = "facts-only"` marks proprietary material: the project may record facts it re-derived
+# from it (a feature is present or absent, a keyword exists, a count), never its text.
+#
+# Commits are the revisions read on 2026-11-05.
+
+[sources.corpus-iw1]
+kind = "corpus-measurement"
+title = "CoD1 retail scripts, counted by tools/featcount.py"
+detail = "Main/pak*.pk3 of a retail install, 901 .gsc read in memory; counts in evidence/corpus/iw1.tsv. Phase 2: corpus/iw1 (809 .gsc exported by GrayWolf, the kept copy of each path), regex and parser counts in evidence/corpus/iw1-export.tsv"
+license = "CC0-1.0"
+usage = "facts-only"
+
+[sources.corpus-iw2]
+kind = "corpus-measurement"
+title = "CoD2 retail scripts, counted by tools/featcount.py"
+detail = "main/iw_*.iwd of a retail install, 644 .gsc read in memory; counts in evidence/corpus/iw2.tsv. Phase 2: corpus/iw2 (622 .gsc exported by GrayWolf), regex and parser counts in evidence/corpus/iw2-export.tsv"
+license = "CC0-1.0"
+usage = "facts-only"
+
+[sources.corpus-t7]
+kind = "corpus-measurement"
+title = "BO3 mod-tools raw scripts, counted by tools/featcount.py"
+detail = "share/raw/scripts of the BO3 mod tools, 546 .gsc + 316 .csc + 116 .gsh; counts in evidence/corpus/t7.tsv"
+license = "CC0-1.0"
+usage = "facts-only"
+
+[sources.bo3-gsc-language-doc]
+kind = "official-doc"
+title = "BO3 mod tools, docs_modtools/GSC_Language.pdf (Treyarch, 2016)"
+detail = "Read locally. Only facts are recorded: feature present/absent, keyword and directive lists."
+license = "LicenseRef-Proprietary"
+usage = "facts-only"
+
+[sources.bo3-sublime-syntax]
+kind = "official-doc"
+title = "BO3 mod tools, docs_modtools/gsc_sublime.zip (Sublime Text syntax definition)"
+detail = "Read locally. Only facts are recorded: which words and directives it highlights."
+license = "LicenseRef-Proprietary"
+usage = "facts-only"
+
+[sources.gscode-game-profiles]
+kind = "third-party-doc"
+title = "Blakintosh/gscode server/GAME_PROFILES.md"
+url = "https://github.com/Blakintosh/gscode/blob/7bd6191f5c3a53e26f5548b1c3085fc41f79206f/server/GAME_PROFILES.md"
+license = "GPL-3.0-only"
+
+[sources.gscode-dialect-facts]
+kind = "third-party-doc"
+title = "Blakintosh/gscode .claude/skills/gsc-dialect-facts/SKILL.md"
+url = "https://github.com/Blakintosh/gscode/blob/7bd6191f5c3a53e26f5548b1c3085fc41f79206f/.claude/skills/gsc-dialect-facts/SKILL.md"
+license = "GPL-3.0-only"
+
+[sources.gscode-multi-game-api]
+kind = "third-party-doc"
+title = "Blakintosh/gscode MULTI_GAME_API.md"
+url = "https://github.com/Blakintosh/gscode/blob/7bd6191f5c3a53e26f5548b1c3085fc41f79206f/MULTI_GAME_API.md"
+license = "GPL-3.0-only"
+
+[sources.gscode-supported-profiles]
+kind = "third-party-code"
+title = "Blakintosh/gscode server/src/GSCode.Core/Profiles/SupportedProfiles.cs and GameProfile.cs"
+url = "https://github.com/Blakintosh/gscode/blob/7bd6191f5c3a53e26f5548b1c3085fc41f79206f/server/src/GSCode.Core/Profiles/SupportedProfiles.cs"
+license = "GPL-3.0-only"
+
+[sources.gsc-tool-syntax]
+kind = "third-party-doc"
+title = "xensik/gsc-tool docs/syntax.md (describes what the community compiler accepts)"
+url = "https://github.com/xensik/gsc-tool/blob/6dc1aa3712b8b0bfda23afa304846383c18153d1/docs/syntax.md"
+license = "GPL-3.0-only"
+caveat = "The tool accepts more than the stock compilers did; tool acceptance is not retail evidence."
+
+[sources.acts-grammar]
+kind = "third-party-code"
+title = "ate47/atian-cod-tools grammar/gsc.g4 (ANTLR superset for the acts compiler)"
+url = "https://github.com/ate47/atian-cod-tools/blob/a154e9f1277a7a1c332b652eac46a24f701ba1b3/grammar/gsc.g4"
+license = "GPL-3.0-only OR MIT"
+caveat = "Superset of a community compiler, including acts-only extensions."
+
+[sources.acts-vm-tables]
+kind = "third-party-code"
+title = "atian-cod-tools VM descriptions: src/core/acts/tools/gsc/opcodes/*.hpp (VMF_ flags, opcode tables) and vm/*.hpp (GOHF_ flags)"
+url = "https://github.com/ate47/atian-cod-tools/tree/a154e9f1277a7a1c332b652eac46a24f701ba1b3/src/core/acts/tools/gsc"
+license = "GPL-3.0-only OR MIT"
+caveat = "Bytecode-level evidence: an opcode or handler flag proves the VM can express a construct, not its source spelling."
+
+[sources.eyza-vscode-cod-gsc]
+kind = "third-party-doc"
+title = "eyza-cod2/vscode-cod-gsc README, per-game support table (via research note gsc_ecosystem_dialects.md)"
+url = "https://github.com/eyza-cod2/vscode-cod-gsc"
+license = "GPL-3.0-only"
+
+[sources.plutonium-t6-scripts]
+kind = "third-party-corpus"
+title = "plutoniummod/t6-scripts, decompiled BO2 scripts (via research note gsc_ecosystem_dialects.md)"
+url = "https://github.com/plutoniummod/t6-scripts"
+license = "LicenseRef-Proprietary"
+usage = "facts-only"
+caveat = "Decompiler output: syntax may be a reconstruction, not what Treyarch wrote."
+
+[sources.gsclsp-readme]
+kind = "third-party-doc"
+title = "Lierrmm/GSCLSP extension README (JUP requires Treyarch-style syntax)"
+url = "https://github.com/Lierrmm/GSCLSP/blob/main/GSCLSP.Extension/README.md"
+license = "MIT-0"
+
+[sources.codresearch-spt]
+kind = "third-party-doc"
+title = "codresearch.dev ScriptParseTree asset page (BO2 bytecode, DJB2 dvar hashes)"
+url = "https://codresearch.dev/index.php/ScriptParseTree_Asset"
+license = "LicenseRef-Unknown"
+
+[sources.hash-inventory]
+kind = "project-report"
+title = "Design report 'Outillage GSC de CoD 1 a BO7', section on hashed identifiers (owner's GrayWolf/codehash/bo7-gsc-archive inventory)"
+license = "CC0-1.0"
+
+[sources.inference]
+kind = "inference"
+title = "No direct evidence: value carried from the family or the previous game, to be checked"
+license = "CC0-1.0"
+
+[sources.linker-t7-probes]
+kind = "corpus-measurement"
+title = "Probe scripts written by this project, compiled with the official BO3 linker (linker_modtools.exe) through gruff/tools/linker/gsc_link.py"
+detail = "Verdicts, acts disassembly and import/export tables of our own probes in evidence/linker-t7/<probe>.json; the probes are in gruff/tools/linker/probes/"
+license = "CC0-1.0"
+usage = "facts-only"
+
+[sources.vm-t7-emulation]
+kind = "engine-measurement"
+title = "This project's conformance scripts run in the BO3 script VM, emulated offline from the executable (gruff/tools/re/vm, Unicorn over the dump; nothing launched)"
+detail = "Golden traces, answers and the static readings that back them in semantics/t7.toml; the scripts are gruff/conformance/t7, the method gruff/tools/re/reports/vm_t7.md"
+license = "CC0-1.0"
+usage = "facts-only"
+
+[sources.vm-t8-emulation]
+kind = "engine-measurement"
+title = "This project's conformance scripts, compiled by acts, run in the BO4 script VM, emulated offline from the executable (gruff/tools/re/vm, Unicorn over the dump; nothing launched)"
+detail = "Golden traces, answers, static readings and the comparison with T7 in semantics/t8.toml; the scripts are gruff/conformance/t8, the method gruff/tools/re/reports/vm_t8.md"
+license = "CC0-1.0"
+usage = "facts-only"
+
+[sources.vm-t9-emulation]
+kind = "engine-measurement"
+title = "This project's conformance scripts, compiled by acts, run in the Black Ops Cold War script VM, emulated offline from the executable (gruff/tools/re/vm, Unicorn over the dump; nothing launched)"
+detail = "Golden traces, answers, static readings and the comparison with T8 in semantics/t9.toml; the scripts are gruff/conformance/t9, the method gruff/tools/re/reports/vm_t9.md"
+license = "CC0-1.0"
+usage = "facts-only"
+
+[sources.vm-t6-emulation]
+kind = "engine-measurement"
+title = "This project's conformance scripts, compiled by gsc-tool, run in the Black Ops II script VM, emulated offline from the 32-bit executable (gruff/tools/re/vm/t56vm.py, Unicorn; nothing launched)"
+detail = "Golden traces, answers, static readings and the comparison with T7 in semantics/t6.toml; the scripts are gruff/conformance/t6, the method gruff/tools/re/reports/vm_t6.md"
+license = "CC0-1.0"
+usage = "facts-only"
+
+[sources.vm-t5-emulation]
+kind = "engine-measurement"
+title = "This project's conformance scripts, compiled at load by the game's own compiler, run in the Black Ops (multiplayer) script VM, emulated offline from BlackOpsMP.exe (gruff/tools/re/vm/t56vm.py, Unicorn; nothing launched)"
+detail = "Golden traces, answers and the comparison with T6 in semantics/t5.toml; the scripts are gruff/conformance/t5, the method gruff/tools/re/reports/vm_t5.md"
+license = "CC0-1.0"
+usage = "facts-only"
+
+[sources.vm-t4-emulation]
+kind = "engine-measurement"
+title = "This project's conformance scripts run in the World at War script VM, emulated offline from the executable (gruff/tools/re/vm, Unicorn over the unwrapped SP executable; nothing launched); the game's own compiler compiles each script at load"
+detail = "Golden traces, answers, static readings and the comparison with T7 in semantics/t4.toml; the scripts are gruff/conformance/t4, the method gruff/tools/re/reports/vm_t4.md"
+license = "CC0-1.0"
+usage = "facts-only"
+
+[sources.vm-iw3-emulation]
+kind = "engine-measurement"
+title = "This project's conformance scripts run in the Call of Duty 4 script VM, emulated offline from the executable (gruff/tools/re/vm, Unicorn over the Steam iw3mp.exe; nothing launched); the game's own compiler compiles each script at load"
+detail = "Golden traces, answers, static readings and the comparison with T4 in semantics/iw3.toml; the scripts are gruff/conformance/iw3, the method gruff/tools/re/reports/vm_iw3.md"
+license = "CC0-1.0"
+usage = "facts-only"
+
+[sources.bytecode-t6]
+kind = "corpus-measurement"
+title = "BO2 retail bytecode (GrayWolf --type script, no decompile), hidden foreach locals counted by gruff/tools/corpus/t6_foreach_locals.py"
+detail = "3,865 .gscc/.cscc read locally; counts only in evidence/bytecode/t6-foreach-locals.tsv"
+license = "CC0-1.0"
+usage = "facts-only"
+
+[sources.bytecode-t8-imports]
+kind = "corpus-measurement"
+title = "BO4 retail bytecode (GrayWolf --type script, no decompile), import tables counted by gruff/tools/corpus/import_namespaces.py"
+detail = "2,633 .gscc/.cscc read locally; counts only in evidence/bytecode/t8-import-namespaces.tsv"
+license = "CC0-1.0"
+usage = "facts-only"
+
+[sources.bytecode-t9-imports]
+kind = "corpus-measurement"
+title = "Cold War retail bytecode (GrayWolf --type script, no decompile), import tables counted by gruff/tools/corpus/import_namespaces.py"
+detail = "2,829 .gscc/.cscc read locally; counts only in evidence/bytecode/t9-import-namespaces.tsv"
+license = "CC0-1.0"
+usage = "facts-only"
+
+[sources.gsc-tool-arc-source]
+kind = "third-party-code"
+title = "xensik/gsc-tool src/arc (parser.cpp parse_stmt_foreach, decompiler.cpp decompile_foreach, preprocessor.cpp directive table)"
+url = "https://github.com/xensik/gsc-tool/tree/6dc1aa3712b8b0bfda23afa304846383c18153d1/src/arc"
+license = "GPL-3.0-only"
+caveat = "Community compiler and decompiler; its t6 front end accepts more than retail."
+
+[sources.acts-t8-link]
+kind = "third-party-code"
+title = "atian-cod-tools src/dll/shield-plugin/systems/gsc_link.cpp (acts' reimplementation of the BO4 script linker: GscObjResolve, Scr_GetScriptExport)"
+url = "https://github.com/ate47/atian-cod-tools/blob/a154e9f1277a7a1c332b652eac46a24f701ba1b3/src/dll/shield-plugin/systems/gsc_link.cpp"
+license = "GPL-3.0-only OR MIT"
+caveat = "A reimplementation for T8, not T7 and not the game's own code."
+
+[sources.acts-compiler]
+kind = "third-party-code"
+title = "atian-cod-tools src/core/acts/tools/gsc/compiler (gsc_compiler_parser.cpp: a bare call or &f becomes an import of <current namespace>::f with the GET_CALL flag; gsc_compiler_script_object.cpp: a GET_CALL import is a script call when the file's exports have that namespace::name, else a builtin, and a thread on a builtin is rejected) and vm/gsc_vm_t8.hpp, gsc_vm_t9.hpp, gsc_vm_t10.hpp (import flag tables)"
+url = "https://github.com/ate47/atian-cod-tools/tree/91393315004fbe39473bb279d1079877801b330e/src/core/acts/tools/gsc"
+license = "GPL-3.0-only OR MIT"
+caveat = "A community compiler for T8 and later, not the games' own; read locally at commit 9139331 (2026-08-27), as was gsc_link.cpp (acts-t8-link) for this reading."
+
+[sources.plutonium-docs]
+kind = "third-party-doc"
+title = "plutonium.pw docs: modding/loading-mods, modding/gsc/compiler-limitations, modding/gsc/new-scripting-features (read 2026-11-05)"
+url = "https://plutonium.pw/docs/modding/gsc/compiler-limitations/"
+license = "LicenseRef-Unknown"
+
+[sources.linker-t7-syntax-probes]
+kind = "corpus-measurement"
+title = "Syntax probes written by this project, compiled with the official BO3 linker (linker_modtools.exe) through gruff/tools/linker/gsc_link.py --disasm"
+detail = "Probes and verdicts in evidence/linker-t7/syntax/ (p_codecall, p_cast, p_goto, p_label, p_childthread, p_builtin, p_class_ident, p_ostring); run 2026-11-05, every one rejected"
+license = "CC0-1.0"
+usage = "facts-only"
+
+[sources.corpus-iw3]
+kind = "corpus-measurement"
+title = "CoD4 retail scripts (plain source in the fastfiles), counted by tools/featcount.py"
+detail = "corpus/iw3, 823 .gsc exported by GrayWolf; counts in evidence/corpus/iw3.tsv"
+license = "CC0-1.0"
+usage = "facts-only"
+
+[sources.corpus-iw4]
+kind = "corpus-measurement"
+title = "MW2 (2009) retail scripts (plain source in the fastfiles), counted by tools/featcount.py"
+detail = "corpus/iw4, 1,422 .gsc exported by GrayWolf; counts in evidence/corpus/iw4.tsv"
+license = "CC0-1.0"
+usage = "facts-only"
+
+[sources.corpus-t4]
+kind = "corpus-measurement"
+title = "World at War retail scripts (plain source in the fastfiles), counted by tools/featcount.py"
+detail = "corpus/t4, 1,201 .gsc + 228 .csc exported by GrayWolf; counts in evidence/corpus/t4.tsv"
+license = "CC0-1.0"
+usage = "facts-only"
+
+[sources.corpus-t5]
+kind = "corpus-measurement"
+title = "Black Ops retail scripts (plain source in the fastfiles) and the BO1 mod-tools raw scripts, counted by tools/featcount.py"
+detail = "corpus/t5 (source + source-modtools), 3,334 .gsc + 489 .csc; counts in evidence/corpus/t5.tsv"
+license = "CC0-1.0"
+usage = "facts-only"
+
+[sources.corpus-t6]
+kind = "corpus-measurement"
+title = "BO2 retail bytecode decompiled with acts 3.3.0, counted by tools/featcount.py"
+detail = "corpus/t6, 2,533 .gsc + 1,331 .csc; counts in evidence/corpus/t6.tsv"
+license = "CC0-1.0"
+usage = "facts-only"
+caveat = "Decompiler output: a count shows what the bytecode encodes in acts' spelling, not what the retail compiler's source looked like."
+
+[sources.corpus-t8]
+kind = "corpus-measurement"
+title = "BO4 retail bytecode decompiled with acts 3.3.0, counted by tools/featcount.py"
+detail = "corpus/t8, 1,647 .gsc + 986 .csc; counts in evidence/corpus/t8.tsv"
+license = "CC0-1.0"
+usage = "facts-only"
+caveat = "Decompiler output: a count shows what the bytecode encodes in acts' spelling, not what the retail compiler's source looked like."
+
+[sources.corpus-t9]
+kind = "corpus-measurement"
+title = "Cold War retail bytecode decompiled with acts 3.3.0, counted by tools/featcount.py"
+detail = "corpus/t9, 2,465 .gsc + 364 .csc; counts in evidence/corpus/t9.tsv"
+license = "CC0-1.0"
+usage = "facts-only"
+caveat = "Decompiler output: a count shows what the bytecode encodes in acts' spelling, not what the retail compiler's source looked like."
+
+[sources.corpus-jup]
+kind = "corpus-measurement"
+title = "MWIII retail bytecode (multiplayer cod23 and campaign sp23 zones) decompiled with acts 3.3.0, counted by tools/featcount.py"
+detail = "corpus/jup, 3,083 .gsc (evidence/corpus/jup.tsv) and corpus/jup_sp, 1,788 .gsc (evidence/corpus/jup-sp.tsv)"
+license = "CC0-1.0"
+usage = "facts-only"
+caveat = "Decompiler output: a count shows what the bytecode encodes in acts' spelling, not what the retail compiler's source looked like."
+
+[sources.corpus-t11]
+kind = "corpus-measurement"
+title = "BO7 retail bytecode, the frozen bo7-gsc-archive (scripts/decrypted, acts output), counted by tools/featcount.py"
+detail = "4,463 .gsc; counts in evidence/corpus/t11.tsv (phase 2: re-measured on bo7-gsc-archive-work/decrypted-v2, same 4,463 files)"
+license = "CC0-1.0"
+usage = "facts-only"
+caveat = "Decompiler output; some animation names stay undecoded binary bytes after %, which regex probes and the parser can misread."
+
+[sources.corpus-codol]
+kind = "corpus-measurement"
+title = "Call of Duty Online rawfiles (plain source in the fastfiles), counted by tools/featcount.py"
+detail = "corpus/codol, 211 .gsc exported by GrayWolf (createfx, createart and map scripts); counts in evidence/corpus/codol.tsv"
+license = "CC0-1.0"
+usage = "facts-only"
+
+[sources.corpus-iw5]
+kind = "corpus-measurement"
+title = "MW3 (2011) retail bytecode decompiled with gsc-tool 1.5.1, plus 48 createart scripts shipped as plain source, counted by tools/featcount.py"
+detail = "corpus/iw5, 1,986 .gsc (1,938 decompiled, 48 plain source); counts in evidence/corpus/iw5.tsv"
+license = "CC0-1.0"
+usage = "facts-only"
+caveat = "Decompiler output: a count shows what the bytecode encodes in gsc-tool's spelling, not what the retail compiler's source looked like."
+
+[sources.corpus-iw6]
+kind = "corpus-measurement"
+title = "Ghosts retail bytecode decompiled with gsc-tool 1.5.1, counted by tools/featcount.py"
+detail = "corpus/iw6, 1,778 .gsc; counts in evidence/corpus/iw6.tsv"
+license = "CC0-1.0"
+usage = "facts-only"
+caveat = "Decompiler output: a count shows what the bytecode encodes in gsc-tool's spelling, not what the retail compiler's source looked like."
+
+[sources.corpus-s1]
+kind = "corpus-measurement"
+title = "Advanced Warfare retail bytecode decompiled with gsc-tool 1.5.1, counted by tools/featcount.py"
+detail = "corpus/s1, 2,058 .gsc; counts in evidence/corpus/s1.tsv"
+license = "CC0-1.0"
+usage = "facts-only"
+caveat = "Decompiler output: a count shows what the bytecode encodes in gsc-tool's spelling, not what the retail compiler's source looked like."
+
+[sources.corpus-h1]
+kind = "corpus-measurement"
+title = "Modern Warfare Remastered retail bytecode decompiled with gsc-tool 1.5.1, counted by tools/featcount.py"
+detail = "corpus/h1, 1,277 .gsc; counts in evidence/corpus/h1.tsv"
+license = "CC0-1.0"
+usage = "facts-only"
+caveat = "Decompiler output: a count shows what the bytecode encodes in gsc-tool's spelling, not what the retail compiler's source looked like."
+
+[sources.corpus-iw7]
+kind = "corpus-measurement"
+title = "Infinite Warfare retail bytecode decompiled with gsc-tool 1.5.1, counted by tools/featcount.py"
+detail = "corpus/iw7, 3,590 .gsc; counts in evidence/corpus/iw7.tsv"
+license = "CC0-1.0"
+usage = "facts-only"
+caveat = "Decompiler output: a count shows what the bytecode encodes in gsc-tool's spelling, not what the retail compiler's source looked like."
+
+[sources.corpus-s2]
+kind = "corpus-measurement"
+title = "WWII retail bytecode decompiled with gsc-tool 1.5.1, counted by tools/featcount.py"
+detail = "corpus/s2, 2,108 .gsc; counts in evidence/corpus/s2.tsv"
+license = "CC0-1.0"
+usage = "facts-only"
+caveat = "Decompiler output: a count shows what the bytecode encodes in gsc-tool's spelling, not what the retail compiler's source looked like."
+
+[sources.corpus-iw8]
+kind = "corpus-measurement"
+title = "Modern Warfare (2019) retail bytecode decompiled with gsc-tool 1.5.1, counted by tools/featcount.py"
+detail = "corpus/iw8, 1,079 .gsc; counts in evidence/corpus/iw8.tsv"
+license = "CC0-1.0"
+usage = "facts-only"
+caveat = "Decompiler output: a count shows what the bytecode encodes in gsc-tool's spelling, not what the retail compiler's source looked like."
+
+[sources.t7-exe-extraction]
+kind = "corpus-measurement"
+title = "Facts extracted from the BO3 executable by gruff/tools/re (t7_builtins.py, build_t7.py and the field extractor): static initialisers, lookups and handlers run under Unicorn on a Cordycep dump of BlackOps3.exe, flattened (bo3_flat.exe, PE timestamp 1765634846)"
+detail = "Never run against a live game. Outputs: builtins/t7.toml, fields/t7.toml; method and logs in gruff/tools/re/README.md and reports/. Only hashes, counts, arities, flags and table addresses are recorded."
+license = "CC0-1.0"
+usage = "facts-only"
+
+[sources.bo3-hash-list]
+kind = "third-party-corpus"
+title = "BO3 name list bo3_names_and_labels.csv (community hash-to-name list, read locally)"
+detail = "Used only to name a hash when the string's t7.canon hash equals it (gruff/tools/re/build_t7.py); a name is a fact re-derived by hashing, no other column is kept"
+license = "LicenseRef-Unknown"
+usage = "facts-only"
+
+[sources.mod-tools-scripts]
+kind = "third-party-corpus"
+title = "BO3 mod-tools raw scripts (share/raw/scripts), identifiers and call sites"
+detail = "Used to name hashes (an identifier whose t7.canon hash matches) and to count call-site arities and field accesses; only names and counts are kept. Same files as corpus-t7"
+license = "LicenseRef-Proprietary"
+usage = "facts-only"
+
+[sources.bo3-scriptapi-doc]
+kind = "official-doc"
+title = "BO3 mod tools, docs_modtools/bo3_scriptapifunctions.htm (Treyarch)"
+detail = "Read locally as an oracle (gruff/tools/re/officialdoc.py): names, method or function, mandatory/optional counts, client/server. No description, parameter name or example is kept."
+license = "LicenseRef-Proprietary"
+usage = "facts-only"
+
+[sources.bo3-script-object-fields]
+kind = "official-doc"
+title = "BO3 mod tools, docs_modtools/ScriptObjectFields.xlsx (Treyarch)"
+detail = "Read locally as an oracle for the extracted field tables (gruff/tools/re/build_t7_fields.py): a field is named when a listed name hashes to it, owner kinds are compared, and its type column labels the executable's numeric type codes by majority (agreement kept). No description is copied."
+license = "LicenseRef-Proprietary"
+usage = "facts-only"

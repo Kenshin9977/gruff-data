@@ -1,0 +1,113 @@
+# Dialect profile: Call of Duty: Black Ops 4 (2018).
+# Schema: ../schema/profile.schema.json. Sources: ../sources.toml. Licence rule: ../README.md.
+
+schema_version = 1
+id = "t8"
+name = "Call of Duty: Black Ops 4"
+release_year = 2018
+developer = "Treyarch"
+dialect_family = "treyarch-t7plus"
+grade = "documented"
+aliases = ["bo4", "blackops4"]
+source_availability = ["compiled-only"]
+license = "CC0-1.0"
+notes = "Compiled-only. Evidence is the acts VM handler and opcode tables; source spelling follows the acts decompiler."
+
+[tool_ids]
+gsc_tool = "t8"
+acts = "t8"
+gscode = "bo4"
+
+[keywords]
+words = ["autoexec", "break", "builtin", "case", "childthread", "class", "const", "constructor", "continue", "default", "destructor", "do", "else", "event_handler", "false", "for", "foreach", "function", "goto", "if", "in", "is", "new", "not", "private", "return", "switch", "thread", "threadendon", "true", "undefined", "var", "wait", "while"]
+confidence = "assumed"
+source = ["acts-grammar", "corpus-t8"]
+note = "literal words of the acts superset grammar, plus constructor and destructor (39 and 5 in the acts output, classes on) and const (const_locals on; not observable in compiled code); the retail keyword set is not observable"
+
+[features]
+# --- Files
+file_kinds = { value = ["gsc", "csc"], confidence = "verified-on-corpus", source = ["corpus-t8", "acts-vm-tables"], note = "decompiled (acts output): 1,647 .gsc, 986 .csc; client VM flag set; .gsh not observable: compiled-only game, the construct does not survive compilation" }
+# --- Lexing and literals
+case_insensitive_identifiers = { value = true, confidence = "documented", source = ["hash-inventory"], note = "hash families lowercase their input" }
+dev_blocks = { value = true, confidence = "verified-on-corpus", source = ["corpus-t8", "acts-vm-tables"], note = "decompiled (acts output): 3,774 uses in 643 files; dev-block opcode" }
+doc_comment_style = { value = "at-block", confidence = "assumed", source = ["inference"], note = "not observable: compiled-only game, the construct does not survive compilation" }
+istring_literal = { value = true, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t8 (absence of use, not proof of absence)" }
+hash_string_literal = { value = true, confidence = "verified-on-corpus", source = ["corpus-t8", "hash-inventory", "acts-grammar"], note = "decompiled (acts output): 101,952 uses in 2,252 files; 64-bit hashes" }
+extra_string_prefixes = { value = [], confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "acts accepts the s, r, #, @, t, %, o prefixes as a superset; 0 uses in corpus-t8 (absence of use, not proof of absence)" }
+anim_reference = { value = true, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t8 (absence of use, not proof of absence)" }
+anim_reference_qualified = { value = true, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "0 uses in corpus-t8 (absence of use, not proof of absence)" }
+animtree_expression = { value = true, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t8 (absence of use, not proof of absence)" }
+dollar_identifiers = { value = false, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "acts accepts $name as an animtree identifier; 0 uses in corpus-t8 (absence of use, not proof of absence)" }
+hashed_identifier_spellings = { value = ["hex-prefixed", "script-path-hash"], confidence = "verified-on-corpus", source = ["corpus-t8", "hash-inventory", "gsclsp-readme"], note = "decompiled (acts output): used: hex-prefixed 925,327, script-path-hash 18,637" }
+# --- Bytecode naming
+identifier_encoding = { value = "scr32-t89", confidence = "documented", source = ["hash-inventory"], note = "the acts HashT89Scr algorithm, re-checked in gsc_hash" }
+# --- Imports and name resolution
+import_directive = { value = "using", confidence = "verified-on-corpus", source = ["corpus-t8", "acts-grammar"], note = "decompiled (acts output): 20,323 in 2,365 files; not observable: compiled-only game, the construct does not survive compilation; acts writes #using" }
+name_resolution = { value = "namespace", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT" }
+namespace_directive = { value = true, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "2,614 uses in 2,567 decompiled files (corpus-t8), not proof: acts prints #namespace wherever the export namespace changes" }
+path_qualified_calls = { value = false, confidence = "assumed", source = ["gsclsp-readme", "acts-grammar"], license = "GPL-3.0-only OR MIT", note = "0 uses in corpus-t8 (absence of use, not proof of absence)" }
+namespace_qualified_calls = { value = true, confidence = "verified-on-corpus", source = ["corpus-t8", "acts-grammar"], note = "decompiled (acts output): 75,826 uses in 2,323 files" }
+builtin_namespace_qualifier = { value = "unknown", confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t8 (absence of use, not proof of absence)" }
+header_directive = { value = "insert", confidence = "assumed", source = ["inference"], note = "not observable: compiled-only game, the construct does not survive compilation" }
+precache_directive = { value = "unknown", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "not observable: compiled-only game, the construct does not survive compilation; 0 uses in corpus-t8: acts never emits it, so the decompiled corpus cannot show it" }
+using_animtree_directive = { value = true, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t8 (absence of use, not proof of absence)" }
+imports_before_declarations = { value = "unknown", confidence = "assumed", source = ["inference"] }
+# --- Preprocessor
+preprocessor_define = { value = "unknown", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "not observable: compiled-only game, the construct does not survive compilation; 0 uses in corpus-t8: acts never emits it, so the decompiled corpus cannot show it" }
+preprocessor_function_macros = { value = "unknown", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "not observable: compiled-only game, the construct does not survive compilation; 0 uses in corpus-t8: acts never emits it, so the decompiled corpus cannot show it" }
+preprocessor_conditionals = { value = "unknown", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "not observable: compiled-only game, the construct does not survive compilation; 0 uses in corpus-t8: acts never emits it, so the decompiled corpus cannot show it" }
+preprocessor_ifdef_undef = { value = "unknown", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "not observable: compiled-only game, the construct does not survive compilation; 0 uses in corpus-t8: acts never emits it, so the decompiled corpus cannot show it" }
+predefined_macros = { value = [], confidence = "assumed", source = ["inference"] }
+file_scope_macro_calls = { value = "unknown", confidence = "assumed", source = ["inference"], note = "not observable: compiled-only game, the construct does not survive compilation; 0 uses in corpus-t8: acts never emits it, so the decompiled corpus cannot show it" }
+# --- Declarations
+function_keyword = { value = true, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "acts writes it; its grammar makes it optional; 41,314 uses in 2,566 decompiled files (corpus-t8), not proof: the decompiler prints `function` on every declaration (printer convention)" }
+autoexec_modifier = { value = true, confidence = "verified-on-corpus", source = ["corpus-t8", "acts-vm-tables"], note = "decompiled (acts output): 1,540 uses in 1,515 files; export flags decoded by acts" }
+private_modifier = { value = true, confidence = "verified-on-corpus", source = ["corpus-t8", "acts-vm-tables"], note = "decompiled (acts output): 5,748 uses in 761 files; export flags decoded by acts" }
+event_handler_modifier = { value = true, confidence = "verified-on-corpus", source = ["corpus-t8", "acts-vm-tables"], note = "decompiled (acts output): 473 uses in 275 files; event-handler export support in the acts VM handler" }
+codecall_modifier = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t8: acts never emits it, so the decompiled corpus cannot show it" }
+classes = { value = true, confidence = "verified-on-corpus", source = ["corpus-t8", "acts-vm-tables"], note = "decompiled (acts output): 2,333 uses in 601 files; class method call opcodes" }
+file_scope_constants = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t8: acts never emits it, so the decompiled corpus cannot show it" }
+const_locals = { value = true, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "0 uses in corpus-t8: acts never emits it, so the decompiled corpus cannot show it" }
+default_parameters = { value = true, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "2,349 uses in 489 decompiled files (corpus-t8), not proof: acts folds an if(!isdefined(p)) p = v; prologue into a default value (asm.cpp)" }
+reference_parameters = { value = true, confidence = "verified-on-corpus", source = ["corpus-t8", "acts-vm-tables"], note = "decompiled (acts output): 172 uses in 35 files; variable-reference handler flag" }
+pointer_parameters = { value = false, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "0 uses in corpus-t8 (absence of use, not proof of absence)" }
+varargs = { value = true, confidence = "verified-on-corpus", source = ["corpus-t8", "acts-vm-tables"], note = "decompiled (acts output): 76 uses in 29 files; vararg handler flag" }
+# --- Statements
+foreach = { value = true, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "foreach handler type; 7,425 uses in 1,010 decompiled files (corpus-t8), not proof: both decompilers print any getfirstarraykey/getnextarraykey loop as foreach (acts asm.cpp, gsc-tool decompiler.cpp decompile_foreach)" }
+foreach_key_value = { value = true, confidence = "assumed", source = ["gsc-tool-syntax", "acts-grammar"], license = "GPL-3.0-only", note = "tools accept the two-variable form; 550 uses in 195 decompiled files (corpus-t8), not proof: the key binding is printed when the body reads the key (acts) or by the loop's trailing clears (gsc-tool), not from the source" }
+do_while = { value = true, confidence = "verified-on-corpus", source = ["corpus-t8", "acts-grammar"], note = "decompiled (acts output): 193 uses in 91 files" }
+childthread = { value = true, confidence = "measured-in-engine", source = ["vm-t8-emulation#childthread_inherits_endons", "vm-t8-emulation#childthread_dies_with_parent", "corpus-t8"], note = "the child inherits the endons active in the thread that starts it (ScriptThreadCallEndOn copies them) and does not end with that thread (semantics/t8.toml); 18 childthread calls in the acts output of the shipped bytecode" }
+call_pointer_sync = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t8 (absence of use, not proof of absence)" }
+builtin_call = { value = false, confidence = "verified-on-corpus", source = ["corpus-t8"], note = "0 in the acts output of the shipped bytecode (acts writes builtin [[ ]] when the bytecode calls through a builtin pointer) (absence of use, not proof of absence)" }
+thisthread = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t8: acts never emits it, so the decompiled corpus cannot show it" }
+threadendon_call = { value = true, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "thread-call-endon opcodes: childthread compiles to them (ScriptThreadCallEndOn, measured: semantics/t8.toml childthread_*); the threadendon spelling is acts'; 0 uses in corpus-t8: acts never emits it, so the decompiled corpus cannot show it" }
+waittillframeend = { value = true, confidence = "measured-in-engine", source = ["vm-t8-emulation#waittillframeend_order"], note = "resumes in the same frame after the threads that do not wait" }
+waitframe = { value = true, confidence = "measured-in-engine", source = ["vm-t8-emulation#waitframe_one", "acts-vm-tables"], note = "waitframe(n) resumes n frames later by the VM's frame counter; waitframe(1) is one 50 ms frame" }
+waitrealtime = { value = "unknown", confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t8: acts never emits it, so the decompiled corpus cannot show it" }
+tuple_assignment = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t8 (absence of use, not proof of absence)" }
+profiler_keywords = { value = ["profilestart", "profilestop"], confidence = "assumed", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "profile-start opcode" }
+assert_keywords = { value = [], confidence = "assumed", source = ["inference"] }
+breakpoint_keyword = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-t8 (absence of use, not proof of absence)" }
+goto_labels = { value = false, confidence = "assumed", source = ["inference"], note = "decompiled corpus (t8: 0 goto, 0 jumpif, 0 labels): what appears is control flow acts could not structure, not source; 0 uses in corpus-t8 (absence of use, not proof of absence)" }
+waittill_return_value = { value = true, confidence = "measured-in-engine", source = ["vm-t8-emulation#waittill_returns_struct", "vm-t8-emulation#waittill_more_args_sent", "vm-t8-emulation#notify_payload_object_is_result"], note = "waittill returns a struct: the payload object's fields and _notify (the event, a hash); plain values after the event are dropped, an object payload is the result itself; no names are bound" }
+# --- Expressions and builtin call styles
+function_pointer_style = { value = "ampersand", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT" }
+pointer_call = { value = true, confidence = "verified-on-corpus", source = ["corpus-t8", "acts-grammar"], note = "decompiled (acts output): 2,481 uses in 507 files" }
+strict_equality = { value = true, confidence = "verified-on-corpus", source = ["corpus-t8", "acts-grammar"], note = "decompiled (acts output): 4,764 uses in 1,039 files" }
+null_coalescing = { value = false, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "opcode absent from the acts tables; 0 uses in corpus-t8 (absence of use, not proof of absence)" }
+optional_chaining = { value = false, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "acts compiler extension; its decompiler never writes it; 0 uses in corpus-t8: acts never emits it, so the decompiled corpus cannot show it" }
+is_expression = { value = false, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "acts compiler extension; its decompiler never writes it; 0 uses in corpus-t8: acts never emits it, so the decompiled corpus cannot show it" }
+casts = { value = "unknown", confidence = "assumed", source = ["inference"], note = "not observable: compiled-only game, the construct does not survive compilation; 0 uses in corpus-t8: acts never emits it, so the decompiled corpus cannot show it" }
+array_literal = { value = true, confidence = "verified-on-corpus", source = ["corpus-t8", "acts-grammar"], note = "decompiled (acts output): 49 uses in 28 files; acts accepts [a, k:v]" }
+struct_literal = { value = true, confidence = "verified-on-corpus", source = ["corpus-t8", "acts-grammar"], note = "decompiled (acts output): 1,818 uses in 386 files; acts accepts {k:v}" }
+isdefined_form = { value = "keyword", confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "is-defined opcode" }
+istrue_operator = { value = false, confidence = "assumed", source = ["inference"] }
+opcode_builtins = { value = "unknown", confidence = "assumed", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "vector-scale opcode present; full list not derived" }
+bare_call_resolution = { value = "namespace-first", confidence = "measured-in-engine", source = ["vm-t8-emulation#bare_call_local_shadows_builtin", "vm-t8-emulation#bare_call_using_file_other_namespace", "vm-t8-emulation#bare_call_using_file_shadows_builtin", "vm-t8-emulation#func_ref_shadows_builtin", "vm-t8-emulation#thread_call_builtin_only", "bytecode-t8-imports", "acts-t8-link", "acts-compiler"], note = "measured in the emulated VM (semantics/t8.toml): a bare call or &f reaches the current namespace's function, then the builtin (sys:: forces it), never another namespace even #using'd (unresolved external, fatal Sys_Error at load); thread f() never falls back to a builtin. Compile side, verified on the retail bytecode: every get-call import (a bare call or &f in the source, 144,701 call sites in 2,633 scripts) names the script's own namespace (140,523) or, for a builtin, the empty one (4,178), never another namespace, and no threaded get-call import names the empty one" }
+global_objects = { value = ["self", "level", "game", "anim"], confidence = "assumed", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "world and classes opcodes only in the t7 tables" }
+# --- Semantics that change analysis
+array_argument_passing = { value = "copy-unless-ref-param", confidence = "measured-in-engine", source = ["vm-t8-emulation#array_param_plain", "vm-t8-emulation#array_param_plain_nested", "vm-t8-emulation#array_param_ref", "vm-t8-emulation#array_copy_on_assign"], note = "a plain parameter gets a deep copy (SafeCreateLocalVariables + CopyArray), a &name parameter shares the caller's array; b = a shares the array; a non-array given to a &name parameter is a script error" }
+waittill_multiple_events = { value = true, confidence = "measured-in-engine", source = ["vm-t8-emulation#waittill_any_of_events"], note = "wakes on the first of the events; the result's _notify says which" }
+endon_multiple_events = { value = true, confidence = "measured-in-engine", source = ["vm-t8-emulation#endon_multiple_events"], note = "any of the events ends the thread" }
+notify_wakes_waiters = { value = "deferred", confidence = "measured-in-engine", source = ["vm-t8-emulation#notify_wakes_waiter_before_notifier_continues", "vm-t8-emulation#notify_reentrant"], note = "VM_Notify queues the woken threads in the current frame's queue; they run once the notifier yields (as T7)" }
+hash_equality = { value = "by-value", confidence = "measured-in-engine", source = ["vm-t8-emulation#hash_equality"], note = "#\"GoAway\" == #\"goaway\" (the hash lowercases) and a string == its own hash are true, with no error (T7: a script error)" }

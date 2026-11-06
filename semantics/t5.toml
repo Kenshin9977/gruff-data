@@ -1,0 +1,528 @@
+# Black Ops script VM semantics, measured by running this project's own conformance scripts
+# (gruff/conformance/t5, compiled at load time by the game's own compiler) in the game's own VM,
+# emulated offline from the executable by gruff/tools/re/vm (Unicorn; nothing launched).
+# Facts only. Schema: ../schema/semantics.schema.json. Report: gruff/tools/re/reports/vm_t5.md.
+
+[meta]
+game = "t5"
+extractor = "tools/re/vm/t56_suite.py --game t5"
+dump = "BlackOpsMP.exe sha256:408ab85f44d42128c3ab3d534e7c02c93bd360c3d2c042871dc2b687205f406e"
+date = "2026-11-06"
+licence = "CC0-1.0"
+suite = "conformance/t5"
+time_unit = "gScrVarPub.time, one 50 ms server frame"
+modes = ["retail (developer 0)", "developer 1"]
+
+[[behaviour]]
+id = "array_assign_shared_reverse"
+question = "after b = a, is a write through a seen through b (the other direction)?"
+answer = "after b = a, a write through a is not seen through b: a shared array is copied when written (copy on write), so b keeps the old empty array"
+result = "pass"
+trace = ["f0 T0 script error: pair 'b.size=0 b[0]=' and 'undefined' has unmatching types 'string' and 'undefined'", "f0 T0 undefined"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "array_copy_on_assign"
+question = "b = a for an array, then b is changed: does a change too (reference) or not (copy)?"
+answer = "b = a then a write through b: a is unchanged; arrays behave as values (the write copies the shared array)"
+result = "pass"
+trace = ["f0 T0 a[0]=1 b[0]=2 a.size=1 b.size=2"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "array_in_struct_field"
+question = "an array stored in a struct field, then read into a local and changed: does the field change?"
+answer = "a local read from a struct field, then written: the field keeps its array (the write copies)"
+result = "pass"
+trace = ["f0 T0 field[0]=1"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "array_param_plain"
+question = "an array passed to a plain parameter and changed in the callee: does the caller see the change?"
+answer = "an array passed to a parameter and written in the callee: the caller does not see the change (the parameter shares the array until the write copies it)"
+result = "pass"
+trace = ["f0 T0 a[0]=1 a.size=1"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "array_param_plain_nested"
+question = "the copy made for a plain array parameter: shallow (inner arrays shared) or deep?"
+answer = "a write into an inner array through a parameter is not seen by the caller: each level is copied on write"
+result = "pass"
+trace = ["f0 T0 inner=1 outer.size=1"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "array_param_ref"
+question = "an array passed to a parameter declared &arr and changed in the callee: does the caller see the change?"
+result = "unsupported"
+reason = "the form does not exist in T5: T5 has no &name parameters; the game's own compiler refuses the script at load"
+compile_error = "bad syntax"
+modes_agree = true
+dialect = { vs = "t6", same = true, note = "same: T6 has none either" }
+
+[[behaviour]]
+id = "array_param_ref_field"
+question = "an array held in a level field, passed to a &arr parameter and to a plain one: what does level.arr hold afterwards?"
+result = "unsupported"
+reason = "the form does not exist in T5: T5 has no &name parameters; the game's own compiler refuses the script at load"
+compile_error = "bad syntax"
+modes_agree = true
+dialect = { vs = "t6", same = true, note = "same: T6 has none either" }
+
+[[behaviour]]
+id = "array_ref_param_non_array"
+question = "a non-array value passed to a &name parameter"
+result = "unsupported"
+reason = "the form does not exist in T5: T5 has no &name parameters; the game's own compiler refuses the script at load"
+compile_error = "bad syntax"
+modes_agree = true
+dialect = { vs = "t6", same = true, note = "same: T6 has none either" }
+
+[[behaviour]]
+id = "bare_call_local_shadows_builtin"
+question = "a bare call to a name that is both a builtin (spawnstruct) and a function of the same file: which one runs?"
+answer = "the file's own function: a bare call reaches a function of the same file before a builtin of the same name"
+result = "pass"
+trace = ["f0 T0 script spawnstruct called", "f0 T0 bare is int=1", "f0 T0 script spawnstruct called", "f0 T0 qualified=42"]
+modes_agree = true
+dialect = { vs = "t6", same = false, note = "the builtin (T6's linker tries the builtins first)" }
+
+[[behaviour]]
+id = "bare_call_using_file_other_namespace"
+question = "a bare call to a function that only an #include'd file defines: is it found?"
+answer = "yes: a bare call reaches a function of an #include'd file"
+result = "pass"
+trace = ["f0 T0 lib_only=7"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "bare_call_using_file_shadows_builtin"
+question = "a bare call to a name that is a builtin and also a function of an #include'd file: which one runs?"
+answer = "the builtin: a function of an #include'd file never shadows a builtin for a bare call"
+result = "pass"
+trace = ["f0 T0 is struct=1"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "childthread_dies_with_parent"
+question = "does a childthread stop when the thread that started it ends?"
+result = "unsupported"
+reason = "the form does not exist in T5: childthread does not exist in T5; the game's own compiler refuses the script at load"
+compile_error = "uninitialised variable 'childthread'"
+modes_agree = true
+dialect = { vs = "t6", same = true, note = "same: not a keyword in T6 either" }
+
+[[behaviour]]
+id = "childthread_inherits_endons"
+question = "a childthread started after `level endon(\"stop\")`: is it killed by that event?"
+result = "unsupported"
+reason = "the form does not exist in T5: childthread does not exist in T5; the game's own compiler refuses the script at load"
+compile_error = "uninitialised variable 'childthread'"
+modes_agree = true
+dialect = { vs = "t6", same = true, note = "same: not a keyword in T6 either" }
+
+[[behaviour]]
+id = "dev_builtin_outside_devblock"
+question = "a dev-only builtin (println) called outside /# #/: what does the game's linker do at load?"
+answer = "a dev-only builtin (println) outside /# #/ is accepted by the game's compiler and the script runs on (println writes no trace line)"
+result = "pass"
+trace = ["f0 T0 before", "f0 T0 after println"]
+modes_agree = true
+dialect = { vs = "t6", same = false, note = "T6's linker refuses the script ('Dev only calls must be wrapped in a devblock')" }
+
+[[behaviour]]
+id = "endon_during_wait"
+question = "an endon notify while the thread is in a timed wait: killed before the wait ends?"
+answer = "an endon kills a thread in a timed wait too"
+result = "pass"
+trace = ["f0 T1 waiting", "f1 T0 sent stop"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "endon_during_waittill"
+question = "an endon fired while the thread waits on another event: is the thread killed?"
+answer = "an endon notify kills a thread blocked in waittill on another event"
+result = "pass"
+trace = ["f0 T1 waiting", "f1 T0 sent stop", "f1 T0 sent go"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "endon_multiple_events"
+question = "endon with two events: does the second one kill the thread?"
+result = "unsupported"
+reason = "the form does not exist in T5: endon takes one event; the game's own compiler refuses the script at load"
+compile_error = "bad syntax"
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "endon_other_object"
+question = "an endon on a struct is not fired by the same event on level (and the reverse)"
+answer = "an endon is bound to its object: the same event on another object does not kill"
+result = "pass"
+trace = ["f0 T1 waiting", "f1 T0 level sent", "f2 T0 struct sent"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "endon_vs_waittill_same_event"
+question = "a thread that both endon()s and waittill()s the same event: woken or killed?"
+answer = "a thread that endon()s and waittill()s the same event is killed by it, not woken"
+result = "pass"
+trace = ["f0 T1 waiting", "f1 T0 sent"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "endon_vs_waittill_same_event_reversed"
+question = "same as endon_vs_waittill_same_event, with the endon registered in another thread order: the waiter waits first, a second thread of the same self registers no endon"
+answer = "control: without the endon the waiter wakes"
+result = "pass"
+trace = ["f0 T1 waiting", "f1 T0 sent", "f1 T1 woke"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "func_ref_builtin_only"
+question = "`::spawnstruct` when no script function spawnstruct exists: a pointer to the builtin, or an error?"
+answer = "a function reference never reaches a builtin: the game's compiler refuses ::spawnstruct with no script function ('unknown function')"
+result = "pass"
+compile_error = "unknown function"
+modes_agree = true
+dialect = { vs = "t6", same = false, note = "the T6 linker resolves it to the builtin's native handler, which then runs as bytecode" }
+
+[[behaviour]]
+id = "func_ref_shadows_builtin"
+question = "`::spawnstruct` when the file defines spawnstruct: the script function or the builtin?"
+answer = "the script function of the file"
+result = "pass"
+trace = ["f0 T0 script spawnstruct called", "f0 T0 result=42"]
+modes_agree = true
+dialect = { vs = "t6", same = false, note = "T6: the builtin (its native handler run as bytecode)" }
+
+[[behaviour]]
+id = "hash_equality"
+question = "do two hash literals differing only in case compare equal, and does a string equal a hash?"
+answer = "a hash literal is an int computed at compile time (case-insensitive): #\"GoAway\" == #\"goaway\" is true; a string == a hash is a non-terminal script error (string vs int) whose result is undefined"
+result = "pass"
+trace = ["f0 T0 hash case=1", "f0 T0 script error: pair 'goaway' and '3290477' has unmatching types 'string' and 'int'", "f0 T0 script error: pair 'string vs hash=' and 'undefined' has unmatching types 'string' and 'undefined'", "f0 T0 undefined"]
+modes_agree = true
+dialect = { vs = "t6", same = false, note = "T6 hashes are their own type: hash == hash is a script error" }
+
+[[behaviour]]
+id = "infinite_loop"
+question = "does the VM stop a loop that never waits, and how?"
+answer = "VM_Execute has no loop guard: a loop with no wait runs until the instruction budget (20M) of the harness"
+result = "pass"
+trace = ["f0 T0 before"]
+error = "instruction limit (20000000) reached at 0x64b391"
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "level_vs_struct_notify_isolation"
+question = "a waittill on a struct is not woken by the same event on level, and the reverse"
+answer = "waittill on an object is not woken by the same event on another object"
+result = "pass"
+trace = ["f0 T1 struct waiter", "f0 T2 level waiter", "f1 T0 level sent", "f1 T2 level woke", "f2 T0 struct sent", "f2 T1 struct woke"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "multiple_endons"
+question = "two endons on one thread: does either event kill it?"
+answer = "each of several endons kills the thread"
+result = "pass"
+trace = ["f0 T1 a waiting", "f0 T2 b waiting", "f1 T0 sent second"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "notify_before_waittill_same_frame"
+question = "a notify sent before the waittill is registered, in the same frame: is it lost?"
+answer = "a notify sent before the waittill is registered is lost, even in the same frame"
+result = "pass"
+trace = ["f0 T0 notified", "f0 T1 waiting", "f2 T0 notified again", "f2 T1 woke"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "notify_no_waiter"
+question = "a notify nobody waits for: no error, the caller goes on?"
+answer = "a notify with no waiter is silent"
+result = "pass"
+trace = ["f0 T0 before", "f0 T0 after"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "notify_payload_object_is_result"
+question = "a notify whose payload is a struct: does the waiter's bound name get that same struct?"
+answer = "a struct sent with a notify is bound by reference: the waiter's name is the same object"
+result = "pass"
+trace = ["f1 T0 sent", "f1 T1 same=1 v=5"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "notify_reentrant"
+question = "a woken waiter that notifies a second event: does the second waiter run before the first notifier resumes?"
+answer = "a notify sent by a woken waiter is deferred the same way: each woken thread runs after the current one yields"
+result = "pass"
+trace = ["f0 T0 notify a", "f0 T0 after notify a", "f0 T1 got a", "f0 T1 after notify b", "f0 T2 got b"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "notify_string_vs_hash_event"
+question = "can an event be a hash literal: does waittill(#\"go\") wake on notify(\"go\"), and notify(#\"back\") wake waittill(\"back\")?"
+answer = "events must be strings: waittill or notify with a hash (an int in T5) is a non-terminal script error and the statement is skipped"
+result = "pass"
+trace = ["f0 T1 script error: first parameter of waittill must evaluate to a string", "f0 T1 hash waiter woke", "f1 T0 sent string", "f2 T0 script error: first parameter of notify must evaluate to a string", "f2 T0 sent hash"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "notify_wake_order_three_waiters"
+question = "three waiters registered in order a, b, c on one event: wake order?"
+answer = "waiters on one event wake in reverse order of registration (last registered first)"
+result = "pass"
+trace = ["f1 T0 notifying", "f1 T3 c", "f1 T2 b", "f1 T1 a"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "notify_wake_order_two_waiters"
+question = "in which order do two waiters on the same event wake?"
+answer = "two waiters: the last registered wakes first, both after the notifier yields"
+result = "pass"
+trace = ["f1 T0 notifying", "f1 T0 after notify", "f1 T2 second", "f1 T1 first"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "notify_wakes_waiter_before_notifier_continues"
+question = "does a woken waiter run inside the notify, before the notifier's next statement?"
+answer = "notify does not run the waiter inside the call: the woken thread runs in the same frame once the notifier yields"
+result = "pass"
+trace = ["f0 T0 notifying", "f0 T0 after notify", "f0 T1 woke", "f0 T1 woke still running"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "string_equality_case"
+question = "is == on strings case-sensitive?"
+answer = "== on strings is case-sensitive"
+result = "pass"
+trace = ["f0 T0 same=1 case=0"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "struct_reference_on_assign"
+question = "t = s for a struct, then t.x is set: does s.x change (structs are references)?"
+answer = "structs are references: assignment and parameters share the object"
+result = "pass"
+trace = ["f0 T0 s.x=1 same=1"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "thread_call_assign_result"
+question = "x = thread f(): accepted, and what does x hold when f returns before or after its first wait?"
+answer = "the compiler accepts x = thread f(); x is f's return value when f ends without waiting, undefined when f waits first"
+result = "pass"
+trace = ["f0 T0 x defined=0", "f0 T0 y=6"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "thread_call_builtin_only"
+question = "`thread spawnstruct()` when no script function spawnstruct exists: does a threaded call fall back to the builtin?"
+answer = "a threaded call never resolves to a builtin: the game's compiler refuses `thread spawnstruct()` with no script function ('unknown function')"
+result = "pass"
+compile_error = "unknown function"
+modes_agree = true
+dialect = { vs = "t6", same = true, note = "same answer; T6 refuses it at link time (unresolved external)" }
+
+[[behaviour]]
+id = "thread_call_return_value"
+question = "the return value of a function called normally, and what a threaded call leaves to its caller"
+answer = "a direct call returns its value; a threaded call used as a statement drops whatever it leaves"
+result = "pass"
+trace = ["f0 T0 direct=5", "f0 T0 threaded call done"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "thread_call_shadowing_builtin"
+question = "`thread spawnstruct()` when the current namespace defines spawnstruct: the script function runs as a thread"
+answer = "thread f() reaches the current namespace's script function when a builtin has the same name"
+result = "pass"
+trace = ["f0 T1 script spawnstruct called", "f0 T0 after"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "thread_on_released_struct"
+question = "a thread whose self is a struct nobody references any more: does it keep running?"
+answer = "a thread whose self struct is no longer referenced keeps running and self stays defined (the thread holds it)"
+result = "pass"
+trace = ["f0 T1 start", "f1 T1 still running", "f1 T1 self defined=1"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "thread_outlives_parent"
+question = "a plain thread keeps running after the thread that started it ends (control for childthread)"
+answer = "a plain thread outlives the thread that started it; same-time waits resume last-registered first"
+result = "pass"
+trace = ["f0 T1 parent start", "f0 T2 tick 0", "f1 T1 parent end", "f1 T2 tick 1", "f2 T2 tick 2", "f3 T2 tick 3"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "thread_runs_until_first_wait"
+question = "does `thread f()` run f at once, up to its first wait, before the caller goes on?"
+answer = "thread f() runs f at once until its first wait, then the caller continues"
+result = "pass"
+trace = ["f0 T0 before", "f0 T1 child start", "f0 T0 after call", "f1 T1 child after wait"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "thread_without_wait_runs_to_end"
+question = "does a thread with no wait run to its end before the caller resumes?"
+answer = "a thread with no wait runs to its end before the caller continues"
+result = "pass"
+trace = ["f0 T0 before", "f0 T1 child 1", "f0 T1 child 2", "f0 T0 after call"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "undefined_arithmetic"
+question = "what does undefined + 1 do at run time: an error that ends the thread, or a value?"
+answer = "undefined + 1 is a non-terminal script error: the thread goes on and the result is undefined"
+result = "pass"
+trace = ["f0 T0 before", "f0 T0 script error: pair 'undefined' and '1' has unmatching types 'undefined' and 'int'", "f0 T0 after 0"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "undefined_field_read"
+question = "reading a field nobody set: undefined, no error?"
+answer = "reading a field never set gives undefined, no error"
+result = "pass"
+trace = ["f0 T0 defined=0"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "wait_0"
+question = "does wait 0 yield and resume in the same frame, the next one, or is it refused?"
+answer = "wait 0 resumes in the same frame, before threads in waittillframeend"
+result = "pass"
+trace = ["f0 T0 before", "f0 T0 after wait 0", "f0 T1 other"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "wait_005_is_one_frame"
+question = "how many server frames do wait 0.05, wait 0.1 and wait 0.15 take?"
+answer = "the VM time unit is one 50 ms frame: wait 0.05/0.1/0.15 take 1/2/3 frames"
+result = "pass"
+trace = ["f0 T0 start", "f1 T0 after 0.05", "f3 T0 after 0.1", "f6 T0 after 0.15"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "wait_same_duration_order"
+question = "two threads that wait the same time: do they resume in the order they started waiting?"
+answer = "threads whose waits end in the same frame resume in reverse order of their wait calls"
+result = "pass"
+trace = ["f1 T3 c", "f1 T2 b", "f1 T1 a"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "waitframe_one"
+question = "does waitframe exist in T5?"
+result = "unsupported"
+reason = "the form does not exist in T5: no; the game's own compiler refuses the script at load"
+compile_error = "unknown function"
+modes_agree = true
+dialect = { vs = "t6", same = true, note = "same: T6's linker reports it unresolved" }
+
+[[behaviour]]
+id = "waittill_any_of_events"
+question = "can waittill take two events?"
+result = "unsupported"
+reason = "the form does not exist in T5: waittill takes one event, then names; the game's own compiler refuses the script at load"
+compile_error = "bad syntax"
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "waittill_fewer_args_sent"
+question = "waittill binds two names, the notify sends one value: the second stays undefined?"
+answer = "waittill names with no value sent stay undefined"
+result = "pass"
+trace = ["f1 T0 sent", "f1 T1 a=1 b defined=0"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "waittill_more_args_sent"
+question = "the notify sends three values, waittill binds one: the extra values are dropped without error?"
+answer = "values sent beyond the waittill's names are dropped without error"
+result = "pass"
+trace = ["f1 T0 sent", "f1 T1 a=1"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "waittill_returns_struct"
+question = "does waittill return a value (s = level waittill(e))?"
+result = "unsupported"
+reason = "the form does not exist in T5: waittill is a statement; the game's own compiler refuses the script at load"
+compile_error = "bad syntax"
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "waittillframeend_order"
+question = "does waittillframeend resume at the end of the current frame, after threads that do not wait?"
+answer = "waittillframeend resumes in the same frame after the threads that do not wait"
+result = "pass"
+trace = ["f0 T0 main 1", "f0 T0 main 2", "f0 T1 frameend"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "waittillmatch"
+question = "waittillmatch(e, \"x\") ignores a notify of e with another first argument and wakes on \"x\""
+answer = "waittillmatch skips notifies whose first argument differs and wakes on the matching one"
+result = "pass"
+trace = ["f1 T0 sent y", "f1 T0 sent x", "f1 T1 matched"]
+modes_agree = true
+dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "waittilltimeout"
+question = "does waittilltimeout exist in T5?"
+result = "unsupported"
+reason = "the form does not exist in T5: no; the game's own compiler refuses the script at load"
+compile_error = "unknown function"
+modes_agree = true
+dialect = { vs = "t6", same = true, note = "same: T6's linker reports it unresolved" }

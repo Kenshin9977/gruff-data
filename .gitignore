@@ -1,0 +1,15 @@
+# Never commit game content: keep local corpora and dumps outside the repo, or here (ignored).
+/corpus/
+/dumps/
+*.gsc
+*.csc
+*.gsh
+*.ff
+*.pk3
+*.iwd
+__pycache__/
+.venv/
+# Hash packages built from game files or other projects' lists: never in this CC0 repository.
+/hash-packages/
+*.hashes.tsv
+*.wni

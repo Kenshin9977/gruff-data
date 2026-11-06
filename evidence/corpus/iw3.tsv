@@ -1,0 +1,187 @@
+# corpus=iw3 files=823 kinds={'.gsc': 823}
+# probe	files_with_match	occurrences (regex probes; comments and string bodies stripped first)
+dir_include	328	831
+dir_using	0	0
+dir_using_animtree	191	324
+dir_namespace	0	0
+dir_insert	0	0
+dir_define	0	0
+dir_if_family	0	0
+dir_precache	0	0
+dir_ifdef_undef	0	0
+define_function_like	0	0
+col0_macro_call	0	0
+waitframe_definition	1	1
+expr_animtree	51	186
+hash_string	0	0
+istring	77	2802
+at_string	0	0
+anim_ref	154	3593
+anim_ref_after_op	154	3593
+ptr_colon	163	3074
+ptr_path	45	313
+ptr_amp	0	0
+path_call	520	11483
+ptr_call	75	372
+kw_function	2	5
+kw_class	0	0
+kw_foreach	0	0
+kw_do	0	0
+kw_childthread	0	0
+kw_call_ptr	0	0
+kw_thisthread	0	0
+kw_autoexec	0	0
+kw_private	0	0
+kw_const	0	0
+kw_vararg	0	0
+param_ellipsis	0	0
+kw_new	0	0
+op_arrow	0	0
+op_strict_eq	0	0
+op_coalesce	0	0
+op_safe_nav	0	0
+kw_event_handler	0	0
+kw_waitframe	3	11
+kw_waitrealtime	0	0
+kw_waittillmatch	63	187
+kw_waittillframeend	86	235
+kw_prof_begin	15	72
+kw_profilestart	0	0
+kw_breakpoint	0	0
+kw_istrue	0	0
+kw_is_expr	0	0
+world_obj	0	0
+classes_obj	1	1
+dev_block	97	485
+tuple_assign	0	0
+array_literal	0	0
+world_kw	2	4
+classes_kw	1	5
+sys_qualifier	0	0
+ns_call	0	0
+scr_hash_ident	333	1028
+dollar_token	0	0
+str_prefix_pct	0	0
+str_prefix_t	0	0
+str_prefix_o	0	0
+str_prefix_s	0	0
+str_prefix_r	0	0
+cast	0	0
+kw_builtin_call	0	0
+kw_builtin	0	0
+goto_stmt	0	0
+jumpif_stmt	0	0
+label_stmt	0	0
+kw_constructor	0	0
+kw_destructor	0	0
+kw_codecall	0	0
+class_as_name	8	88
+class_path_component	0	0
+file_scope_const	0	0
+default_param	0	0
+ref_param	0	0
+func_header	822	11350
+dir_inline	0	0
+kw_assert	153	1221
+kw_assertmsg	32	71
+kw_assertex	67	271
+kw_prof_end	15	89
+kw_profilestop	0	0
+kw_threadendon	0	0
+kw_isdefined	242	6955
+star_param	0	0
+op_ternary	0	0
+struct_literal	0	0
+hash_hexprefixed	0	0
+hash_idtoken	0	0
+hash_scriptpath	0	0
+doc_at	0	0
+doc_tripleslash	8	262
+# corpus=iw3 parser=gsc-before.exe profile=iw3.toml probe_syntax_errors=2 plain_files=823 decompiled_files=0
+# probe	files_with_match	occurrences	plain_files	plain_occurrences (gsc parse with every feature off: each dialect report is one use; plain = files without a decompiler header, the parser's own test)
+parser:anim_reference:a `%` animation reference	154	3605	154	3605
+parser:animtree_expression:`#animtree`	51	186	51	186
+parser:dev_blocks:a `/# #/` dev block	97	485	97	485
+parser:function_pointer_style:a `::` function pointer	163	3074	163	3074
+parser:import_directive:`#include`	328	831	328	831
+parser:istring_literal:a `&"..."` localized string	77	2802	77	2802
+parser:path_qualified_calls:a path-qualified name	531	11819	531	11819
+parser:pointer_call:a `[[ ]]` pointer call	75	373	75	373
+parser:profiler_keywords:`prof_begin`	15	72	15	72
+parser:profiler_keywords:`prof_end`	15	89	15	89
+parser:using_animtree_directive:`#using_animtree`	191	324	191	324
+parser:waittillframeend:`waittillframeend`	86	235	86	235
+# keyword test: 2 syntax errors with the profile's keywords; kwname rows: keyword, errors with it, errors without it (fewer = used as a plain name)
+kwname:assertmsg	2	2
+kwname:break	2	2
+kwname:case	2	9453
+kwname:continue	2	2
+kwname:default	2	5
+kwname:else	2	3228
+kwname:endon	2	2
+kwname:false	2	2
+kwname:for	2	6722
+kwname:if	2	18998
+kwname:isdefined	2	2
+kwname:notify	2	2
+kwname:prof_begin	2	2
+kwname:prof_end	2	2
+kwname:return	2	2534
+kwname:switch	2	4196
+kwname:thread	2	4139
+kwname:true	2	2
+kwname:undefined	2	2
+kwname:wait	2	2972
+kwname:waittill	2	2
+kwname:waittillframeend	2	2
+kwname:waittillmatch	2	2
+kwname:while	2	1475
+# kwvar/kwfunc rows: keyword, files, occurrences (regex on stripped text)
+kwvar:assertmsg	0	0
+kwfunc:assertmsg	0	0
+kwvar:break	0	0
+kwfunc:break	0	0
+kwvar:case	0	0
+kwfunc:case	0	0
+kwvar:continue	0	0
+kwfunc:continue	0	0
+kwvar:default	0	0
+kwfunc:default	0	0
+kwvar:else	0	0
+kwfunc:else	0	0
+kwvar:endon	0	0
+kwfunc:endon	0	0
+kwvar:false	0	0
+kwfunc:false	0	0
+kwvar:for	0	0
+kwfunc:for	0	0
+kwvar:if	0	0
+kwfunc:if	0	0
+kwvar:isdefined	0	0
+kwfunc:isdefined	0	0
+kwvar:notify	0	0
+kwfunc:notify	0	0
+kwvar:prof_begin	0	0
+kwfunc:prof_begin	0	0
+kwvar:prof_end	0	0
+kwfunc:prof_end	0	0
+kwvar:return	0	0
+kwfunc:return	0	0
+kwvar:switch	0	0
+kwfunc:switch	0	0
+kwvar:thread	0	0
+kwfunc:thread	0	0
+kwvar:true	0	0
+kwfunc:true	0	0
+kwvar:undefined	0	0
+kwfunc:undefined	0	0
+kwvar:wait	0	0
+kwfunc:wait	0	0
+kwvar:waittill	0	0
+kwfunc:waittill	0	0
+kwvar:waittillframeend	0	0
+kwfunc:waittillframeend	0	0
+kwvar:waittillmatch	0	0
+kwfunc:waittillmatch	0	0
+kwvar:while	0	0
+kwfunc:while	0	0

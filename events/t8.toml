@@ -1,0 +1,2326 @@
+# Black Ops 4 engine-emitted events: every call site of the VM's notify found in the
+# executable, its event, receiver and pushed arguments, measured under Unicorn by
+# gruff/tools/re/treyarch/events.py. Facts only. Schema: ../schema/events.schema.json.
+
+[meta]
+game = "t8"
+extractor = "tools/re/treyarch/events.py"
+dump = "BlackOps4_dump.exe sha256:7f2f2e63e0088a126ea7eac61c6419d87910168064a334a6902cb0d3760b85b2"
+date = "2026-11-06"
+licence = "CC0-1.0"
+hash_family = "t8.fnv64"
+
+[coverage]
+engine_sites = 255
+named = 170
+corpus_waittill_events = 1520
+explained_by_engine = 83
+explained_by_scripts = 1075
+unexplained = 362
+complete = false
+sites_resolved = 239
+sites_unresolved = 16
+
+[[event]]
+name = "about_to_fire"
+name_source = "hash-list"
+hash = "0x4ebeb0dba1cfcf9f"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "about_to_shoot"
+name_source = "hash-list"
+hash = "0x181a075db9911cce"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "actor_corpse"
+name_source = "image string"
+hash = "0x7dc1764d9cfe10e7"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "animscripted_start"
+name_source = "hash-list"
+hash = "0x1c0e80f24fe41abd"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["csc", "gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; payload is the waitresult struct 2"
+
+[[event]]
+name = "asm_complete"
+name_source = "graywolf-name-index"
+hash = "0x1b32d6d93a7bd29a"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "asm_notify"
+name_source = "hash-list"
+hash = "0x2812fb75bd2fdd84"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "asm_terminated"
+name_source = "graywolf-name-index"
+hash = "0x165aa9f15f19c118"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "awareness_action"
+name_source = "hash-list"
+hash = "0x0f741860b69ec1b1"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "bad_path"
+name_source = "corpus"
+hash = "0x25be4ce51f3157d6"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "ball_pass"
+name_source = "graywolf-name-index"
+hash = "0x68e3f7fc14059af4"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["csc", "gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; payload is the waitresult struct 2"
+
+[[event]]
+name = "begin"
+name_source = "image string"
+hash = "0x1a848d5e6672b3de"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "bgb_activation_request"
+name_source = "hash-list"
+hash = "0x43888d6b1a5643bf"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "bhtn_action_notify"
+name_source = "hash-list"
+hash = "0x7b8d1af49beca578"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "bhtn_action_terminate"
+name_source = "hash-list"
+hash = "0x5de7a68e3b1e5018"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "bot_goal_reached"
+name_source = "hash-list"
+hash = "0x6cdbed98d669e85d"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "bot_path_failed"
+name_source = "graywolf-name-index"
+hash = "0x50197bb745b2e1d0"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "bot_path_success"
+name_source = "hash-list"
+hash = "0x3a7c8a1c89cbb594"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "broken"
+name_source = "image string"
+hash = "0x3164662ad16fa660"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "bulletwhizby"
+name_source = "image string"
+hash = "0x3bc500497cf4ac34"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "cancel_location"
+name_source = "hash-list"
+hash = "0x7b5b7aa280cc064b"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "change_seat"
+name_source = "hash-list"
+hash = "0x25b76e4b6d6db8db"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 4
+vm = ["csc", "gsc"]
+confidence = "measured"
+evidence = "4 site(s); argument counts 0 x4; types from 4 site(s) where count = pushes; payload is the waitresult struct 4"
+
+[[event]]
+name = "closed"
+name_source = "image string"
+hash = "0x05530f5090e836c5"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["csc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; payload is the waitresult struct 2"
+
+[[event]]
+name = "closing"
+name_source = "image string"
+hash = "0x5d1ea3e67628a984"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["csc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; payload is the waitresult struct 2"
+
+[[event]]
+name = "confirm_location"
+name_source = "hash-list"
+hash = "0x3e437f7941c59d97"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "corpse_explode"
+name_source = "hash-list"
+hash = "0x79db02ad42a8515b"
+receiver = "level"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "curve_end"
+name_source = "image string"
+hash = "0x577da7518425ecf6"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "damage"
+name_source = "image string"
+hash = "0x7f6308be8ab37fc0"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "death"
+name_source = "image string"
+hash = "0x7405a475b731576d"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 5
+vm = ["csc", "gsc"]
+confidence = "measured"
+evidence = "5 site(s); argument counts 0 x5; types from 5 site(s) where count = pushes; payload is the waitresult struct 5"
+
+[[event]]
+name = "deploy_riotshield"
+name_source = "image string"
+hash = "0x33a63a5339488070"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "destructible_base_piece_death"
+name_source = "hash-list"
+hash = "0x2d6644221de6e231"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "detonate"
+name_source = "image string"
+hash = "0x1f1e94e8339e1fd1"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "doubletap_detonate"
+name_source = "hash-list"
+hash = "0x401b64ed806c9a76"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "dropweapon"
+name_source = "image string"
+hash = "0x51d17a5783dab270"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "enemy"
+name_source = "image string"
+hash = "0x3c4d1ebf0282db4b"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["csc", "gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; payload is the waitresult struct 2"
+
+[[event]]
+name = "enemy_not_visible"
+name_source = "hash-package"
+hash = "0x2cf7bb441cf89438"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "enemy_visible"
+name_source = "graywolf-name-index"
+hash = "0x5311d2619c3fb13e"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "enter_vehicle"
+name_source = "corpus"
+hash = "0x02eab094e4d30d3a"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 4
+vm = ["csc", "gsc"]
+confidence = "measured"
+evidence = "4 site(s); argument counts 0 x4; types from 4 site(s) where count = pushes; payload is the waitresult struct 4"
+
+[[event]]
+name = "exit_vehicle"
+name_source = "corpus"
+hash = "0x31e87b74051e0df2"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 4
+vm = ["csc", "gsc"]
+confidence = "measured"
+evidence = "4 site(s); argument counts 0 x4; types from 4 site(s) where count = pushes; payload is the waitresult struct 4"
+
+[[event]]
+name = "explode"
+name_source = "image string"
+hash = "0x353b6b08607cc8e6"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; payload is the waitresult struct 2"
+
+[[event]]
+name = "face"
+name_source = "image string"
+hash = "0x6f2359791696c97c"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "face_melee"
+name_source = "image string"
+hash = "0x6992586eb7610c8f"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "fall_damage"
+name_source = "hash-list"
+hash = "0x2f7cd5b0c9d8c598"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "flashbang"
+name_source = "image string"
+hash = "0x0f7793e7e88220a7"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "free_vehicle"
+name_source = "hash-list"
+hash = "0x0ddd8d6dbc9c2934"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "gadget_denied_activation"
+name_source = "hash-list"
+hash = "0x359efc2a972bdfc6"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "gadget_forced_off"
+name_source = "hash-list"
+hash = "0x2c90172c59207c81"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "glass"
+name_source = "image string"
+hash = "0x70982cd617bc754b"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "goal"
+name_source = "image string"
+hash = "0x1cf9f2720eaf1cb6"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "goal_changed"
+name_source = "graywolf-name-index"
+hash = "0x36e825e6327d4ab1"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "goal_yaw"
+name_source = "graywolf-name-index"
+hash = "0x07f756a079181b26"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "grapple_cancel"
+name_source = "graywolf-name-index"
+hash = "0x381a71e320d7cbff"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "grapple_impact"
+name_source = "hash-list"
+hash = "0x5b0fac3585c2a4c3"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "grenade_bounce"
+name_source = "image string"
+hash = "0x782bab6f307816e6"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "grenade_fire"
+name_source = "corpus"
+hash = "0x29926562d5b5c71a"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "grenade_launcher_fire"
+name_source = "hash-list"
+hash = "0x055d949540fb86db"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "grenade_pullback"
+name_source = "hash-list"
+hash = "0x11b5199b39d81472"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "grenade_stuck"
+name_source = "hash-list"
+hash = "0x1a06456e83aec352"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "grenade_throwback"
+name_source = "hash-list"
+hash = "0x0c25276c302a2995"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "grenadedanger"
+name_source = "hash-list"
+hash = "0x1258ac70e8f2dfd6"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "groundentchanged"
+name_source = "hash-list"
+hash = "0x6c9681cecc4c0711"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "gunner_turret_on_target"
+name_source = "hash-list"
+hash = "0x3ae2ec13e2e21105"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "gunner_weapon_fired"
+name_source = "hash-list"
+hash = "0x41b9d188dcdd9a10"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["csc", "gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; payload is the waitresult struct 2"
+
+[[event]]
+name = "gunshot"
+name_source = "image string"
+hash = "0x64248cfddf1752b5"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "joined_team"
+name_source = "corpus"
+hash = "0x625f6d170c3cefd4"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "keybind_change"
+name_source = "hash-list"
+hash = "0x5f10014535621f84"
+receiver = "level"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "killanimscript"
+name_source = "hash-list"
+hash = "0x22892f14b4b085df"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "killcam_begin"
+name_source = "corpus"
+hash = "0x7ebbda8f2e9fe5a6"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "killcam_end"
+name_source = "corpus"
+hash = "0x5290bc1184ffddc2"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "loadout_changed"
+name_source = "corpus"
+hash = "0x433367cc47f76700"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "melee_end"
+name_source = "hash-list"
+hash = "0x1ca4ffc12ccab981"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "meleeswipesoundplayer"
+name_source = "corpus"
+hash = "0x2ce7f69ca75b7d6b"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "menuresponse"
+name_source = "corpus"
+hash = "0x533d392c33ece1cd"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "missile_boost"
+name_source = "hash-list"
+hash = "0x4d78505cbf47518f"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "missile_brake"
+name_source = "hash-list"
+hash = "0x2e08317971310307"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "missile_fire"
+name_source = "hash-list"
+hash = "0x4c4996a3ef21e518"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "movedone"
+name_source = "corpus"
+hash = "0x642e09427b476cf4"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["csc", "gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; payload is the waitresult struct 2"
+
+[[event]]
+name = "near_goal"
+name_source = "graywolf-name-index"
+hash = "0x4f39dbd1e9b0b4c3"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "new_cover"
+name_source = "graywolf-name-index"
+hash = "0x5ccfa98c1209ea59"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "no_enemy"
+name_source = "corpus"
+hash = "0x3417a85075257b5d"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "node_relinquished"
+name_source = "hash-list"
+hash = "0x2feb31be03947629"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "notetrack"
+name_source = "corpus"
+hash = "0x70975f54aaa58134"
+receiver = "any"
+args = []
+args_variable = false
+sites = 2
+vm = ["csc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; payload is the waitresult struct 2"
+
+[[event]]
+name = "offhand_end"
+name_source = "corpus"
+hash = "0x084198633bb9f2b5"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "offhand_fire"
+name_source = "hash-list"
+hash = "0x7b6a55a9b65e3194"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "open"
+name_source = "image string"
+hash = "0x784f97b4633670e9"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["csc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; payload is the waitresult struct 2"
+
+[[event]]
+name = "opening"
+name_source = "image string"
+hash = "0x7904a6cfcdb92317"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["csc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; payload is the waitresult struct 2"
+
+[[event]]
+name = "pain"
+name_source = "image string"
+hash = "0x0369310deb88ae95"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "pathfind_failed"
+name_source = "hash-list"
+hash = "0x2df89b8f2248c9db"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "pathfind_result"
+name_source = "hash-list"
+hash = "0x569841e9736a1e33"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; payload is the waitresult struct 2"
+
+[[event]]
+name = "pathfind_succeeded"
+name_source = "corpus"
+hash = "0x0688e1276e842ba7"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "pickup_riotshield"
+name_source = "graywolf-name-index"
+hash = "0x3d41b7d2d9c77285"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "play_death_vox"
+name_source = "hash-list"
+hash = "0x2f6134aa9d002640"
+receiver = "level"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "playerbreathgaspsound"
+name_source = "corpus"
+hash = "0x74ab975bf2288728"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "playerbreathinsound"
+name_source = "corpus"
+hash = "0x73914ab9305283bc"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "playerbreathoutsound"
+name_source = "corpus"
+hash = "0x41e4a5dc3bfad695"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "projectile_impact"
+name_source = "image string"
+hash = "0x062a202163700b85"
+receiver = "any"
+args = []
+args_variable = false
+sites = 2
+vm = ["csc", "gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; payload is the waitresult struct 2"
+
+[[event]]
+name = "projectile_impact_explode"
+name_source = "corpus"
+hash = "0x0575862c4797dc53"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "projectile_impact_player"
+name_source = "corpus"
+hash = "0x04757025c97f0b57"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "raise_riotshield"
+name_source = "graywolf-name-index"
+hash = "0x7bd0f0bffa75fcc7"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "reached_end_node"
+name_source = "corpus"
+hash = "0x67ecf5e0ca2ff2cc"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "reached_node"
+name_source = "hash-list"
+hash = "0x066e0c9eef7ad00e"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "reload"
+name_source = "image string"
+hash = "0x67f9484da4b873ac"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "reload_start"
+name_source = "graywolf-name-index"
+hash = "0x417a1773c7e7754b"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "remote_revive"
+name_source = "hash-list"
+hash = "0x4c5455032c0031e5"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "respawn"
+name_source = "bo4-glossary"
+hash = "0x742c480a24ff9b7f"
+receiver = "level"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "riotshield"
+name_source = "image string"
+hash = "0x72010c453d5a208e"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "rolling"
+name_source = "corpus"
+hash = "0x688572ee1988c2f2"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "rotatedone"
+name_source = "corpus"
+hash = "0x599fab645789a8b2"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["csc", "gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; payload is the waitresult struct 2"
+
+[[event]]
+name = "save_restore"
+name_source = "hash-list"
+hash = "0x0a4ebbdbfaaabc21"
+receiver = "level"
+args = []
+args_variable = false
+sites = 2
+vm = ["csc", "gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; payload is the waitresult struct 2"
+
+[[event]]
+name = "scavenger"
+name_source = "bo4-glossary"
+hash = "0x10f09f467f0915fb"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "shoot"
+name_source = "corpus"
+hash = "0x76804f48f7734ff0"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "skiptos_changed"
+name_source = "hash-list"
+hash = "0x067e8d13cdcb6df7"
+receiver = "level"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "snapacknowledged"
+name_source = "graywolf-name-index"
+hash = "0x35fa923d0809f3cd"
+receiver = "level"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "snd_clear_script_duck"
+name_source = "hash-list"
+hash = "0x3d6914ffd5adbad8"
+receiver = "level"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "spawned"
+name_source = "bo4-glossary"
+hash = "0x04da6f354a99cc99"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 3
+vm = ["csc", "gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 0 x3; types from 3 site(s) where count = pushes; payload is the waitresult struct 3"
+
+[[event]]
+name = "specify_weapon_request"
+name_source = "hash-list"
+hash = "0x64a624123a2db09f"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "spectator_cycle"
+name_source = "hash-list"
+hash = "0x3eec82e6d9f0981f"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "start_warzone_button"
+name_source = "hash-list"
+hash = "0x78e53817cafb5265"
+receiver = "level"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "stationary"
+name_source = "image string"
+hash = "0x6e56e1fad6954f2f"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; payload is the waitresult struct 2"
+
+[[event]]
+name = "stats_changed"
+name_source = "hash-package"
+hash = "0x4abd15e57ddf9037"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "stealth_sight_end"
+name_source = "hash-list"
+hash = "0x571f7c6b0ea970fc"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "stealth_sight_max"
+name_source = "hash-package"
+hash = "0x1207326ae795c687"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "stealth_sight_start"
+name_source = "hash-package"
+hash = "0x3a20062da89e3065"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "stopped_firing"
+name_source = "hash-list"
+hash = "0x0d780e6876151298"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "streamer"
+name_source = "image string"
+hash = "0x528662164ef579d6"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "streamer_100"
+name_source = "hash-list"
+hash = "0x7f295d8e14c9e6de"
+receiver = "level"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "stuck_to_player"
+name_source = "hash-list"
+hash = "0x5b53ddaea6571347"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "stuck_to_shield"
+name_source = "hash-list"
+hash = "0x301b423c0a6b2d53"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "subtarget_broken"
+name_source = "hash-list"
+hash = "0x6de4f0790ca689e0"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "suppression"
+name_source = "bo4-glossary"
+hash = "0x4c66c3ae9192b1b8"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "suppression_end"
+name_source = "hash-list"
+hash = "0x4b82a8245c8c69ea"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "swimming_begin"
+name_source = "image string"
+hash = "0x35e689d8d67c9f6e"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "swimming_end"
+name_source = "image string"
+hash = "0x7e03fbe44a0401da"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "targetted_by_zombie"
+name_source = "image string"
+hash = "0x2f2b9698183dda4a"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["csc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; payload is the waitresult struct 2"
+
+[[event]]
+name = "team_changed"
+name_source = "corpus"
+hash = "0x766ec44ac1d673d7"
+receiver = "level"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "teammateindex_change"
+name_source = "hash-list"
+hash = "0x5af34d08eac79f88"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "touch"
+name_source = "bo4-glossary"
+hash = "0x381dfd7d5a88bc78"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 3
+vm = ["gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 0 x3; types from 3 site(s) where count = pushes; payload is the waitresult struct 3"
+
+[[event]]
+name = "traversesound"
+name_source = "hash-list"
+hash = "0x7289e89eedd3162a"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "trigger"
+name_source = "image string"
+hash = "0x7034ee5c58a805c3"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["csc", "gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; payload is the waitresult struct 2"
+
+[[event]]
+name = "trigger_use_doubletap"
+name_source = "hash-list"
+hash = "0x23a802c43ef5923a"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "turret_not_on_target"
+name_source = "hash-list"
+hash = "0x08c9f725ccd37e25"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "turret_on_target"
+name_source = "graywolf-name-index"
+hash = "0x41430988a10eeefb"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "turret_rotate_stopped"
+name_source = "hash-list"
+hash = "0x499517f29b2a7601"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "underwater_begin"
+name_source = "corpus"
+hash = "0x39c1a5fafae86dee"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "underwater_end"
+name_source = "corpus"
+hash = "0x30ae913b4e3dac5a"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "veh_collision"
+name_source = "corpus"
+hash = "0x23ed7c7219ad912b"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "veh_engine_stutter"
+name_source = "hash-list"
+hash = "0x50fc386b091e6f01"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "veh_inair"
+name_source = "hash-list"
+hash = "0x2028286738d95826"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "veh_landed"
+name_source = "graywolf-name-index"
+hash = "0x4d3f06db1588f4e1"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "veh_outofworld"
+name_source = "hash-list"
+hash = "0x4aced1739d6627a2"
+receiver = "level"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "veh_predictedcollision"
+name_source = "graywolf-name-index"
+hash = "0x256f798792a5a339"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "veh_submerged"
+name_source = "hash-list"
+hash = "0x57887008fa0fd8ad"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "veh_suspension_limit_activated"
+name_source = "graywolf-name-index"
+hash = "0x44de0e031ee5a1c0"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "vehicle_death"
+name_source = "hash-list"
+hash = "0x37cafe22765d5312"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "vehicle_driver"
+name_source = "hash-list"
+hash = "0x4b446f9c6671146e"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "weapon_ads"
+name_source = "hash-list"
+hash = "0x0d4d647198fd6724"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "weapon_ads_started"
+name_source = "corpus"
+hash = "0x315bba5aa7f89552"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "weapon_assassination"
+name_source = "hash-list"
+hash = "0x2f8ea8b7a7fe80ec"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "weapon_change"
+name_source = "corpus"
+hash = "0x7dd13f39b4448eee"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "weapon_change_complete"
+name_source = "corpus"
+hash = "0x4ca9a0dc27ffaaa0"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "weapon_fired"
+name_source = "corpus"
+hash = "0x0147d1144102f0ae"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 3
+vm = ["csc", "gsc"]
+confidence = "measured"
+evidence = "3 site(s); argument counts 0 x3; types from 3 site(s) where count = pushes; payload is the waitresult struct 3"
+
+[[event]]
+name = "weapon_juke_end_requested"
+name_source = "hash-list"
+hash = "0x510123f753ee6c96"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "weapon_melee"
+name_source = "corpus"
+hash = "0x1cee15cc492d7a72"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "weapon_melee_charge"
+name_source = "corpus"
+hash = "0x49c07e229634e487"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "weapon_melee_juke"
+name_source = "hash-list"
+hash = "0x450a937117227a46"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "weapon_melee_juke_end"
+name_source = "hash-list"
+hash = "0x630dd4f94fefd3c8"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "weapon_melee_power"
+name_source = "hash-list"
+hash = "0x2b72293b6ec89d88"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "weapon_melee_power_left"
+name_source = "hash-list"
+hash = "0x42a515319cc93300"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "weapon_raising"
+name_source = "hash-package"
+hash = "0x38352faf58213e99"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "weapon_switch_started"
+name_source = "corpus"
+hash = "0x38248cc2f9aec3b4"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+name = "xanim_gesture_stopped"
+name_source = "hash-list"
+hash = "0x391799142463c3d4"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+hash = "0x0000000000000000"
+hash_family = "t8.fnv64"
+receiver = "any"
+args = []
+args_variable = false
+sites = 7
+vm = ["csc", "gsc"]
+confidence = "measured"
+evidence = "7 site(s); argument counts 0 x7; types from 7 site(s) where count = pushes; payload is the waitresult struct 7"
+
+[[event]]
+hash = "0x00b72495ee6f23da"
+hash_family = "t8.fnv64"
+receiver = "level"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+hash = "0x01e6813838cc96bd"
+hash_family = "t8.fnv64"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+hash = "0x040bf94015292513"
+hash_family = "t8.fnv64"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+hash = "0x0b559d36ab54e6c3"
+hash_family = "t8.fnv64"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+hash = "0x1d827c5a5cd4a607"
+hash_family = "t8.fnv64"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+hash = "0x2911cca00ac0aa0f"
+hash_family = "t8.fnv64"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+hash = "0x2c71bdb682939672"
+hash_family = "t8.fnv64"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+hash = "0x3279afba205318cb"
+hash_family = "t8.fnv64"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+hash = "0x45eee2a51bba40b3"
+hash_family = "t8.fnv64"
+receiver = "level"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+hash = "0x45f5f1a51bc078de"
+hash_family = "t8.fnv64"
+receiver = "level"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+hash = "0x47fe95a0475dea3d"
+hash_family = "t8.fnv64"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+hash = "0x4923b47a4a9aaa6f"
+hash_family = "t8.fnv64"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+hash = "0x4e899fa9b2775b4d"
+hash_family = "t8.fnv64"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+hash = "0x4f580adb0ec888f2"
+hash_family = "t8.fnv64"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+hash = "0x4f90b6182de31068"
+hash_family = "t8.fnv64"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+hash = "0x555e46a271e35375"
+hash_family = "t8.fnv64"
+receiver = "level"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+hash = "0x63f63f892dab2f47"
+hash_family = "t8.fnv64"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+hash = "0x6425091929b94c85"
+hash_family = "t8.fnv64"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["gsc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; payload is the waitresult struct 2"
+
+[[event]]
+hash = "0x6900f4ea0ff32c3e"
+hash_family = "t8.fnv64"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 2
+vm = ["csc"]
+confidence = "measured"
+evidence = "2 site(s); argument counts 0 x2; types from 2 site(s) where count = pushes; payload is the waitresult struct 2"
+
+[[event]]
+hash = "0x6f213dd34f02dcb9"
+hash_family = "t8.fnv64"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["csc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+hash = "0x71916bb1ea5a606a"
+hash_family = "t8.fnv64"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+hash = "0x754a0aedf9f00e8d"
+hash_family = "t8.fnv64"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"
+
+[[event]]
+hash = "0x78f7c1a8172c420e"
+hash_family = "t8.fnv64"
+receiver = "entity"
+args = []
+args_variable = false
+sites = 1
+vm = ["gsc"]
+confidence = "measured"
+evidence = "1 site(s); argument counts 0 x1; types from 1 site(s) where count = pushes; payload is the waitresult struct 1"

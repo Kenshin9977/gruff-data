@@ -1,0 +1,230 @@
+# corpus=t9 files=2829 kinds={'.gsc': 2465, '.csc': 364}
+# probe	files_with_match	occurrences (regex probes; comments and string bodies stripped first)
+dir_include	0	0
+dir_using	2561	27228
+dir_using_animtree	0	0
+dir_namespace	2771	2826
+dir_insert	0	0
+dir_define	0	0
+dir_if_family	0	0
+dir_precache	0	0
+dir_ifdef_undef	0	0
+define_function_like	0	0
+col0_macro_call	0	0
+waitframe_definition	0	0
+expr_animtree	0	0
+hash_string	2398	126302
+istring	0	0
+at_string	0	0
+anim_ref	0	0
+anim_ref_after_op	0	0
+ptr_colon	0	0
+ptr_path	0	0
+ptr_amp	2018	18592
+path_call	0	0
+ptr_call	905	6105
+kw_function	2770	54051
+kw_class	231	251
+kw_foreach	1320	10540
+kw_do	66	107
+kw_childthread	70	238
+kw_call_ptr	0	0
+kw_thisthread	0	0
+kw_autoexec	1306	1323
+kw_private	1670	10417
+kw_const	0	0
+kw_vararg	37	288
+param_ellipsis	37	94
+kw_new	247	375
+op_arrow	305	2780
+op_strict_eq	1032	8310
+op_coalesce	0	0
+op_safe_nav	0	0
+kw_event_handler	398	739
+kw_waitframe	1071	4555
+kw_waitrealtime	0	0
+kw_waittillmatch	26	46
+kw_waittillframeend	172	281
+kw_prof_begin	0	0
+kw_profilestart	80	116
+kw_breakpoint	0	0
+kw_istrue	0	0
+kw_is_expr	0	0
+world_obj	17	133
+classes_obj	0	0
+dev_block	885	4792
+tuple_assign	0	0
+array_literal	240	921
+world_kw	17	133
+classes_kw	0	0
+sys_qualifier	0	0
+ns_call	2502	110471
+scr_hash_ident	2777	37892
+dollar_token	0	0
+str_prefix_pct	0	0
+str_prefix_t	0	0
+str_prefix_o	0	0
+str_prefix_s	0	0
+str_prefix_r	0	0
+cast	0	0
+kw_builtin_call	0	0
+kw_builtin	0	0
+goto_stmt	0	0
+jumpif_stmt	0	0
+label_stmt	0	0
+kw_constructor	36	47
+kw_destructor	9	10
+kw_codecall	0	0
+class_as_name	0	0
+class_path_component	0	0
+file_scope_const	0	0
+default_param	745	2417
+ref_param	53	183
+func_header	2677	48248
+dir_inline	0	0
+kw_assert	0	0
+kw_assertmsg	0	0
+kw_assertex	0	0
+kw_prof_end	0	0
+kw_profilestop	80	184
+kw_threadendon	0	0
+kw_isdefined	2016	61574
+star_param	1434	5722
+op_ternary	747	5443
+struct_literal	0	0
+hash_hexprefixed	2770	1282137
+hash_idtoken	0	0
+hash_scriptpath	2527	25050
+doc_at	0	0
+doc_tripleslash	0	0
+# corpus=t9 parser=gsc-before.exe profile=t9.toml probe_syntax_errors=0 plain_files=59 decompiled_files=2770
+# probe	files_with_match	occurrences	plain_files	plain_occurrences (gsc parse with every feature off: each dialect report is one use; plain = files without a decompiler header, the parser's own test)
+parser:array_literal:a non-empty array literal	389	3356	0	0
+parser:autoexec_modifier:`autoexec`	1306	1323	0	0
+parser:childthread:`childthread`	70	238	0	0
+parser:classes:`->`	305	2780	0	0
+parser:classes:`class`	231	251	1	1
+parser:classes:`new`	247	375	0	0
+parser:default_parameters:a default parameter value	768	3890	0	0
+parser:dev_blocks:a `/# #/` dev block	885	4792	0	0
+parser:do_while:`do ... while`	66	107	0	0
+parser:event_handler_modifier:`event_handler`	398	739	0	0
+parser:foreach:`foreach`	1320	10540	0	0
+parser:foreach_key_value:a `foreach` key binding	312	786	0	0
+parser:function_keyword:the `function` keyword	2770	54051	0	0
+parser:function_pointer_style:a `&` function pointer	2008	19750	0	0
+parser:hash_string_literal:a `#"..."` hashed string	2398	126302	0	0
+parser:import_directive:`#using`	2561	27228	7	35
+parser:namespace_directive:`#namespace`	2771	2826	1	1
+parser:namespace_qualified_calls:a namespace-qualified name	2505	113134	0	0
+parser:pointer_call:a `[[ ]]` pointer call	654	3325	0	0
+parser:pointer_parameters:a `*` pointer parameter	1620	17290	0	0
+parser:private_modifier:`private`	1670	10417	0	0
+parser:reference_parameters:a `&` reference parameter	57	222	0	0
+parser:strict_equality:`!==`	499	1331	0	0
+parser:strict_equality:`===`	931	6979	0	0
+parser:struct_literal:a struct literal	648	3385	0	0
+parser:varargs:`...`	37	94	0	0
+# keyword test: 0 syntax errors with the profile's keywords; kwname rows: keyword, errors with it, errors without it (fewer = used as a plain name)
+kwname:autoexec	0	0
+kwname:break	0	0
+kwname:builtin	0	0
+kwname:case	0	73451
+kwname:childthread	0	0
+kwname:class	0	0
+kwname:const	0	0
+kwname:constructor	0	0
+kwname:continue	0	0
+kwname:default	0	126
+kwname:destructor	0	0
+kwname:do	0	107
+kwname:else	0	15589
+kwname:event_handler	0	0
+kwname:false	0	0
+kwname:for	0	8108
+kwname:foreach	0	21207
+kwname:function	0	11150
+kwname:if	0	130311
+kwname:in	0	0
+kwname:is	0	0
+kwname:new	0	0
+kwname:not	0	0
+kwname:private	0	1250
+kwname:return	0	22324
+kwname:switch	0	35602
+kwname:thread	0	21877
+kwname:threadendon	0	0
+kwname:true	0	0
+kwname:undefined	0	0
+kwname:var	0	0
+kwname:wait	0	9038
+kwname:while	0	6548
+# kwvar/kwfunc rows: keyword, files, occurrences (regex on stripped text)
+kwvar:autoexec	0	0
+kwfunc:autoexec	0	0
+kwvar:break	0	0
+kwfunc:break	0	0
+kwvar:builtin	0	0
+kwfunc:builtin	0	0
+kwvar:case	0	0
+kwfunc:case	0	0
+kwvar:childthread	0	0
+kwfunc:childthread	0	0
+kwvar:class	0	0
+kwfunc:class	0	0
+kwvar:const	0	0
+kwfunc:const	0	0
+kwvar:constructor	0	0
+kwfunc:constructor	0	0
+kwvar:continue	0	0
+kwfunc:continue	0	0
+kwvar:default	0	0
+kwfunc:default	0	0
+kwvar:destructor	0	0
+kwfunc:destructor	0	0
+kwvar:do	0	0
+kwfunc:do	0	0
+kwvar:else	0	0
+kwfunc:else	0	0
+kwvar:event_handler	0	0
+kwfunc:event_handler	0	0
+kwvar:false	0	0
+kwfunc:false	0	0
+kwvar:for	0	0
+kwfunc:for	0	0
+kwvar:foreach	0	0
+kwfunc:foreach	0	0
+kwvar:function	0	0
+kwfunc:function	0	0
+kwvar:goto	0	0
+kwfunc:goto	0	0
+kwvar:if	0	0
+kwfunc:if	0	0
+kwvar:in	0	0
+kwfunc:in	0	0
+kwvar:is	0	0
+kwfunc:is	0	0
+kwvar:new	0	0
+kwfunc:new	0	0
+kwvar:not	0	0
+kwfunc:not	0	0
+kwvar:private	0	0
+kwfunc:private	0	0
+kwvar:return	0	0
+kwfunc:return	0	0
+kwvar:switch	0	0
+kwfunc:switch	0	0
+kwvar:thread	0	0
+kwfunc:thread	0	0
+kwvar:threadendon	0	0
+kwfunc:threadendon	0	0
+kwvar:true	0	0
+kwfunc:true	0	0
+kwvar:undefined	0	0
+kwfunc:undefined	0	0
+kwvar:var	0	0
+kwfunc:var	0	0
+kwvar:wait	0	0
+kwfunc:wait	0	0
+kwvar:while	0	0
+kwfunc:while	0	0

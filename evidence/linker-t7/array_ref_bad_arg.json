@@ -1,0 +1,68 @@
+{
+ "status": "accept",
+ "accepted": true,
+ "exit_code": 0,
+ "elapsed_s": 4.01,
+ "inputs": [
+  {
+   "path": "scripts/zz_harness/array_ref_bad_arg.gsc"
+  }
+ ],
+ "errors": [],
+ "other_lines": [],
+ "scripts": [
+  {
+   "gscc": "bo3/spt/vm_1c000a0d43534780/scripts/zz_harness/array_ref_bad_arg.gscc",
+   "size": 292,
+   "tables": {
+    "name": "scripts/zz_harness/array_ref_bad_arg.gsc",
+    "source_crc": "0x52ae49a2",
+    "exports": [
+     {
+      "name": "by_amp",
+      "namespace": "zz_probe",
+      "params": 1,
+      "flags": [],
+      "address": 128
+     },
+     {
+      "name": "main",
+      "namespace": "zz_probe",
+      "params": 0,
+      "flags": [
+       "autoexec"
+      ],
+      "address": 168
+     }
+    ],
+    "imports": [
+     {
+      "name": "array",
+      "namespace": "zz_probe",
+      "params": 2,
+      "kind": "function",
+      "dev_call": false,
+      "get_call": true,
+      "flags": "0x22",
+      "refs": [
+       "0xb6"
+      ]
+     },
+     {
+      "name": "by_amp",
+      "namespace": "zz_probe",
+      "params": 1,
+      "kind": "function",
+      "dev_call": false,
+      "get_call": true,
+      "flags": "0x22",
+      "refs": [
+       "0xc8"
+      ]
+     }
+    ]
+   },
+   "asm": "#namespace namespace_c4c1746e;\n\n// Namespace namespace_c4c1746e\n// Params 1\n// Checksum 0xfcbca973, Offset: 0x80\n// Size: 0x2\nfunction function_71fa6dbd()\ngscasm {\n.00000000: 3227 SafeCreateLocalVariables  count: 0x1\n.00000003:                                arr&, pflags: 0x1 (-2)\n.0000000a: 3e22 GetByte                   1 (0x1)\n.0000000e: 39df GetZero                   \n.00000010: 3154 EvalLocalVariableRefCached arr\n.00000014: 3f54 EvalArrayRef              \n.00000016: 39af SetVariableField          \n.00000018: 2010 End                       \n// final size: 0x1a\n}\n\n// Namespace namespace_c4c1746e\n// Params 0, eflags: 0x2\n// Checksum 0x9926c700, Offset: 0xa8\n// Size: 0x2\nfunction autoexec main()\ngscasm {\n.00000000: 200d CheckClearParams          \n.00000002: 200e PreScriptCall             \n.00000004: 200e PreScriptCall             \n.00000006: 2f03 GetByte                   2 (0x2)\n.0000000a: 29e3 GetByte                   1 (0x1)\n.0000000e: 298a ScriptFunctionCall        params: 2 array\n.00000020: 29e5 ScriptFunctionCall        params: 1 function_71fa6dbd\n.00000030: 3c27 DecTop                    \n.00000032: 2010 End                       \n// final size: 0x34\n}\n\n"
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "status": "reject",
+ "accepted": false,
+ "exit_code": 1,
+ "elapsed_s": 1.28,
+ "inputs": [
+  {
+   "path": "scripts/zz_harness/p_codecall.gsc"
+  }
+ ],
+ "errors": [
+  {
+   "severity": "error",
+   "code": 0,
+   "file": "scripts/zz_harness/p_codecall.gsc",
+   "line": 3,
+   "col": 20,
+   "function": null,
+   "message": "syntax error, unexpected TOKEN_IDENTIFIER, expecting TOKEN_LEFT_CURLY : function codecall cc"
+  }
+ ],
+ "other_lines": [
+  "UNRECOVERABLE ERROR:",
+  "SCRIPT ERROR: No generated data for 'scripts/zz_harness/p_codecall.gsc'"
+ ]
+}

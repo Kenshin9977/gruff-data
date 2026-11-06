@@ -1,0 +1,113 @@
+# Dialect profile: Call of Duty: Modern Warfare III (2023) (2023).
+# Schema: ../schema/profile.schema.json. Sources: ../sources.toml. Licence rule: ../README.md.
+
+schema_version = 1
+id = "jup"
+name = "Call of Duty: Modern Warfare III (2023)"
+release_year = 2023
+developer = "Sledgehammer Games"
+dialect_family = "treyarch-t7plus"
+grade = "documented"
+aliases = ["mw23", "mwiii", "s5", "jup_sp", "jup-sp", "mwiii-sp"]
+source_availability = ["compiled-only"]
+license = "CC0-1.0"
+notes = "IW-developed but written in Treyarch-style syntax (GSCLSP). Evidence from the acts JUP VM and the acts output of the MP (cod23) and campaign (sp23) zones. The campaign scripts (jup_sp) use no construct the MP scripts lack and the same keywords (evidence/corpus/jup.tsv, jup-sp.tsv), so jup_sp is an alias of this profile, not a dialect."
+
+[tool_ids]
+gsc_tool = "jup"
+acts = "jup"
+gscode = "mw23"
+
+[keywords]
+words = ["autoexec", "break", "case", "childthread", "continue", "default", "do", "else", "event_handler", "false", "for", "foreach", "function", "goto", "if", "in", "is", "new", "not", "private", "return", "switch", "thread", "threadendon", "true", "undefined", "var", "wait", "while"]
+confidence = "assumed"
+source = ["acts-grammar", "corpus-jup"]
+note = "literal words of the acts superset grammar, minus class: classes is off and the scripts use class as a name 368 times in MP, 122 in SP (class = [];, function f( class ), self.class); the retail keyword set is not observable; corpus (acts output, names resolved from hashes): builtin is a parameter name once; function is a parameter name 41 times (MP 12 in 6 files, SP 29 in 9 files), so function is a contextual keyword, not reserved; it stays in the list because it starts every declaration"
+
+[features]
+# --- Files
+file_kinds = { value = ["gsc"], confidence = "verified-on-corpus", source = ["corpus-jup", "acts-vm-tables"], note = "decompiled (acts output): 4,871 .gsc; acts sets no client-VM flag for this VM; whether .csc exists is open" }
+# --- Lexing and literals
+case_insensitive_identifiers = { value = true, confidence = "documented", source = ["hash-inventory"], note = "hash families lowercase their input" }
+dev_blocks = { value = true, confidence = "verified-on-corpus", source = ["corpus-jup", "acts-vm-tables"], note = "decompiled (acts output): 9,597 uses in 1,666 files; dev-block opcode" }
+doc_comment_style = { value = "at-block", confidence = "assumed", source = ["inference"], note = "not observable: compiled-only game, the construct does not survive compilation" }
+istring_literal = { value = true, confidence = "verified-on-corpus", source = ["corpus-jup", "acts-vm-tables"], note = "decompiled (acts output): 2,943 uses in 457 files; ISTRING flag (hashed on t10 and t11)" }
+hash_string_literal = { value = true, confidence = "verified-on-corpus", source = ["corpus-jup", "hash-inventory", "gsclsp-readme"], note = "decompiled (acts output): 33,640 uses in 2,360 files" }
+extra_string_prefixes = { value = ["@", "%", "t"], confidence = "verified-on-corpus", source = ["corpus-jup"], note = "MP: @ 19,457, % 1,429, t 7; SP: @ 8,002, % 1,084, t 13; 0 s, r or o (acts output: hashed literals)" }
+anim_reference = { value = true, confidence = "verified-on-corpus", source = ["corpus-jup", "acts-vm-tables"], note = "decompiled (acts output): 5,989 uses in 211 files; animtree handler flag" }
+anim_reference_qualified = { value = true, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "double-animtree handler flag; 0 uses in corpus-jup (absence of use, not proof of absence)" }
+animtree_expression = { value = true, confidence = "verified-on-corpus", source = ["corpus-jup", "acts-vm-tables"], note = "decompiled (acts output): 840 uses in 156 files" }
+dollar_identifiers = { value = false, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "acts accepts $name as an animtree identifier; 0 uses in corpus-jup (absence of use, not proof of absence)" }
+hashed_identifier_spellings = { value = ["hex-prefixed", "script-path-hash"], confidence = "verified-on-corpus", source = ["corpus-jup", "hash-inventory", "gsclsp-readme"], note = "decompiled (acts output): used: hex-prefixed 2,350,699, script-path-hash 14,819" }
+# --- Bytecode naming
+identifier_encoding = { value = "fnv64", confidence = "assumed", source = ["hash-inventory", "gsclsp-readme"], license = "MIT-0", note = "IW9 hashes per GSCLSP; GSC identifiers undocumented" }
+# --- Imports and name resolution
+import_directive = { value = "using", confidence = "verified-on-corpus", source = ["corpus-jup", "gsclsp-readme"], note = "decompiled (acts output): 41,750 in 4,347 files; Treyarch-style syntax required" }
+name_resolution = { value = "namespace", confidence = "documented", source = ["gsclsp-readme", "acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "full file-namespace flag" }
+namespace_directive = { value = true, confidence = "documented", source = ["gsclsp-readme"], license = "MIT-0", note = "4,845 uses in 4,840 decompiled files (corpus-jup), not proof: acts prints #namespace wherever the export namespace changes" }
+path_qualified_calls = { value = true, confidence = "verified-on-corpus", source = ["corpus-jup"], note = "29,501 path-qualified calls in the acts output of the MP scripts, 11,018 in SP (scripts\\mp\\class::f(): the import names a script path); 0 path-qualified &pointers" }
+namespace_qualified_calls = { value = true, confidence = "documented", source = ["gsclsp-readme"], license = "MIT-0" }
+builtin_namespace_qualifier = { value = "unknown", confidence = "assumed", source = ["inference"], note = "0 uses in corpus-jup (absence of use, not proof of absence)" }
+header_directive = { value = "insert", confidence = "assumed", source = ["inference"], note = "not observable: compiled-only game, the construct does not survive compilation" }
+precache_directive = { value = "unknown", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "not observable: compiled-only game, the construct does not survive compilation; 0 uses in corpus-jup: acts never emits it, so the decompiled corpus cannot show it" }
+using_animtree_directive = { value = true, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "339 uses in 237 decompiled files (corpus-jup), not proof: the decompiler inserts #using_animtree from the animtree table at the first use" }
+imports_before_declarations = { value = "unknown", confidence = "assumed", source = ["inference"] }
+# --- Preprocessor
+preprocessor_define = { value = "unknown", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "not observable: compiled-only game, the construct does not survive compilation; 0 uses in corpus-jup: acts never emits it, so the decompiled corpus cannot show it" }
+preprocessor_function_macros = { value = "unknown", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "not observable: compiled-only game, the construct does not survive compilation; 0 uses in corpus-jup: acts never emits it, so the decompiled corpus cannot show it" }
+preprocessor_conditionals = { value = "unknown", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "not observable: compiled-only game, the construct does not survive compilation; 0 uses in corpus-jup: acts never emits it, so the decompiled corpus cannot show it" }
+preprocessor_ifdef_undef = { value = "unknown", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "not observable: compiled-only game, the construct does not survive compilation; 0 uses in corpus-jup: acts never emits it, so the decompiled corpus cannot show it" }
+predefined_macros = { value = [], confidence = "assumed", source = ["inference"] }
+file_scope_macro_calls = { value = "unknown", confidence = "assumed", source = ["inference"], note = "not observable: compiled-only game, the construct does not survive compilation; 0 uses in corpus-jup: acts never emits it, so the decompiled corpus cannot show it" }
+# --- Declarations
+function_keyword = { value = true, confidence = "documented", source = ["gsclsp-readme"], license = "MIT-0", note = "108,475 uses in 4,840 decompiled files (corpus-jup), not proof: the decompiler prints `function` on every declaration (printer convention)" }
+autoexec_modifier = { value = true, confidence = "verified-on-corpus", source = ["corpus-jup", "acts-vm-tables"], note = "decompiled (acts output): 704 uses in 702 files" }
+private_modifier = { value = true, confidence = "verified-on-corpus", source = ["corpus-jup", "acts-vm-tables"], note = "decompiled (acts output): 10,832 uses in 1,430 files" }
+event_handler_modifier = { value = false, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "no event-handler support in the acts JUP handler; 0 uses in corpus-jup (absence of use, not proof of absence)" }
+codecall_modifier = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-jup: acts never emits it, so the decompiled corpus cannot show it" }
+classes = { value = false, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "no class opcodes in the acts tables; 0 uses in corpus-jup (absence of use, not proof of absence)" }
+file_scope_constants = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-jup: acts never emits it, so the decompiled corpus cannot show it" }
+const_locals = { value = true, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "0 uses in corpus-jup: acts never emits it, so the decompiled corpus cannot show it" }
+default_parameters = { value = true, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "0 uses in corpus-jup (absence of use, not proof of absence)" }
+reference_parameters = { value = false, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "no variable-reference handler flag; 0 uses in corpus-jup (absence of use, not proof of absence)" }
+pointer_parameters = { value = false, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "0 uses in corpus-jup (absence of use, not proof of absence)" }
+varargs = { value = false, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "0 uses in corpus-jup (absence of use, not proof of absence)" }
+# --- Statements
+foreach = { value = true, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "foreach handler type; 23,659 uses in 2,079 decompiled files (corpus-jup), not proof: both decompilers print any getfirstarraykey/getnextarraykey loop as foreach (acts asm.cpp, gsc-tool decompiler.cpp decompile_foreach)" }
+foreach_key_value = { value = true, confidence = "assumed", source = ["gsc-tool-syntax", "acts-grammar"], license = "GPL-3.0-only", note = "tools accept the two-variable form; 1,682 uses in 555 decompiled files (corpus-jup), not proof: the key binding is printed when the body reads the key (acts) or by the loop's trailing clears (gsc-tool), not from the source" }
+do_while = { value = true, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "0 uses in corpus-jup (absence of use, not proof of absence)" }
+childthread = { value = true, confidence = "verified-on-corpus", source = ["corpus-jup"], note = "974 childthread calls in the acts output of the MP scripts, 1,188 in SP (a child-thread call opcode)" }
+call_pointer_sync = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-jup (absence of use, not proof of absence)" }
+builtin_call = { value = true, confidence = "verified-on-corpus", source = ["corpus-jup"], note = "138 builtin [[ p ]]( ... ) calls in the acts output of the MP scripts, 189 in SP: a builtin-pointer call opcode; the source spelling is acts'" }
+thisthread = { value = true, confidence = "assumed", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "IW get-thread opcode present; 0 uses in corpus-jup: acts never emits it, so the decompiled corpus cannot show it" }
+threadendon_call = { value = true, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "thread-call-endon opcodes; source spelling unknown; 0 uses in corpus-jup: acts never emits it, so the decompiled corpus cannot show it" }
+waittillframeend = { value = true, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-jup (absence of use, not proof of absence)" }
+waitframe = { value = true, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "wait-frame opcode; 0 uses in corpus-jup (absence of use, not proof of absence)" }
+waitrealtime = { value = "unknown", confidence = "assumed", source = ["inference"], note = "0 uses in corpus-jup: acts never emits it, so the decompiled corpus cannot show it" }
+tuple_assignment = { value = "unknown", confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "acts accepts the IW form; 571 uses in 201 decompiled files (corpus-jup), not proof: a temporary followed by x = t[n] reads is printed as a tuple (acts asm.cpp, gsc-tool decompiler.cpp)" }
+profiler_keywords = { value = [], confidence = "assumed", source = ["inference"] }
+assert_keywords = { value = [], confidence = "assumed", source = ["inference"] }
+breakpoint_keyword = { value = false, confidence = "assumed", source = ["inference"], note = "0 uses in corpus-jup (absence of use, not proof of absence)" }
+goto_labels = { value = false, confidence = "assumed", source = ["inference"], note = "decompiled corpus (jup: 4 goto, 3 jumpif, 9 labels; jup-sp: 4 goto, 2 jumpif, 11 labels): what appears is control flow acts could not structure, not source; the 33 goto/labels in 10 files of the acts output (corpus-jup) are decompiler control flow (parser D004), not source" }
+waittill_return_value = { value = false, confidence = "assumed", source = ["inference"] }
+# --- Expressions and builtin call styles
+function_pointer_style = { value = "ampersand", confidence = "documented", source = ["gsclsp-readme"], license = "MIT-0" }
+pointer_call = { value = true, confidence = "verified-on-corpus", source = ["corpus-jup", "acts-grammar"], note = "decompiled (acts output): 41,102 uses in 1,915 files" }
+strict_equality = { value = true, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "0 uses in corpus-jup (absence of use, not proof of absence)" }
+null_coalescing = { value = false, confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "opcode absent from the acts tables; 0 uses in corpus-jup (absence of use, not proof of absence)" }
+optional_chaining = { value = false, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "acts compiler extension; its decompiler never writes it; 0 uses in corpus-jup: acts never emits it, so the decompiled corpus cannot show it" }
+is_expression = { value = false, confidence = "assumed", source = ["acts-grammar"], license = "GPL-3.0-only OR MIT", note = "acts compiler extension; its decompiler never writes it; 0 uses in corpus-jup: acts never emits it, so the decompiled corpus cannot show it" }
+casts = { value = "unknown", confidence = "assumed", source = ["inference"], note = "not observable: compiled-only game, the construct does not survive compilation; 0 uses in corpus-jup: acts never emits it, so the decompiled corpus cannot show it" }
+array_literal = { value = true, confidence = "verified-on-corpus", source = ["corpus-jup", "acts-grammar"], note = "decompiled (acts output): 19,713 uses in 1,667 files; acts accepts [a, k:v]" }
+struct_literal = { value = true, confidence = "verified-on-corpus", source = ["corpus-jup", "acts-grammar"], note = "decompiled (acts output): 681 uses in 186 files; acts accepts {k:v}" }
+isdefined_form = { value = "keyword", confidence = "documented", source = ["acts-vm-tables"], license = "GPL-3.0-only OR MIT", note = "is-defined opcode" }
+istrue_operator = { value = true, confidence = "verified-on-corpus", source = ["corpus-jup", "acts-vm-tables"], note = "decompiled (acts output): 23,710 uses in 1,914 files, regex probe; IW is-true opcode" }
+opcode_builtins = { value = [], confidence = "assumed", source = ["inference"] }
+bare_call_resolution = { value = "builtin-first", confidence = "assumed", source = ["inference"] }
+global_objects = { value = ["self", "level", "game", "anim"], confidence = "assumed", source = ["inference"] }
+# --- Semantics that change analysis
+array_argument_passing = { value = "unknown", confidence = "assumed", source = ["inference"] }
+waittill_multiple_events = { value = "unknown", confidence = "assumed", source = ["inference"], note = "not measured: this game's VM has not been run (semantics/)" }
+endon_multiple_events = { value = "unknown", confidence = "assumed", source = ["inference"], note = "not measured: this game's VM has not been run (semantics/)" }
+notify_wakes_waiters = { value = "unknown", confidence = "assumed", source = ["inference"], note = "not measured: this game's VM has not been run (semantics/)" }
+hash_equality = { value = "unknown", confidence = "assumed", source = ["inference"], note = "not measured: this game's VM has not been run (semantics/)" }

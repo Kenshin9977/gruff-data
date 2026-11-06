@@ -1,0 +1,68 @@
+{
+ "status": "accept",
+ "accepted": true,
+ "exit_code": 0,
+ "elapsed_s": 4.01,
+ "inputs": [
+  {
+   "path": "scripts/zz_harness/bare_method_shadow.gsc"
+  }
+ ],
+ "errors": [],
+ "other_lines": [],
+ "scripts": [
+  {
+   "gscc": "bo3/spt/vm_1c000a0d43534780/scripts/zz_harness/bare_method_shadow.gscc",
+   "size": 276,
+   "tables": {
+    "name": "scripts/zz_harness/bare_method_shadow.gsc",
+    "source_crc": "0xa23c1706",
+    "exports": [
+     {
+      "name": "getentitynumber",
+      "namespace": "zz_probe",
+      "params": 0,
+      "flags": [],
+      "address": 128
+     },
+     {
+      "name": "main",
+      "namespace": "zz_probe",
+      "params": 0,
+      "flags": [
+       "autoexec"
+      ],
+      "address": 144
+     }
+    ],
+    "imports": [
+     {
+      "name": "getentitynumber",
+      "namespace": "zz_probe",
+      "params": 0,
+      "kind": "method",
+      "dev_call": false,
+      "get_call": true,
+      "flags": "0x24",
+      "refs": [
+       "0x9e"
+      ]
+     },
+     {
+      "name": "getentitynumber",
+      "namespace": "zz_probe",
+      "params": 0,
+      "kind": "method_thread",
+      "dev_call": false,
+      "get_call": true,
+      "flags": "0x25",
+      "refs": [
+       "0xba"
+      ]
+     }
+    ]
+   },
+   "asm": "#namespace namespace_c4c1746e;\n\n// Namespace namespace_c4c1746e\n// Params 0\n// Checksum 0x259cb956, Offset: 0x80\n// Size: 0x2\nfunction getentitynumber()\ngscasm {\n.00000000: 200d CheckClearParams          \n.00000002: 2178 GetByte                   7 (0x7)\n.00000006: 3713 Return                    \n// final size: 0x8\n}\n\n// Namespace namespace_c4c1746e\n// Params 0, eflags: 0x2\n// Checksum 0xd3ed5a2b, Offset: 0x90\n// Size: 0x2\nfunction autoexec main()\ngscasm {\n.00000000: 339a SafeCreateLocalVariables  count: 0x1\n.00000003:                                a (-2)\n.0000000a: 200e PreScriptCall             \n.0000000c: 3204 GetSelf                   \n.0000000e: 2186 ScriptMethodCall          params: 0 getentitynumber\n.00000020: 37cc EvalLocalVariableRefCached a\n.00000024: 295a SetVariableField          \n.00000026: 200e PreScriptCall             \n.00000028: 3e3a GetSelf                   \n.0000002a: 3b15 ScriptMethodThreadCall    params: 0 getentitynumber\n.00000038: 25f5 DecTop                    \n.0000003a: 2010 End                       \n// final size: 0x3c\n}\n\n"
+  }
+ ]
+}

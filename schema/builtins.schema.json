@@ -1,0 +1,293 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:gruff-data:schema:builtins:1",
+  "title": "GSC engine builtin catalogue",
+  "description": "One game's engine builtins (functions and methods the VM resolves by name or hash), as extracted from the game's executable. Validates builtins/<engine-id>.toml after TOML parsing. Facts only: names, hashes, arities, parameter types and how each was measured; no documentation text.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "game", "license", "source", "builtin"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "game": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$",
+      "description": "Engine id, as in profiles/<id>.toml."
+    },
+    "license": {"const": "CC0-1.0"},
+    "source": {
+      "type": "string",
+      "description": "Where the facts come from, e.g. \"extracted from game executable\"."
+    },
+    "hash_family": {
+      "type": "string",
+      "description": "gsc_hash family id of the `hash` field (t7.canon, t8.fnv64...)."
+    },
+    "extraction": {
+      "type": "object",
+      "description": "How the catalogue was produced: tool, executable identity, entry layout, the lookups and their tables.",
+      "properties": {
+        "tool": {"type": "string"},
+        "executable": {"type": "string"},
+        "pe_timestamp": {"type": "integer"},
+        "entry_layout": {"type": "string"},
+        "variadic_max": {"type": "integer"},
+        "counts": {"type": "object", "additionalProperties": {"type": "integer"}},
+        "lookups": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "required": ["rva", "tables"],
+            "properties": {
+              "rva": {"type": "string", "pattern": "^0x[0-9a-f]+$"},
+              "tables": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["rva", "count"],
+                  "properties": {
+                    "rva": {"type": "string", "pattern": "^0x[0-9a-f]+$"},
+                    "count": {"type": "integer", "minimum": 1}
+                  }
+                }
+              }
+            }
+          }
+        },
+        "executable_sp": {
+          "type": "string",
+          "description": "The single-player executable merged into the catalogue (IW5, S1, H1)."
+        },
+        "pe_timestamp_sp": {"type": "integer"},
+        "merge": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["sp_only", "arity_agree", "arity_differ"],
+          "description": "The single-player merge: entries only the SP executable has, and how many shared entries measured the same arity in both.",
+          "properties": {
+            "sp_only": {"type": "integer", "minimum": 0},
+            "arity_agree": {"type": "integer", "minimum": 0},
+            "arity_differ": {"type": "integer", "minimum": 0}
+          }
+        },
+        "arity_source": {
+          "type": "string",
+          "description": "How min_args/max_args were measured for the whole catalogue (an entry's own arity_source overrides it)."
+        },
+        "vm_globals": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["base", "outparamcount", "top"],
+          "description": "Where the VM keeps its parameter count (scrVmPub.outparamcount) and stack top, as the IW extraction found them. base image: RVAs of globals; base context: offsets in the VM context structure the handlers receive (IW8, JUP).",
+          "properties": {
+            "base": {"enum": ["image", "context"]},
+            "outparamcount": {"type": "string", "pattern": "^0x[0-9a-f]+$"},
+            "top": {"type": "string", "pattern": "^0x[0-9a-f]+$"}
+          }
+        },
+        "corpus_second_measure": {
+          "type": "string",
+          "description": "The corpus pass applied to the arities (tools/re/calibrate.py): corpus, date of the pass and what it changed."
+        },
+        "corpus_type_measure": {
+          "type": "string",
+          "description": "The corpus pass that measured argument types (tools/re/types_corpus.py): call sites, files, entries given a corpus_param_types and the threshold."
+        }
+      },
+      "additionalProperties": false
+    },
+    "builtin": {"type": "array", "items": {"$ref": "#/$defs/builtin"}},
+    "intrinsic": {
+      "type": "array",
+      "description": "Names the compiler turns into one VM opcode (isdefined, vectorscale, gettime...): no lookup resolves them, so a call site is not a table builtin, even where a table also holds the name. Tools read this list, not the profile's opcode_builtins, to know these names and their arity.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "evidence"],
+        "properties": {
+          "name": {"type": "string", "pattern": "^[a-z_][a-z0-9_]*$"},
+          "hash": {"type": "string", "pattern": "^0x[0-9a-f]{8,16}$"},
+          "vm": {"enum": ["gsc", "csc"]},
+          "opcode": {"type": "string"},
+          "also_builtin": {
+            "type": "array",
+            "items": {"type": "string"},
+            "description": "Lookups (gsc_function...) whose tables also hold the name's hash."
+          },
+          "corpus_args": {
+            "type": "array",
+            "items": {"type": "integer"},
+            "description": "Argument counts seen at the corpus call sites."
+          },
+          "evidence": {"type": "string"},
+          "min_args": {"type": "integer", "minimum": 0},
+          "max_args": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "variadic_max (or 255 for T10/T11) when unbounded."
+          },
+          "variadic": {"type": "boolean"},
+          "arity_source": {
+            "type": "string",
+            "description": "Where min_args/max_args come from (the corpus call sites: the compiler checks an intrinsic's count, so the shipped scripts only hold accepted counts)."
+          }
+        }
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["complete", "note"],
+      "description": "Whether the catalogue holds every builtin the game's scripts can call. complete = false when an executable of the game was not extracted (a mode's scripts may call builtins it lacks) or entries have neither a name nor a hash: tools then cannot call a missing name unknown (gruff check turns B001 off). Absent: complete.",
+      "properties": {
+        "complete": {"type": "boolean"},
+        "note": {"type": "string", "description": "What is missing, and why."}
+      }
+    }
+  },
+  "$defs": {
+    "builtin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["vm", "kind", "min_args", "max_args", "evidence"],
+      "anyOf": [
+        {"required": ["hash"]},
+        {"required": ["name", "name_source"]},
+        {"required": ["id"]},
+        {"required": ["index"]}
+      ],
+      "description": "One table entry. Engines that key their tables by hash (T7+, JUP) always give `hash`; engines whose tables point at the name string (T4-T6, IW1, IW3) give `name` with name_source \"executable\"; the IW registration builds give the registration `id` (IW5+) or the entry's `index` (IW4), and a name when one is known.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z_][a-z0-9_]*$",
+          "description": "Lower-case name; present only when a string hashing to `hash` is known, or when the table stores the string itself."
+        },
+        "name_source": {
+          "enum": [
+            "official-doc",
+            "mod-tools-scripts",
+            "bo3-hash-list",
+            "executable",
+            "corpus-scripts",
+            "bo7-gsc-archive",
+            "graywolf-name-index",
+            "bo4-glossary",
+            "cod-hash-recovery",
+            "hash-list",
+            "gsc-tool",
+            "iw5-handler-match"
+          ],
+          "description": "Where the name string came from; the hash match is the proof. executable: the table entry points at the name string (no hash involved). gsc-tool: gsc-tool's id or hash table (GPL-3.0), matched by id or hash; iw5-handler-match: the one IW5 handler of the same code shape and arity, named from gsc-tool. Both make the entry GPL-3.0-only."
+        },
+        "dev_only": {
+          "type": "boolean",
+          "description": "Developer builtin: T7+ type_flags 1 (the linker's 'Dev only calls must be wrapped in a devblock'); T4-T6 the table's developer flag."
+        },
+        "arity_source": {
+          "type": "string",
+          "description": "How min_args/max_args were measured when the table does not store them (e.g. T4/T5: handler emulation with N parameters)."
+        },
+        "table": {
+          "type": "string",
+          "description": "Engine table holding the entry, when a lookup has several (informative)."
+        },
+        "hash": {"type": "string", "pattern": "^0x[0-9a-f]{8,16}$"},
+        "vm": {"enum": ["gsc", "csc"], "description": "Server (gsc) or client (csc) VM."},
+        "kind": {"enum": ["function", "method"], "description": "method: called on an object (self)."},
+        "min_args": {
+          "type": "integer",
+          "minimum": -1,
+          "description": "-1 only with arity_unchecked or arity_unknown."
+        },
+        "max_args": {
+          "type": "integer",
+          "minimum": -1,
+          "description": "variadic_max when unbounded; -1 only with arity_unchecked or arity_unknown."
+        },
+        "variadic": {"type": "boolean"},
+        "arity_unchecked": {
+          "type": "boolean",
+          "description": "The entry stores -1/-1 (0xFFFFFFFF) for min and max: no arity recorded."
+        },
+        "type_flags": {
+          "type": "integer",
+          "description": "The entry's type word as the engine's lookup returns it. T7: 1 on debug builtins (line, print3d, assert...: dev-only, the linker's 'Dev only calls must be wrapped in a devblock'), 2 on the __protected__ names."
+        },
+        "type_field": {
+          "type": "integer",
+          "description": "Raw type word of the table entry, when the lookup does not return it."
+        },
+        "param_types": {
+          "type": "array",
+          "items": {"type": "string", "pattern": "^(\\?|[a-z0-9]+(\\|[a-z0-9]+)*)$"},
+          "description": "Per index, the type(s) of the accessor the handler used ('?' not read). Best effort: a handler run under emulation, with N = min(max, 16) parameters."
+        },
+        "shadowed": {
+          "type": "boolean",
+          "description": "The same hash sits in an earlier table of the same lookup: the engine never returns this entry."
+        },
+        "handler_rva": {"type": "string", "pattern": "^0x[0-9a-f]+$"},
+        "evidence": {"type": "string", "description": "How each value was measured."},
+        "license": {
+          "enum": ["CC0-1.0", "GPL-3.0-only"],
+          "description": "The entry's licence when it differs from the file's: GPL-3.0-only exactly when the name comes from gsc-tool (name_source gsc-tool or iw5-handler-match). Absent: the file's licence."
+        },
+        "id": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "IW5+: the id the engine registers the handler under (the bytecode's builtin reference)."
+        },
+        "index": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "IW4: the entry's position in its registration order (no id)."
+        },
+        "max_checked": {
+          "type": "boolean",
+          "description": "The handler rejects more than max_args (an explicit usage check, or JUP's table bound). false: extra arguments are ignored, so only min_args is a rule."
+        },
+        "arity_mode": {
+          "enum": ["strict", "strict+state", "lenient", "table"],
+          "description": "How the IW handler runs measured the arity: strict (script errors unwind), strict+state (after setting the state the handler checks first), lenient (errors return; the baseline errors subtracted), table (JUP: the entry's u8 min/max, handler runs as the second measure)."
+        },
+        "arity_unknown": {
+          "type": "boolean",
+          "description": "No trusted arity: no handler run passed, the table stores none, or the corpus contradicts the measure (corpus_arity = \"unknown\"). min_args/max_args are then -1, or the discarded measure, and tools never check the argument count."
+        },
+        "executables": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"enum": ["mp", "sp"]},
+          "description": "The executables whose tables hold the entry (IW games with a merged SP executable)."
+        },
+        "measured_args": {
+          "type": "array",
+          "items": {"type": "integer", "minimum": -1},
+          "minItems": 2,
+          "maxItems": 2,
+          "description": "The extraction's own [min, max] when the corpus pass changed min_args/max_args or set arity_unknown."
+        },
+        "corpus_arg_types": {
+          "type": "array",
+          "maxItems": 16,
+          "items": {
+            "type": "object",
+            "propertyNames": {"enum": ["int", "float", "number", "bool", "string", "istring", "hash", "vector", "array", "struct", "entity", "function", "anim", "animtree", "weapon", "object", "undefined", "unknown"]},
+            "additionalProperties": {"type": "integer", "minimum": 1}
+          },
+          "description": "The corpus measure of the parameter types (tools/re/types_corpus.py, gruff types): per argument index, how many call sites of the game's own scripts pass each inferred type (literals, known builtin results, local flow, script parameters to a fixpoint); unknown = not determinable from the scripts. Independent of param_types, which it never changes."
+        },
+        "corpus_param_types": {
+          "type": "array",
+          "maxItems": 16,
+          "items": {"type": "string", "pattern": "^(\\?|[a-z0-9]+(\\|[a-z0-9]+)*)$"},
+          "description": "Per index, the type derived from corpus_arg_types when consistent: at least 5 typed sites (unknown and undefined left out, bool counted as int) and one type at 95% or more; int and float mixed give number, string and hash mixed hash|string; '?' otherwise. Tools show it where param_types gives no type; disagreements with param_types are listed in tools/re/reports/types_<game>.md."
+        },
+        "corpus_arity": {
+          "enum": ["unknown", "widened"],
+          "description": "The corpus second measure contradicted the extraction (tools/re/calibrate.py): unknown = the measure is discarded (arity_unknown), widened = min/max now include the argument counts the game's own scripts use. The evidence line says where."
+        }
+      }
+    }
+  }
+}

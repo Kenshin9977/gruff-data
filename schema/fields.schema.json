@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:gruff-data:schema:fields:1",
+  "title": "GSC engine field catalogue",
+  "description": "One game's script-visible engine fields (the fields the engine registers on each object kind: entity, player, actor, vehicle, hud element, path node, weapon ...), as extracted from the game's executable. Validates fields/<engine-id>.toml after TOML parsing. Facts only: names, hashes, owner kind, type code, read-only flag and how each was measured; no documentation text. GSC objects also accept arbitrary script-defined fields: a name absent from this list is not an error by itself.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "game", "license", "source", "field"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "game": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$",
+      "description": "Engine id, as in profiles/<id>.toml."
+    },
+    "license": { "const": "CC0-1.0" },
+    "source": {
+      "type": "string",
+      "description": "Where the facts come from, e.g. \"extracted from game executable\"."
+    },
+    "sources": {
+      "$ref": "#/$defs/source_refs",
+      "description": "Ids from sources.toml behind the file: the extraction, and each oracle or name source used."
+    },
+    "hash_family": {
+      "type": "string",
+      "description": "gsc_hash family id of the `hash` field (t7.canon ...)."
+    },
+    "extraction": {
+      "type": "object",
+      "description": "How the catalogue was produced: tool, executable identity, the registration function, entry layout, per-kind counts and the tables.",
+      "properties": {
+        "tool": { "type": "string" },
+        "executable": { "type": "string" },
+        "pe_timestamp": { "type": "integer" },
+        "add_class_field_rva": { "$ref": "#/$defs/hex" },
+        "entry_layout": { "type": "string" },
+        "counts": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } },
+        "table": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kind", "vm", "class", "offset_base", "rva", "stride", "count"],
+            "properties": {
+              "kind": { "$ref": "#/$defs/kind" },
+              "vm": { "$ref": "#/$defs/vms" },
+              "class": { "type": "integer", "minimum": 0, "description": "The VM's field class (classnum) the table is registered on." },
+              "offset_base": { "$ref": "#/$defs/hex", "description": "High bits the registration ORs into every offset of this table (owner sub-kind within the class)." },
+              "rva": { "$ref": "#/$defs/hex" },
+              "stride": { "$ref": "#/$defs/hex" },
+              "count": { "type": "integer", "minimum": 1 },
+              "kind_evidence": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "types": {
+      "type": "object",
+      "description": "Numeric type code of the entries -> label. The label and its agreement count say how the code was named.",
+      "propertyNames": { "pattern": "^[0-9]+$" },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["label"],
+        "properties": {
+          "label": { "type": "string", "pattern": "^F_[A-Z0-9_]+$" },
+          "agree": { "type": "integer", "minimum": 0 },
+          "of": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "field": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/field" }
+    }
+  },
+  "$defs": {
+    "hex": { "type": "string", "pattern": "^0x[0-9a-f]+$" },
+    "source_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*(#[A-Za-z0-9_.-]+)?$" }
+    },
+    "kind": {
+      "enum": ["entity", "sentient", "actor", "player", "vehicle", "hudelem", "pathnode", "vehiclenode", "weapon", "centity", "dynent", "level", "other"],
+      "description": "Owner object kind. entity: every entity; sentient, actor, player, vehicle: entities of that sort (fields valid only on them); hudelem, pathnode, vehiclenode, weapon: other script object classes; centity, dynent: client-VM entities."
+    },
+    "vms": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "enum": ["gsc", "csc"] },
+      "description": "VMs that register the field: gsc (server), csc (client)."
+    },
+    "field": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hash", "kind", "vm", "offset", "evidence"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z_][a-z0-9_]*$",
+          "description": "Lower-case name; present only when a string hashing to `hash` is known."
+        },
+        "name_source": {
+          "enum": ["official-doc", "mod-tools-scripts", "bo3-hash-list"],
+          "description": "Where the name string came from; the hash match is the proof."
+        },
+        "hash": { "type": "string", "pattern": "^0x[0-9a-f]{8,16}$" },
+        "kind": { "$ref": "#/$defs/kind" },
+        "vm": { "$ref": "#/$defs/vms" },
+        "offset": { "$ref": "#/$defs/hex", "description": "The value the VM stores for the field and hands to the class's getter and setter (offset_base | entry index)." },
+        "type": { "type": "integer", "minimum": 0, "description": "The entry's numeric type code; see `types`." },
+        "read_only": { "type": "boolean", "description": "true: assigning the field from script raises a read-only error. Absent when not measured." },
+        "evidence": { "type": "string", "description": "How the entry was measured: registration, table entry, read-only measure." }
+      }
+    }
+  }
+}
