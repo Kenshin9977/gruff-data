@@ -1,0 +1,56 @@
+{
+ "status": "accept",
+ "accepted": true,
+ "exit_code": 0,
+ "elapsed_s": 4.04,
+ "inputs": [
+  {
+   "path": "scripts/zz_harness/lint_thread_value.gsc"
+  }
+ ],
+ "errors": [],
+ "other_lines": [],
+ "scripts": [
+  {
+   "gscc": "bo3/spt/vm_1c000a0d43534780/scripts/zz_harness/lint_thread_value.gscc",
+   "size": 232,
+   "tables": {
+    "name": "scripts/zz_harness/lint_thread_value.gsc",
+    "source_crc": "0xd7022875",
+    "exports": [
+     {
+      "name": "f",
+      "namespace": "zz_probe",
+      "params": 0,
+      "flags": [],
+      "address": 128
+     },
+     {
+      "name": "main",
+      "namespace": "zz_probe",
+      "params": 0,
+      "flags": [
+       "autoexec"
+      ],
+      "address": 144
+     }
+    ],
+    "imports": [
+     {
+      "name": "f",
+      "namespace": "zz_probe",
+      "params": 0,
+      "kind": "function_thread",
+      "dev_call": false,
+      "get_call": true,
+      "flags": "0x23",
+      "refs": [
+       "0x9c"
+      ]
+     }
+    ]
+   },
+   "asm": "#namespace namespace_c4c1746e;\n\n// Namespace namespace_c4c1746e\n// Params 0\n// Checksum 0x15cbbc9e, Offset: 0x80\n// Size: 0x2\nfunction f()\ngscasm {\n.00000000: 200d CheckClearParams          \n.00000002: 2178 GetByte                   1 (0x1)\n.00000006: 3713 Return                    \n// final size: 0x8\n}\n\n// Namespace namespace_c4c1746e\n// Params 0, eflags: 0x2\n// Checksum 0x3c18f4c7, Offset: 0x90\n// Size: 0x2\nfunction autoexec main()\ngscasm {\n.00000000: 339a SafeCreateLocalVariables  count: 0x1\n.00000003:                                x (-2)\n.0000000a: 200e PreScriptCall             \n.0000000c: 23b5 ScriptThreadCall          params: 0 f\n.00000018: 2ab3 EvalLocalVariableRefCached x\n.0000001c: 39af SetVariableField          \n.0000001e: 2010 End                       \n// final size: 0x20\n}\n\n"
+  }
+ ]
+}

@@ -1,0 +1,18 @@
+{
+ "status": "reject",
+ "accepted": false,
+ "exit_code": 1,
+ "elapsed_s": 1.31,
+ "inputs": [
+  {
+   "path": "scripts/zz_harness/lint_case_undefined.gsc"
+  }
+ ],
+ "errors": [],
+ "other_lines": [
+  "UNRECOVERABLE ERROR:",
+  "SCRIPT ERROR: No generated data for 'scripts/zz_harness/lint_case_undefined.gsc'",
+  "ERR(6E) scripts/zz_harness/lint_case_undefined.gsc (10,0)  : Compiler Internal Error :  Switch case must be a string or integer type",
+  "ERR(6E) scripts/zz_harness/lint_case_undefined.gsc (10,0)  : Compiler Internal Error :  Switch case must be a string or integer type"
+ ]
+}

@@ -1,0 +1,13 @@
+{
+ "status": "reject",
+ "accepted": false,
+ "exit_code": 3221225725,
+ "elapsed_s": 1.42,
+ "inputs": [
+  {
+   "path": "scripts/zz_harness/lint_class_cycle.gsc"
+  }
+ ],
+ "errors": [],
+ "other_lines": []
+}

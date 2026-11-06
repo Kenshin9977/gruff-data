@@ -1,0 +1,18 @@
+{
+ "status": "reject",
+ "accepted": false,
+ "exit_code": 1,
+ "elapsed_s": 1.32,
+ "inputs": [
+  {
+   "path": "scripts/zz_harness/lint_dup_param.gsc"
+  }
+ ],
+ "errors": [],
+ "other_lines": [
+  "UNRECOVERABLE ERROR:",
+  "SCRIPT ERROR: No generated data for 'scripts/zz_harness/lint_dup_param.gsc'",
+  "ERR(1AD) scripts/zz_harness/lint_dup_param.gsc (4,18) in \"f()\" : Compiler Internal Error :  Duplicate var name in function param list",
+  "ERR(1AD) scripts/zz_harness/lint_dup_param.gsc (4,18) in \"f()\" : Compiler Internal Error :  Duplicate var name in function param list"
+ ]
+}

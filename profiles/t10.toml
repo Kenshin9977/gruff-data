@@ -111,3 +111,4 @@ waittill_multiple_events = { value = true, confidence = "assumed", source = ["vm
 endon_multiple_events = { value = true, confidence = "assumed", source = ["vm-t9-emulation#endon_multiple_events"], note = "assumed from T9 (measured in the T8 and T9 VMs, semantics/t9.toml); this game's VM has not been run" }
 notify_wakes_waiters = { value = "inline", confidence = "assumed", source = ["vm-t9-emulation#notify_wakes_waiter_before_notifier_continues"], note = "assumed from T9 (measured in the T8 and T9 VMs, semantics/t9.toml); this game's VM has not been run (T8 defers)" }
 hash_equality = { value = "by-value", confidence = "assumed", source = ["vm-t9-emulation#hash_equality"], note = "assumed from T9 (measured in the T8 and T9 VMs, semantics/t9.toml); this game's VM has not been run" }
+thread_call_value = { value = "unknown", confidence = "assumed", source = ["inference"], note = "not measured: this game's VM has not been run (semantics/)" }

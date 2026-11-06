@@ -16,7 +16,7 @@ Raven Software. It contains no game scripts or documentation, and no other game 
 | `schema/profile.schema.json` | JSON Schema for a dialect profile (after TOML parsing). It doubles as the feature registry: each feature, its value type and a description. |
 | `schema/profile.example.toml` | A commented example profile. |
 | `schema/hash-package.md` | The hash package format (names for hashed identifiers, read by Gruff's `hash_packages`). The repository ships no package: name lists derived from game files stay local. |
-| `profiles/<engine-id>.toml` | One profile per game: keywords, 73 feature flags, unresolved questions. |
+| `profiles/<engine-id>.toml` | One profile per game: keywords, 74 feature flags, unresolved questions. |
 | `sources.toml` | Every source a profile may cite, with its licence and how it may be used. |
 | `builtins/<game>.toml` | The engine builtin catalogue of a game (functions, methods, arities, parameter types, compiler intrinsics), extracted from the executable by Gruff `tools/re`. Schema: `schema/builtins.schema.json`. |
 | `fields/<game>.toml` | The engine field catalogue (T7). Schema: `schema/fields.schema.json`. |
@@ -172,7 +172,7 @@ positive on shipped code.
 
 ## Status
 
-Phase 2. 24 profiles of 73 features each. Every game with a local corpus (20 games, 22 corpora)
+Phase 2. 24 profiles of 74 features each. Every game with a local corpus (20 games, 22 corpora)
 has been measured with `tools/featcount.py` and its parser mode; `docs/dialect-matrix.md` shows
 every value. Eight profiles have the `verified-on-corpus` grade: the clean-source games (iw1, iw2,
 iw3, t4, iw4, t5, codol) and t7 (mod tools). The games known only from decompiled bytecode stay

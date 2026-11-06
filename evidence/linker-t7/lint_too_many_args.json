@@ -1,0 +1,56 @@
+{
+ "status": "accept",
+ "accepted": true,
+ "exit_code": 0,
+ "elapsed_s": 4.02,
+ "inputs": [
+  {
+   "path": "scripts/zz_harness/lint_too_many_args.gsc"
+  }
+ ],
+ "errors": [],
+ "other_lines": [],
+ "scripts": [
+  {
+   "gscc": "bo3/spt/vm_1c000a0d43534780/scripts/zz_harness/lint_too_many_args.gscc",
+   "size": 236,
+   "tables": {
+    "name": "scripts/zz_harness/lint_too_many_args.gsc",
+    "source_crc": "0x83827d85",
+    "exports": [
+     {
+      "name": "g",
+      "namespace": "zz_probe",
+      "params": 1,
+      "flags": [],
+      "address": 128
+     },
+     {
+      "name": "main",
+      "namespace": "zz_probe",
+      "params": 0,
+      "flags": [
+       "autoexec"
+      ],
+      "address": 152
+     }
+    ],
+    "imports": [
+     {
+      "name": "g",
+      "namespace": "zz_probe",
+      "params": 2,
+      "kind": "function",
+      "dev_call": false,
+      "get_call": true,
+      "flags": "0x22",
+      "refs": [
+       "0xa4"
+      ]
+     }
+    ]
+   },
+   "asm": "#namespace namespace_c4c1746e;\n\n// Namespace namespace_c4c1746e\n// Params 1\n// Checksum 0x26f518a1, Offset: 0x80\n// Size: 0x2\nfunction g()\ngscasm {\n.00000000: 3227 SafeCreateLocalVariables  count: 0x1\n.00000003:                                a (-2)\n.0000000a: 2a75 EvalLocalVariableCached   (-0) a\n.0000000e: 3f28 Return                    \n// final size: 0x10\n}\n\n// Namespace namespace_c4c1746e\n// Params 0, eflags: 0x2\n// Checksum 0x3bfe721, Offset: 0x98\n// Size: 0x2\nfunction autoexec main()\ngscasm {\n.00000000: 200d CheckClearParams          \n.00000002: 200e PreScriptCall             \n.00000004: 3e22 GetByte                   2 (0x2)\n.00000008: 3490 GetByte                   1 (0x1)\n.0000000c: 2acb ScriptFunctionCall        params: 2 g\n.00000018: 2fab DecTop                    \n.0000001a: 2010 End                       \n// final size: 0x1c\n}\n\n"
+  }
+ ]
+}

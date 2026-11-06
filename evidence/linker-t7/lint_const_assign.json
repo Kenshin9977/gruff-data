@@ -1,0 +1,18 @@
+{
+ "status": "reject",
+ "accepted": false,
+ "exit_code": 1,
+ "elapsed_s": 1.3,
+ "inputs": [
+  {
+   "path": "scripts/zz_harness/lint_const_assign.gsc"
+  }
+ ],
+ "errors": [],
+ "other_lines": [
+  "UNRECOVERABLE ERROR:",
+  "SCRIPT ERROR: No generated data for 'scripts/zz_harness/lint_const_assign.gsc'",
+  "ERR(6E) scripts/zz_harness/lint_const_assign.gsc (4,0)  : Compiler Internal Error :  Cannot assign values to a const variable",
+  "ERR(6E) scripts/zz_harness/lint_const_assign.gsc (4,0)  : Compiler Internal Error :  Cannot assign values to a const variable"
+ ]
+}

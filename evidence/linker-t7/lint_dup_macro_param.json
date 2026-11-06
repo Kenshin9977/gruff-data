@@ -1,0 +1,17 @@
+{
+ "status": "reject",
+ "accepted": false,
+ "exit_code": 1,
+ "elapsed_s": 1.32,
+ "inputs": [
+  {
+   "path": "scripts/zz_harness/lint_dup_macro_param.gsc"
+  }
+ ],
+ "errors": [],
+ "other_lines": [
+  "UNRECOVERABLE ERROR:",
+  "SCRIPT ERROR: Preprocessor error, No generated data for 'scripts/zz_harness/lint_dup_macro_param.gsc'",
+  ":5 : (-9) Error:  Illegal token"
+ ]
+}

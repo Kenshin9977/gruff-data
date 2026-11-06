@@ -10,30 +10,30 @@ Every GSC dialect feature of every game, generated from the profiles by `docs/ge
 
 | id | game | year | grade | verified | documented | assumed |
 |---|---|---:|---|---:|---:|---:|
-| `iw1` | Call of Duty | 2003 | verified-on-corpus | 43 | 2 | 32 |
-| `iw1-uo` | Call of Duty: United Offensive | 2004 | core | 0 | 2 | 75 |
-| `iw2` | Call of Duty 2 | 2005 | verified-on-corpus | 43 | 2 | 32 |
+| `iw1` | Call of Duty | 2003 | verified-on-corpus | 43 | 2 | 33 |
+| `iw1-uo` | Call of Duty: United Offensive | 2004 | core | 0 | 2 | 76 |
+| `iw2` | Call of Duty 2 | 2005 | verified-on-corpus | 43 | 2 | 33 |
 | `iw3` | Call of Duty 4: Modern Warfare | 2007 | verified-on-corpus | 16 | 27 | 26 |
 | `t4` | Call of Duty: World at War | 2008 | verified-on-corpus | 16 | 27 | 26 |
-| `iw4` | Call of Duty: Modern Warfare 2 | 2009 | verified-on-corpus | 22 | 25 | 30 |
+| `iw4` | Call of Duty: Modern Warfare 2 | 2009 | verified-on-corpus | 22 | 25 | 31 |
 | `t5` | Call of Duty: Black Ops | 2010 | verified-on-corpus | 17 | 26 | 26 |
-| `iw5` | Call of Duty: Modern Warfare 3 | 2011 | documented | 12 | 29 | 36 |
-| `codol` | Call of Duty Online | 2015 | verified-on-corpus | 10 | 0 | 67 |
+| `iw5` | Call of Duty: Modern Warfare 3 | 2011 | documented | 12 | 29 | 37 |
+| `codol` | Call of Duty Online | 2015 | verified-on-corpus | 10 | 0 | 68 |
 | `t6` | Call of Duty: Black Ops II | 2012 | documented | 18 | 26 | 27 |
-| `iw6` | Call of Duty: Ghosts | 2013 | documented | 9 | 32 | 36 |
-| `s1` | Call of Duty: Advanced Warfare | 2014 | documented | 10 | 31 | 36 |
+| `iw6` | Call of Duty: Ghosts | 2013 | documented | 9 | 32 | 37 |
+| `s1` | Call of Duty: Advanced Warfare | 2014 | documented | 10 | 31 | 37 |
 | `t7` | Call of Duty: Black Ops III | 2015 | verified-on-corpus | 51 | 16 | 4 |
-| `iw7` | Call of Duty: Infinite Warfare | 2016 | documented | 9 | 32 | 36 |
-| `h1` | Call of Duty: Modern Warfare Remastered | 2016 | documented | 10 | 31 | 36 |
-| `s2` | Call of Duty: WWII | 2017 | documented | 10 | 31 | 36 |
+| `iw7` | Call of Duty: Infinite Warfare | 2016 | documented | 9 | 32 | 37 |
+| `h1` | Call of Duty: Modern Warfare Remastered | 2016 | documented | 10 | 31 | 37 |
+| `s2` | Call of Duty: WWII | 2017 | documented | 10 | 31 | 37 |
 | `t8` | Call of Duty: Black Ops 4 | 2018 | documented | 18 | 7 | 42 |
-| `iw8` | Call of Duty: Modern Warfare (2019) | 2019 | documented | 11 | 32 | 34 |
+| `iw8` | Call of Duty: Modern Warfare (2019) | 2019 | documented | 11 | 32 | 35 |
 | `t9` | Call of Duty: Black Ops Cold War | 2020 | documented | 19 | 6 | 42 |
-| `s4` | Call of Duty: Vanguard | 2021 | documented | 0 | 40 | 37 |
-| `iw9` | Call of Duty: Modern Warfare II (2022) | 2022 | documented | 0 | 42 | 35 |
-| `jup` | Call of Duty: Modern Warfare III (2023) | 2023 | documented | 18 | 18 | 41 |
-| `t10` | Call of Duty: Black Ops 6 | 2024 | documented | 0 | 24 | 53 |
-| `t11` | Call of Duty: Black Ops 7 | 2025 | documented | 23 | 13 | 41 |
+| `s4` | Call of Duty: Vanguard | 2021 | documented | 0 | 40 | 38 |
+| `iw9` | Call of Duty: Modern Warfare II (2022) | 2022 | documented | 0 | 42 | 36 |
+| `jup` | Call of Duty: Modern Warfare III (2023) | 2023 | documented | 18 | 18 | 42 |
+| `t10` | Call of Duty: Black Ops 6 | 2024 | documented | 0 | 24 | 54 |
+| `t11` | Call of Duty: Black Ops 7 | 2025 | documented | 23 | 13 | 42 |
 
 ## Files
 
@@ -156,6 +156,7 @@ Every GSC dialect feature of every game, generated from the profiles by `docs/ge
 | `endon_multiple_events` | ? | ? | ? | ✗ᵉ | ✗ᵉ | ? | ✗ᵉ | ? | ? | ✗ᵃ | ? | ? | ✗ | ? | ? | ? | ✓ᵉ | ? | ✓ᵉ | ? | ? | ? | ✓ᵃ | ✓ᵃ |
 | `notify_wakes_waiters` | ? | ? | ? | deferᵉ | deferᵉ | ? | deferᵉ | ? | ? | deferᵉ | ? | ? | deferᵉ | ? | ? | ? | deferᵉ | ? | inlineᵉ | ? | ? | ? | inlineᵃ | inlineᵃ |
 | `hash_equality` | –ᵃ | –ᵃ | –ᵃ | –ᵉ | –ᵉ | –ᵃ | valueᵉ | ? | ? | errorᵉ | ? | ? | errorᵉ | ? | ? | ? | valueᵉ | ? | valueᵉ | ? | ? | ? | valueᵃ | valueᵃ |
+| `thread_call_value` | ? | ? | ? | callee-resultᵉ | callee-resultᵉ | ? | callee-resultᵉ | ? | ? | callee-resultᵉ | ? | ? | callee-resultᵉ | ? | ? | ? | callee-resultᵉ | ? | finalizationᵉ | ? | ? | ? | ? | ? |
 
 ## Keywords
 

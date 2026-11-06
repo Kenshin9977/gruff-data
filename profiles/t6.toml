@@ -112,6 +112,7 @@ waittill_multiple_events = { value = false, confidence = "measured-in-engine", s
 endon_multiple_events = { value = false, confidence = "assumed", source = ["vm-t6-emulation"], note = "gsc-tool refuses a second endon argument (endon_multiple_events, unsupported); static: the EndOn opcode (0x57, 0x7ef62c) reads an object and exactly one string event" }
 notify_wakes_waiters = { value = "deferred", confidence = "measured-in-engine", source = ["vm-t6-emulation#notify_wakes_waiter_before_notifier_continues", "vm-t6-emulation#notify_reentrant", "vm-t6-emulation#notify_wake_order_two_waiters"], note = "woken threads run in the same frame once the notifier yields, last registered first; VM_Execute is entered only from VM_Resume (VM_SetTime) and Scr_Exec*Thread" }
 hash_equality = { value = "script-error", confidence = "measured-in-engine", source = ["vm-t6-emulation#hash_equality"], note = "T6 has hash literals (#\"x\", opcode GetHash); == between two hashes, or a string and a hash, is a non-terminal script error ('unmatching types') whose result is undefined (T7: false); events must be strings (vm-t6-emulation#notify_string_vs_hash_event)" }
+thread_call_value = { value = "callee-result", confidence = "measured-in-engine", source = ["vm-t6-emulation#thread_call_assign_result"], note = "x = thread f() is f's return value when f ends without waiting, undefined when f waits first" }
 
 [[unresolved]]
 id = "t6-preprocessor"

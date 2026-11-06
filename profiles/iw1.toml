@@ -108,3 +108,4 @@ waittill_multiple_events = { value = "unknown", confidence = "assumed", source =
 endon_multiple_events = { value = "unknown", confidence = "assumed", source = ["inference"], note = "not measured: this game's VM has not been run (semantics/)" }
 notify_wakes_waiters = { value = "unknown", confidence = "assumed", source = ["inference"], note = "not measured: this game's VM has not been run (semantics/)" }
 hash_equality = { value = "n/a", confidence = "assumed", source = ["inference", "vm-iw3-emulation"], note = "does not apply: no hash literals (hash_string_literal) and plain-text identifiers; carried from IW3, whose lexer refuses '#' (semantics/iw3.toml hash_equality, unsupported)" }
+thread_call_value = { value = "unknown", confidence = "assumed", source = ["inference"], note = "not measured: this game's VM has not been run (semantics/)" }

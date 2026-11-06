@@ -1,0 +1,56 @@
+{
+ "status": "accept",
+ "accepted": true,
+ "exit_code": 0,
+ "elapsed_s": 4.02,
+ "inputs": [
+  {
+   "path": "scripts/zz_harness/lint_unreachable.gsc"
+  }
+ ],
+ "errors": [],
+ "other_lines": [],
+ "scripts": [
+  {
+   "gscc": "bo3/spt/vm_1c000a0d43534780/scripts/zz_harness/lint_unreachable.gscc",
+   "size": 236,
+   "tables": {
+    "name": "scripts/zz_harness/lint_unreachable.gsc",
+    "source_crc": "0x4679bac7",
+    "exports": [
+     {
+      "name": "f",
+      "namespace": "zz_probe",
+      "params": 0,
+      "flags": [],
+      "address": 120
+     },
+     {
+      "name": "main",
+      "namespace": "zz_probe",
+      "params": 0,
+      "flags": [
+       "autoexec"
+      ],
+      "address": 160
+     }
+    ],
+    "imports": [
+     {
+      "name": "f",
+      "namespace": "zz_probe",
+      "params": 0,
+      "kind": "function",
+      "dev_call": false,
+      "get_call": true,
+      "flags": "0x22",
+      "refs": [
+       "0xa4"
+      ]
+     }
+    ]
+   },
+   "asm": "#namespace namespace_c4c1746e;\n\n// Namespace namespace_c4c1746e\n// Params 0\n// Checksum 0x72e14cd0, Offset: 0x78\n// Size: 0x2\nfunction f()\ngscasm {\n.00000000: 3227 SafeCreateLocalVariables  count: 0x1\n.00000003:                                x (-2)\n.0000000a: 3e22 GetByte                   1 (0x1)\n.0000000e: 3f28 Return                    \n// final size: 0x10\n}\n\n// Namespace namespace_c4c1746e\n// Params 0, eflags: 0x2\n// Checksum 0x76c1bd77, Offset: 0xa0\n// Size: 0x2\nfunction autoexec main()\ngscasm {\n.00000000: 200d CheckClearParams          \n.00000002: 200e PreScriptCall             \n.00000004: 25a4 ScriptFunctionCall        params: 0 f\n.00000010: 271d DecTop                    \n.00000012: 2010 End                       \n// final size: 0x14\n}\n\n"
+  }
+ ]
+}

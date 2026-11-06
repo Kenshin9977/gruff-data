@@ -1,0 +1,27 @@
+{
+ "status": "reject",
+ "accepted": false,
+ "exit_code": 1000001,
+ "elapsed_s": 1.41,
+ "inputs": [
+  {
+   "path": "scripts/zz_harness/lint_using_missing.gsc"
+  }
+ ],
+ "errors": [
+  {
+   "severity": "error",
+   "code": 83,
+   "file": "scripts/zz_harness/lint_using_missing.gsc",
+   "line": 2,
+   "col": 41,
+   "function": null,
+   "message": "Compiler Internal Error :  Compile error processing \"using\" file - file not found : scripts/zz_harness/no_such_script.gsc"
+  }
+ ],
+ "other_lines": [
+  "UNRECOVERABLE ERROR:",
+  "SCRIPT ERROR: No generated data for 'scripts/zz_harness/lint_using_missing.gsc'",
+  "There were 0 warnings and 1 error."
+ ]
+}

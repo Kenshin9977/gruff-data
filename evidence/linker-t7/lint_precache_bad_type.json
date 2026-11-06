@@ -1,0 +1,36 @@
+{
+ "status": "accept",
+ "accepted": true,
+ "exit_code": 0,
+ "elapsed_s": 4.11,
+ "inputs": [
+  {
+   "path": "scripts/zz_harness/lint_precache_bad_type.gsc"
+  }
+ ],
+ "errors": [],
+ "other_lines": [],
+ "scripts": [
+  {
+   "gscc": "bo3/spt/vm_1c000a0d43534780/scripts/zz_harness/lint_precache_bad_type.gscc",
+   "size": 152,
+   "tables": {
+    "name": "scripts/zz_harness/lint_precache_bad_type.gsc",
+    "source_crc": "0xf5ba854a",
+    "exports": [
+     {
+      "name": "main",
+      "namespace": "zz_probe",
+      "params": 0,
+      "flags": [
+       "autoexec"
+      ],
+      "address": 128
+     }
+    ],
+    "imports": []
+   },
+   "asm": "#namespace namespace_c4c1746e;\n\n// Namespace namespace_c4c1746e\n// Params 0, eflags: 0x2\n// Checksum 0x9acf73b8, Offset: 0x80\n// Size: 0x2\nfunction autoexec main()\ngscasm {\n.00000000: 200d CheckClearParams          \n.00000002: 2010 End                       \n// final size: 0x4\n}\n\n"
+  }
+ ]
+}

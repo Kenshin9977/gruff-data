@@ -1,0 +1,18 @@
+{
+ "status": "reject",
+ "accepted": false,
+ "exit_code": 1,
+ "elapsed_s": 1.58,
+ "inputs": [
+  {
+   "path": "scripts/zz_harness/lint_vararg_outside.gsc"
+  }
+ ],
+ "errors": [],
+ "other_lines": [
+  "UNRECOVERABLE ERROR:",
+  "SCRIPT ERROR: No generated data for 'scripts/zz_harness/lint_vararg_outside.gsc'",
+  "ERR(6E) scripts/zz_harness/lint_vararg_outside.gsc (6,0)  : Compiler Internal Error :  Uninitialized local variable 'vararg'",
+  "ERR(6E) scripts/zz_harness/lint_vararg_outside.gsc (6,0)  : Compiler Internal Error :  Uninitialized local variable 'vararg'"
+ ]
+}

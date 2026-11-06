@@ -1,0 +1,36 @@
+{
+ "status": "accept",
+ "accepted": true,
+ "exit_code": 0,
+ "elapsed_s": 4.07,
+ "inputs": [
+  {
+   "path": "scripts/zz_harness/lint_uninit_branch.gsc"
+  }
+ ],
+ "errors": [],
+ "other_lines": [],
+ "scripts": [
+  {
+   "gscc": "bo3/spt/vm_1c000a0d43534780/scripts/zz_harness/lint_uninit_branch.gscc",
+   "size": 214,
+   "tables": {
+    "name": "scripts/zz_harness/lint_uninit_branch.gsc",
+    "source_crc": "0x9c38de77",
+    "exports": [
+     {
+      "name": "main",
+      "namespace": "zz_probe",
+      "params": 0,
+      "flags": [
+       "autoexec"
+      ],
+      "address": 128
+     }
+    ],
+    "imports": []
+   },
+   "asm": "#namespace namespace_c4c1746e;\n\n// Namespace namespace_c4c1746e\n// Params 0, eflags: 0x2\n// Checksum 0x461726ca, Offset: 0x80\n// Size: 0x2\nfunction autoexec main()\ngscasm {\n.00000000: 3227 SafeCreateLocalVariables  count: 0x3\n.00000003:                                a (-2)\n.00000009:                                y (-3)\n.00000011:                                x (-4)\n.0000001a: 3e22 GetByte                   1 (0x1)\n.0000001e: 3eb5 EvalLocalVariableRefCached a\n.00000022: 3d24 SetVariableField          \n.00000024: 3ecf EvalLocalVariableCached   (-2) a\n.00000028: 2a2d JumpOnFalse               Jump .00000036 (delta:0xa)\n.0000002c: 2f03 GetByte                   1 (0x1)\n.00000030: 210a EvalLocalVariableRefCached y\n.00000034: 2f59 SetVariableField          \n.00000036: 3837 EvalLocalVariableCached   (-1) y\n.0000003a: 2413 EvalLocalVariableRefCached x\n.0000003e: 316f SetVariableField          \n.00000040: 2010 End                       \n// final size: 0x42\n}\n\n"
+  }
+ ]
+}

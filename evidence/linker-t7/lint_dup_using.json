@@ -1,0 +1,49 @@
+{
+ "status": "accept",
+ "accepted": true,
+ "exit_code": 0,
+ "elapsed_s": 4.03,
+ "inputs": [
+  {
+   "path": "scripts/zz_harness/lint_dup_using.gsc"
+  }
+ ],
+ "errors": [],
+ "other_lines": [],
+ "scripts": [
+  {
+   "gscc": "bo3/spt/vm_1c000a0d43534780/scripts/zz_harness/lint_dup_using.gscc",
+   "size": 208,
+   "tables": {
+    "name": "scripts/zz_harness/lint_dup_using.gsc",
+    "source_crc": "0xb9069144",
+    "exports": [
+     {
+      "name": "main",
+      "namespace": "zz_probe",
+      "params": 0,
+      "flags": [
+       "autoexec"
+      ],
+      "address": 152
+     }
+    ],
+    "imports": [
+     {
+      "name": "wait_network_frame",
+      "namespace": "util",
+      "params": 0,
+      "kind": "function",
+      "dev_call": false,
+      "get_call": false,
+      "flags": "0x02",
+      "refs": [
+       "0x9c"
+      ]
+     }
+    ]
+   },
+   "asm": "#using scripts/shared/util_shared;\n\n#namespace namespace_c4c1746e;\n\n// Namespace namespace_c4c1746e\n// Params 0, eflags: 0x2\n// Checksum 0x70863179, Offset: 0x98\n// Size: 0x2\nfunction autoexec main()\ngscasm {\n.00000000: 200d CheckClearParams          \n.00000002: 200e PreScriptCall             \n.00000004: 2672 ScriptFunctionCall        params: 0 util::wait_network_frame\n.00000010: 2f8a DecTop                    \n.00000012: 2010 End                       \n// final size: 0x14\n}\n\n"
+  }
+ ]
+}

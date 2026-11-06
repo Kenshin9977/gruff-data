@@ -1,0 +1,18 @@
+{
+ "status": "reject",
+ "accepted": false,
+ "exit_code": 1,
+ "elapsed_s": 1.33,
+ "inputs": [
+  {
+   "path": "scripts/zz_harness/lint_uninit_local_later.gsc"
+  }
+ ],
+ "errors": [],
+ "other_lines": [
+  "UNRECOVERABLE ERROR:",
+  "SCRIPT ERROR: No generated data for 'scripts/zz_harness/lint_uninit_local_later.gsc'",
+  "ERR(6E) scripts/zz_harness/lint_uninit_local_later.gsc (10,0)  : Compiler Internal Error :  Uninitialized local variable 'y'",
+  "ERR(6E) scripts/zz_harness/lint_uninit_local_later.gsc (10,0)  : Compiler Internal Error :  Uninitialized local variable 'y'"
+ ]
+}

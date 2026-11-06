@@ -1,0 +1,36 @@
+{
+ "status": "accept",
+ "accepted": true,
+ "exit_code": 0,
+ "elapsed_s": 4.06,
+ "inputs": [
+  {
+   "path": "scripts/zz_harness/lint_div_zero.gsc"
+  }
+ ],
+ "errors": [],
+ "other_lines": [],
+ "scripts": [
+  {
+   "gscc": "bo3/spt/vm_1c000a0d43534780/scripts/zz_harness/lint_div_zero.gscc",
+   "size": 184,
+   "tables": {
+    "name": "scripts/zz_harness/lint_div_zero.gsc",
+    "source_crc": "0x82eec553",
+    "exports": [
+     {
+      "name": "main",
+      "namespace": "zz_probe",
+      "params": 0,
+      "flags": [
+       "autoexec"
+      ],
+      "address": 120
+     }
+    ],
+    "imports": []
+   },
+   "asm": "#namespace namespace_c4c1746e;\n\n// Namespace namespace_c4c1746e\n// Params 0, eflags: 0x2\n// Checksum 0xba6aaf0a, Offset: 0x78\n// Size: 0x2\nfunction autoexec main()\ngscasm {\n.00000000: 3227 SafeCreateLocalVariables  count: 0x2\n.00000003:                                x (-2)\n.00000009:                                y (-3)\n.00000012: 3e22 GetByte                   1 (0x1)\n.00000016: 3eb5 EvalLocalVariableRefCached x\n.0000001a: 3d24 SetVariableField          \n.0000001c: 3ecf EvalLocalVariableCached   (-1) x\n.00000020: 36e4 GetZero                   \n.00000022: 2b1c Divide                    \n.00000024: 210a EvalLocalVariableRefCached y\n.00000028: 2f59 SetVariableField          \n.0000002a: 2010 End                       \n// final size: 0x2c\n}\n\n"
+  }
+ ]
+}

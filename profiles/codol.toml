@@ -106,3 +106,4 @@ waittill_multiple_events = { value = "unknown", confidence = "assumed", source =
 endon_multiple_events = { value = "unknown", confidence = "assumed", source = ["inference"], note = "not measured: this game's VM has not been run (semantics/)" }
 notify_wakes_waiters = { value = "unknown", confidence = "assumed", source = ["inference"], note = "not measured: this game's VM has not been run (semantics/)" }
 hash_equality = { value = "unknown", confidence = "assumed", source = ["inference"], note = "not measured: this game's VM has not been run (semantics/)" }
+thread_call_value = { value = "unknown", confidence = "assumed", source = ["inference"], note = "not measured: this game's VM has not been run (semantics/)" }

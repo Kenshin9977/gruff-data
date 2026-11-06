@@ -1,0 +1,18 @@
+{
+ "status": "reject",
+ "accepted": false,
+ "exit_code": 1,
+ "elapsed_s": 1.31,
+ "inputs": [
+  {
+   "path": "scripts/zz_harness/lint_dup_default.gsc"
+  }
+ ],
+ "errors": [],
+ "other_lines": [
+  "UNRECOVERABLE ERROR:",
+  "SCRIPT ERROR: No generated data for 'scripts/zz_harness/lint_dup_default.gsc'",
+  "ERR(6E) scripts/zz_harness/lint_dup_default.gsc (12,0)  : Compiler Internal Error :  Switch statement has more than one default item specified",
+  "ERR(6E) scripts/zz_harness/lint_dup_default.gsc (12,0)  : Compiler Internal Error :  Switch statement has more than one default item specified"
+ ]
+}

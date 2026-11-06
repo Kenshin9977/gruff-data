@@ -1,0 +1,80 @@
+{
+ "status": "accept",
+ "accepted": true,
+ "exit_code": 0,
+ "elapsed_s": 4.15,
+ "inputs": [
+  {
+   "path": "scripts/zz_harness/lint_private_call.gsc"
+  },
+  {
+   "path": "scripts/zz_harness/zz_probe_private.gsc"
+  }
+ ],
+ "errors": [],
+ "other_lines": [],
+ "scripts": [
+  {
+   "gscc": "bo3/spt/vm_1c000a0d43534780/scripts/zz_harness/lint_private_call.gscc",
+   "size": 224,
+   "tables": {
+    "name": "scripts/zz_harness/lint_private_call.gsc",
+    "source_crc": "0x21e7f84e",
+    "exports": [
+     {
+      "name": "main",
+      "namespace": "zz_probe",
+      "params": 0,
+      "flags": [
+       "autoexec"
+      ],
+      "address": 168
+     }
+    ],
+    "imports": [
+     {
+      "name": "hidden",
+      "namespace": "zz_probe_private",
+      "params": 0,
+      "kind": "function",
+      "dev_call": false,
+      "get_call": false,
+      "flags": "0x02",
+      "refs": [
+       "0xac"
+      ]
+     }
+    ]
+   },
+   "asm": "#using scripts/zz_harness/zz_probe_private;\n\n#namespace namespace_c4c1746e;\n\n// Namespace namespace_c4c1746e\n// Params 0, eflags: 0x2\n// Checksum 0x776d5b75, Offset: 0xa8\n// Size: 0x2\nfunction autoexec main()\ngscasm {\n.00000000: 200d CheckClearParams          \n.00000002: 200e PreScriptCall             \n.00000004: 2672 ScriptFunctionCall        params: 0 zz_probe_private::hidden\n.00000010: 2f8a DecTop                    \n.00000012: 2010 End                       \n// final size: 0x14\n}\n\n"
+  },
+  {
+   "gscc": "bo3/spt/vm_1c000a0d43534780/scripts/zz_harness/zz_probe_private.gscc",
+   "size": 180,
+   "tables": {
+    "name": "scripts/zz_harness/zz_probe_private.gsc",
+    "source_crc": "0x53b7199b",
+    "exports": [
+     {
+      "name": "hidden",
+      "namespace": "zz_probe_private",
+      "params": 0,
+      "flags": [
+       "private"
+      ],
+      "address": 120
+     },
+     {
+      "name": "visible",
+      "namespace": "zz_probe_private",
+      "params": 0,
+      "flags": [],
+      "address": 136
+     }
+    ],
+    "imports": []
+   },
+   "asm": "#namespace zz_probe_private;\n\n// Namespace zz_probe_private\n// Params 0, eflags: 0x4\n// Checksum 0x9acf73b8, Offset: 0x78\n// Size: 0x2\nfunction private hidden()\ngscasm {\n.00000000: 200d CheckClearParams          \n.00000002: 2010 End                       \n// final size: 0x4\n}\n\n// Namespace zz_probe_private\n// Params 0\n// Checksum 0x9acf73b8, Offset: 0x88\n// Size: 0x2\nfunction visible()\ngscasm {\n.00000000: 200d CheckClearParams          \n.00000002: 2010 End                       \n// final size: 0x4\n}\n\n"
+  }
+ ]
+}

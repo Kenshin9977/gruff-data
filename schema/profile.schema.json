@@ -212,7 +212,8 @@
         "waittill_multiple_events",
         "endon_multiple_events",
         "notify_wakes_waiters",
-        "hash_equality"
+        "hash_equality",
+        "thread_call_value"
       ],
       "properties": {
         "file_kinds": {
@@ -6501,6 +6502,90 @@
                     {
                       "const": "n/a",
                       "description": "Does not apply to this game: the construct the feature is about cannot occur (hash_equality in a game without hash literals). Tools read it as off, never as unknown."
+                    }
+                  ]
+                },
+                "tools": {
+                  "$ref": "#/$defs/community_tools"
+                },
+                "confidence": {
+                  "$ref": "#/$defs/confidence"
+                },
+                "source": {
+                  "$ref": "#/$defs/source_refs"
+                },
+                "license": {
+                  "$ref": "#/$defs/spdx"
+                },
+                "note": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "thread_call_value": {
+          "description": "What `x = thread f()` gives the caller. callee-result: f's return value when f ends before its first wait, undefined once it waits (so reading it is a latent bug). finalization: a value of the VM's own 'finalization' type, defined even when f waits, never f's return value.",
+          "x-group": "semantics",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "confidence",
+            "source"
+          ],
+          "properties": {
+            "value": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "callee-result",
+                    "finalization"
+                  ]
+                },
+                {
+                  "const": "unknown"
+                }
+              ]
+            },
+            "confidence": {
+              "$ref": "#/$defs/confidence"
+            },
+            "source": {
+              "$ref": "#/$defs/source_refs"
+            },
+            "status": {
+              "enum": [
+                "unresolved"
+              ]
+            },
+            "license": {
+              "$ref": "#/$defs/spdx"
+            },
+            "note": {
+              "type": "string"
+            },
+            "community": {
+              "description": "Community mode: the value when scripts are built by a community compiler or loaded by a community client (gsc-tool, Plutonium...) instead of the retail toolchain. Absent: community mode uses `value`. `value` always describes retail.",
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "value",
+                "tools",
+                "confidence",
+                "source"
+              ],
+              "properties": {
+                "value": {
+                  "anyOf": [
+                    {
+                      "enum": [
+                        "callee-result",
+                        "finalization"
+                      ]
+                    },
+                    {
+                      "const": "unknown"
                     }
                   ]
                 },

@@ -1,0 +1,26 @@
+{
+ "status": "reject",
+ "accepted": false,
+ "exit_code": 1,
+ "elapsed_s": 1.52,
+ "inputs": [
+  {
+   "path": "scripts/zz_harness/lint_vararg_not_last.gsc"
+  }
+ ],
+ "errors": [
+  {
+   "severity": "error",
+   "code": 0,
+   "file": "scripts/zz_harness/lint_vararg_not_last.gsc",
+   "line": 4,
+   "col": 16,
+   "function": "f()",
+   "message": "syntax error, unexpected TOKEN_COMMA, expecting TOKEN_RIGHT_PAREN : function f( ...,"
+  }
+ ],
+ "other_lines": [
+  "UNRECOVERABLE ERROR:",
+  "SCRIPT ERROR: No generated data for 'scripts/zz_harness/lint_vararg_not_last.gsc'"
+ ]
+}
