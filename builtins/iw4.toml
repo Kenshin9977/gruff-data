@@ -18,6 +18,7 @@ note = "only iw4mp.exe was extracted, and most entries have no name (only IW5 ha
 tool = "gruff/tools/re/iw/extract.py + build.py"
 executable = "iw4mp.exe (Steam iw4mp.exe, the 2026 x64 rebuild, plain .text)"
 pe_timestamp = 1789567578
+modes = { mp = "iw4mp.exe" }
 entry_layout = "{u64 handler, u32 developer, u32 pad} (16 bytes), appended in order to one array at init (no name, no id)"
 arity_source = "handler emulation: N = 0..16 parameters, accessors hooked, ok(N) = the run raises no script error and reads no index >= N"
 variadic_max = 16

@@ -237,10 +237,24 @@ def check_builtins(profiles, use_schema, errors):
         if family is not None and family not in HASHES:
             errors.append(f"{where}: hash_family {family!r} has no checker here (add it to HASHES)")
         seen = set()
+        read = set(cat.get("extraction", {}).get("modes", {}))
         for b in cat.get("builtin", []):
             total += 1
             check_entry(b, where, cat.get("license", "CC0-1.0"), HASHES.get(family), family, seen,
                         errors)
+            # modes: a strict subset of the modes read (absent = all of them)
+            m = set(b.get("modes", []))
+            if m and not m < read:
+                errors.append(f"{where}: {entry_label(b)}: modes {sorted(m)} not a strict subset "
+                              f"of the modes read ({sorted(read)})")
+            ma = b.get("mode_args", {})
+            if not set(ma) <= (m or read) or any(lo > hi for lo, hi in ma.values()):
+                errors.append(f"{where}: {entry_label(b)}: mode_args {ma} outside its modes or "
+                              f"min > max")
+        cm = set(cat.get("coverage", {}).get("complete_modes", []))
+        if cm and (not cm <= read or cat["coverage"].get("complete", True)):
+            errors.append(f"{where}: coverage.complete_modes {sorted(cm)} needs complete = false and "
+                          f"modes read ({sorted(read)})")
         inames = [i["name"] for i in cat.get("intrinsic", [])]
         dup = sorted({n for n in inames if inames.count(n) > 1})
         if dup:

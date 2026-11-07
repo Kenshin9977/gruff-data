@@ -13,11 +13,13 @@ source = "extracted from game executable"
 [coverage]
 complete = false
 note = "only iw3mp.exe was extracted (iw3sp.exe is SteamStub-encrypted): the campaign's builtins (getnode, getaiarray...) are missing"
+complete_modes = ["mp"]
 
 [extraction]
 tool = "gruff/tools/re/iw/extract.py + build.py"
 executable = "iw3mp.exe (Steam iw3mp.exe, x86, plain .text (iw3sp.exe is SteamStub-encrypted))"
 pe_timestamp = 1525213173
+modes = { mp = "iw3mp.exe" }
 entry_layout = "{const char *name, handler, int developer} (12 bytes, x86)"
 arity_source = "handler emulation: N = 0..16 parameters, accessors hooked, ok(N) = the run raises no script error and reads no index >= N"
 variadic_max = 16

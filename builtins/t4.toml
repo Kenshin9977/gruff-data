@@ -11,11 +11,13 @@ source = "extracted from game executable"
 [coverage]
 complete = false
 note = "only the campaign executable was extracted: the multiplayer builtins are missing"
+complete_modes = ["sp", "zm"]
 
 [extraction]
 tool = "gruff/tools/re/treyarch/old_builtins.py + build_old.py"
 executable = "CoDWaW LanFixed.exe (unwrapped SP build of the Steam CoDWaW.exe 1.7), flattened"
 pe_timestamp = 1445666630
+modes = { sp = "CoDWaW LanFixed.exe", zm = "CoDWaW LanFixed.exe" }
 entry_layout = "char *name, handler, int developer (12 bytes)"
 variadic_max = 2147483647
 counts = { gsc_function = 348, gsc_method = 556, csc_function = 129, csc_method = 44 }

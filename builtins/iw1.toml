@@ -13,11 +13,13 @@ source = "extracted from game executable"
 [coverage]
 complete = false
 note = "only the campaign game module (gamex86.dll) was extracted: the multiplayer module's builtins (setclientcvar, getguid...) are missing"
+complete_modes = ["sp"]
 
 [extraction]
 tool = "gruff/tools/re/iw/extract.py + build.py"
 executable = "gamex86.dll (CoD1 game module (the script builtins live in gamex86.dll; CoDMP.exe is packed))"
 pe_timestamp = 1078214576
+modes = { sp = "gamex86.dll" }
 entry_layout = "{const char *name, handler, int developer} (12 bytes, x86)"
 arity_source = "handler emulation: N = 0..16 parameters, accessors hooked, ok(N) = the run raises no script error and reads no index >= N"
 variadic_max = 16

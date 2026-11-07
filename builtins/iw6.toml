@@ -18,6 +18,7 @@ note = "only the campaign dump was extracted (iw6mp64_ship.exe is encrypted); 1 
 tool = "gruff/tools/re/iw/extract.py + build.py"
 executable = "iw6sp64_dump2.exe (Ghosts SP dump (iw6sp64_ship.exe); no MP dump exists (iw6mp64_ship.exe is encrypted))"
 pe_timestamp = 1786624981
+modes = { sp = "iw6sp64_ship.exe" }
 entry_layout = "{u64 id, u64 handler, u32 developer, u32 pad} (24 bytes), registered at init through one registrar"
 arity_source = "handler emulation: N = 0..16 parameters, accessors hooked, ok(N) = the run raises no script error and reads no index >= N"
 variadic_max = 16

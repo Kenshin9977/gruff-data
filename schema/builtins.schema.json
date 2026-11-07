@@ -58,6 +58,17 @@
           "description": "The single-player executable merged into the catalogue (IW5, S1, H1)."
         },
         "pe_timestamp_sp": {"type": "integer"},
+        "modes": {
+          "type": "object",
+          "additionalProperties": false,
+          "minProperties": 1,
+          "description": "The game modes whose executables were read, each with its executable's file name (one executable may run several modes: the T4/T5 campaign executable runs zombies, the S1 multiplayer one Exo Zombies). An entry's `modes` is a subset of these keys. A mode absent here was not read (an encrypted executable): tools cannot narrow its scripts' builtins. Written by tools/re/modes.py.",
+          "properties": {
+            "sp": {"type": "string"},
+            "mp": {"type": "string"},
+            "zm": {"type": "string"}
+          }
+        },
         "merge": {
           "type": "object",
           "additionalProperties": false,
@@ -140,11 +151,23 @@
       "description": "Whether the catalogue holds every builtin the game's scripts can call. complete = false when an executable of the game was not extracted (a mode's scripts may call builtins it lacks) or entries have neither a name nor a hash: tools then cannot call a missing name unknown (gruff check turns B001 off). Absent: complete.",
       "properties": {
         "complete": {"type": "boolean"},
-        "note": {"type": "string", "description": "What is missing, and why."}
+        "note": {"type": "string", "description": "What is missing, and why."},
+        "complete_modes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"enum": ["sp", "mp", "zm"]},
+          "description": "With complete = false: the game modes whose executables were all read and whose entries are all named, so a name missing from the catalogue is unknown to the engine in scripts of these modes (gruff check keeps B001 on for them)."
+        }
       }
     }
   },
   "$defs": {
+    "arity_pair": {
+      "type": "array",
+      "items": {"type": "integer", "minimum": 0},
+      "minItems": 2,
+      "maxItems": 2
+    },
     "builtin": {
       "type": "object",
       "additionalProperties": false,
@@ -259,6 +282,24 @@
           "uniqueItems": true,
           "items": {"enum": ["mp", "sp"]},
           "description": "The executables whose tables hold the entry (IW games with a merged SP executable)."
+        },
+        "modes": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {"enum": ["sp", "mp", "zm"]},
+          "description": "The game modes whose executables hold the entry, when that is not every mode of [extraction] `modes` (absent: every mode read, or the split is unknown). Scripts of a mode can call only the entries of that mode (tools/re/modes.py, from one extraction per executable)."
+        },
+        "mode_args": {
+          "type": "object",
+          "additionalProperties": false,
+          "minProperties": 2,
+          "description": "Each mode's [min_args, max_args] as its executable's table stores it, when the executables holding the entry disagree (T6: linker-checked). Scripts of a mode are checked against their mode's pair; min_args/max_args stay the catalogue's, for scripts of no known mode.",
+          "properties": {
+            "sp": {"$ref": "#/$defs/arity_pair"},
+            "mp": {"$ref": "#/$defs/arity_pair"},
+            "zm": {"$ref": "#/$defs/arity_pair"}
+          }
         },
         "measured_args": {
           "type": "array",

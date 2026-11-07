@@ -18,7 +18,7 @@ Raven Software. It contains no game scripts or documentation, and no other game 
 | `schema/hash-package.md` | The hash package format (names for hashed identifiers, read by Gruff's `hash_packages`). The repository ships no package: name lists derived from game files stay local. |
 | `profiles/<engine-id>.toml` | One profile per game: keywords, 74 feature flags, unresolved questions. |
 | `sources.toml` | Every source a profile may cite, with its licence and how it may be used. |
-| `builtins/<game>.toml` | The engine builtin catalogue of a game (functions, methods, arities, parameter types, compiler intrinsics), extracted from the executable by Gruff `tools/re`. Schema: `schema/builtins.schema.json`. |
+| `builtins/<game>.toml` | The engine builtin catalogue of a game (functions, methods, arities, parameter types, compiler intrinsics), extracted from the executable by Gruff `tools/re`; where a game ships one executable per mode (T5, T6, IW5, S1, H1), each entry's `modes` (sp, mp, zm) says which executables hold it. Schema: `schema/builtins.schema.json`. |
 | `fields/<game>.toml` | The engine field catalogue (T7). Schema: `schema/fields.schema.json`. |
 | `events/<game>.toml` | The events the engine notifies (name or hash, receiver, payload), extracted from the executable, with a `[coverage]` table; none is `complete` yet. Schema: `schema/events.schema.json`. |
 | `semantics/<game>.toml` | VM behaviours (scheduling, notify, endon, waits, array and struct semantics, name resolution at load) measured by running this project's own conformance scripts in the game's VM, emulated offline from the executable (Gruff `tools/re/vm`): question, answer, golden trace, claims of documents and tools with agree/disagree, static evidence. A behaviour whose form the game's compiler refuses (no such keyword, syntax, literal or builtin) is `unsupported` with the compiler's message, never `pass`; `pass` with a compiler message only when the refusal answers a name-resolution question about a well-formed script. Where the game ships no compiler (T6, and MW3 to IW, whose scripts are bytecode compiled offline), gsc-tool compiles the scripts and its messages stand for the compiler's. Schema: `schema/semantics.schema.json`. |
@@ -102,8 +102,10 @@ its JSON Schema in `schema/`, then the rules a schema cannot express:
   `iw5-handler-match`) is `GPL-3.0-only` and no other entry is; every name hashes to its `hash`
   with the file's `hash_family`; no slot listed twice; arities consistent (`-1` only with
   `arity_unknown` or `arity_unchecked`, `measured_args` with `corpus_arity`); intrinsic names
-  unique; a profile's `opcode_builtins` all present in the catalogue's `[[intrinsic]]` list,
-  which is what the tools read (the profile value documents the dialect);
+  unique; an entry's `modes` a strict subset of the modes read (`[extraction] modes`) and its
+  `mode_args` within its modes; `coverage.complete_modes` among the modes read, with
+  `complete = false`; a profile's `opcode_builtins` all present in the catalogue's
+  `[[intrinsic]]` list, which is what the tools read (the profile value documents the dialect);
 - field catalogues: file name = game, sources known, no duplicate, names hash right;
 - event catalogues (`events/<game>.toml`): file name = game, a known `hash_family`, every name
   with a `name_source` and hashing to its `hash`, no event listed twice, no `measured` event
