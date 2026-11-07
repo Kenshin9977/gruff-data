@@ -17,14 +17,14 @@ Every GSC dialect feature of every game, generated from the profiles by `docs/ge
 | `t4` | Call of Duty: World at War | 2008 | verified-on-corpus | 16 | 27 | 26 |
 | `iw4` | Call of Duty: Modern Warfare 2 | 2009 | verified-on-corpus | 22 | 25 | 31 |
 | `t5` | Call of Duty: Black Ops | 2010 | verified-on-corpus | 17 | 26 | 26 |
-| `iw5` | Call of Duty: Modern Warfare 3 | 2011 | documented | 12 | 29 | 37 |
+| `iw5` | Call of Duty: Modern Warfare 3 | 2011 | documented | 10 | 29 | 32 |
 | `codol` | Call of Duty Online | 2015 | verified-on-corpus | 10 | 0 | 68 |
 | `t6` | Call of Duty: Black Ops II | 2012 | documented | 18 | 26 | 27 |
-| `iw6` | Call of Duty: Ghosts | 2013 | documented | 9 | 32 | 37 |
-| `s1` | Call of Duty: Advanced Warfare | 2014 | documented | 10 | 31 | 37 |
+| `iw6` | Call of Duty: Ghosts | 2013 | documented | 7 | 32 | 32 |
+| `s1` | Call of Duty: Advanced Warfare | 2014 | documented | 7 | 31 | 32 |
 | `t7` | Call of Duty: Black Ops III | 2015 | verified-on-corpus | 51 | 16 | 4 |
-| `iw7` | Call of Duty: Infinite Warfare | 2016 | documented | 9 | 32 | 37 |
-| `h1` | Call of Duty: Modern Warfare Remastered | 2016 | documented | 10 | 31 | 37 |
+| `iw7` | Call of Duty: Infinite Warfare | 2016 | documented | 7 | 32 | 32 |
+| `h1` | Call of Duty: Modern Warfare Remastered | 2016 | documented | 7 | 31 | 32 |
 | `s2` | Call of Duty: WWII | 2017 | documented | 10 | 31 | 37 |
 | `t8` | Call of Duty: Black Ops 4 | 2018 | documented | 18 | 7 | 42 |
 | `iw8` | Call of Duty: Modern Warfare (2019) | 2019 | documented | 11 | 32 | 35 |
@@ -113,20 +113,20 @@ Every GSC dialect feature of every game, generated from the profiles by `docs/ge
 | `foreach` | ✗ | ✗ᵃ | ✗ | ✗ᵈ | ✗ᵈ | ✓ | ✗ᵈ | ✓ᵈ | ✓ | ✓ | ✓ᵈ | ✓ᵈ | ✓ | ✓ᵈ | ✓ᵈ | ✓ᵈ | ✓ᵈ | ✓ᵈ | ✓ᵈ | ✓ᵈ | ✓ᵈ | ✓ᵈ | ✓ᵈ | ✓ᵈ |
 | `foreach_key_value` | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✓ | ✗ᵃ | ✓ᵃ | ✓ᵃ | ✓ | ✓ᵃ | ✓ᵃ | ✓ | ✓ᵃ | ✓ᵃ | ✓ᵃ | ✓ᵃ | ✓ᵃ | ✓ᵃ | ✓ᵃ | ✓ᵈ | ✓ᵃ | ✓ᵈ | ✓ᵈ |
 | `do_while` | ✗ | ✗ᵃ | ✗ | ✗ᵈ | ✗ᵈ | ✗ᵈ | ✗ᵈ | ✓ᵃ | ✓ᵃ | ✓ | ✓ᵃ | ✓ᵃ | ✓ | ✓ᵃ | ✓ᵃ | ✓ᵃ | ✓ | ✓ᵃ | ✓ | ✓ᵃ | ✓ᵃ | ✓ᵃ | ✓ᵃ | ✓ |
-| `childthread` | ✗ | ✗ᵃ | ✗ | ✗ᵉ | ✗ᵉ | ✓ | ✗ᵉ | ✓ | ✓ᵃ | ✗ᵃ | ✓ | ✓ | ✗ᵉ | ✓ | ✓ | ✓ | ✓ᵉ | ✓ | ✓ᵉ | ✓ᵈ | ✓ᵈ | ✓ | ✗ᵃ | ✓ |
+| `childthread` | ✗ | ✗ᵃ | ✗ | ✗ᵉ | ✗ᵉ | ✓ | ✗ᵉ | ✓ᵉ | ✓ᵃ | ✗ᵃ | ✓ᵉ | ✓ᵉ | ✗ᵉ | ✓ᵉ | ✓ᵉ | ✓ | ✓ᵉ | ✓ | ✓ᵉ | ✓ᵈ | ✓ᵈ | ✓ | ✗ᵃ | ✓ |
 | `call_pointer_sync` | ✗ | ✗ᵃ | ✗ | ✗ᵈ | ✗ᵈ | ✓ | ✗ᵈ | ✓ᵈ | ✓ᵃ | ✗ᵈ | ✓ᵈ | ✓ᵈ | ✗ | ✓ᵈ | ✓ᵈ | ✓ᵈ | ✗ᵃ | ✓ᵈ | ✗ᵃ | ✓ᵈ | ✓ᵈ | ✗ᵃ | ✗ᵃ | ✗ᵃ |
 | `builtin_call` | ✗ | ✗ᵃ | ✗ | ✗ | ✗ | ✗ | ✗ | ? | ? | ✗ | ? | ? | ✗ | ? | ? | ? | ✗ | ? | ✗ | ? | ? | ✓ | ? | ✓ |
 | `thisthread` | ✗ | ✗ᵃ | ✗ | ✗ᵈ | ✗ᵈ | ✓ | ✗ᵈ | ✓ᵈ | ✓ᵃ | ✗ᵈ | ✓ᵈ | ✓ᵈ | ✗ | ✓ᵈ | ✓ᵈ | ✓ᵈ | ✗ᵃ | ✓ᵈ | ✗ᵃ | ✓ᵈ | ✓ᵈ | ✓ᵃ | ✓ᵃ | ✓ᵃ |
 | `threadendon_call` | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✓ᵈ | ✓ᵈ | ✓ᵈ | ✗ᵃ | ✗ᵃ | ✓ᵈ | ✓ᵈ | ✓ᵈ |
-| `waittillframeend` | ✗ | ✓ᵃ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ᵉ | ✓ | ✓ᵉ | ✓ᵈ | ✓ᵈ | ✓ᵃ | ✓ᵃ | ✓ᵃ |
-| `waitframe` | ✗ | ✗ᵃ | ✗ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵈ | ✗ᵃ | ✗ᵃ | ✗ᵈ | ✓ | ✗ | ✗ᵈ | ✓ | ✓ | ✓ᵉ | ✓ | ✓ᵉ | ✓ᵈ | ✓ᵈ | ✓ᵈ | ✓ᵈ | ✓ᵈ |
+| `waittillframeend` | ✗ | ✓ᵃ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ᵉ | ✓ | ✓ | ✓ᵉ | ✓ᵉ | ✓ | ✓ᵉ | ✓ᵉ | ✓ | ✓ᵉ | ✓ | ✓ᵉ | ✓ᵈ | ✓ᵈ | ✓ᵃ | ✓ᵃ | ✓ᵃ |
+| `waitframe` | ✗ | ✗ᵃ | ✗ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵈ | ✗ᵃ | ✗ᵃ | ✗ᵈ | ✓ᵉ | ✗ | ✗ᵈ | ✓ᵉ | ✓ | ✓ᵉ | ✓ | ✓ᵉ | ✓ᵈ | ✓ᵈ | ✓ᵈ | ✓ᵈ | ✓ᵈ |
 | `waitrealtime` | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵈ | ✗ᵃ | ✓ | ✗ᵈ | ✗ᵈ | ✓ | ✗ᵈ | ✗ᵈ | ✗ᵈ | ? | ✗ᵈ | ? | ✗ᵈ | ✗ᵈ | ? | ? | ? |
 | `tuple_assignment` | ✗ | ✗ᵃ | ✗ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✓ᵈ | ✓ᵃ | ✗ᵈ | ✓ᵈ | ✓ᵈ | ✗ᵈ | ✓ᵈ | ✓ᵈ | ✓ᵈ | ✗ᵃ | ✓ᵈ | ✗ᵃ | ✓ᵈ | ✓ᵈ | ? | ? | ? |
 | `profiler_keywords` | ∅ | ∅ᵃ | prof_begin prof_end | prof_begin prof_end | prof_begin prof_end | prof_begin prof_end | prof_begin prof_end | prof_begin prof_endᵈ | prof_begin prof_endᵃ | prof_begin prof_endᵈ | prof_begin prof_endᵈ | prof_begin prof_endᵈ | profilestart profilestopᵈ | prof_begin prof_endᵈ | prof_begin prof_endᵈ | prof_begin prof_endᵈ | profilestart profilestopᵃ | prof_begin prof_endᵈ | profilestart profilestopᵃ | prof_begin prof_endᵈ | prof_begin prof_endᵈ | ∅ᵃ | profilestart profilestopᵃ | profilestart profilestopᵃ |
 | `assert_keywords` | assertmsgᵃ | assert assertmsgᵃ | assertmsgᵃ | assertmsgᵈ | assertmsgᵈ | assertmsgᵈ | assert assertmsgᵈ | assert assertex assertmsgᵈ | assert assertex assertmsgᵃ | ∅ᵈ | assert assertex assertmsgᵈ | assert assertex assertmsgᵈ | assert assertmsgᵈ | assert assertex assertmsgᵈ | assert assertex assertmsgᵈ | assert assertex assertmsgᵈ | ∅ᵃ | assert assertex assertmsgᵈ | ∅ᵃ | assert assertex assertmsgᵈ | assert assertex assertmsgᵈ | ∅ᵃ | ∅ᵃ | ∅ᵃ |
 | `breakpoint_keyword` | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✓ᵈ | ✓ᵃ | ✗ᵃ | ✓ᵈ | ✓ᵈ | ✗ᵈ | ✓ᵈ | ✓ᵈ | ✓ᵈ | ✗ᵃ | ✓ᵈ | ✗ᵃ | ✓ᵈ | ✓ᵈ | ✗ᵃ | ✗ᵃ | ✗ᵃ |
 | `goto_labels` | ✗ | ✗ᵃ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ |
-| `waittill_return_value` | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵉ | ✗ᵉ | ✗ᵃ | ✗ᵉ | ✗ᵃ | ✗ᵃ | ✗ᵉ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✓ᵉ | ✗ᵃ | ✓ᵉ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✓ᵃ | ✓ᵈ |
+| `waittill_return_value` | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✗ᵉ | ✗ᵉ | ✗ᵃ | ✗ᵉ | ✗ᵉ | ✗ᵃ | ✗ᵉ | ✗ᵉ | ✗ᵉ | ✗ᵃ | ✗ᵉ | ✗ᵉ | ✗ᵃ | ✓ᵉ | ✗ᵃ | ✓ᵉ | ✗ᵃ | ✗ᵃ | ✗ᵃ | ✓ᵃ | ✓ᵈ |
 
 ## Expressions
 
@@ -151,12 +151,12 @@ Every GSC dialect feature of every game, generated from the profiles by `docs/ge
 
 | feature | `iw1` | `iw1-uo` | `iw2` | `iw3` | `t4` | `iw4` | `t5` | `iw5` | `codol` | `t6` | `iw6` | `s1` | `t7` | `iw7` | `h1` | `s2` | `t8` | `iw8` | `t9` | `s4` | `iw9` | `jup` | `t10` | `t11` |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| `array_argument_passing` | copyᵃ | copyᵃ | copyᵃ | copyᵉ | copyᵉ | copyᵈ | copyᵉ | copyᵃ | copyᵃ | copyᵉ | copyᵃ | copyᵃ | copy/&ᵉ | copyᵃ | copyᵃ | copyᵃ | copy/&ᵉ | copyᵃ | copy/&ᵉ | copyᵃ | copyᵃ | ? | ? | ? |
-| `waittill_multiple_events` | ? | ? | ? | ✗ᵉ | ✗ᵉ | ? | ✗ᵉ | ? | ? | ✗ᵉ | ? | ? | ✗ᵉ | ? | ? | ? | ✓ᵉ | ? | ✓ᵉ | ? | ? | ? | ✓ᵃ | ✓ᵃ |
+| `array_argument_passing` | copyᵃ | copyᵃ | copyᵃ | copyᵉ | copyᵉ | copyᵈ | copyᵉ | copyᵉ | copyᵃ | copyᵉ | copyᵉ | copyᵉ | copy/&ᵉ | copyᵉ | copyᵉ | copyᵃ | copy/&ᵉ | copyᵃ | copy/&ᵉ | copyᵃ | copyᵃ | ? | ? | ? |
+| `waittill_multiple_events` | ? | ? | ? | ✗ᵉ | ✗ᵉ | ? | ✗ᵉ | ✗ᵉ | ? | ✗ᵉ | ✗ᵉ | ✗ᵉ | ✗ᵉ | ✗ᵉ | ✗ᵉ | ? | ✓ᵉ | ? | ✓ᵉ | ? | ? | ? | ✓ᵃ | ✓ᵃ |
 | `endon_multiple_events` | ? | ? | ? | ✗ᵉ | ✗ᵉ | ? | ✗ᵉ | ? | ? | ✗ᵃ | ? | ? | ✗ | ? | ? | ? | ✓ᵉ | ? | ✓ᵉ | ? | ? | ? | ✓ᵃ | ✓ᵃ |
-| `notify_wakes_waiters` | ? | ? | ? | deferᵉ | deferᵉ | ? | deferᵉ | ? | ? | deferᵉ | ? | ? | deferᵉ | ? | ? | ? | deferᵉ | ? | inlineᵉ | ? | ? | ? | inlineᵃ | inlineᵃ |
+| `notify_wakes_waiters` | ? | ? | ? | deferᵉ | deferᵉ | ? | deferᵉ | deferᵉ | ? | deferᵉ | deferᵉ | deferᵉ | deferᵉ | deferᵉ | deferᵉ | ? | deferᵉ | ? | inlineᵉ | ? | ? | ? | inlineᵃ | inlineᵃ |
 | `hash_equality` | –ᵃ | –ᵃ | –ᵃ | –ᵉ | –ᵉ | –ᵃ | valueᵉ | ? | ? | errorᵉ | ? | ? | errorᵉ | ? | ? | ? | valueᵉ | ? | valueᵉ | ? | ? | ? | valueᵃ | valueᵃ |
-| `thread_call_value` | ? | ? | ? | callee-resultᵉ | callee-resultᵉ | ? | callee-resultᵉ | ? | ? | callee-resultᵉ | ? | ? | callee-resultᵉ | ? | ? | ? | callee-resultᵉ | ? | finalizationᵉ | ? | ? | ? | ? | ? |
+| `thread_call_value` | ? | ? | ? | callee-resultᵉ | callee-resultᵉ | ? | callee-resultᵉ | callee-resultᵉ | ? | callee-resultᵉ | callee-resultᵉ | callee-resultᵉ | callee-resultᵉ | callee-resultᵉ | callee-resultᵉ | ? | callee-resultᵉ | ? | finalizationᵉ | ? | ? | ? | ? | ? |
 
 ## Keywords
 

@@ -182,6 +182,41 @@ detail = "Golden traces, answers, static readings and the comparison with T4 in 
 license = "CC0-1.0"
 usage = "facts-only"
 
+[sources.vm-iw5-emulation]
+kind = "engine-measurement"
+title = "This project's conformance scripts, compiled by gsc-tool, run in the Modern Warfare 3 script VM, emulated offline from the Steam x64 re-release iw5mp.exe (gruff/tools/re/vm/iwvm.py, Unicorn; nothing launched); the game's own loader links each script"
+detail = "Golden traces, answers, static readings and the comparison with the previous game in semantics/iw5.toml; the scripts are gruff/conformance/iw5, the method gruff/tools/re/reports/vm_iw5.md"
+license = "CC0-1.0"
+usage = "facts-only"
+
+[sources.vm-iw6-emulation]
+kind = "engine-measurement"
+title = "This project's conformance scripts, compiled by gsc-tool, run in the Ghosts script VM, emulated offline from the single-player executable dump (gruff/tools/re/vm/iwvm.py, Unicorn; nothing launched); the game's own loader links each script"
+detail = "Golden traces, answers, static readings and the comparison with the previous game in semantics/iw6.toml; the scripts are gruff/conformance/iw6, the method gruff/tools/re/reports/vm_iw6.md"
+license = "CC0-1.0"
+usage = "facts-only"
+
+[sources.vm-s1-emulation]
+kind = "engine-measurement"
+title = "This project's conformance scripts, compiled by gsc-tool, run in the Advanced Warfare script VM, emulated offline from the multiplayer executable dump (gruff/tools/re/vm/iwvm.py, Unicorn; nothing launched); the game's own loader links each script"
+detail = "Golden traces, answers, static readings and the comparison with the previous game in semantics/s1.toml; the scripts are gruff/conformance/s1, the method gruff/tools/re/reports/vm_s1.md"
+license = "CC0-1.0"
+usage = "facts-only"
+
+[sources.vm-h1-emulation]
+kind = "engine-measurement"
+title = "This project's conformance scripts, compiled by gsc-tool, run in the Modern Warfare Remastered script VM, emulated offline from the multiplayer executable dump (gruff/tools/re/vm/iwvm.py, Unicorn; nothing launched); the game's own loader links each script"
+detail = "Golden traces, answers, static readings and the comparison with the previous game in semantics/h1.toml; the scripts are gruff/conformance/h1, the method gruff/tools/re/reports/vm_h1.md"
+license = "CC0-1.0"
+usage = "facts-only"
+
+[sources.vm-iw7-emulation]
+kind = "engine-measurement"
+title = "This project's conformance scripts, compiled by gsc-tool, run in the Infinite Warfare script VM, emulated offline from the executable dump (gruff/tools/re/vm/iwvm.py, Unicorn; nothing launched); the game's own loader links each script"
+detail = "Golden traces, answers, static readings and the comparison with the previous game in semantics/iw7.toml; the scripts are gruff/conformance/iw7, the method gruff/tools/re/reports/vm_iw7.md"
+license = "CC0-1.0"
+usage = "facts-only"
+
 [sources.bytecode-t6]
 kind = "corpus-measurement"
 title = "BO2 retail bytecode (GrayWolf --type script, no decompile), hidden foreach locals counted by gruff/tools/corpus/t6_foreach_locals.py"
