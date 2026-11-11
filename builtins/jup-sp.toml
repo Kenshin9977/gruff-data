@@ -11,6 +11,10 @@ hash_family = "iw9.scr"
 license = "CC0-1.0"
 source = "extracted from game executable"
 
+[coverage]
+complete = false
+note = "932 functions were extracted against 1,902 in multiplayer: both descriptor chains of the campaign dump stop at the instruction limit of descreg.py and the third stores nothing, so builtins the campaign registers (earthquake, getanimlength, the function forms of spawn and playfx...) are missing"
+
 [extraction]
 tool = "gruff/tools/re/iw/extract.py + build.py"
 executable = "mwiii_sp_flat.exe (Cordycep dump of sp23-cod.exe, flattened)"
