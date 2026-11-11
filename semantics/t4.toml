@@ -7,8 +7,8 @@
 [meta]
 game = "t4"
 extractor = "tools/re/vm/old_suite.py --game t4"
-dump = "codwaw_flat.exe sha256:1e073a10ac66e47bd0d36d7848607333af4ab66b8af0e9c32d2662ffa79fc452"
-date = "2026-11-06"
+dump = "codwaw_flat.exe"
+date = "2026-11-11"
 licence = "CC0-1.0"
 suite = "conformance/t4"
 time_unit = "scrVarPub.time, one 50 ms server frame"
@@ -279,6 +279,18 @@ modes_agree = true
 dialect = { vs = "t7", same = true }
 
 [[behaviour]]
+id = "nested_block_comment"
+question = "does a `/*` inside a block comment nest, so that the comment ends only at the matching `*/`?"
+result = "unsupported"
+reason = "T4 has no nested block comments: the comment ends at the first `*/` and the `*/` that follows it is bad syntax"
+compile_error = "bad syntax"
+developer_trace = []
+developer_error = "Com_Error:  Server script compile error | bad syntax | /* a /* b */ */ | (see console for details)"
+modes_agree = false
+evidence = ["the same file with a plain `/* a b */` compiles and traces start then after, so the refusal is the nesting and not the shape of the test; the T7 mod tools linker refuses the same form naming the token (\"syntax error, unexpected TOKEN_MULTIPLY\" at the second `*/`)"]
+dialect = { vs = "t7", same = false, note = "same refusal; no game of this project's measured set (iw3, t4, t5, t7, each with its own official compiler or linker) nests block comments" }
+
+[[behaviour]]
 id = "notify_before_waittill_same_frame"
 question = "a notify sent before the waittill is registered, in the same frame: is it lost?"
 answer = "a notify sent before the waittill is registered is lost, even in the same frame"
@@ -351,6 +363,18 @@ result = "pass"
 trace = ["f0 T0 notifying", "f0 T0 after notify", "f0 T1 woke", "f0 T1 woke still running"]
 modes_agree = true
 dialect = { vs = "t7", same = true }
+
+[[behaviour]]
+id = "stray_block_comment_close"
+question = "is a lone `*/`, with no block comment open, accepted by the compiler?"
+result = "unsupported"
+reason = "a lone `*/` is not a token of the language: the compiler refuses the file (bad syntax)"
+compile_error = "bad syntax"
+developer_trace = []
+developer_error = "Com_Error:  Server script compile error | bad syntax | */ | (see console for details)"
+modes_agree = false
+evidence = ["lexed as `*` then `/`, so the statement is an incomplete expression; the T7 mod tools linker says \"syntax error, unexpected TOKEN_MULTIPLY\" on the same form"]
+dialect = { vs = "t7", same = false, note = "same refusal" }
 
 [[behaviour]]
 id = "string_equality_case"

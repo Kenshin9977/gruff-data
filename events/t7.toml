@@ -5,7 +5,7 @@
 [meta]
 game = "t7"
 extractor = "tools/re/treyarch/events.py"
-dump = "bo3_flat.exe sha256:54f74a97d57ec0afec86553cd2c86fbcce4d3851544b47bfe1a172aeabe9bfab"
+dump = "bo3_flat.exe"
 date = "2026-11-06"
 licence = "CC0-1.0"
 hash_family = "t7.canon"

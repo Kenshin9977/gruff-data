@@ -5,7 +5,7 @@
 [meta]
 game = "iw4"
 extractor = "tools/re/iw/events.py"
-dump = "iw4mp.exe sha256:926f8a47959f2b24420898d07f599883e0866050d42d5289f94eef546a4a3492"
+dump = "iw4mp.exe"
 date = "2026-11-06"
 licence = "CC0-1.0"
 

@@ -6,8 +6,8 @@
 [meta]
 game = "t5"
 extractor = "tools/re/vm/t56_suite.py --game t5"
-dump = "BlackOpsMP.exe sha256:408ab85f44d42128c3ab3d534e7c02c93bd360c3d2c042871dc2b687205f406e"
-date = "2026-11-06"
+dump = "BlackOpsMP.exe"
+date = "2026-11-11"
 licence = "CC0-1.0"
 suite = "conformance/t5"
 time_unit = "gScrVarPub.time, one 50 ms server frame"
@@ -247,6 +247,15 @@ result = "pass"
 trace = ["f0 T1 a waiting", "f0 T2 b waiting", "f1 T0 sent second"]
 modes_agree = true
 dialect = { vs = "t6", same = true }
+
+[[behaviour]]
+id = "nested_block_comment"
+question = "does a `/*` inside a block comment nest, so that the comment ends only at the matching `*/`?"
+result = "unsupported"
+reason = "T5 has no nested block comments: the comment ends at the first `*/` and the `*/` that follows it is bad syntax"
+compile_error = "bad syntax"
+modes_agree = true
+evidence = ["the same file with a plain `/* a b */` compiles and traces start then after, so the refusal is the nesting and not the shape of the test; same refusal in iw3, t4 and t7, each with its own official compiler or linker"]
 
 [[behaviour]]
 id = "notify_before_waittill_same_frame"

@@ -8,7 +8,7 @@
 [meta]
 game = "s1"
 extractor = "tools/re/vm/iw_suite.py --game s1"
-dump = "s1_mp64_ship_dump.exe sha256:fb08f2b0d421c4daf61653e65256b0a45fb8d2857de77e29ec4ade17ab52a082"
+dump = "s1_mp64_ship_dump.exe"
 date = "2026-11-07"
 licence = "CC0-1.0"
 suite = "conformance/s1"

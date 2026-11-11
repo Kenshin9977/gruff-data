@@ -5,7 +5,7 @@
 [meta]
 game = "t9"
 extractor = "tools/re/treyarch/events.py"
-dump = "BlackOpsColdWar_dump.exe sha256:239316d7e053d1b396051a9c45e524f0539d1d6c0c85b812df80801f493f891f"
+dump = "BlackOpsColdWar_dump.exe"
 date = "2026-11-06"
 licence = "CC0-1.0"
 hash_family = "t8.fnv64"

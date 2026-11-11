@@ -5,7 +5,7 @@
 [meta]
 game = "t8"
 extractor = "tools/re/treyarch/events.py"
-dump = "BlackOps4_dump.exe sha256:7f2f2e63e0088a126ea7eac61c6419d87910168064a334a6902cb0d3760b85b2"
+dump = "BlackOps4_dump.exe"
 date = "2026-11-06"
 licence = "CC0-1.0"
 hash_family = "t8.fnv64"

@@ -5,7 +5,7 @@
 [meta]
 game = "s1"
 extractor = "tools/re/iw/events.py"
-dump = "s1_sp64_ship_dump.exe sha256:f0b4952ca21ed4215cbf4218e3f74d2f530053a8f80e0daede01c3facacbd522"
+dump = "s1_sp64_ship_dump.exe"
 date = "2026-11-06"
 licence = "CC0-1.0"
 

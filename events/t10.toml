@@ -5,7 +5,7 @@
 [meta]
 game = "t10"
 extractor = "tools/re/treyarch/events.py"
-dump = "bo6_flat.exe sha256:6eb63f1eac7cc3aa77413c2499973f0fc3d2ec63f5cf6bcdff512aa3eb379470"
+dump = "bo6_flat.exe"
 date = "2026-11-06"
 licence = "CC0-1.0"
 

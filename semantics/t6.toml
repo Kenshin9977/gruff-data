@@ -6,7 +6,7 @@
 [meta]
 game = "t6"
 extractor = "tools/re/vm/t56_suite.py --game t6"
-dump = "t6_dump_flat.exe sha256:e36054a9b6c2407a10b3fd196c41fcd5fdb3d58d52e613765460384bea9f4f45"
+dump = "t6_dump_flat.exe"
 date = "2026-11-06"
 licence = "CC0-1.0"
 suite = "conformance/t6"

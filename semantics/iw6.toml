@@ -8,7 +8,7 @@
 [meta]
 game = "iw6"
 extractor = "tools/re/vm/iw_suite.py --game iw6"
-dump = "iw6sp64_dump2.exe sha256:73b80f9f8bc38849e67281f101983e93afbd48e18546935a1e6fea58835e51d8"
+dump = "iw6sp64_dump2.exe"
 date = "2026-11-07"
 licence = "CC0-1.0"
 suite = "conformance/iw6"

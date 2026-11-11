@@ -7,8 +7,8 @@
 [meta]
 game = "iw3"
 extractor = "tools/re/vm/old_suite.py --game iw3"
-dump = "iw3mp.exe sha256:b8e1a9731fd1213aaed0b5a779f12cfd867ee9cf567c957032afa99292e3aacf"
-date = "2026-11-06"
+dump = "iw3mp.exe"
+date = "2026-11-11"
 licence = "CC0-1.0"
 suite = "conformance/iw3"
 time_unit = "scrVarPub.time, one 50 ms server frame"
@@ -277,6 +277,18 @@ result = "pass"
 trace = ["f0 T1 a waiting", "f0 T2 b waiting", "f1 T0 sent second"]
 modes_agree = true
 dialect = { vs = "t4", same = true }
+
+[[behaviour]]
+id = "nested_block_comment"
+question = "does a `/*` inside a block comment nest, so that the comment ends only at the matching `*/`?"
+result = "unsupported"
+reason = "IW3 has no nested block comments: the comment ends at the first `*/` and the `*/` that follows it is bad syntax"
+compile_error = "bad syntax"
+developer_trace = []
+developer_error = "Com_Error: script compile error | bad syntax | /* a /* b */ */ | (see console for details)"
+modes_agree = false
+evidence = ["the same file with a plain `/* a b */` compiles and traces start then after, so the refusal is the nesting and not the shape of the test"]
+dialect = { vs = "t4", same = false, note = "same refusal, same compiler lineage" }
 
 [[behaviour]]
 id = "notify_before_waittill_same_frame"

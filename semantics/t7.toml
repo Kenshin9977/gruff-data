@@ -6,8 +6,8 @@
 [meta]
 game = "t7"
 extractor = "tools/re/vm/t7_suite.py"
-dump = "bo3_flat.exe sha256:54f74a97d57ec0afec86553cd2c86fbcce4d3851544b47bfe1a172aeabe9bfab"
-date = "2026-11-06"
+dump = "bo3_flat.exe"
+date = "2026-11-11"
 licence = "CC0-1.0"
 suite = "conformance/t7"
 time_unit = "gScrVarPub.time, one 50 ms server frame"
@@ -240,6 +240,15 @@ answer = "each of several endons kills the thread"
 result = "pass"
 trace = ["f0 T1 a waiting", "f0 T2 b waiting", "f1 T0 sent second"]
 modes_agree = true
+
+[[behaviour]]
+id = "nested_block_comment"
+question = "does a `/*` inside a block comment nest, so that the comment ends only at the matching `*/`?"
+result = "unsupported"
+reason = "T7 has no nested block comments: the comment ends at the first `*/` and the `*/` that follows it is a syntax error"
+compile_error = "unexpected TOKEN_MULTIPLY"
+modes_agree = true
+evidence = ["the official mod tools linker points at the second `*/` and names the token it lexed there (\"syntax error, unexpected TOKEN_MULTIPLY\"), so the comment was already closed at the first one; the same file with a plain `/* a b */` compiles and traces start then after. Same refusal in iw3, t4 and t5, each with its own official compiler."]
 
 [[behaviour]]
 id = "notify_before_waittill_same_frame"

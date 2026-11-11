@@ -157,7 +157,10 @@ documentation text, syntax files, function descriptions, assets, binaries, or an
 a game or its mod tools. Facts re-derived from such material are allowed: a feature is present or
 absent, a keyword exists, a count, a name, an arity. The source and the method must be recorded.
 The BO3 mod-tools documents (`GSC_Language.pdf`, `gsc_sublime.zip`) were read locally for the
-`t7` profile. Only the facts were kept, and no text was copied.
+`t7` profile. Only the facts were kept, and no text was copied. No hash of a game executable
+either: a `[meta] dump` names the file an extraction read, never a digest of it, so the data says
+which build of the engine it describes without fingerprinting a binary. Which build it was stays
+in the extraction's own output, which is not committed.
 
 ## Using the data
 

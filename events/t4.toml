@@ -5,7 +5,7 @@
 [meta]
 game = "t4"
 extractor = "tools/re/treyarch/events.py"
-dump = "codwaw_flat.exe sha256:1e073a10ac66e47bd0d36d7848607333af4ab66b8af0e9c32d2662ffa79fc452"
+dump = "codwaw_flat.exe"
 date = "2026-11-06"
 licence = "CC0-1.0"
 

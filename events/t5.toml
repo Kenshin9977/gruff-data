@@ -5,7 +5,7 @@
 [meta]
 game = "t5"
 extractor = "tools/re/treyarch/events.py"
-dump = "blackops_flat.exe sha256:a5dcf2dfcbc426ecd91e7c97cc148e3a4e0d95f2b0184d03051230ef5290aa42"
+dump = "blackops_flat.exe"
 date = "2026-11-06"
 licence = "CC0-1.0"
 
